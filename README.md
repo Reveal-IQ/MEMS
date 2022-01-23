@@ -36,7 +36,4 @@ Our team of volunteers always welcomes all the help and support we can get as th
 
 ## 📚 Documentation
   - [Software Requirments and Specificiation](https://1drv.ms/w/s!Aoyt_5MLLrQsi6hhpnkagfaawf1pcA?e=iVbRyr)
-  - [UI Design Files](https://www.figma.com/file/3RZaloPTGo1Qe8rCp5Vv55/UI-Designs)
-    - **Username:** wgentles44@gmail.com
-    - **Password:** 2021gmh2022
-
+  - [Page Visual Designs](https://www.figma.com/file/3RZaloPTGo1Qe8rCp5Vv55/UI-Designs?node-id=0%3A1)
