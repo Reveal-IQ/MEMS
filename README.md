@@ -32,5 +32,7 @@ Our team of volunteers always welcomes all the help and support we can get as th
 
 
 ## 📚 Documentation
-  - [Software Requirments and Specificiation](https://1drv.ms/w/s!Aoyt_5MLLrQsi6hhpnkagfaawf1pcA?e=iVbRyr)
-  - [Page Visual Designs](https://www.figma.com/file/3RZaloPTGo1Qe8rCp5Vv55/UI-Designs?node-id=0%3A1)
+  - [User Requirements](https://1drv.ms/w/s!Aoyt_5MLLrQsi6hhpnkagfaawf1pcA?e=iVbRyr)
+  - [System Architecture and Specification](https://1drv.ms/w/s!Aoyt_5MLLrQsi657RYs-5oKwFtDmcg?e=cIGSvS)
+  - [Visual Designs](https://www.figma.com/file/3RZaloPTGo1Qe8rCp5Vv55/UI-Designs?node-id=0%3A1)
+  - [Sprint Planning](https://1drv.ms/w/s!Aoyt_5MLLrQsi659wutRW6qBken02g?e=aIL8yC)
