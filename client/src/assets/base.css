@@ -1,74 +1,235 @@
-/* color palette from <https://github.com/vuejs/theme> */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500;700&family=Montserrat:wght@400;600&display=swap');
+
+/* ------------------------ */
+/* Custom Properties */
+/* ------------------------ */
 :root {
-  --vt-c-white: #ffffff;
-  --vt-c-white-soft: #f8f8f8;
-  --vt-c-white-mute: #f2f2f2;
+  /* Colors hsl*/
+  --mems-clr-white: hsl(0, 0%, 100%);
+  --mems-clr-cultured: hsl(0, 0%, 96%);
+  --mems-clr-black: hsl(0, 0%, 0%);
+  --mems-clr-black-coral: hsl(209, 14%, 38%);
+  --mems-clr-davys-gray: hsl(240, 5%, 34%);
+  --mems-clr-tiffany-blue: hsl(176, 86%, 42%);
+  --mems-clr-bright-navy-blue: hsl(205, 86%, 42%);
 
-  --vt-c-black: #181818;
-  --vt-c-black-soft: #222222;
-  --vt-c-black-mute: #282828;
+  /* font sizes */
+  --mems-fs-2xl: 3.125rem;
+  /* 50px */
+  --mems-fs-xl: 1.25rem;
+  /* 20px */
+  --mems-fs-lg: 1.125rem;
+  /* 18px */
+  --mems-fs-md: 1rem;
+  /* 16px */
+  --mems-fs-sm: 0.875rem;
+  /* 14px */
+  --mems-fs-xs: 0.75rem;
+  /* 12px */
 
-  --vt-c-indigo: #2c3e50;
-
-  --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
-  --vt-c-divider-light-2: rgba(60, 60, 60, 0.12);
-  --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
-  --vt-c-divider-dark-2: rgba(84, 84, 84, 0.48);
-
-  --vt-c-text-light-1: var(--vt-c-indigo);
-  --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
-  --vt-c-text-dark-1: var(--vt-c-white);
-  --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
+  /* font families */
+  --mems-ff-base: 'Inter', sans-serif;
+  --mems-ff-other: 'Montserrat', sans-serif;
 }
 
-/* semantic color variables for this project */
-:root {
-  --color-background: var(--vt-c-white);
-  --color-background-soft: var(--vt-c-white-soft);
-  --color-background-mute: var(--vt-c-white-mute);
+/* ------------------------ */
+/* Resets */
+/* ------------------------ */
 
-  --color-border: var(--vt-c-divider-light-2);
-  --color-border-hover: var(--vt-c-divider-light-1);
-
-  --color-heading: var(--vt-c-text-light-1);
-  --color-text: var(--vt-c-text-light-1);
-
-  --section-gap: 160px;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: var(--vt-c-black);
-    --color-background-soft: var(--vt-c-black-soft);
-    --color-background-mute: var(--vt-c-black-mute);
-
-    --color-border: var(--vt-c-divider-dark-2);
-    --color-border-hover: var(--vt-c-divider-dark-1);
-
-    --color-heading: var(--vt-c-text-dark-1);
-    --color-text: var(--vt-c-text-dark-2);
-  }
-}
-
+/* Box Sizing */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
-  margin: 0;
-  position: relative;
-  font-weight: normal;
 }
 
+/* Reset Margins */
+body,
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  font-weight: 400;
+}
+
+/* Body */
 body {
+  background-color: var(--mems-clr-cultured);
+  font-family: var(--mems-ff-base);
+  font-size: var(--mems-fs-sm);
+  color: hsl(var(--mems-clr-black));
+  line-height: 1.5;
   min-height: 100vh;
-  color: var(--color-text);
-  background: var(--color-background);
-  transition: color 0.5s, background-color 0.5s;
-  line-height: 1.6;
-  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  font-size: 15px;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Forms Inherit */
+input,
+button,
+select,
+textarea {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ------------------------ */
+/* Utility Classes */
+/* ------------------------ */
+
+/* .flex {
+  display: flex;
+  gap: var(--gap, 1rem);
+}
+
+*/
+
+/* .grid {
+  display: grid;
+  gap: var(--gap, 1rem);
+} */
+
+
+/* .container {
+  padding: 3.125em 6.25 !important;
+  margin-inline: auto !important;
+  max-width: 80rem !important;
+} */
+
+/* .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+} */
+
+/* Colors */
+.mems {
+  background-color: var(--mems-clr-cultured);
+}
+
+.nav {
+  background-color: var(--mems-clr-black-coral)
+}
+
+.section {
+  background-color: var(--mems-clr-white)
+}
+
+.app-name {
+  color: var(--mems-clr-white)
+}
+
+.user-name {
+  color: var(--mems-clr-white)
+}
+
+.partner {
+  color: var(--mems-clr-white)
+}
+
+.title,
+.sub-title {
+  color: var(--mems-clr-davys-gray);
+}
+
+.section-title {
+  color: var(--mems-clr-black);
+  letter-spacing: 0.05em;
+}
+
+/* Typography */
+.title {
+  font-family: var(--mems-ff-base);
+  font-size: var(--mems-fs-2xl);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.sub-title {
+  font-family: var(--mems-ff-base);
+  font-size: var(--mems-fs-sm);
+}
+
+.section-title {
+  font-family: var(--mems-ff-base);
+  font-size: var(--mems-fs-lg);
+  font-weight: 500;
+}
+
+.app-name {
+  font-family: var(--mems-ff-other);
+  font-size: var(--mems-fs-sm);
+  font-weight: 600;
+}
+
+.user-name {
+  font-family: var(--mems-ff-other);
+  font-size: var(--mems-fs-sm);
+}
+
+.brand {
+  padding: 0.5em;
+}
+
+.partner {
+  font-family: var(--mems-ff-other);
+  font-size: var(--mems-fs-xs)
+}
+
+/* Layout */
+.mems {
+  padding-bottom: 1.875em;
+}
+
+.section {
+  padding: 1.25em;
+  display: grid;
+  /* justify-content: space-between; */
+  /* margin: 1.25em; */
+}
+
+.title {
+  margin-top: 1em;
+}
+
+.nav-wrapper {
+  display: flex;
+  justify-content: space-between;
+  /* padding: 1.25em; */
+  text-align: center;
+  align-items: center;
 }
