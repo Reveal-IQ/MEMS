@@ -6,12 +6,12 @@
 :root {
   /* Colors hsl*/
   --mems-clr-white: hsl(0, 0%, 100%);
-  --mems-clr-cultured: hsl(0, 0%, 96%);
+  --mems-clr-light: hsl(0, 0%, 96%);
   --mems-clr-black: hsl(0, 0%, 0%);
   --mems-clr-black-coral: hsl(209, 14%, 38%);
-  --mems-clr-davys-gray: hsl(240, 5%, 34%);
-  --mems-clr-tiffany-blue: hsl(176, 86%, 42%);
-  --mems-clr-bright-navy-blue: hsl(205, 86%, 42%);
+  --mems-clr-gray: hsl(240, 5%, 34%);
+  --mems-clr-green: hsl(176, 86%, 42%);
+  --mems-clr-navy-blue: hsl(205, 86%, 42%);
 
   /* font sizes */
   --mems-fs-2xl: 3.125rem;
@@ -63,7 +63,7 @@ p {
 
 /* Body */
 body {
-  background-color: var(--mems-clr-cultured);
+  background-color: var(--mems-clr-light);
   font-family: var(--mems-ff-base);
   font-size: var(--mems-fs-sm);
   color: hsl(var(--mems-clr-black));
@@ -137,7 +137,7 @@ textarea {
 } */
 
 .mems {
-  background-color: var(--mems-clr-cultured);
+  background-color: var(--mems-clr-light);
   padding-bottom: 1.875em;
   height: 100vh;
 }
@@ -174,7 +174,7 @@ textarea {
 
 .title,
 .sub-title {
-  color: var(--mems-clr-davys-gray);
+  color: var(--mems-clr-gray);
 }
 
 .section-title {
