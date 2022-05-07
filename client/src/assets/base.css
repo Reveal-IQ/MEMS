@@ -136,17 +136,28 @@ textarea {
   border: 0;
 } */
 
-/* Colors */
 .mems {
   background-color: var(--mems-clr-cultured);
+  padding-bottom: 1.875em;
+  height: 100vh;
 }
 
 .nav {
   background-color: var(--mems-clr-black-coral)
 }
 
+.nav-wrapper {
+  display: flex;
+  justify-content: space-between;
+  /* padding: 1.25em; */
+  text-align: center;
+  align-items: center;
+}
+
 .section {
-  background-color: var(--mems-clr-white)
+  background-color: var(--mems-clr-white);
+  padding: 1.25em;
+  display: grid;
 }
 
 .app-name {
@@ -171,12 +182,12 @@ textarea {
   letter-spacing: 0.05em;
 }
 
-/* Typography */
 .title {
   font-family: var(--mems-ff-base);
   font-size: var(--mems-fs-2xl);
   font-weight: 700;
   line-height: 1.1;
+  margin-top: 1em;
 }
 
 .sub-title {
@@ -208,29 +219,4 @@ textarea {
 .partner {
   font-family: var(--mems-ff-other);
   font-size: var(--mems-fs-xs)
-}
-
-/* Layout */
-.mems {
-  padding-bottom: 1.875em;
-  height: 100vh;
-}
-
-.section {
-  padding: 1.25em;
-  display: grid;
-  /* justify-content: space-between; */
-  /* margin: 1.25em; */
-}
-
-.title {
-  margin-top: 1em;
-}
-
-.nav-wrapper {
-  display: flex;
-  justify-content: space-between;
-  /* padding: 1.25em; */
-  text-align: center;
-  align-items: center;
 }

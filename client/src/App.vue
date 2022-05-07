@@ -10,7 +10,8 @@ import NavBar from "@/components/UI/NavBar.Component.vue";
     <div class="container">
       <div class="title">New Equipment</div>
       <p class="sub-title">Use this form to generate new equipment record</p>
-      <SectionLayout />
+      <SectionLayout title="Section Title" />
+      <SectionLayout title="New Section" />
     </div>
   </div>
 </template>
