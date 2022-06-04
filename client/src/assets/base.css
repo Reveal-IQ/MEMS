@@ -61,6 +61,12 @@ img {
   display: block;
 }
 
+/* Font Family */
+body,
+html {
+  font-family: var(--mems-ff-base);
+}
+
 /* Forms Inherit */
 input,
 button,
@@ -91,84 +97,91 @@ textarea {
 
 .mems {
   background-color: var(--mems-clr-light);
-  padding-bottom: 1.875em;
-  height: 100vh;
 }
 
-.nav {
-  background-color: var(--mems-clr-black-coral)
+.navbar {
+  background-color: var(--mems-clr-black-coral);
 }
 
-.nav-wrapper {
-  display: flex;
-  justify-content: space-between;
-  text-align: center;
-  align-items: center;
+.navbar-brand {
+  color: var(--mems-clr-white)
+}
+
+.search-form {
+  align-items: center
+}
+
+.search {
+  outline: none;
+  border: 1px solid var(--mems-clr-white);
+  border-radius: 25px;
+  background-color: transparent;
+  position: relative;
+  width: 400px
+}
+
+.search:focus {
+  background-color: transparent;
+  color: var(--mems-clr-white);
+  outline: none;
+}
+
+.bi-search {
+  position: relative;
+  right: 50px;
+  font-size: 1.1em;
+  cursor: pointer;
+  color: var(--mems-clr-white)
+}
+
+.app-name {
+  color: var(--mems-clr-white);
+  font-family: var(--mems-ff-other);
+  font-size: var(--mems-fs-md);
+  font-weight: 600;
+}
+
+.user-name {
+  color: var(--mems-clr-white);
+  font-family: var(--mems-ff-other);
+  font-size: var(--mems-fs-sm);
+}
+
+.partner {
+  color: var(--mems-clr-white);
+  font-family: var(--mems-ff-other);
+  font-size: var(--mems-fs-xs)
 }
 
 .section {
   background-color: var(--mems-clr-white);
-  padding: 1.25em;
-  display: grid;
-}
-
-.app-name {
-  color: var(--mems-clr-white)
-}
-
-.user-name {
-  color: var(--mems-clr-white)
-}
-
-.partner {
-  color: var(--mems-clr-white)
 }
 
 .title,
 .sub-title {
   color: var(--mems-clr-gray);
+  font-family: var(--mems-ff-base);
+}
+
+.title {
+  font-size: var(--mems-fs-2xl);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.sub-title {
+  font-size: var(--mems-fs-sm);
+  font-weight: 400;
 }
 
 .section-title {
   color: var(--mems-clr-black);
   letter-spacing: 0.05em;
-}
-
-.title {
-  font-family: var(--mems-ff-base);
-  font-size: var(--mems-fs-2xl);
-  font-weight: 700;
-  line-height: 1.1;
-  margin-top: 1em;
-}
-
-.sub-title {
-  font-family: var(--mems-ff-base);
-  font-size: var(--mems-fs-sm);
-}
-
-.section-title {
   font-family: var(--mems-ff-base);
   font-size: var(--mems-fs-lg);
   font-weight: 500;
 }
 
-.app-name {
-  font-family: var(--mems-ff-other);
-  font-size: var(--mems-fs-sm);
-  font-weight: 600;
-}
-
-.user-name {
-  font-family: var(--mems-ff-other);
-  font-size: var(--mems-fs-sm);
-}
-
-.brand {
-  padding: 0.5em;
-}
-
-.partner {
-  font-family: var(--mems-ff-other);
-  font-size: var(--mems-fs-xs)
+footer {
+  text-align: center;
 }

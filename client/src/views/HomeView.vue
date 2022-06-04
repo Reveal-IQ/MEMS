@@ -1,9 +1,14 @@
 <script setup>
-// import TheWelcome from '@/components/TheWelcome.vue'
+import LayoutDefault from "./Layout/LayoutDefault.vue";
+import SectionLayoutComponent from "../components/layout/SectionLayout.Component.vue";
+import PageTitleComponent from "../components/layout/PageTitle.Component.vue";
 </script>
 
 <template>
-  <main>
-    <!-- <TheWelcome /> -->
-  </main>
+  <layout-default>
+    <div class="container">
+      <PageTitleComponent />
+      <SectionLayoutComponent title="Section Title" />
+    </div>
+  </layout-default>
 </template>
