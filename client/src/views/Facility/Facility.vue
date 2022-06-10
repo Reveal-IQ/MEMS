@@ -4,11 +4,16 @@
     <p>
       Enter all relevant information associated with this medical equipment.
     </p>
+    <div>
+      <FacilityInformation />
+    </div>
   </div>
 </template>
 <script>
+import FacilityInformation from "../../components/Facility/FacilityInformation.vue";
 export default {
   name: "FacilityScreen",
+  components: { FacilityInformation },
 };
 </script>
 <style></style>
