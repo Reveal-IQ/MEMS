@@ -1,8 +1,9 @@
 <script>
-import ModelInformation from "@/components/Model/ModelInformation.vue";
+import ModelDescription from "@/components/Model/ModelDescription.vue";
+import VendorSupport from "@/components/Model/VendorSupport.vue";
 export default {
   name: "ModelScreen",
-  components: { ModelInformation },
+  components: { ModelDescription, VendorSupport },
 };
 </script>
 
@@ -12,9 +13,15 @@ export default {
     <p>
       Enter all relevant information associated with this medical equipment.
     </p>
-    <div>
-      <ModelInformation />
-    </div>
+    <main>
+      <ModelDescription />
+      <VendorSupport />
+      <div class="d-flex row justify-content-center py-3">
+        <!-- btn-green and a-link are custom css for MEMS check base.css -->
+        <button class="btn btn-green">Create New Facility</button>
+        <a class="text-center py-2 a-link">Clear Content</a>
+      </div>
+    </main>
   </div>
 </template>
 
