@@ -8,12 +8,12 @@
       <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 g-3">
         <!-- Facility Name -->
         <div class="col">
-          <label for="basic-url" class="form-label">Facility Name</label>
+          <label for="facilityName" class="form-label">Facility Name</label>
           <div class="input-group mb-3">
             <input
               type="text"
               class="form-control"
-              id="basic-url"
+              id="facilityName"
               aria-describedby="basic-addon3"
               placeholder="Enter details"
             />
@@ -21,55 +21,56 @@
         </div>
         <!-- Country -->
         <div class="col">
-          <label for="basic-url" class="form-label">Country</label>
-          <div class="input-group mb-3">
-            <input
-              type="text"
-              class="form-control"
-              id="basic-url"
-              aria-describedby="basic-addon3"
-              placeholder="Enter details"
-            />
-          </div>
+          <label for="country" class="form-label">Country</label>
+          <select
+            id="country"
+            class="form-select"
+            aria-label="Default select example"
+          >
+            <option selected>Choose a Country</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
         </div>
         <!-- Province/State/Region -->
         <div class="col">
-          <label for="basic-url" class="form-label"
-            >Province/State/Region</label
+          <label for="state" class="form-label">Province/State/Region</label>
+          <select
+            id="state"
+            class="form-select"
+            aria-label="Default select example"
           >
-          <div class="input-group mb-3">
-            <input
-              type="text"
-              class="form-control"
-              id="basic-url"
-              aria-describedby="basic-addon3"
-              placeholder="Enter details"
-            />
-          </div>
+            <option selected>Choose a State</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
         </div>
         <!-- City/District -->
         <div class="col">
-          <label for="basic-url" class="form-label">City/District</label>
-          <div class="input-group mb-3">
-            <input
-              type="text"
-              class="form-control"
-              id="basic-url"
-              aria-describedby="basic-addon3"
-              placeholder="Enter details"
-            />
-          </div>
+          <label for="city" class="form-label">City/District</label>
+          <select
+            id="city"
+            class="form-select"
+            aria-label="Default select example"
+          >
+            <option selected>Choose a City</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
         </div>
       </div>
       <div class="row g-3 mt-3">
         <!-- Street Address 1 -->
         <div class="col-12">
-          <label for="basic-url" class="form-label">Street Address 1</label>
+          <label for="street1" class="form-label">Street Address 1</label>
           <div class="input-group mb-3">
             <input
               type="text"
               class="form-control"
-              id="basic-url"
+              id="street1"
               aria-describedby="basic-addon3"
               placeholder="Enter details"
             />
@@ -77,12 +78,12 @@
         </div>
         <!-- Street Address 2 -->
         <div class="col-12">
-          <label for="basic-url" class="form-label">Street Address 2</label>
+          <label for="street2" class="form-label">Street Address 2</label>
           <div class="input-group mb-3">
             <input
               type="text"
               class="form-control"
-              id="basic-url"
+              id="street2"
               aria-describedby="basic-addon3"
               placeholder="Enter details"
             />
@@ -90,12 +91,12 @@
         </div>
         <!-- Zip / Postal Code -->
         <div class="col-lg-5">
-          <label for="basic-url" class="form-label">Zip/Postal Code</label>
+          <label for="zip" class="form-label">Zip/Postal Code</label>
           <div class="input-group mb-3">
             <input
               type="text"
               class="form-control"
-              id="basic-url"
+              id="zip"
               aria-describedby="basic-addon3"
               placeholder="Enter details"
             />
@@ -104,12 +105,12 @@
 
         <!-- GPS Coordinates -->
         <div class="col-lg-5">
-          <label for="basic-url" class="form-label">GPS Coordinates</label>
+          <label for="gps" class="form-label">GPS Coordinates</label>
           <div class="input-group mb-3">
             <input
               type="text"
               class="form-control"
-              id="basic-url"
+              id="gps"
               aria-describedby="basic-addon3"
               placeholder="Enter details"
             />
@@ -121,12 +122,12 @@
 
         <!-- Department List -->
         <div class="col-12">
-          <label for="basic-url" class="form-label">Departments List</label>
+          <label for="department" class="form-label">Departments List</label>
           <div class="input-group mb-3">
             <input
               type="text"
               class="form-control"
-              id="basic-url"
+              id="department"
               aria-describedby="basic-addon3"
               placeholder="Enter details"
             />

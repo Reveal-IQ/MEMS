@@ -1,7 +1,7 @@
 <template>
   <div class="col-auto">
     <button type="button" class="btn btn-primary text-center rounded-5 mb-3">
-      Add Something
+      <slot />
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="20"

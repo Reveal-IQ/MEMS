@@ -1,5 +1,5 @@
 <script setup>
-import ButtonComponent from "../../components/Ui/ButtonComponent.vue";
+import ButtonComponent from "@/components/Ui/ButtonComponent.vue";
 </script>
 
 <template>
@@ -13,12 +13,12 @@ import ButtonComponent from "../../components/Ui/ButtonComponent.vue";
         >
           <!-- Model ID -->
           <div class="col-lg-4">
-            <label for="basic-url" class="form-label">Model ID</label>
+            <label for="modelId" class="form-label">Model ID</label>
             <div class="input-group mb-3">
               <input
                 type="text"
                 class="form-control"
-                id="basic-url"
+                id="modelId"
                 aria-describedby="basic-addon3"
                 placeholder="Enter details"
               />
@@ -27,9 +27,13 @@ import ButtonComponent from "../../components/Ui/ButtonComponent.vue";
 
           <!-- Manufacturer Select -->
           <div class="col-lg-8">
-            <label for="basic-url" class="form-label">Manufacturer</label>
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Open this select menu</option>
+            <label for="manufacturer" class="form-label">Manufacturer</label>
+            <select
+              id="manufacturer"
+              class="form-select"
+              aria-label="Default select example"
+            >
+              <option selected>Choose a Manufacturer</option>
               <option value="1">One</option>
               <option value="2">Two</option>
               <option value="3">Three</option>
@@ -38,12 +42,12 @@ import ButtonComponent from "../../components/Ui/ButtonComponent.vue";
 
           <!-- Model Name -->
           <div class="col-lg-6">
-            <label for="basic-url" class="form-label">Model Name</label>
+            <label for="modelName" class="form-label">Model Name</label>
             <div class="input-group mb-3">
               <input
                 type="text"
                 class="form-control"
-                id="basic-url"
+                id="modelName"
                 aria-describedby="basic-addon3"
                 placeholder="Enter details"
               />
@@ -52,12 +56,12 @@ import ButtonComponent from "../../components/Ui/ButtonComponent.vue";
 
           <!-- Model Number -->
           <div class="col-lg-6">
-            <label for="basic-url" class="form-label">Model Number</label>
+            <label for="modelNumber" class="form-label">Model Number</label>
             <div class="input-group mb-3">
               <input
                 type="text"
                 class="form-control"
-                id="basic-url"
+                id="modelNumber"
                 aria-describedby="basic-addon3"
                 placeholder="Enter details"
               />
@@ -66,12 +70,13 @@ import ButtonComponent from "../../components/Ui/ButtonComponent.vue";
 
           <!-- Vendor Select -->
           <div class="col-lg-6">
-            <label for="basic-url" class="form-label">Vendor</label>
+            <label for="vendor" class="form-label">Vendor</label>
             <select
               class="form-select mb-3"
               aria-label="Default select example"
+              id="vendor"
             >
-              <option selected>Open this select menu</option>
+              <option selected>Choose a Vendor</option>
               <option value="1">One</option>
               <option value="2">Two</option>
               <option value="3">Three</option>
@@ -88,10 +93,11 @@ import ButtonComponent from "../../components/Ui/ButtonComponent.vue";
         >
           <!-- Vendor Site ID -->
           <div class="col-lg-4">
-            <label for="basic-url" class="form-label">Vendor Site ID</label>
+            <label for="vendorSite" class="form-label">Vendor Site ID</label>
             <select
               class="form-select mb-3"
               aria-label="Default select example"
+              id="vendorSite"
             >
               <option selected>Open this select menu</option>
               <option value="1">One</option>
@@ -100,7 +106,7 @@ import ButtonComponent from "../../components/Ui/ButtonComponent.vue";
             </select>
           </div>
           <div class="col">
-            <ButtonComponent />
+            <ButtonComponent>Add New Site ID</ButtonComponent>
           </div>
         </div>
         <div
@@ -108,10 +114,11 @@ import ButtonComponent from "../../components/Ui/ButtonComponent.vue";
         >
           <!-- Personnel Assigned -->
           <div class="col-lg-6">
-            <label for="basic-url" class="form-label">Personnel Assigned</label>
+            <label for="personnel" class="form-label">Personnel Assigned</label>
             <select
               class="form-select mb-3"
               aria-label="Default select example"
+              id="personnel"
             >
               <option selected>Open this select menu</option>
               <option value="1">One</option>
@@ -124,7 +131,7 @@ import ButtonComponent from "../../components/Ui/ButtonComponent.vue";
         <div
           class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 g-3"
         >
-          <ButtonComponent />
+          <ButtonComponent>Add Personnel</ButtonComponent>
         </div>
       </section>
     </form>
