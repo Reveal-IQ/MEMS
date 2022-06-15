@@ -25,7 +25,7 @@ import EquipmentLocation from "@/components/Asset/EquipmentLocation.vue";
 import MaintenanceAndSupport from "@/components/Asset/MaintenanceAndSupport.vue";
 import EquipmentAcquisition from "@/components/Asset/EquipmentAcquisition.vue";
 import MultipleEquipmentEntry from "@/components/Asset/MultipleEquipmentEntry.vue";
-import AdditionalInformation from "../../components/Asset/AdditionalInformation.vue";
+import AdditionalInformation from "@/components/Asset/AdditionalInformation.vue";
 
 export default {
   name: "AssetScreen",
