@@ -44,7 +44,7 @@
         </div>
       </div>
       <!-- Comments -->
-      <div class="col-lg-12 mb-3">
+      <div class="col-lg-12 col-md-12 mb-3">
         <label for="comment" class="form-label">Comments</label>
         <div class="input-group">
           <input

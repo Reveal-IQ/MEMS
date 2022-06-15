@@ -18,7 +18,7 @@
       </div>
 
       <!-- Equipment Common Name -->
-      <div class="col-lg-4 mb-3">
+      <div class="col-lg-4 col-md-12 mb-3">
         <label for="equipmentCommonName" class="form-label"
           >Equipment Common Name</label
         >
@@ -35,7 +35,7 @@
       </div>
 
       <!-- Equipment Description -->
-      <div class="col-lg-5 mb-3">
+      <div class="col-lg-5 col-md-12 mb-3">
         <label for="equipmentDescription" class="form-label"
           >Equipment Description</label
         >
