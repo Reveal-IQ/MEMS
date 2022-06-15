@@ -109,13 +109,13 @@
       </div>
     </div>
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
-      <ButtonComponent>Add Parent Component</ButtonComponent>
+      <!-- <ButtonComponent>Add Parent Component</ButtonComponent> -->
     </div>
   </section>
 </template>
 
 <script setup>
-import ButtonComponent from "../Ui/ButtonComponent.vue";
+// import ButtonComponent from "../Ui/ButtonComponent.vue";
 </script>
 
 <style lang="scss" scoped></style>
