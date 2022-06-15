@@ -4,19 +4,20 @@
 
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
       <!-- Purchase Order Number -->
-      <div class="col-lg-4">
+      <div class="col-lg-4 mb-3">
         <label for="purchaseOrder" class="form-label"
           >Purchase Order Number</label
         >
-        <div class="input-group mb-3">
-          <input
-            type="text"
-            class="form-control"
-            id="purchaseOrder"
-            aria-describedby="basic-addon3"
-            placeholder="Purchase Order Number"
-          />
-        </div>
+        <select
+          id="purchaseOrder"
+          class="form-select"
+          aria-label="Default select"
+        >
+          <option selected>Select PO Number</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
       </div>
       <!-- Project -->
       <div class="col-lg-8">
