@@ -4,7 +4,7 @@ import AssetScreen from "@/views/Asset/Asset.vue";
 import FacilityScreen from "@/views/Facility/Facility.vue";
 import ManufacturerScreen from "@/views/Manufacturer/Manufacturer.vue";
 import ModelScreen from "@/views/Model/Model.vue";
-import Vendor from "@/views/Vendor/Vendor.vue";
+import VendorScreen from "@/views/Vendor/Vendor.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -40,7 +40,7 @@ const router = createRouter({
     {
       path: "/vendor",
       name: "Vendor",
-      component: Vendor,
+      component: VendorScreen,
     },
   ],
 });
