@@ -1,6 +1,14 @@
 <template>
   <section class="bg-white p-4 rounded mt-4">
     <h5 class="pb-5">Multiple Equipment Entry</h5>
+    <div class="d-flex align-center">
+      <p class="text-center">1. Serial Number - Department - Location |</p>
+      <a class="text-center px-2 a-link">Remove</a>
+    </div>
+    <div class="d-flex align-center mb-3">
+      <p class="text-center">2. Serial Number - Department - Location |</p>
+      <a class="text-center px-2 a-link">Remove</a>
+    </div>
 
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
       <!-- Serial Number -->
@@ -59,6 +67,24 @@
     </div>
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
       <!-- <ButtonComponent>Add Fleet Asset</ButtonComponent> -->
+      <div class="col justify-content-between">
+        <button class="btn btn-primary rounded-pill btn-small">
+          Add Asset Fleet
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-plus-lg"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
+            />
+          </svg>
+        </button>
+      </div>
     </div>
   </section>
 </template>
