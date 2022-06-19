@@ -29,6 +29,33 @@ Our team of volunteers always welcomes all the help and support we can get as th
   - Launch Nodejs Application on Cloud services
   - Architect database schema
 
+## Branching Strategy
+
+MAIN -> RC04
+- Change main application version number
+- Version: 0.4.0 <Release>.<Release Candidate>.<Minor Changes>
+  
+RC04 -> Feature Branch (RC04_NewViewVendor)
+  - Single contributor
+
+ RC04 -> Bug Branch (RC04_BUG_BugName)
+  -Single Contributor
+  -Single Bug
+
+ Detached Branch (TST_RC04_FeatureName) 
+  - Test branch 
+  - Delete Branch when testing complete
+  
+Pull Request
+  - Feature/Bug PR (Feature Branch -> RC##)
+    - UI PR - Reviewer AS + Peer
+    - Backend PR - Reviewer AP
+    - PR Name: RC## <Feature/Bug Name>
+ 
+  - Release Candidate (RC) PR (RC## -> Main) 
+    - Reviewed AS + AP 
+    - PR Name: RC## RELEASE
+
 
 
 ## 📚 Documentation
