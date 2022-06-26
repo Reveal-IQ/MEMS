@@ -90,7 +90,7 @@ Pull Request
 
 
 
-## 📚 Documentation
+## 📚 Documents
   - [User Requirements](https://1drv.ms/w/s!Aoyt_5MLLrQsi6hhpnkagfaawf1pcA?e=iVbRyr)
   - [System Architecture and Specification](https://1drv.ms/w/s!Aoyt_5MLLrQsi657RYs-5oKwFtDmcg?e=cIGSvS)
   - [Visual Designs](https://www.figma.com/file/3RZaloPTGo1Qe8rCp5Vv55/UI-Designs?node-id=0%3A1)
@@ -99,7 +99,7 @@ Pull Request
   - [Doc Repo](https://1drv.ms/u/s!Aoyt_5MLLrQsi6hgaHG_8-McARe2UQ?e=BQGzPa)
   
   
-!-- MARKDOWN LINKS & IMAGES -->
+<!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/Reveal-IQ/MEMS.svg?style=for-the-badge
 [contributors-url]: https://github.com/Reveal-IQ/MEMS/graphs/contributors
