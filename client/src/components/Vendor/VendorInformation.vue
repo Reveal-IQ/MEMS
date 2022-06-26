@@ -36,14 +36,19 @@ export default {
         <!-- Country -->
         <div class="col">
           <label for="basic-url" class="form-label">Country</label>
-          <div class="input-group mb-3">
-            <input
+          <div class="select-group mb-3">
+            <select
               type="text"
-              class="form-control"
+              class="form-select"
               id="basic-url"
               aria-describedby="basic-addon3"
-              placeholder="Enter details"
-            />
+              placeholder="Select country"
+            >
+              <option selected>Select country</option>
+              <!-- <option value="United States">United States</option>
+              <option value="Canada">Canada</option>
+              <option value="Ghana">Ghana</option> -->
+            </select>
           </div>
         </div>
         <!-- Province/State/Region -->
@@ -51,27 +56,37 @@ export default {
           <label for="basic-url" class="form-label"
             >Province/State/Region</label
           >
-          <div class="input-group mb-3">
-            <input
+          <div class="select-group mb-3">
+            <select
               type="text"
-              class="form-control"
+              class="form-select"
               id="basic-url"
               aria-describedby="basic-addon3"
-              placeholder="Enter details"
-            />
+              placeholder="Select country"
+            >
+              <option selected>Select province/state/region</option>
+              <!-- <option value="Ontario">Ontario</option>
+              <option value="Quebec">Quebec</option>
+              <option value="British Colombia">British Colombia</option> -->
+            </select>
           </div>
         </div>
         <!-- City/District -->
         <div class="col">
           <label for="basic-url" class="form-label">City/District</label>
-          <div class="input-group mb-3">
-            <input
+          <div class="select-group mb-3">
+            <select
               type="text"
-              class="form-control"
+              class="form-select"
               id="basic-url"
               aria-describedby="basic-addon3"
-              placeholder="Enter details"
-            />
+              placeholder="Select country"
+            >
+              <option selected>Select city/district</option>
+              <!-- <option value="Toronto">Toronto</option>
+              <option value="Ottawa">Ottawa</option>
+              <option value="Hamilton"> Hamilton</option> -->
+            </select>
           </div>
         </div>
       </div>
@@ -136,7 +151,7 @@ export default {
       <h5 class="pb-5">Customer Service Contact</h5>
       <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 g-3">
         <!-- Contact Number -->
-        <div class="w-40">
+        <div class="col">
           <label for="basic-url" class="form-label">Contact Number</label>
           <div class="input-group mb-3">
             <input
@@ -148,9 +163,9 @@ export default {
             />
           </div>
         </div>
-        <!-- Representive Name -->
+        <!-- Representative Name -->
         <div class="col">
-          <label for="basic-url" class="form-label">Representive Name</label>
+          <label for="basic-url" class="form-label">Representative Name</label>
           <div class="input-group mb-3">
             <input
               type="text"
@@ -189,12 +204,12 @@ export default {
         </div>
       </div>
       <br />
-      <button class="btn btn-primary">Add New Contact</button>
+      <button class="btn btn-blue">Add New Contact</button>
     </form>
     <!-- The final button -->
     <div class="d-flex row justify-content-center py-3">
       <!-- btn-green and a-link are custom css for MEMS check base.css -->
-      <button class="btn btn-green">Create New Manufacturer</button>
+      <button class="btn btn-green">Create New Vendor</button>
       <a class="text-center py-2 a-link">Clear Content</a>
     </div>
   </main>
