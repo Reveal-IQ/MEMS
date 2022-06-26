@@ -2,12 +2,36 @@
 
 
 [![Contributors][contributors-shield]][contributors-url]
+[![Issues][issues-shield]][issues-url]
+[![Pull Requests][pr-shield]][pr-url]
+[![Latest Release][release-shield]][release-url]
 
 
 
+<!-- PROJECT LOGO -->
+<br />
+<br />
+<div align="center">
+  <a href="https://github.com/github_username/repo_name">
+    <img src= "https://user-images.githubusercontent.com/8020014/175838314-0ac6962f-8f3a-4873-ae9d-bfd603e92beb.svg" alt="Logo" height="100">
+  </a>
+<br />
+<br />
+<h3 align="center">Medical Equipment Managment System</h3>
 
-## Medical Equipment Managment System (MEMS)
-
+  <p align="center">
+    project_description
+    <br />
+    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    ·
+    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+  </p>
+</div>
 
 ## 🎯 Goals
 
@@ -77,5 +101,11 @@ Pull Request
   
 !-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/Reveal-IQ/MEMS.svg?style=for-the-badge
 [contributors-url]: https://github.com/Reveal-IQ/MEMS/graphs/contributors
+[issues-shield]: https://img.shields.io/github/issues/Reveal-IQ/MEMS.svg?style=for-the-badge
+[issues-url]: https://github.com/Reveal-IQ/MEMS/issues
+[pr-shield]: https://img.shields.io/github/issues-pr/Reveal-IQ/MEMS.svg?style=for-the-badge
+[pr-url]: https://github.com/Reveal-IQ/MEMS/pr
+[release-shield]: https://img.shields.io/github/release/Reveal-IQ/MEMS.svg?display_name=tag&include_prereleases&style=for-the-badge
+[release-url]: https://github.com/Reveal-IQ/MEMS/release
