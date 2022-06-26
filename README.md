@@ -1,3 +1,11 @@
+<div id="top"></div>
+
+
+[![Contributors][contributors-shield]][contributors-url]
+
+
+
+
 ## Medical Equipment Managment System (MEMS)
 
 
@@ -65,3 +73,9 @@ Pull Request
   - [Sprint Plan](https://1drv.ms/w/s!Aoyt_5MLLrQsi68zxO4M0fXzqS1hWg?e=FVPErk)
   - [Test Cases](https://1drv.ms/x/s!Aoyt_5MLLrQsi68Atdismmgw1tSr7g?e=knGDfZ)
   - [Doc Repo](https://1drv.ms/u/s!Aoyt_5MLLrQsi6hgaHG_8-McARe2UQ?e=BQGzPa)
+  
+  
+!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
+[contributors-url]: https://github.com/Reveal-IQ/MEMS/graphs/contributors
