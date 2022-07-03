@@ -13,21 +13,23 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 } */
-body{
+body {
   background-color: #F6F6F6;
 }
 
-.navigation-header{
+.navigation-header {
   background-color: #54626F !important;
-   
+
 }
-.navigation-footer{
-  background-color: rgba(0,0,0,0.5);
+
+.navigation-footer {
+  background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
- 
+
 }
+
 /* Custom button green css */
-.btn-green{
+.btn-green {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -38,15 +40,17 @@ body{
   width: 300px;
   height: 44px;
   background: #0FC9BE;
+  color: #fff;
   border-radius: 25px;
 }
+
 /* custom a link css */
-.a-link{
+.a-link {
   color: #979494;
   text-decoration: none;
   cursor: pointer;
 }
-.a-link:hover{
+
+.a-link:hover {
   color: #0FC9BE;
 }
-

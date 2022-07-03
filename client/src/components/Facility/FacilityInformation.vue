@@ -1,35 +1,19 @@
-<script>
-export default {
-  name: "ManufacturerInformation",
-};
-</script>
+<script setup></script>
+
 <template>
   <main>
-    <!-- The main form -->
-    <form class="bg-white p-4 rounded">
-      <h5 class="pb-5">Manufacturer Information</h5>
+    <form action="" class="bg-white p-4 rounded">
+      <h5 class="pb-5">Facility Information</h5>
 
-      <!-- 
-        The code below uses bootstrap to use grid and align 
-        itself in different way when the screen size is different.
-
-        row-col-sm-2: this sets how the row and col should be aligned when the screen size is smaller than 768px. 
-        row-cols-md-3: this sets how the row and col should be aligned when the screen size is between 768px and 992px.
-        g-3: this sets the gutters of the row and col.
-
-        to learn more look at : https://getbootstrap.com/docs/5.2/layout/grid/
-      -->
       <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 g-3">
-        <!-- Manufacturer Name -->
+        <!-- Facility Name -->
         <div class="col">
-          <label for="manufacturerName" class="form-label"
-            >Manufacturer Name</label
-          >
+          <label for="facilityName" class="form-label">Facility Name</label>
           <div class="input-group mb-3">
             <input
               type="text"
               class="form-control"
-              id="manufacturerName"
+              id="facilityName"
               aria-describedby="basic-addon3"
               placeholder="Enter details"
             />
@@ -106,7 +90,7 @@ export default {
           </div>
         </div>
         <!-- Zip / Postal Code -->
-        <div class="col col-lg-6">
+        <div class="col-lg-5">
           <label for="zip" class="form-label">Zip/Postal Code</label>
           <div class="input-group mb-3">
             <input
@@ -118,14 +102,46 @@ export default {
             />
           </div>
         </div>
+
+        <!-- GPS Coordinates -->
+        <div class="col-lg-5">
+          <label for="gps" class="form-label">GPS Coordinates</label>
+          <div class="input-group mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="gps"
+              aria-describedby="basic-addon3"
+              placeholder="Enter details"
+            />
+          </div>
+        </div>
+        <div class="col-lg-2">
+          <a class="a-link">Generate GPS Coordinates</a>
+        </div>
+
+        <!-- Department List -->
+        <div class="col-12">
+          <label for="department" class="form-label">Departments List</label>
+          <div class="input-group mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="department"
+              aria-describedby="basic-addon3"
+              placeholder="Enter details"
+            />
+          </div>
+        </div>
       </div>
     </form>
     <!-- The final button -->
     <div class="d-flex row justify-content-center py-3">
       <!-- btn-green and a-link are custom css for MEMS check base.css -->
-      <button class="btn btn-green">Create New Manufacturer</button>
+      <button class="btn btn-green">Create New Facility</button>
       <a class="text-center py-2 a-link">Clear Content</a>
     </div>
   </main>
 </template>
-<style></style>
+
+<style lang="scss" scoped></style>
