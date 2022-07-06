@@ -17,9 +17,6 @@
           <option value="3">Three</option>
         </select>
       </div>
-      <div class="col">
-        <ButtonComponent>Add New Site ID</ButtonComponent>
-      </div>
     </div>
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 g-3">
       <!-- Personnel Assigned -->
