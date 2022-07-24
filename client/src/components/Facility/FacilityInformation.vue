@@ -2,7 +2,7 @@
 
 <template>
   <main>
-    <form action="" class="bg-white p-4 rounded">
+    <section class="section p-4 rounded">
       <h5 class="pb-5">Facility Information</h5>
 
       <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 g-3">
@@ -134,7 +134,7 @@
           </div>
         </div>
       </div>
-    </form>
+    </section>
     <!-- The final button -->
     <div class="d-flex row justify-content-center py-3">
       <!-- btn-green and a-link are custom css for MEMS check base.css -->

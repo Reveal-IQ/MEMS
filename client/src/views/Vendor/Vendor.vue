@@ -13,8 +13,8 @@ export default {
 </script>
 <template>
   <div class="container py-5">
-    <h1>New Vendor</h1>
-    <p>Page Subheading and instructions</p>
+    <h1 class="title">New Vendor</h1>
+    <p class="sub-title">Page Subheading and instructions</p>
     <div>
       <VendorInformation />
     </div>
