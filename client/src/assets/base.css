@@ -13,32 +13,218 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 } */
-body {
-  background-color: #F6F6F6;
+
+
+:root {
+  /* Colors hsl*/
+  --mems-clr-white: hsl(0, 0%, 100%);
+  --mems-clr-light: hsl(0, 0%, 96%);
+  --mems-clr-black: hsl(0, 0%, 0%);
+  --mems-clr-black-coral: hsl(209, 14%, 38%);
+  --mems-clr-gray: hsl(240, 5%, 34%);
+  --mems-clr-green: hsl(176, 86%, 42%);
+  --mems-clr-navy-blue: hsl(205, 86%, 42%);
+  --mems-clr-background-gray: #eeeeee;
+
+  /* font sizes */
+  --mems-fs-2xl: 3.125rem;
+  /* 50px */
+  --mems-fs-xl: 1.25rem;
+  /* 20px */
+  --mems-fs-lg: 1.125rem;
+  /* 18px */
+  --mems-fs-md: 1rem;
+  /* 16px */
+  --mems-fs-sm: 0.875rem;
+  /* 14px */
+  --mems-fs-xs: 0.75rem;
+  /* 12px */
+
+  /* font families */
+  --mems-ff-base: 'Inter', sans-serif;
+  --mems-ff-other: 'Montserrat', sans-serif;
+
 }
 
+/* ------------------------ */
+/* Resets */
+/* ------------------------ */
+
+/* Box Sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Margin & Font Weights */
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Font Family */
+body,
+html {
+  font-family: var(--mems-ff-base) !important;
+  background-color: var(--mems-clr-background-gray);
+}
+
+/* Forms Inherit */
+input,
+button,
+select,
+textarea {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ------------------------ */
+/* Application CSS */
+/* ------------------------ */
+
+.mems {
+  background-color: var(--mems-clr-light);
+}
+
+
+
 .navigation-header {
-  background-color: #54626F !important;
+  background-color: var(--mems-clr-black-coral) !important;
 
 }
 
 .navigation-footer {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--mems-clr-gray) !important;
   width: 100%;
 
 }
+
+.navbar-brand {
+  color: var(--mems-clr-white)
+}
+
+.search-form {
+  align-items: center
+}
+
+.search {
+  outline: none;
+  border: 1px solid var(--mems-clr-white);
+  border-radius: 25px;
+  background-color: transparent;
+  position: relative;
+  width: 400px
+}
+
+.search:focus {
+  background-color: transparent;
+  color: var(--mems-clr-white);
+  outline: none;
+}
+
+.bi-search {
+  position: relative;
+  right: 50px;
+  font-size: 1.1em;
+  cursor: pointer;
+  color: var(--mems-clr-white)
+}
+
+.app-name {
+  color: var(--mems-clr-white);
+  font-family: var(--mems-ff-other);
+  font-size: var(--mems-fs-md);
+  font-weight: 600;
+}
+
+.user-name {
+  color: var(--mems-clr-white);
+  font-family: var(--mems-ff-other);
+  font-size: var(--mems-fs-sm);
+}
+
+.partner {
+  color: var(--mems-clr-white);
+  font-family: var(--mems-ff-other);
+  font-size: var(--mems-fs-xs)
+}
+
+.section {
+  background-color: var(--mems-clr-white);
+  margin-top: 50px;
+}
+
+.title {
+  color: var(--mems-clr-gray);
+  font-family: var(--mems-ff-base);
+  font-size: var(--mems-fs-2xl) ;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.sub-title {
+  color: var(--mems-clr-gray);
+    font-family: var(--mems-ff-base);
+  font-size: var(--mems-fs-sm) ;
+  font-weight: 400;
+}
+
+.section-title {
+  color: var(--mems-clr-black);
+  letter-spacing: 0.05em;
+  font-family: var(--mems-ff-base);
+  font-size: var(--mems-fs-lg);
+  font-weight: 500;
+}
+
+footer {
+  text-align: center;
+}
+
+
+
+
+
 /* Custom button blue css */
-.btn-blue{
+.btn-blue {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   padding: 0px;
   gap: 5px;
-  
+
   width: 185px;
   height: 35px;
-  
+
   background: #0F7BC9;
   border-radius: 20px;
 }
@@ -68,4 +254,11 @@ body {
 
 .a-link:hover {
   color: #0FC9BE;
+}
+
+input{
+  border-color: var(--mems-clr-black) !important;
+}
+select{
+  border-color: var(--mems-clr-black) !important;
 }

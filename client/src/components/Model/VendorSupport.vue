@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-white p-4 rounded mt-4">
+  <section class="section p-4 rounded mt-4">
     <h5 class="pb-5">Vendor Support</h5>
 
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 g-3">

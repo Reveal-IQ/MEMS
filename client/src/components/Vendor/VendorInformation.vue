@@ -6,7 +6,7 @@ export default {
 <template>
   <main>
     <!-- The main form -->
-    <form class="bg-white p-4 rounded">
+    <section class="section p-4 rounded">
       <h5 class="pb-5">Vendor Information</h5>
 
       <!-- 
@@ -144,10 +144,10 @@ export default {
           </div>
         </div>
       </div>
-    </form>
+    </section>
     <br />
     <!-- Secondary form -->
-    <form class="bg-white p-4 rounded">
+    <form class="p-4 rounded">
       <h5 class="pb-5">Customer Service Contact</h5>
       <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 g-3">
         <!-- Contact Number -->

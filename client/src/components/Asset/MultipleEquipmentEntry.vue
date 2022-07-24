@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-white p-4 rounded mt-4">
+  <section class="section p-4 rounded mt-4">
     <h5 class="pb-5">Multiple Equipment Entry</h5>
     <div class="d-flex align-center">
       <p class="text-center">1. Serial Number - Department - Location |</p>
