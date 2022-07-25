@@ -150,14 +150,6 @@ textarea {
   outline: none;
 }
 
-.bi-search {
-  position: relative;
-  right: 50px;
-  font-size: 1.1em;
-  cursor: pointer;
-  color: var(--mems-clr-white)
-}
-
 .app-name {
   color: var(--mems-clr-white);
   font-family: var(--mems-ff-other);
