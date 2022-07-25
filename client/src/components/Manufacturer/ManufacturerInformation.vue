@@ -6,7 +6,7 @@ export default {
 <template>
   <main>
     <!-- The main form -->
-    <form class="bg-white p-4 rounded">
+    <section class="section p-4 rounded">
       <h5 class="pb-5">Manufacturer Information</h5>
 
       <!-- 
@@ -119,7 +119,7 @@ export default {
           </div>
         </div>
       </div>
-    </form>
+    </section>
     <!-- The final button -->
     <div class="d-flex row justify-content-center py-3">
       <!-- btn-green and a-link are custom css for MEMS check base.css -->

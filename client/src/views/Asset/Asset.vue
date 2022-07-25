@@ -1,7 +1,7 @@
 <template>
   <div class="container py-5">
-    <h1>Create New Equipment</h1>
-    <p>
+    <h1 class="title">Create New Equipment</h1>
+    <p class="sub-title">
       Enter all relevant information associated with this medical equipment.
     </p>
     <main>

@@ -8,8 +8,8 @@ export default {
 
 <template>
   <div class="container py-5">
-    <h1>New Facility</h1>
-    <p>
+    <h1 class="title">New Facility</h1>
+    <p class="sub-title">
       Enter all relevant information associated with this medical equipment.
     </p>
     <div>
