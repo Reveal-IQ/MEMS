@@ -1,0 +1,242 @@
+/*
+************************************
+*   Created By : Reveal IQ         *
+*  Author     : Sudheer            *
+*  Date       : 17 OCTOBER 2020    *
+*  Version    : 0.4.1.02.06-1020   *
+************************************
+*/
+
+/********** UNSCH *********/
+
+@import "./colors.scss";
+// Styles for Page Heading
+button:focus{
+    outline: none;
+}
+.universalSearch{
+    height: 84vh;
+    min-height: 500px; 
+    min-width: 768px;
+    background-color: $White;
+    overflow: scroll;
+}
+.titleBar{
+    height: 30px;
+    padding: 50px 0 60px 60px;
+}
+.parentPage{
+    color:rgba(0,0,0,0.50); 
+    cursor:pointer;
+}
+.slash{
+    color:rgba(0,0,0,1); 
+    padding: 0 10px 0 10px;
+}
+// Styles for Search Box
+.searchBox{
+    display: inline-block;
+    padding: 0 0 0 60px;
+}
+.title{
+    color: $Black; 
+    font-weight: 500; 
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+}
+.subTitle{
+    color: rgba(0, 0, 0, 0.2);
+    margin: 0;
+    line-height: 1;
+}
+.searchingArea{
+    width: 85%;
+}
+.heading{
+    color: $RevealTeal;
+    font-weight: 400;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: 85%;
+}
+.dropDown{
+    display: inline-block;
+    margin: 10px 20px 0 0;
+}
+.textBox{
+    display: inline-block;
+    margin: 30px 0 0 5px; 
+    font-weight: 400;
+}
+.textBoxIcon{
+    display: inline-block;
+    margin: 0 10px 0  0;
+}
+.dobAge{
+    display: inline-block; 
+    width: 85%;
+}
+.fontWeight{
+    font-weight: 400;
+}
+.textBoxDob{
+    display: inline-block; 
+    margin: 30px 0 0 5px; 
+    width: 100%;
+    padding-right: 10px;
+}
+.textBoxAge{
+    display: inline-block; 
+    margin: 30px 0 0 5px; 
+    width: 100%;
+}
+.dobWidth{
+    width: max-content
+}
+.ageWidth{
+    width: max-content
+}
+.clearSearch{
+    padding: 30px 0;
+    width: 85%;
+}
+.clearButton{
+    padding: 5px 20px 5px 20px;
+    cursor: pointer;
+}
+.searchButton{
+    display: inline-block; 
+    padding: 5px 10px;
+    color: $White;
+    background-color: $DarkGrey;
+    border-radius: 50px;
+    cursor: pointer;
+}
+.searchText{
+    padding: 0 20px 0 10px;
+}
+// Styles for Patient results
+.patlistBox{
+    padding: 0 20px 0px 10px
+}
+.patlistBoxTitle{
+    color: $RevealTeal;
+    padding: 0 0 0 0;
+}
+.patlistBoxBody{
+    height: 65vh; 
+    margin: 10px 0 0 0;  
+    overflow: scroll;
+}
+.unschCardList{
+    display: inline-block; 
+    margin: 10px 10px 0 0;
+}
+.notFound{
+    padding: 0 0 0 10px;
+    color: $WarningOrange;
+    font-weight: 500;
+}
+// Styles for Patient loading
+.loadingCard{
+    width:300px;
+    height:170px;
+}
+.loadingPic{
+    min-width:150px;
+    min-height:170px;
+    background-color: rgba(112, 112, 112, 1);
+    animation: opacity 1s infinite;
+    @keyframes opacity {
+        0%,100%{opacity:.15}
+        50%{opacity:.2;}
+    }
+}
+.loadingInfo{
+    min-width:150px;
+    min-height:170px;
+    animation: pulse 1s infinite;
+    @keyframes pulse {
+        0% {
+          background-color: rgba(112, 112, 112, 0.11);
+        }
+        50% {
+            background-color: rgba(112, 112, 112, 0.12);
+        }
+        100% {
+          background-color:  rgba(112, 112, 112, 0.11);
+        }
+    }
+}
+.scrollText{
+    color: $Black;
+    animation: moving 5s linear infinite;
+    @keyframes moving {
+        0% {
+            transform: translateX(100%);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+}
+.loadingTextH{
+    max-height: 10%;
+    max-width: 50%;
+    color: rgba(112, 112, 112, 0);
+    background-color: rgba(112, 112, 112, 0.1);
+    margin-bottom: 5px;
+}
+.loadingTextT{
+    max-height: 10%;
+    max-width: 30%;
+    color: rgba(112, 112, 112, 0);
+    background-color: rgba(112, 112, 112, 0.1);
+}
+.notFoundIcon{
+    display: inline-block; 
+    font-size: 30px; 
+    padding: 0 30px 0 50px;
+}
+.notFoundText{
+    display: inline-block;
+}
+// Styles for UNSCH-cards
+.unschCard{
+    max-width: 300px;
+    min-width: 300px;
+    min-height: 170px;
+    max-height: 170px;
+    border: 2px solid $White;
+}
+.unschCard:hover{
+    cursor: pointer;
+    border: 2px solid $StrongBlue;
+}
+.unschCardBG{
+    width: 166px;
+}
+.unschCardPic{
+    padding-top: 20px;
+    width: 150px;
+    height: 166px;
+}
+.unschCardInfo{
+    background-color: rgba(236, 240, 241, 0.5);
+    text-align:left;
+    width: 150px;
+    height: 166px;
+    color: $Black;
+    overflow: hidden;
+}
+.unschCardInfoTitle{
+    color: $Heather;
+}
+.unschCardInfoText{
+    color: $Black;
+    width: max-content;
+}
+.displaySexDOB{
+    display: inline-block
+}

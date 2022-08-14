@@ -1,0 +1,19 @@
+@import "./colors.scss";
+.settingLabel        { color:$InvisibleSilver;text-align:left;padding: 0.5vw 0 0 0.7vw;}
+.settingLabel:hover  { background: $InvisibleSilver;color: $WetAsphalt;text-align: left;padding: 0.5vw 0 0 0.7vw;}
+.settingLabel1       { width: 100%;display: inline-block;color:$InvisibleSilver;        }
+.settingLabel1:hover { width: 100%;display: inline-block;background: $InvisibleSilver;color:$WetAsphalt;}
+.dropdown-content    { display: none;position: absolute;background: $InvisibleSilver;width: 100%;padding: 0.5vw 0 0.5vw 0;margin: 0.5vw 0 0 0;border: 1pt solid $WetAsphalt;background:$WetAsphalt;color:$InvisibleSilver;}
+.ImageSpace{ padding:0.5vw 0 0 0;}
+.userImg             { width:30px;background:$FollowerGrey;border-radius:50%;}
+.userInfo            { display:inline-block;vertical-align:middle;text-transform: capitalize;}
+.hoveruserImg        { height:30px;width:30px;background:$FollowerGrey;border-radius:50%;margin:0 0 0 0.7vw;float:left }
+.hoveruserInfo       { padding:0.5vw 0 0 1vw;float:left}
+.dropdown-menu       { width:100%;margin:1% 0 1% 0%;border:1pt solid $RevealTeal;background:$RevealTeal;border-radius:0;color:$InvisibleSilver;}
+.menu-userImg        { height:7vh;width:7vh;background:$FollowerGrey;border-radius:50%;padding:1vh;}
+.menu-userInfo       { border-bottom:1pt solid $FollowerGrey;color:$InvisibleSilver;margin:0 0 2vw 0;text-align:center;padding:0.9vw 0 0.8vw 0.7vw;text-transform: capitalize;}
+.aboutLabel          { width:50%;display:inline-block;padding:0.5vw 0 0 0.7vw;}
+.userHeaderversion             { display:inline-block;width:45%;}
+#dropDownWidth{display:inline-block;height:4.5vh;  }
+.hoverUser:hover{ background:rgba(255,255,255,0.4);color:$InvisibleSilver;
+}

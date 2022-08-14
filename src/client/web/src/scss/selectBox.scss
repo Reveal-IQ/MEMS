@@ -1,0 +1,8 @@
+$form-floating-input-padding-t: 1.6rem;
+$form-floating-label-transform: scale(0.75) translateY(-0.5rem)
+	translateX(0.15rem);
+$spacer: 1.55rem;
+.px-2 {
+	padding-left: ($spacer) !important;
+}
+@import "../node_modules/bootstrap/scss/bootstrap";

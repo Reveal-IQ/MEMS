@@ -1,0 +1,279 @@
+/*-- 
+************************************
+*  Created By : Reveal IQ          *
+*  Author     : Bharath Kumar      *
+*  Date       : 12 JUN 2021        *
+*  Version    : 0.1.0.00.10-0921   *
+************************************
+--*/
+@import "../../../GLOBAL/Styles/colors.scss";
+@import "../../../GLOBAL/Styles/font-style.scss";
+.SCFLD-Container {
+	.MainContainer {
+		font-family: Montserrat;
+		height: 100%;
+		text-align: left;
+	}
+	.lockOverlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1005;
+		bottom: 0;
+		right: 0;
+		background: rgba(255, 255, 255, 0.5);
+		backdrop-filter: blur(46px);
+	}
+	.notificationOverlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: -1;
+		bottom: 0;
+		right: 0;
+	}
+	.eventLocker {
+		pointer-events: none;
+	}
+
+	.row-loader {
+		height: 45vh;
+	}
+	.row-logo {
+		height: 40vh;
+	}
+	.row-adds {
+		height: 12vh;
+	}
+	.row-loader-mutedText-01 {
+		color: #c0c0c0;
+	}
+	.row-loader-mutedText-02 {
+		color: #e8e8e8;
+	}
+	.userName {
+		position: relative;
+	}
+	.row-bgColor {
+		background-color: #f3f7f9;
+	}
+	.img-size {
+		height: 100px;
+		width: 100px;
+	}
+	.btn-reveal {
+		background-color: white;
+		border: 1px solid #489eed;
+		box-sizing: border-box;
+		border-radius: 20px;
+		height: 40px;
+	}
+
+	.alertImage {
+		border: 5px solid #f39c12;
+		border-radius: 50%;
+		box-sizing: border-box;
+		height: 20vh;
+		width: 20vh;
+		background: rgba(255, 255, 255, 0.5);
+	}
+	.alertIcon {
+		font-size: 8em;
+		color: #f39c12;
+	}
+	.bellIcon {
+		color: #489eed;
+		font-size: 1.5em;
+	}
+	.row-loader {
+		height: 45vh;
+	}
+	.row-logo {
+		height: 40vh;
+	}
+	.row-adds {
+		height: 12vh;
+	}
+	.row-loader-mutedText-01 {
+		color: #c0c0c0;
+	}
+	.row-loader-mutedText-02 {
+		color: #e8e8e8;
+	}
+	.userName {
+		position: relative;
+	}
+	.alertIcon {
+		padding-top: 4vh;
+	}
+	.btn {
+		background: rgb(255, 255, 255) !important;
+	}
+	.row-bgColor {
+		background-color: #f3f7f9;
+	}
+	.img-size {
+		height: 100px;
+		width: 100px;
+	}
+	.btn-reveal {
+		background-color: white;
+		border: 1px solid #489eed;
+		box-sizing: border-box;
+		border-radius: 20px;
+		height: 40px;
+		padding: 0;
+	}
+	.headerText {
+		font-weight: bolder;
+	}
+	.userLoginImage {
+		margin: 0 30px 0 0;
+		display: inline-block;
+		border: 5px solid #2980b9;
+		border-radius: 50%;
+		height: 20vh;
+		width: 20vh;
+	}
+	.userName {
+		vertical-align: middle;
+		display: inline-block;
+	}
+	.LoginNewSpace {
+		position: relative;
+	}
+	// Media Queries
+	@media screen and (min-width: 100px) and (max-width: 900px) {
+		.iconFont {
+			font-size: 19px;
+		}
+	}
+	@media only screen and (min-width: 900px) and (max-width: 1024px) {
+		.iconFont {
+			font-size: 19px;
+		}
+	}
+	@media only screen and (min-width: 1024px) and (max-width: 1366px) {
+		.iconFont {
+			font-size: 19px;
+		}
+	}
+	@media only screen and (min-width: 1366px) and (max-width: 1920px) {
+		.iconFont {
+			font-size: 20px;
+		}
+	}
+
+	.UserVerification-Container {
+		.userTextBox {
+		  width: 85%;
+		  outline: 0;
+		  background: 0;
+		  height: 45px;
+		  border: 0;
+		  border-bottom: 2px solid #f39c12;
+		  color: rgba(#000000, 0.6);
+		  font-size: 14px;
+		  padding: 7px 0px 0px 30px;
+		}
+		.userTextBox:focus {
+		  border-color: #000000;
+		}
+		.userTextBox:focus + .usericon {
+		  color: #c0392b;
+		}
+		.userSucTextBox {
+		  width: 85%;
+		  outline: 0;
+		  background: 0;
+		  height: 45px;
+		  border: 0;
+		  border-bottom: 2px solid #000000;
+		  color: rgba(#000000, 0.6);
+		  font-size: 14px;
+		  padding: 7px 0px 0px 30px;
+		}
+		.userBox {
+		  width: 100%;
+		  outline: 0;
+		  padding: 2px 0px 0px 30px;
+		  background: 0;
+		  height: 45px;
+		  border: 0;
+		  color: rgba(#000000, 0.6);
+		}
+		.userErrTextBox {
+		  width: 85%;
+		  outline: 0;
+		  background: 0;
+		  height: 45px;
+		  border: 0;
+		  border-bottom: 2px solid #c0392b;
+		  color: rgba(#000000, 0.6);
+		  font-size: 14px;
+		  padding: 7px 0px 0px 30px;
+		}
+		.userTextBox::placeholder {
+		  color: rgba(#000000, 0.6);
+		  font-weight: 400;
+		}
+		.usericon {
+		  position: absolute;
+		  left: 13px;
+		  top: calc(55% - 0.5em);
+		  color: #f39c12;
+		}
+		.userWarnicon {
+		  position: absolute;
+		  left: 13px;
+		  top: calc(55% - 0.5em);
+		  color: #c0392b;
+		}
+		.userSucicon {
+		  position: absolute;
+		  left: 13px;
+		  top: calc(55% - 0.5em);
+		  color: #000000;
+		}
+		.nextBtn {
+		  cursor: pointer;
+		  font-weight: bolder;
+		  background: rgba(#134d74, 0.8);
+		  color: #ffffff;
+		  height: 50px;
+		  text-align: center;
+		  border-radius: 50px;
+		  width: 150px;
+		  padding: 16px 0px 0 5px;
+		  float: right;
+		}
+		.nextBtn:hover {
+		  background: rgba(#134d74, 1);
+		}
+		.next {
+		  background: 0;
+		  height: 50px;
+		  margin: 20px 0px 0px 0px;
+		}
+		.validateWrapper {
+		  background: 0;
+		  height: 50px;
+		}
+		.eyeIcon {
+		  position: absolute;
+		  right: 20px;
+		  top: calc(60% - 0.5em);
+		  color: $default;
+		}
+		.eyeIcon1 {
+		  position: absolute;
+		  right: 60px;
+		  top: calc(60% - 0.5em);
+		  color: $default;
+		}
+		.loginTitleSpace {
+		  padding: 0 0 calc(100px - 0.5em) 0;
+		}
+	  }
+}
+

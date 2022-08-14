@@ -1,0 +1,321 @@
+/*
+************************************
+*  Created By : Reveal IQ          *
+*  Author     : Bharathi           *
+*  Date       : 24 FEB 2021        *
+*  Version    : 0.6.8.00.04-0621   *
+************************************
+*/
+
+@import "../../../GLOBAL/Styles/colors.scss";
+
+.USLGN-Container{
+	.center {
+		position: absolute;
+		top: 50%;
+		width: 94%;
+		transform: translate(0%, -50%);
+	}
+
+	/********** USLGN *********/
+	.userInfoDetails {
+		color: rgba($default, 0.8);
+		font-weight: 400;
+	}
+	.container {
+		position: relative;
+		height: 100vh;
+		border: 0;
+		background: #0c3048;
+	}
+	.loadingBck {
+		padding-top: calc(350px - 0.5em);
+		background: #0c3048;
+	}
+
+	.inner {
+		position: absolute;
+		top: 50%;
+		width: 95%;
+		transform: translate(0%, -50%);
+	}
+	.innerTop {
+		position: absolute;
+		width: 95%;
+		transform: translate(0%, 20%);
+	}
+	.changeUser {
+		cursor: pointer;
+	}
+	/******* Loading ********/
+	.retriveLabel {
+		color: $default;
+	}
+	.retrivingInfo {
+		animation: pulse 60s infinite;
+		@keyframes pulse {
+			0% {
+				color: $default;
+				width: 20%;
+				border-bottom: 2px solid $default;
+			}
+			25% {
+				color: $default;
+				width: 40%;
+				border-bottom: 2px solid $default;
+			}
+
+			50% {
+				color: $default;
+				width: 60%;
+				border-bottom: 2px solid $default;
+			}
+			75% {
+				color: $default;
+				width: 80%;
+				border-bottom: 2px solid $default;
+			}
+			100% {
+				color: $default;
+				width: 100%;
+				border-bottom: 2px solid $default;
+			}
+		}
+	}
+
+	/******** USLGN-WelcomeMessage **********/
+	.nameLogo {
+		// padding-top: calc(160px - 0.5em);
+		padding-top: 27vh;
+		color: $default;
+		font-weight: 400;
+	}
+
+	/********** LoginTitle **********/
+	.loginTitle {
+		color: rgba($default, 0.9);
+		font-weight: 400;
+	}
+	.loginsubTitle {
+		color: rgba($default, 0.6);
+	}
+
+	/******  Desktop-Loader  *****/
+	.loaderInfo {
+		height: 100vh;
+	}
+	.userLoginImage {
+		margin: 0 30px 0 0;
+		display: inline-block;
+		background: $InvisibleSilver;
+		border: 5px solid #2980b9;
+		border-radius: 50%;
+		height: 20vh;
+		width: 20vh;
+	}
+	.userName {
+		vertical-align: middle;
+		display: inline-block;
+	}
+	#loadername {
+		font-weight: bolder;
+	}
+	.LoginNewSpace {
+		position: relative;
+	}
+
+	/********** Login Textbox ,Icons  and Buttons**********/
+	.userTextBox {
+		width: 100%;
+		outline: 0;
+		padding: 10px 0 0 60px;
+		background: 0;
+		height: 45px;
+		border: 0;
+		border-bottom: 2px solid $default;
+		color: rgba($default, 0.6);
+	}
+	.userTextBox:focus {
+		border-color: $success;
+	}
+	.userTextBox:focus + .usericon {
+		color: #c0392b;
+	}
+	.userSucTextBox {
+		width: 100%;
+		outline: 0;
+		padding: 10px 0 0 60px;
+		background: 0;
+		height: 45px;
+		border: 0;
+		border-bottom: 2px solid $success;
+		color: rgba($default, 0.6);
+	}
+	.userErrTextBox {
+		width: 100%;
+		outline: 0;
+		padding: 10px 0 0 60px;
+		background: 0;
+		height: 45px;
+		border: 0;
+		border-bottom: 2px solid $error;
+		color: rgba($default, 0.6);
+	}
+	.userTextBox::placeholder {
+		color: rgba($default, 0.6);
+		font-weight: 400;
+	}
+	.usericon {
+		position: absolute;
+		left: 10px;
+		top: calc(55% - 0.5em);
+		color: $default;
+	}
+	.userWarnicon {
+		position: absolute;
+		left: 10px;
+		top: calc(55% - 0.5em);
+		color: $error;
+	}
+	.userSucicon {
+		position: absolute;
+		left: 10px;
+		top: calc(55% - 0.5em);
+		color: $success;
+	}
+	.nextBtn {
+		cursor: pointer;
+		font-weight: bolder;
+		background: rgba($buttonColorDefault, 0.8);
+		color: $default;
+		height: 50px;
+		text-align: center;
+		border-radius: 50px;
+		width: 150px;
+		padding: 16px 0 0 5px;
+		float: right;
+	}
+	.nextBtn:hover {
+		background: rgba($buttonColorDefault, 1);
+	}
+	.next {
+		background: 0;
+		height: 50px;
+		margin: 40px 0px 0 0px;
+	}
+
+	.validateWrapper {
+		background: 0;
+		height: 50px;
+	}
+	.eyeIcon {
+		position: absolute;
+		right: 20px;
+		top: calc(60% - 0.5em);
+		color: $default;
+	}
+	.eyeIcon1 {
+		position: absolute;
+		right: 60px;
+		top: calc(60% - 0.5em);
+		color: $default;
+	}
+	.validateBtn {
+		cursor: pointer;
+		font-weight: bolder;
+		background: rgba($buttonColorDefault, 0.8);
+		color: $default;
+		height: 50px;
+		text-align: center;
+		border-radius: 50px;
+		width: 150px;
+		padding: 16px 0 0 5px;
+		float: right;
+	}
+	.validateBtn:hover {
+		background: rgba($buttonColorDefault, 1);
+	}
+	.loginTitleSpace {
+		padding: 0 0 calc(100px - 0.5em) 0;
+	}
+	.actionBtn {
+		color: rgba($default, 0.6);
+		cursor: pointer;
+	}
+	/*********** TimeDate **********/
+	.timeDate {
+		padding: 0 20px 0px 0;
+		right: 0;
+		height: 50px;
+		color: $default;
+		position: absolute;
+		bottom: 0;
+	}
+	/******* Reveal Logo *********/
+	.revealLogoSpace {
+		padding: 35px 0 0px 0;
+	}
+	.version {
+		color: $default;
+	}
+	/******* Password Validation *********/
+	.checkSucicon {
+		color: $notifyColorDefault;
+	}
+	.checkicon {
+		color: #0c3048;
+	}
+	.passwordSucValid {
+		color: $notifyColorDefault;
+		padding: 0 0 0px 40px;
+	}
+	.passwordValid {
+		color: $default;
+		padding: 0 0 0 40px;
+	}
+
+	// Media Queries
+	@media screen and (min-width: 100px) and (max-width: 900px) {
+		.iconFont {
+			font-size: 19px;
+		}
+	}
+	@media only screen and (min-width: 900px) and (max-width: 1024px) {
+		.iconFont {
+			font-size: 19px;
+		}
+	}
+	@media only screen and (min-width: 1024px) and (max-width: 1366px) {
+		.iconFont {
+			font-size: 19px;
+		}
+	}
+	@media only screen and (min-width: 1366px) and (max-width: 1920px) {
+		.iconFont {
+			font-size: 20px;
+		}
+	}
+
+	// media query - 2
+	@media screen and (min-width: 100px) and (max-width: 900px) {
+		.nameLogo {
+			font-size: 22px;
+		}
+	}
+	@media only screen and (min-width: 900px) and (max-width: 1024px) {
+		.nameLogo {
+			font-size: 28px;
+		}
+	}
+	@media only screen and (min-width: 1024px) and (max-width: 1366px) {
+		.nameLogo {
+			font-size: 25px;
+		}
+	}
+	@media only screen and (min-width: 1366px) and (max-width: 1920px) {
+		.nameLogo {
+			font-size: 32px;
+		}
+	}
+}
+

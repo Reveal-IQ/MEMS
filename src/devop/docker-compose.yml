@@ -1,0 +1,108 @@
+# Version: 0.1
+# Created: 5/1/2022
+# Last Edit: 5/1/2022
+# R E V E A L FOUNDATION
+
+version: "3.9"  # optional since v1.27.0
+services:
+
+
+  # #Web Client
+  # WEB:
+  #   build: ../client/Web
+  #   image: "reveal/web:0.14.0"
+  #   deploy:
+  #     restart_policy:
+  #       delay: 5s
+  #       condition: on-failure
+  #       max_attempts: 5
+  #   networks:
+  #     REVEALNET:
+  #       aliases:
+  #         - dev.client.local
+
+
+  #Reveal Core Unit 
+  API:
+    build: ../api
+    image: "reveal/api:0.1.0"
+    deploy:
+      restart_policy:
+        delay: 5s
+        condition: on-failure
+        max_attempts: 5
+
+    volumes:
+      - type: volume
+        source: API-DataStore
+        target: /datastore
+
+      - type: volume
+        source: API-Config
+        target: /src/lib/config
+
+      - type: volume
+        source: API-Certs
+        target: /src/lib/certs
+
+    networks:
+      REVEALNET:
+        aliases:
+          - dev.api.local
+
+  #Reverse Proxy        
+  PROXY:
+    build: ./proxy
+    image: "reveal/proxy:0.1.0"
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      REVEALNET:
+        aliases:
+          - dev.proxy.local
+    deploy:
+      restart_policy:
+        delay: 5s
+        condition: on-failure
+        max_attempts: 5
+
+  #DMODB01 Mongo DB Database
+  DMODB01:
+    build: ./database/DMODB01
+    image: "reveal/dmodb01:0.1.0"
+    deploy:
+      restart_policy:
+        delay: 5s
+        condition: on-failure
+        max_attempts: 5
+    volumes:
+    - type: volume
+      source: DMODB01-Config
+      target: /data/configdb
+    - type: volume
+      source: DMODB01-Data
+      target: /data/db
+    networks:
+      REVEALNET:
+        aliases:
+          - "dev.dmodb01.local"
+    # Default Configuration
+    entrypoint: ["mongod","--config","/config/dbconfig-default.conf"]
+    # Enable TLS Security
+    #entrypoint: ["mongod","--config","/config/dbconfig-DMODB01.conf"]
+    ports:
+      - "27017:27017"
+  
+
+
+networks:
+  REVEALNET:
+    driver: bridge
+
+volumes:
+  API-DataStore:
+  API-Config:
+  API-Certs:
+  DMODB01-Config:
+  DMODB01-Data:
