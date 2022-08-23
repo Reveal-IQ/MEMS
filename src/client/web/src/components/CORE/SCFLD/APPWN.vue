@@ -8,10 +8,7 @@
 -->
 <template>
   <section>
-    <div
-      v-for="app in tablist"
-      :key="app.TabCode"
-    >
+    <div v-for="app in tablist" :key="app.TabCode">
       <div class="">
         <keep-alive>
           <component
@@ -30,30 +27,30 @@ import { useStore } from "vuex";
 import { computed } from "vue";
 
 export default {
-	components: {},
-	setup() {
-		// store variables
-		const store = useStore();
-		const tabname = computed(() => store.state.globalStore.ActiveApp.App_Code);
-		const tablist = computed(() => store.state.globalStore.tablist);
-		const AppCode = computed(() => store.state.globalStore.ActiveApp.App_Code);
-		const TabCode = computed(() => store.state.globalStore.ActiveApp.TabCode);
+  components: {},
+  setup() {
+    // store variables
+    const store = useStore();
+    const tabname = computed(() => store.state.globalStore.ActiveApp.App_Code);
+    const tablist = computed(() => store.state.globalStore.tablist);
+    const AppCode = computed(() => store.state.globalStore.ActiveApp.App_Code);
+    const TabCode = computed(() => store.state.globalStore.ActiveApp.TabCode);
 
-		return {
-			// store variables
-			store,
-			tabname,
-			tablist,
-			AppCode,
-			TabCode,
-		};
-	},
+    return {
+      // store variables
+      store,
+      tabname,
+      tablist,
+      AppCode,
+      TabCode,
+    };
+  },
 };
 </script>
 <style lang="scss" scoped>
 .APPWN-scroller {
-	height: auto;
-	max-height: 100vh;
-	overflow-y: auto;
+  height: auto;
+  max-height: 100vh;
+  overflow-y: auto;
 }
 </style>
