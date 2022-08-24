@@ -55,11 +55,21 @@
         </div>
       </div>
     </div>
-    <br />
-    <button class="btn btn-blue">Add New Contact</button>
+    <div class="col pt-2 pb-2 pl-3 pr-3 p-3">
+      <Btn
+        BtnName="Add New Contact"
+        backgroundColor="#1266F1"
+        :icon="'plus'"
+        class=""
+      />
+    </div>
   </section>
 </template>
 
-<script setup></script>
+<script setup>
+import Btn from "../BIOMD-Btn.vue";
+</script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import "../Style/BIOMD.scss";
+</style>

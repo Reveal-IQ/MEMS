@@ -11,10 +11,17 @@
     <main>
       <ManufacturerInformation />
 
-      <div class="d-flex row justify-content-center py-3">
+      <div class="d-flex justify-content-center py-3">
         <!-- btn-green and a-link are custom css for MEMS check base.css -->
-        <button class="btn btn-green">Create New Manufacturer</button>
-        <a class="text-center py-2 a-link">Clear Content</a>
+        <div class="">
+          <Btn
+            BtnName="Create Manufacturer"
+            backgroundColor="#27AE60"
+            class="mb-3"
+          />
+
+          <Btn BtnName="Clear Content" />
+        </div>
       </div>
     </main>
   </div>
@@ -22,6 +29,8 @@
 
 <script setup>
 import ManufacturerInformation from "../BIOMD-MANUFACTURER/MANUFACTURER-ManufacturerInformation.vue";
+import Btn from "../BIOMD-Btn.vue";
+
 const emit = defineEmits(["updatePage"]);
 
 const goBack = () => {

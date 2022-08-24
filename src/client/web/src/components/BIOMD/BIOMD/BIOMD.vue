@@ -1,31 +1,33 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <div>
-        <asset-info
-          v-if="compState === 'assetInfo'"
-          @update-page="updatePage"
-        />
-        <facility-info
-          v-else-if="compState === 'facilityInfo'"
-          @update-page="updatePage"
-        />
-        <model-info
-          v-else-if="compState === 'modelInfo'"
-          @update-page="updatePage"
-        />
-        <vendor-info
-          v-else-if="compState === 'vendorInfo'"
-          @update-page="updatePage"
-        />
-        <manufacturer-info
-          v-else-if="compState === 'manufacturerInfo'"
-          @update-page="updatePage"
-        />
-        <landing-page
-          v-else="compState === 'landingPage'"
-          @update-page="updatePage"
-        />
+  <div class="mems">
+    <div class="container">
+      <div class="row">
+        <div>
+          <asset-info
+            v-if="compState === 'assetInfo'"
+            @update-page="updatePage"
+          />
+          <facility-info
+            v-else-if="compState === 'facilityInfo'"
+            @update-page="updatePage"
+          />
+          <model-info
+            v-else-if="compState === 'modelInfo'"
+            @update-page="updatePage"
+          />
+          <vendor-info
+            v-else-if="compState === 'vendorInfo'"
+            @update-page="updatePage"
+          />
+          <manufacturer-info
+            v-else-if="compState === 'manufacturerInfo'"
+            @update-page="updatePage"
+          />
+          <landing-page
+            v-else="compState === 'landingPage'"
+            @update-page="updatePage"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -48,5 +50,9 @@ const updatePage = (page) => {
 </script>
 
 <style lang="scss" scoped>
-/* @import "../BIOMD/Style/BIOMD.scss"; */
+@import "../../GLOBAL/Styles/font-style.scss";
+/* @import "./Style/BIOMD.scss"; */
+.mems {
+  background-color: hsl(0, 0%, 96%);
+}
 </style>

@@ -1,5 +1,3 @@
-<script setup></script>
-
 <template>
   <main>
     <section class="section p-4 rounded">
@@ -90,7 +88,7 @@
           </div>
         </div>
         <!-- Zip / Postal Code -->
-        <div class="col-lg-5">
+        <div class="col-lg-3">
           <label for="zip" class="form-label">Zip/Postal Code</label>
           <div class="input-group mb-3">
             <input
@@ -104,7 +102,7 @@
         </div>
 
         <!-- GPS Coordinates -->
-        <div class="col-lg-5">
+        <div class="col-lg-6">
           <label for="gps" class="form-label">GPS Coordinates</label>
           <div class="input-group mb-3">
             <input
@@ -116,8 +114,12 @@
             />
           </div>
         </div>
-        <div class="col-lg-2">
+        <!-- <div class="col-lg-2">
           <a class="a-link">Generate GPS Coordinates</a>
+        </div> -->
+
+        <div class="col-lg-2 align-self-center g-3">
+          <Btn BtnName="Generate GPS Coordinates" :icon="'globe'" />
         </div>
 
         <!-- Department List -->
@@ -138,4 +140,10 @@
   </main>
 </template>
 
-<style lang="scss" scoped></style>
+<script setup>
+import Btn from "../BIOMD-Btn.vue";
+</script>
+
+<style lang="scss" scoped>
+@import "../Style/BIOMD.scss";
+</style>

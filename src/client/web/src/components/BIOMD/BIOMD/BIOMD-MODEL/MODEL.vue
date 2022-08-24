@@ -11,10 +11,12 @@
     <main>
       <ModelDescription />
       <VendorSupport />
-      <div class="d-flex row justify-content-center py-3">
-        <!-- btn-green and a-link are custom css for MEMS check base.css -->
-        <button class="btn btn-green">Create New Model</button>
-        <a class="text-center py-2 a-link">Clear Content</a>
+      <div class="d-flex justify-content-center py-3">
+        <div class="">
+          <Btn BtnName="Create Model" backgroundColor="#27AE60" class="mb-3" />
+
+          <Btn BtnName="Clear Content" />
+        </div>
       </div>
     </main>
   </div>
@@ -23,6 +25,8 @@
 <script setup>
 import ModelDescription from "../BIOMD-MODEL/MODEL-ModelDescription.vue";
 import VendorSupport from "../BIOMD-MODEL/MODEL-VendorSupport.vue";
+import Btn from "../BIOMD-Btn.vue";
+
 const emit = defineEmits(["updatePage"]);
 
 const goBack = async () => {

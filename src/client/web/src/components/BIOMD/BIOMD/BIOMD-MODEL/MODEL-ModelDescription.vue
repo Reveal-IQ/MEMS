@@ -80,4 +80,6 @@
 
 <script setup></script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import "../Style/BIOMD.scss";
+</style>

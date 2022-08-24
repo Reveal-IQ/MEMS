@@ -112,4 +112,6 @@ export default {
     </section>
   </main>
 </template>
-<style></style>
+<style lang="scss" scoped>
+@import "../Style/BIOMD.scss";
+</style>

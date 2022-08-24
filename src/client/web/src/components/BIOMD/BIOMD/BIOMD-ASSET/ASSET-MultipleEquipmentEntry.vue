@@ -66,29 +66,21 @@
       </div>
     </div>
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
-      <!-- <ButtonComponent>Add Fleet Asset</ButtonComponent> -->
-      <div class="col justify-content-between">
-        <button class="btn btn-primary rounded-pill btn-small">
-          Add Asset Fleet
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            class="bi bi-plus-lg"
-            viewBox="0 0 16 16"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
-            />
-          </svg>
-        </button>
+      <div class="col">
+        <Btn
+          BtnName="Add Asset Fleet"
+          backgroundColor="#1266F1"
+          :icon="'plus'"
+        />
       </div>
     </div>
   </section>
 </template>
 
-<script setup></script>
+<script setup>
+import Btn from "../BIOMD-Btn.vue";
+</script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import "../../BIOMD/Style/BIOMD.scss";
+</style>
