@@ -21,50 +21,43 @@ export default {
               class="form-control"
               id="manufacturerName"
               aria-describedby="basic-addon3"
-              placeholder="Enter details"
+              placeholder="Enter manufacturer name"
             />
           </div>
         </div>
         <!-- Country -->
         <div class="col">
-          <label for="country" class="form-label">Country</label>
+          <label for="countryList" class="form-label">Country</label>
           <select
-            id="country"
+            id="countryList"
             class="form-select"
             aria-label="Default select example"
           >
             <option selected>Choose a Country</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
           </select>
         </div>
         <!-- Province/State/Region -->
         <div class="col">
-          <label for="state" class="form-label">Province/State/Region</label>
+          <label for="stateList" class="form-label"
+            >Province/State/Region</label
+          >
           <select
-            id="state"
+            id="stateList"
             class="form-select"
             aria-label="Default select example"
           >
             <option selected>Choose a State</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
           </select>
         </div>
         <!-- City/District -->
         <div class="col">
-          <label for="city" class="form-label">City/District</label>
+          <label for="cityList" class="form-label">City/District</label>
           <select
-            id="city"
+            id="cityList"
             class="form-select"
             aria-label="Default select example"
           >
             <option selected>Choose a City</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
           </select>
         </div>
       </div>

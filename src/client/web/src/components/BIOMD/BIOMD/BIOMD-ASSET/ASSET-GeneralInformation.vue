@@ -19,35 +19,29 @@
 
       <!-- Equipment Common Name -->
       <div class="col-lg-4 col-md-12 mb-3">
-        <label for="equipmentCommonName" class="form-label"
+        <label for="commonNameList" class="form-label"
           >Equipment Common Name</label
         >
         <select
-          id="equipmentCommonName"
+          id="commonNameList"
           class="form-select"
           aria-label="Default select example"
         >
           <option selected>Select Common Name</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
         </select>
       </div>
 
       <!-- Equipment Description -->
       <div class="col-lg-5 col-md-12 mb-3">
-        <label for="equipmentDescription" class="form-label"
+        <label for="descriptionList" class="form-label"
           >Equipment Description</label
         >
         <select
-          id="equipmentDescription"
+          id="descriptionList"
           class="form-select"
           aria-label="Default select example"
         >
           <option selected>Select Class</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
         </select>
       </div>
 
@@ -66,30 +60,24 @@
       </div>
       <!-- Model Name -->
       <div class="col-lg-4 mb-3">
-        <label for="modelName" class="form-label">Model Name</label>
+        <label for="modelList" class="form-label">Model Name</label>
         <select
-          id="modelName"
+          id="modelList"
           class="form-select"
           aria-label="Default select example"
         >
           <option selected>Select Model Name</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
         </select>
       </div>
       <!-- Manufacturer -->
       <div class="col-lg-4 mb-3">
-        <label for="manufacturer" class="form-label">Manufacturer</label>
+        <label for="manufacturerList" class="form-label">Manufacturer</label>
         <select
-          id="manufacturer"
+          id="manufacturerList"
           class="form-select"
           aria-label="Default select example"
         >
           <option selected>Select Manufacturer</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
         </select>
       </div>
 

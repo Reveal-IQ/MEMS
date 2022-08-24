@@ -4,12 +4,12 @@
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 g-3">
       <!-- Contact Number -->
       <div class="col">
-        <label for="basic-url" class="form-label">Contact Number</label>
+        <label for="contactNumber" class="form-label">Contact Number</label>
         <div class="input-group mb-3">
           <input
             type="text"
             class="form-control"
-            id="basic-url"
+            id="contactNumber"
             aria-describedby="basic-addon3"
             placeholder="Enter details"
           />
@@ -17,12 +17,12 @@
       </div>
       <!-- Representative Name -->
       <div class="col">
-        <label for="basic-url" class="form-label">Representative Name</label>
+        <label for="repName" class="form-label">Representative Name</label>
         <div class="input-group mb-3">
           <input
             type="text"
             class="form-control"
-            id="basic-url"
+            id="repName"
             aria-describedby="basic-addon3"
             placeholder="Enter details"
           />
@@ -30,12 +30,12 @@
       </div>
       <!-- Email  -->
       <div class="col">
-        <label for="basic-url" class="form-label">Email</label>
+        <label for="email" class="form-label">Email</label>
         <div class="input-group mb-3">
           <input
             type="text"
             class="form-control"
-            id="basic-url"
+            id="email"
             aria-describedby="basic-addon3"
             placeholder="Enter details"
           />
@@ -43,12 +43,12 @@
       </div>
       <!-- Type of Personnel -->
       <div class="col">
-        <label for="basic-url" class="form-label">Type of Personnel</label>
+        <label for="personnelType" class="form-label">Type of Personnel</label>
         <div class="input-group mb-3">
           <input
             type="text"
             class="form-control"
-            id="basic-url"
+            id="personnelType"
             aria-describedby="basic-addon3"
             placeholder="Enter details"
           />

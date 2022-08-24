@@ -14,19 +14,16 @@
           aria-label="Default select"
         >
           <option selected>Select PO Number</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
         </select>
       </div>
       <!-- Project -->
       <div class="col-lg-8">
-        <label for="project" class="form-label">Projects</label>
+        <label for="projectName" class="form-label">Projects</label>
         <div class="input-group mb-3">
           <input
             type="text"
             class="form-control"
-            id="project"
+            id="projectName"
             aria-describedby="basic-addon3"
             placeholder="Tag Associated Projects"
           />
@@ -59,16 +56,13 @@
       </div>
       <!-- Vendor -->
       <div class="col-lg-4 mb-3">
-        <label for="vendor" class="form-label">Vendor</label>
+        <label for="vendorList" class="form-label">Vendor</label>
         <select
-          id="vendor"
+          id="vendorList"
           class="form-select"
           aria-label="Default select example"
         >
           <option selected>Select Vendor</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
         </select>
       </div>
       <!-- Acceptance Date -->

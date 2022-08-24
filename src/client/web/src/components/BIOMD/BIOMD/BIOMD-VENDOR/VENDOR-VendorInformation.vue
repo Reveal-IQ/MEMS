@@ -12,12 +12,12 @@ export default {
       <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 g-3">
         <!-- Vendor Name -->
         <div class="col">
-          <label for="basic-url" class="form-label">Vendor Name</label>
+          <label for="vendorName" class="form-label">Vendor Name</label>
           <div class="input-group mb-3">
             <input
               type="text"
               class="form-control"
-              id="basic-url"
+              id="vendorName"
               aria-describedby="basic-addon3"
               placeholder="Enter details"
             />
@@ -25,57 +25,48 @@ export default {
         </div>
         <!-- Country -->
         <div class="col">
-          <label for="basic-url" class="form-label">Country</label>
+          <label for="countryList" class="form-label">Country</label>
           <div class="select-group mb-3">
             <select
               type="text"
               class="form-select"
-              id="basic-url"
+              id="countryList"
               aria-describedby="basic-addon3"
               placeholder="Select country"
             >
               <option selected>Select country</option>
-              <!-- <option value="United States">United States</option>
-              <option value="Canada">Canada</option>
-              <option value="Ghana">Ghana</option> -->
             </select>
           </div>
         </div>
         <!-- Province/State/Region -->
         <div class="col">
-          <label for="basic-url" class="form-label"
+          <label for="statelist" class="form-label"
             >Province/State/Region</label
           >
           <div class="select-group mb-3">
             <select
               type="text"
               class="form-select"
-              id="basic-url"
+              id="statelist"
               aria-describedby="basic-addon3"
               placeholder="Select country"
             >
               <option selected>Select province/state/region</option>
-              <!-- <option value="Ontario">Ontario</option>
-              <option value="Quebec">Quebec</option>
-              <option value="British Colombia">British Colombia</option> -->
             </select>
           </div>
         </div>
         <!-- City/District -->
         <div class="col">
-          <label for="basic-url" class="form-label">City/District</label>
+          <label for="cityList" class="form-label">City/District</label>
           <div class="select-group mb-3">
             <select
               type="text"
               class="form-select"
-              id="basic-url"
+              id="cityList"
               aria-describedby="basic-addon3"
               placeholder="Select country"
             >
               <option selected>Select city/district</option>
-              <!-- <option value="Toronto">Toronto</option>
-              <option value="Ottawa">Ottawa</option>
-              <option value="Hamilton"> Hamilton</option> -->
             </select>
           </div>
         </div>
@@ -83,12 +74,12 @@ export default {
       <div class="row g-3 mt-3">
         <!-- Street Address 1 -->
         <div class="col-12">
-          <label for="basic-url" class="form-label">Street Address 1</label>
+          <label for="street1" class="form-label">Street Address 1</label>
           <div class="input-group mb-3">
             <input
               type="text"
               class="form-control"
-              id="basic-url"
+              id="street1"
               aria-describedby="basic-addon3"
               placeholder="Enter details"
             />
@@ -96,12 +87,12 @@ export default {
         </div>
         <!-- Street Address 2 -->
         <div class="col-12">
-          <label for="basic-url" class="form-label">Street Address 2</label>
+          <label for="street2" class="form-label">Street Address 2</label>
           <div class="input-group mb-3">
             <input
               type="text"
               class="form-control"
-              id="basic-url"
+              id="street2"
               aria-describedby="basic-addon3"
               placeholder="Enter details"
             />
@@ -109,12 +100,12 @@ export default {
         </div>
         <!-- Zip / Postal Code -->
         <div class="col-6">
-          <label for="basic-url" class="form-label">Zip/Postal Code</label>
+          <label for="zip" class="form-label">Zip/Postal Code</label>
           <div class="input-group mb-3">
             <input
               type="text"
               class="form-control"
-              id="basic-url"
+              id="zip"
               aria-describedby="basic-addon3"
               placeholder="Enter details"
             />
@@ -122,12 +113,12 @@ export default {
         </div>
         <!-- Site ID -->
         <div class="col-6">
-          <label for="basic-url" class="form-label">Site ID</label>
+          <label for="siteId" class="form-label">Site ID</label>
           <div class="input-group mb-3">
             <input
               type="text"
               class="form-control"
-              id="basic-url"
+              id="siteId"
               aria-describedby="basic-addon3"
               placeholder="Enter details"
             />

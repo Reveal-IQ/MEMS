@@ -19,16 +19,13 @@
 
       <!-- Manufacturer Select -->
       <div class="col-lg-8">
-        <label for="manufacturer" class="form-label">Manufacturer</label>
+        <label for="manufacturerList" class="form-label">Manufacturer</label>
         <select
-          id="manufacturer"
+          id="manufacturerList"
           class="form-select"
           aria-label="Default select example"
         >
           <option selected>Choose a Manufacturer</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
         </select>
       </div>
 
@@ -41,7 +38,7 @@
             class="form-control"
             id="modelName"
             aria-describedby="basic-addon3"
-            placeholder="Enter details"
+            placeholder="Enter nodel  name"
           />
         </div>
       </div>
@@ -55,23 +52,20 @@
             class="form-control"
             id="modelNumber"
             aria-describedby="basic-addon3"
-            placeholder="Enter details"
+            placeholder="Enter medel number"
           />
         </div>
       </div>
 
       <!-- Vendor Select -->
       <div class="col-lg-6">
-        <label for="vendor" class="form-label">Vendor</label>
+        <label for="vendorList" class="form-label">Vendor</label>
         <select
           class="form-select mb-3"
           aria-label="Default select example"
-          id="vendor"
+          id="vendorList"
         >
           <option selected>Choose a Vendor</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
         </select>
       </div>
     </div>

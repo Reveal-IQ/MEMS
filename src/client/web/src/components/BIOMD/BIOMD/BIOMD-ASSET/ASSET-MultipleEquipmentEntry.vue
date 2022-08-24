@@ -26,26 +26,23 @@
       </div>
       <!-- Department -->
       <div class="col-lg-4 mb-3">
-        <label for="department" class="form-label">Department</label>
+        <label for="departmentList" class="form-label">Department</label>
         <select
-          id="department"
+          id="departmentList"
           class="form-select"
           aria-label="Default select example"
         >
           <option selected>Select Department</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
         </select>
       </div>
       <!-- Location -->
       <div class="col-lg-4">
-        <label for="location" class="form-label">Location</label>
+        <label for="locationTag" class="form-label">Location</label>
         <div class="input-group mb-3">
           <input
             type="text"
             class="form-control"
-            id="location"
+            id="locationTag"
             aria-describedby="basic-addon3"
             placeholder="Add Location Room Tags"
           />
@@ -53,15 +50,15 @@
       </div>
       <!-- Comments -->
       <div class="col-lg-12 col-md-12 mb-3">
-        <label for="comment" class="form-label">Comments</label>
+        <label for="commentSection" class="form-label">Comments</label>
         <div class="input-group">
-          <input
+          <textarea
             type="text"
             class="form-control"
-            id="comment"
+            id="commentSection"
             aria-describedby="basic-addon3"
             placeholder="Enter Comments"
-          />
+          ></textarea>
         </div>
       </div>
     </div>
