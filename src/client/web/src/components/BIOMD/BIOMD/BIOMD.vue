@@ -42,7 +42,7 @@ import manufacturerInfo from "../BIOMD/BIOMD-MANUFACTURER/MANUFACTURER.vue";
 import landingPage from "../BIOMD/BIOMD-Landing.vue";
 import { ref } from "vue";
 
-const compState = ref("landing"); //asset, facility, model, manufacturer, vendor
+const compState = ref("landingPage"); //asset, facility, model, manufacturer, vendor
 
 const updatePage = (page) => {
   compState.value = page;
