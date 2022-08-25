@@ -3,10 +3,10 @@
     <div class="d-flex flex-row justify-content-between">
       <button @click="goBack" class="col-2 btn btn-secondary my-3">Back</button>
     </div>
-    <h1 class="title">Create New Vendor</h1>
-    <p class="sub-title">
-      Enter all relevant information associated with this medical equipment.
-    </p>
+    <Header
+      title="Create New Vendor"
+      subTitle="Enter all details required for this equipment vendor"
+    />
 
     <main>
       <VendorInformation />
@@ -24,6 +24,7 @@
 </template>
 
 <script setup>
+import Header from "../BIOMD-FormHeader.vue";
 import VendorInformation from "../BIOMD-VENDOR/VENDOR-VendorInformation.vue";
 import CustomerService from "../BIOMD-VENDOR/VENDOR-CustomerService.vue";
 import Btn from "../BIOMD-Btn.vue";

@@ -3,10 +3,10 @@
     <div class="d-flex flex-row justify-content-between">
       <button @click="goBack" class="col-2 btn btn-secondary my-3">Back</button>
     </div>
-    <h1 class="title">Create New Model</h1>
-    <p class="sub-title">
-      Enter all relevant information associated with this medical equipment.
-    </p>
+    <Header
+      title="Create New Model"
+      subTitle="Enter all details required for this equipment model"
+    />
 
     <main>
       <ModelDescription />
@@ -23,6 +23,7 @@
 </template>
 
 <script setup>
+import Header from "../BIOMD-FormHeader.vue";
 import ModelDescription from "../BIOMD-MODEL/MODEL-ModelDescription.vue";
 import VendorSupport from "../BIOMD-MODEL/MODEL-VendorSupport.vue";
 import Btn from "../BIOMD-Btn.vue";

@@ -3,10 +3,10 @@
     <div class="d-flex flex-row justify-content-between">
       <button @click="goBack" class="col-2 btn btn-secondary my-3">Back</button>
     </div>
-    <h1 class="title">Create New Manufacturer</h1>
-    <p class="sub-title">
-      Enter all relevant information associated with this Manufacturer.
-    </p>
+    <Header
+      title="Create New Manufacturer"
+      subTitle="Enter all details required for this equipment manufacturer"
+    />
 
     <main>
       <ManufacturerInformation />
@@ -28,6 +28,7 @@
 </template>
 
 <script setup>
+import Header from "../BIOMD-FormHeader.vue";
 import ManufacturerInformation from "../BIOMD-MANUFACTURER/MANUFACTURER-ManufacturerInformation.vue";
 import Btn from "../BIOMD-Btn.vue";
 
