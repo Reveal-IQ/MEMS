@@ -2,12 +2,11 @@
   <section class="section p-4 rounded mt-4">
     <h5 class="pb-5">Multiple Equipment Entry</h5>
     <div class="d-flex align-center">
-      <p class="text-center">1. Serial Number - Department - Location |</p>
-      <a class="text-center px-2 a-link">Remove</a>
-    </div>
-    <div class="d-flex align-center mb-3">
-      <p class="text-center">2. Serial Number - Department - Location |</p>
-      <a class="text-center px-2 a-link">Remove</a>
+      <p class="text-center pe-2">
+        1. Serial Number - Department - Location - Comments |
+      </p>
+      <!-- <a class="text-center px-2 a-link">Remove</a> -->
+      <font-awesome-icon icon="trash" size="1x" style="cursor: pointer" />
     </div>
 
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
@@ -63,7 +62,7 @@
       </div>
     </div>
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
-      <div class="col">
+      <div class="col pt-2 pb-2 pl-3 pr-3 p-3">
         <Btn
           BtnName="Add Asset Fleet"
           backgroundColor="#1266F1"

@@ -3,7 +3,7 @@
     <div class="d-flex flex-row justify-content-between">
       <button @click="goBack" class="col-2 btn btn-secondary my-3">Back</button>
     </div>
-    <h1 class="title">Create New Equipment</h1>
+    <h1 class="">Create New Equipment</h1>
     <p class="sub-title">
       Enter all relevant information associated with this medical equipment.
     </p>
@@ -46,4 +46,6 @@ const goBack = () => {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import "../Style/font-style.scss";
+</style>

@@ -5,9 +5,11 @@
     :style="'--color:' + backgroundColor"
     @click="emitClickEvent()"
   >
-    <div class="col-sm-10 bodyText d-flex justify-content-center">
-      {{ BtnName }}
-      <div class="iconFont align-self-center text-light">
+    <div
+      class="col-sm-10 bodyText d-flex justify-content-center align-center mt-3"
+    >
+      <p class="pe-2">{{ BtnName }}</p>
+      <div class="iconFont text-light">
         <font-awesome-icon :icon="icon" size="1x" />
       </div>
     </div>

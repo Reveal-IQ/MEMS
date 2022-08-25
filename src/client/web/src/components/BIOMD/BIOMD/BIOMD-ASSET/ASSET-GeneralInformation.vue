@@ -97,7 +97,7 @@
       </div>
     </div>
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
-      <div class="col">
+      <div class="col pt-2 pb-2 pl-3 pr-3 p-3">
         <Btn
           BtnName="Add Parent Asset"
           backgroundColor="#1266F1"
