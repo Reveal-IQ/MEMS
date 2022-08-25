@@ -1,20 +1,16 @@
 <template>
   <section class="section p-4 rounded">
-    <h5 class="pb-5">General Information</h5>
+    <h5 class="pb-5 section-title largeText">General Information</h5>
 
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
       <!-- Equipment Number -->
       <div class="col-lg-3">
-        <label for="equipmentNumber" class="form-label">Equipment Number</label>
-        <div class="input-group mb-3">
-          <input
-            type="text"
-            class="form-control"
-            id="equipmentNumber"
-            aria-describedby="basic-addon3"
-            placeholder="Enter details"
-          />
-        </div>
+        <Input
+          label="Equipment Number"
+          type="number"
+          id="equipmentNumber"
+          placeholder="Enter Equipment Number"
+        />
       </div>
 
       <!-- Equipment Common Name -->
@@ -47,16 +43,12 @@
 
       <!-- Serial Number -->
       <div class="col-lg-4 mb-3">
-        <label for="serialNumber" class="form-label">Serial Number</label>
-        <div class="input-group">
-          <input
-            type="text"
-            class="form-control"
-            id="serialNumber"
-            aria-describedby="basic-addon3"
-            placeholder="Enter details"
-          />
-        </div>
+        <Input
+          label="Serial Number"
+          type="text"
+          id="serialNumber"
+          placeholder="Enter Serial Number"
+        />
       </div>
       <!-- Model Name -->
       <div class="col-lg-4 mb-3">
@@ -83,17 +75,12 @@
 
       <!-- Year of Manufacture -->
       <div class="col-lg-4 mb-3">
-        <label for="yearOfManufacture" class="form-label"
-          >Year of Manufacture</label
-        >
-        <div class="input-group mb-3">
-          <input
-            type="date"
-            class="form-control"
-            id="yearOfManufacture"
-            aria-describedby="basic-addon3"
-          />
-        </div>
+        <Input
+          label="Year of manufacture"
+          type="date"
+          id="yearOfManufacture"
+          placeholder="Enter Year of manufacture"
+        />
       </div>
     </div>
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
@@ -110,6 +97,7 @@
 
 <script setup>
 import Btn from "../BIOMD-Btn.vue";
+import Input from "../BIOMD-Input.vue";
 </script>
 
 <style lang="scss" scoped>

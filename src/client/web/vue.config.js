@@ -1,9 +1,9 @@
-const { defineConfig } = require('@vue/cli-service')
-const webpack = require('webpack');
+const { defineConfig } = require("@vue/cli-service");
+const webpack = require("webpack");
 
 module.exports = defineConfig({
-  transpileDependencies: true
-})
+  transpileDependencies: true,
+});
 
 module.exports = {
   configureWebpack: {
@@ -12,21 +12,20 @@ module.exports = {
       // extensions: ['.ts', '.js'],
       fallback: {
         //Fixes issue with Webpack >5 where Crypto build was failing.
-        buffer: require.resolve('buffer/'),
-        crypto: require.resolve('crypto-browserify'),
-        stream: require.resolve('stream-browserify')
-      }
+        buffer: require.resolve("buffer/"),
+        crypto: require.resolve("crypto-browserify"),
+        stream: require.resolve("stream-browserify"),
+      },
     },
 
     plugins: [
       new webpack.ProvidePlugin({
-        Buffer: ['buffer', 'Buffer'],
+        Buffer: ["buffer", "Buffer"],
       }),
     ],
 
     devServer: {
-      allowedHosts: ['dev.reveal.health', 'reveal.health'],
-    }
-
-  }
-}
+      allowedHosts: ["dev.reveal.health", "reveal.health"],
+    },
+  },
+};

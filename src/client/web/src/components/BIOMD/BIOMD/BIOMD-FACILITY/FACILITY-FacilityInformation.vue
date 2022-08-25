@@ -6,16 +6,12 @@
       <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 g-3">
         <!-- Facility Name -->
         <div class="col">
-          <label for="facilityName" class="form-label">Facility Name</label>
-          <div class="input-group mb-3">
-            <input
-              type="text"
-              class="form-control"
-              id="facilityName"
-              aria-describedby="basic-addon3"
-              placeholder="Enter details"
-            />
-          </div>
+          <Input
+            label="Facility Name"
+            type="text"
+            id="facilityName"
+            placeholder="Enter Facility Name"
+          />
         </div>
         <!-- Country -->
         <div class="col">
@@ -56,60 +52,41 @@
       <div class="row g-3 mt-3">
         <!-- Street Address 1 -->
         <div class="col-12">
-          <label for="street1" class="form-label">Street Address 1</label>
-          <div class="input-group mb-3">
-            <input
-              type="text"
-              class="form-control"
-              id="street1"
-              aria-describedby="basic-addon3"
-              placeholder="Enter details"
-            />
-          </div>
+          <Input
+            label="Street Address 1"
+            type="text"
+            id="street1"
+            placeholder="Enter Street Address 1"
+          />
         </div>
         <!-- Street Address 2 -->
         <div class="col-12">
-          <label for="street2" class="form-label">Street Address 2</label>
-          <div class="input-group mb-3">
-            <input
-              type="text"
-              class="form-control"
-              id="street2"
-              aria-describedby="basic-addon3"
-              placeholder="Enter details"
-            />
-          </div>
+          <Input
+            label="Street Address 2"
+            type="text"
+            id="street2"
+            placeholder="Enter Street Address 2"
+          />
         </div>
         <!-- Zip / Postal Code -->
         <div class="col-lg-3">
-          <label for="zip" class="form-label">Zip/Postal Code</label>
-          <div class="input-group mb-3">
-            <input
-              type="text"
-              class="form-control"
-              id="zip"
-              aria-describedby="basic-addon3"
-              placeholder="Enter details"
-            />
-          </div>
+          <Input
+            label="Zip/Postal Code"
+            type="number"
+            id="zip"
+            placeholder="Enter Zip/Postal Code"
+          />
         </div>
 
         <!-- GPS Coordinates -->
         <div class="col-lg-6">
-          <label for="gps" class="form-label">GPS Coordinates</label>
-          <div class="input-group mb-3">
-            <input
-              type="text"
-              class="form-control"
-              id="gps"
-              aria-describedby="basic-addon3"
-              placeholder="Enter details"
-            />
-          </div>
+          <Input
+            label="GPS Coordinates"
+            type="text"
+            id="gps"
+            placeholder="Select GPS Coordinates"
+          />
         </div>
-        <!-- <div class="col-lg-2">
-          <a class="a-link">Generate GPS Coordinates</a>
-        </div> -->
 
         <div class="col-lg-2 align-self-center g-3">
           <Btn BtnName="Generate GPS Coordinates" :icon="'globe'" />
@@ -117,16 +94,12 @@
 
         <!-- Department List -->
         <div class="col-12">
-          <label for="departmentTag" class="form-label">Departments List</label>
-          <div class="input-group mb-3">
-            <input
-              type="text"
-              class="form-control"
-              id="departmentTag"
-              aria-describedby="basic-addon3"
-              placeholder="Enter details"
-            />
-          </div>
+          <Input
+            label="Department"
+            type="text"
+            id="departmentTag"
+            placeholder="Add Department Tag"
+          />
         </div>
       </div>
     </section>
@@ -135,6 +108,7 @@
 
 <script setup>
 import Btn from "../BIOMD-Btn.vue";
+import Input from "../BIOMD-Input.vue";
 </script>
 
 <style lang="scss" scoped>

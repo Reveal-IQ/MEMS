@@ -14,10 +14,8 @@
           <option selected>Select Vendor Site</option>
         </select>
       </div>
-    </div>
-    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 g-3">
       <!-- Personnel Assigned -->
-      <div class="col-lg-6">
+      <div class="col-lg-8">
         <label for="personnelList" class="form-label">Personnel Assigned</label>
         <select
           class="form-select mb-3"

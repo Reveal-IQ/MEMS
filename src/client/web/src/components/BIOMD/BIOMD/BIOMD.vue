@@ -51,8 +51,5 @@ const updatePage = (page) => {
 
 <style lang="scss" scoped>
 @import "../../GLOBAL/Styles/font-style.scss";
-/* @import "./Style/BIOMD.scss"; */
-.mems {
-  background-color: hsl(0, 0%, 96%);
-}
+@import "./Style/BIOMD.scss";
 </style>

@@ -1,8 +1,3 @@
-<script>
-export default {
-  name: "ManufacturerInformation",
-};
-</script>
 <template>
   <main>
     <!-- The main form -->
@@ -12,18 +7,12 @@ export default {
       <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 g-3">
         <!-- Manufacturer Name -->
         <div class="col">
-          <label for="manufacturerName" class="form-label"
-            >Manufacturer Name</label
-          >
-          <div class="input-group mb-3">
-            <input
-              type="text"
-              class="form-control"
-              id="manufacturerName"
-              aria-describedby="basic-addon3"
-              placeholder="Enter manufacturer name"
-            />
-          </div>
+          <Input
+            label="Manufacturer Name"
+            type="text"
+            id="manufacturerName"
+            placeholder="Enter Manufacturer Name"
+          />
         </div>
         <!-- Country -->
         <div class="col">
@@ -64,47 +53,40 @@ export default {
       <div class="row g-3 mt-3">
         <!-- Street Address 1 -->
         <div class="col-12">
-          <label for="street1" class="form-label">Street Address 1</label>
-          <div class="input-group mb-3">
-            <input
-              type="text"
-              class="form-control"
-              id="street1"
-              aria-describedby="basic-addon3"
-              placeholder="Enter details"
-            />
-          </div>
+          <Input
+            label="Street Address 1"
+            type="text"
+            id="street1"
+            placeholder="Enter Street Address 1"
+          />
         </div>
         <!-- Street Address 2 -->
         <div class="col-12">
-          <label for="street2" class="form-label">Street Address 2</label>
-          <div class="input-group mb-3">
-            <input
-              type="text"
-              class="form-control"
-              id="street2"
-              aria-describedby="basic-addon3"
-              placeholder="Enter details"
-            />
-          </div>
+          <Input
+            label="Street Address 2"
+            type="text"
+            id="street2"
+            placeholder="Enter Street Address 2"
+          />
         </div>
         <!-- Zip / Postal Code -->
-        <div class="col col-lg-6">
-          <label for="zip" class="form-label">Zip/Postal Code</label>
-          <div class="input-group mb-3">
-            <input
-              type="text"
-              class="form-control"
-              id="zip"
-              aria-describedby="basic-addon3"
-              placeholder="Enter details"
-            />
-          </div>
+        <div class="col-lg-3">
+          <Input
+            label="Zip/Postal Code"
+            type="number"
+            id="zip"
+            placeholder="Enter Zip/Postal Code"
+          />
         </div>
       </div>
     </section>
   </main>
 </template>
+
+<script setup>
+import Input from "../BIOMD-Input.vue";
+</script>
+
 <style lang="scss" scoped>
 @import "../Style/BIOMD.scss";
 </style>
