@@ -1,7 +1,5 @@
 <template>
-  <section class="section p-4 rounded mt-4">
-    <h5 class="pb-5 section-title largeText">Equipment Acquisition</h5>
-
+  <Section sectionTitle="Equipment Acquisition">
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
       <!-- Purchase Order Number -->
       <div class="col-lg-4 mb-3">
@@ -76,11 +74,12 @@
         />
       </div>
     </div>
-  </section>
+  </Section>
 </template>
 
 <script setup>
 import Input from "../BIOMD-Input.vue";
+import Section from "../BIOMD-Section.vue";
 </script>
 
 <style lang="scss" scoped>

@@ -1,7 +1,5 @@
 <template>
-  <section class="section p-4 rounded mt-4">
-    <h5 class="pb-5 section-title largeText">Additional Information</h5>
-
+  <Section sectionTitle="Additional Information">
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
       <!-- Comments -->
       <div class="col-lg-12 col-md-12 mb-3">
@@ -17,10 +15,12 @@
         </div>
       </div>
     </div>
-  </section>
+  </Section>
 </template>
 
-<script setup></script>
+<script setup>
+import Section from "../BIOMD-Section.vue";
+</script>
 
 <style lang="scss" scoped>
 @import "../../BIOMD/Style/BIOMD.scss";

@@ -1,6 +1,5 @@
 <template>
-  <section class="section p-4 rounded mt-4">
-    <h5 class="pb-5 section-title largeText">Multiple Equipment Entry</h5>
+  <Section sectionTitle="Multiple Equipment Entry">
     <div class="d-flex align-center">
       <p class="text-center pe-2">
         1. Serial Number - Department - Location - Comments |
@@ -61,12 +60,13 @@
         />
       </div>
     </div>
-  </section>
+  </Section>
 </template>
 
 <script setup>
 import Btn from "../BIOMD-Btn.vue";
 import Input from "../BIOMD-Input.vue";
+import Section from "../BIOMD-Section.vue";
 </script>
 
 <style lang="scss" scoped>

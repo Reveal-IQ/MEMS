@@ -1,9 +1,7 @@
 <template>
   <main>
     <!-- The main form -->
-    <section class="section p-4 rounded">
-      <h5 class="pb-5">Vendor Information</h5>
-
+    <Section sectionTitle="Vendor Information">
       <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 g-3">
         <!-- Vendor Name -->
         <div class="col">
@@ -104,12 +102,13 @@
           />
         </div>
       </div>
-    </section>
+    </Section>
   </main>
 </template>
 
 <script setup>
 import Input from "../BIOMD-Input.vue";
+import Section from "../BIOMD-Section.vue";
 </script>
 
 <style lang="scss" scoped>

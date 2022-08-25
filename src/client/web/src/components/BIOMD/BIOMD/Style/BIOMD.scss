@@ -1,14 +1,15 @@
-@import "../../../GLOBAL/Styles/colors.scss";
-@import "../../../GLOBAL/Styles/font-style.scss";
+// @use "base";
 
-.mems {
+@import "../../../GLOBAL/Styles/colors.scss";
+@import "./font-style.scss";
+
+.memsBg {
   background-color: $InvisibleSilver;
 }
 
 .title {
   color: $FollowerGrey;
   font-family: inherit;
-  // font-size: 20px;
   font-weight: 700;
   line-height: 1.1;
 }
@@ -16,19 +17,17 @@
 .sub-title {
   color: $FollowerGrey;
   font-family: inherit;
-  // font-size: var(--mems-fs-sm) ;
   font-weight: 400;
 }
 
 .section-title {
-  color: $Black;
+  color: $FollowerGrey;
   letter-spacing: 0.05em;
   font-family: inherit;
-  // font-size: var(--mems-fs-lg);
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .section {
   background-color: $White;
-  margin-top: 50px;
+  margin-top: 30px;
 }

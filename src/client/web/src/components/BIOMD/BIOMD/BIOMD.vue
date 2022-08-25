@@ -1,5 +1,5 @@
 <template>
-  <div class="mems">
+  <div class="memsBg">
     <div class="container">
       <div class="row">
         <div>

@@ -1,6 +1,6 @@
 <template>
-  <h1 class="title headerText">{{ title }}</h1>
-  <p class="sub-title bodyText">
+  <h1 class="title fs2xl">{{ title }}</h1>
+  <p class="sub-title fsSm">
     {{ subTitle }}
   </p>
 </template>

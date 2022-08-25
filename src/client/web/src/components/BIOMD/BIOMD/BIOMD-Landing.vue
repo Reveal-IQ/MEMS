@@ -110,6 +110,7 @@ const goToFacility = async () => {
 </script>
 
 <style lang="scss" scoped>
+@import "../BIOMD/Style/BIOMD.scss";
 .card {
   cursor: pointer;
 }

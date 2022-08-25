@@ -1,7 +1,5 @@
 <template>
-  <section class="section p-4 rounded mt-4">
-    <h5 class="pb-5">Vendor Support</h5>
-
+  <Section sectionTitle="Vendor Support">
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 g-3">
       <!-- Vendor Site ID -->
       <div class="col-lg-4">
@@ -36,11 +34,12 @@
         />
       </div>
     </div>
-  </section>
+  </Section>
 </template>
 
 <script setup>
 import Btn from "../BIOMD-Btn";
+import Section from "../BIOMD-Section.vue";
 </script>
 
 <style lang="scss" scoped>

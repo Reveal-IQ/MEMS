@@ -1,6 +1,5 @@
 <template>
-  <section class="section p-4 rounded mt-4">
-    <h5 class="pb-5">Customer Service Contact</h5>
+  <Section sectionTitle="Customer Service Contact">
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 g-3">
       <!-- Contact Number -->
       <div class="col">
@@ -47,12 +46,13 @@
         class=""
       />
     </div>
-  </section>
+  </Section>
 </template>
 
 <script setup>
 import Btn from "../BIOMD-Btn.vue";
 import Input from "../BIOMD-Input.vue";
+import Section from "../BIOMD-Section.vue";
 </script>
 
 <style lang="scss" scoped>
