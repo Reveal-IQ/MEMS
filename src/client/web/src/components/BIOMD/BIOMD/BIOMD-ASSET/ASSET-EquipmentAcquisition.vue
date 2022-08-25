@@ -1,7 +1,5 @@
 <template>
-  <section class="section p-4 rounded mt-4">
-    <h5 class="pb-5">Equipment Acquisition</h5>
-
+  <Section sectionTitle="Equipment Acquisition">
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
       <!-- Purchase Order Number -->
       <div class="col-lg-4 mb-3">
@@ -14,93 +12,76 @@
           aria-label="Default select"
         >
           <option selected>Select PO Number</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
         </select>
       </div>
+
       <!-- Project -->
       <div class="col-lg-8">
-        <label for="project" class="form-label">Projects</label>
-        <div class="input-group mb-3">
-          <input
-            type="text"
-            class="form-control"
-            id="project"
-            aria-describedby="basic-addon3"
-            placeholder="Tag Associated Projects"
-          />
-        </div>
+        <Input
+          label="Project"
+          type="text"
+          id="projectName"
+          placeholder="Enter Project"
+        />
       </div>
+    </div>
+    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
       <!-- Purchase Cost -->
       <div class="col-lg-4">
-        <label for="purchaseCost" class="form-label">Purchase Cost</label>
-        <div class="input-group mb-3">
-          <input
-            type="text"
-            class="form-control"
-            id="purchaseCost"
-            aria-describedby="basic-addon3"
-            placeholder="Enter Purchase Cost"
-          />
-        </div>
+        <Input
+          label="Purchase Cost"
+          type="number"
+          id="purchaseCost"
+          placeholder="Enter Purchase Cost"
+        />
       </div>
       <!-- Purchase Date -->
       <div class="col-lg-4">
-        <label for="purchaseDate" class="form-label">Purchase Date</label>
-        <div class="input-group mb-3">
-          <input
-            type="date"
-            class="form-control"
-            id="purchaseDate"
-            aria-describedby="basic-addon3"
-          />
-        </div>
+        <Input
+          label="Purchase Date"
+          type="date"
+          id="purchaseDate"
+          placeholder="Enter Purchase Date"
+        />
       </div>
       <!-- Vendor -->
       <div class="col-lg-4 mb-3">
-        <label for="vendor" class="form-label">Vendor</label>
+        <label for="vendorList" class="form-label">Vendor</label>
         <select
-          id="vendor"
+          id="vendorList"
           class="form-select"
           aria-label="Default select example"
         >
           <option selected>Select Vendor</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
         </select>
       </div>
       <!-- Acceptance Date -->
       <div class="col-lg-4">
-        <label for="acceptanceDate" class="form-label">Acceptance Date</label>
-        <div class="input-group mb-3">
-          <input
-            type="date"
-            class="form-control"
-            id="acceptanceDate"
-            aria-describedby="basic-addon3"
-          />
-        </div>
+        <Input
+          label="Acceptance Date"
+          type="date"
+          id="acceptanceDate"
+          placeholder="Select Acceptance Date"
+        />
       </div>
       <!-- Warranty Expiry Date -->
       <div class="col-lg-4">
-        <label for="warrantyDate" class="form-label"
-          >Warranty Expiry Date</label
-        >
-        <div class="input-group mb-3">
-          <input
-            type="date"
-            class="form-control"
-            id="warrantyDate"
-            aria-describedby="basic-addon3"
-          />
-        </div>
+        <Input
+          label="Warranty Expiration Date"
+          type="date"
+          id="warrantyDate"
+          placeholder="Select Warranty Expiration Date"
+        />
       </div>
     </div>
-  </section>
+  </Section>
 </template>
 
-<script setup></script>
+<script setup>
+import Input from "../BIOMD-Input.vue";
+import Section from "../BIOMD-Section.vue";
+</script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import "../../BIOMD/Style/BIOMD.scss";
+</style>

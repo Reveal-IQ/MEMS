@@ -1,25 +1,27 @@
 <template>
-  <section class="section p-4 rounded mt-4">
-    <h5 class="pb-5">Additional Information</h5>
-
+  <Section sectionTitle="Additional Information">
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
       <!-- Comments -->
       <div class="col-lg-12 col-md-12 mb-3">
-        <label for="comment" class="form-label">Comments</label>
+        <label for="commentSection" class="form-label">Comments</label>
         <div class="input-group">
-          <input
+          <textarea
             type="text"
             class="form-control"
-            id="comment"
+            id="commentSection"
             aria-describedby="basic-addon3"
             placeholder="Enter Comments"
-          />
+          ></textarea>
         </div>
       </div>
     </div>
-  </section>
+  </Section>
 </template>
 
-<script setup></script>
+<script setup>
+import Section from "../BIOMD-Section.vue";
+</script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import "../../BIOMD/Style/BIOMD.scss";
+</style>

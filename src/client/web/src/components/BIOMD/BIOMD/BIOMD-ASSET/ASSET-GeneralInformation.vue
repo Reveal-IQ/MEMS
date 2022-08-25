@@ -1,137 +1,103 @@
 <template>
-  <section class="section p-4 rounded">
-    <h5 class="pb-5">General Information</h5>
-
+  <Section sectionTitle="General Information">
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
       <!-- Equipment Number -->
       <div class="col-lg-3">
-        <label for="equipmentNumber" class="form-label">Equipment Number</label>
-        <div class="input-group mb-3">
-          <input
-            type="text"
-            class="form-control"
-            id="equipmentNumber"
-            aria-describedby="basic-addon3"
-            placeholder="Enter details"
-          />
-        </div>
+        <Input
+          label="Equipment Number"
+          type="number"
+          id="equipmentNumber"
+          placeholder="Enter Equipment Number"
+        />
       </div>
 
       <!-- Equipment Common Name -->
       <div class="col-lg-4 col-md-12 mb-3">
-        <label for="equipmentCommonName" class="form-label"
+        <label for="commonNameList" class="form-label"
           >Equipment Common Name</label
         >
         <select
-          id="equipmentCommonName"
+          id="commonNameList"
           class="form-select"
           aria-label="Default select example"
         >
           <option selected>Select Common Name</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
         </select>
       </div>
 
       <!-- Equipment Description -->
       <div class="col-lg-5 col-md-12 mb-3">
-        <label for="equipmentDescription" class="form-label"
+        <label for="descriptionList" class="form-label"
           >Equipment Description</label
         >
         <select
-          id="equipmentDescription"
+          id="descriptionList"
           class="form-select"
           aria-label="Default select example"
         >
           <option selected>Select Class</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
         </select>
       </div>
 
       <!-- Serial Number -->
       <div class="col-lg-4 mb-3">
-        <label for="serialNumber" class="form-label">Serial Number</label>
-        <div class="input-group">
-          <input
-            type="text"
-            class="form-control"
-            id="serialNumber"
-            aria-describedby="basic-addon3"
-            placeholder="Enter details"
-          />
-        </div>
+        <Input
+          label="Serial Number"
+          type="text"
+          id="serialNumber"
+          placeholder="Enter Serial Number"
+        />
       </div>
       <!-- Model Name -->
       <div class="col-lg-4 mb-3">
-        <label for="modelName" class="form-label">Model Name</label>
+        <label for="modelList" class="form-label">Model Name</label>
         <select
-          id="modelName"
+          id="modelList"
           class="form-select"
           aria-label="Default select example"
         >
           <option selected>Select Model Name</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
         </select>
       </div>
       <!-- Manufacturer -->
       <div class="col-lg-4 mb-3">
-        <label for="manufacturer" class="form-label">Manufacturer</label>
+        <label for="manufacturerList" class="form-label">Manufacturer</label>
         <select
-          id="manufacturer"
+          id="manufacturerList"
           class="form-select"
           aria-label="Default select example"
         >
           <option selected>Select Manufacturer</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
         </select>
       </div>
 
       <!-- Year of Manufacture -->
       <div class="col-lg-4 mb-3">
-        <label for="yearOfManufacture" class="form-label"
-          >Year of Manufacture</label
-        >
-        <div class="input-group mb-3">
-          <input
-            type="date"
-            class="form-control"
-            id="yearOfManufacture"
-            aria-describedby="basic-addon3"
-          />
-        </div>
+        <Input
+          label="Year of manufacture"
+          type="date"
+          id="yearOfManufacture"
+          placeholder="Enter Year of manufacture"
+        />
       </div>
     </div>
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
-      <!-- <ButtonComponent>Add Parent Component</ButtonComponent> -->
-      <div class="col">
-        <button class="btn btn-primary rounded-pill btn-small">
-          Add Parent Component
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            class="bi bi-search"
-            viewBox="0 0 16 16"
-          >
-            <path
-              d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
-            />
-          </svg>
-        </button>
+      <div class="col pt-2 pb-2 pl-3 pr-3 p-3">
+        <Btn
+          BtnName="Add Parent Asset"
+          backgroundColor="#1266F1"
+          :icon="'search'"
+        />
       </div>
     </div>
-  </section>
+  </Section>
 </template>
 
-<script setup></script>
+<script setup>
+import Btn from "../BIOMD-Btn.vue";
+import Input from "../BIOMD-Input.vue";
+import Section from "../BIOMD-Section.vue";
+</script>
 
 <style lang="scss" scoped>
 @import "../../BIOMD/Style/BIOMD.scss";

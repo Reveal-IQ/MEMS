@@ -1,6 +1,33 @@
+// @use "base";
+
 @import "../../../GLOBAL/Styles/colors.scss";
+@import "./font-style.scss";
+
+.memsBg {
+  background-color: $InvisibleSilver;
+}
+
+.title {
+  color: $FollowerGrey;
+  font-family: inherit;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.sub-title {
+  color: $FollowerGrey;
+  font-family: inherit;
+  font-weight: 400;
+}
+
+.section-title {
+  color: $FollowerGrey;
+  letter-spacing: 0.05em;
+  font-family: inherit;
+  font-weight: 600;
+}
 
 .section {
-  background-color: rgb(255, 255, 255);
-  margin-top: 50px;
+  background-color: $White;
+  margin-top: 30px;
 }

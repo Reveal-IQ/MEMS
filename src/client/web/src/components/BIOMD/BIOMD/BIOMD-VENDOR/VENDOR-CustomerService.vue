@@ -1,65 +1,60 @@
 <template>
-  <section class="section p-4 rounded mt-4">
-    <h5 class="pb-5">Customer Service Contact</h5>
+  <Section sectionTitle="Customer Service Contact">
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 g-3">
       <!-- Contact Number -->
       <div class="col">
-        <label for="basic-url" class="form-label">Contact Number</label>
-        <div class="input-group mb-3">
-          <input
-            type="text"
-            class="form-control"
-            id="basic-url"
-            aria-describedby="basic-addon3"
-            placeholder="Enter details"
-          />
-        </div>
+        <Input
+          label="Contact Number"
+          type="number"
+          id="contactNumber"
+          placeholder="Enter Contact Number"
+        />
       </div>
       <!-- Representative Name -->
       <div class="col">
-        <label for="basic-url" class="form-label">Representative Name</label>
-        <div class="input-group mb-3">
-          <input
-            type="text"
-            class="form-control"
-            id="basic-url"
-            aria-describedby="basic-addon3"
-            placeholder="Enter details"
-          />
-        </div>
+        <Input
+          label="Representative Name"
+          type="text"
+          id="repName"
+          placeholder="Enter Representative Name"
+        />
       </div>
       <!-- Email  -->
       <div class="col">
-        <label for="basic-url" class="form-label">Email</label>
-        <div class="input-group mb-3">
-          <input
-            type="text"
-            class="form-control"
-            id="basic-url"
-            aria-describedby="basic-addon3"
-            placeholder="Enter details"
-          />
-        </div>
+        <Input
+          label="Email"
+          type="email"
+          id="email"
+          placeholder="Enter email"
+        />
       </div>
       <!-- Type of Personnel -->
       <div class="col">
-        <label for="basic-url" class="form-label">Type of Personnel</label>
-        <div class="input-group mb-3">
-          <input
-            type="text"
-            class="form-control"
-            id="basic-url"
-            aria-describedby="basic-addon3"
-            placeholder="Enter details"
-          />
-        </div>
+        <Input
+          label="Personnel Type"
+          type="text"
+          id="personnelType"
+          placeholder="Enter Personnel Type"
+        />
       </div>
     </div>
-    <br />
-    <button class="btn btn-blue">Add New Contact</button>
-  </section>
+    <div class="col pt-2 pb-2 pl-3 pr-3 p-3">
+      <Btn
+        BtnName="Add New Contact"
+        backgroundColor="#1266F1"
+        :icon="'plus'"
+        class=""
+      />
+    </div>
+  </Section>
 </template>
 
-<script setup></script>
+<script setup>
+import Btn from "../BIOMD-Btn.vue";
+import Input from "../BIOMD-Input.vue";
+import Section from "../BIOMD-Section.vue";
+</script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import "../Style/BIOMD.scss";
+</style>

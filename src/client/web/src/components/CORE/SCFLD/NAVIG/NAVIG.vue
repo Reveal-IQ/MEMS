@@ -8,7 +8,7 @@
 -->
 <template>
   <div
-    class="row d-flex NAVIG-backgroundColor px-2 d-flex align-items-center justify-content-center gx-0 sticky-top"
+    class="row d-flex NAVIG-backgroundColor px-2 d-flex align-items-center justify-content-center gx-0 nav-container"
     style="height: 63.41px"
   >
     <!-- REVEAL Logo and the Version Block -->
@@ -298,6 +298,14 @@ export default {
   border-radius: 15px !important;
   max-height: 460px !important;
   min-height: 460px !important;
+}
+
+.nav-container {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 1000;
 }
 
 div {
