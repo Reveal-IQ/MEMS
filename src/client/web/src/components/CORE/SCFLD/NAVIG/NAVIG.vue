@@ -8,7 +8,7 @@
 -->
 <template>
   <div
-    class="row d-flex NAVIG-backgroundColor px-2 d-flex align-items-center justify-content-center gx-0 nav-container"
+    class="row d-flex justify-content-center align-items-center gx-0 NAVIG-backgroundColor px-2 sticky-top nav-container"
     style="height: 63.41px"
   >
     <!-- REVEAL Logo and the Version Block -->
@@ -23,6 +23,7 @@
         <div class="col-sm-12 versionLittle Typography-03">{{ version }}</div>
       </div>
     </div>
+
     <!-- Search Box Block -->
     <div
       class="col d-flex align-items-center justify-content-center"
@@ -160,6 +161,7 @@
         </div>
       </div>
     </div>
+
     <!-- Active Service Name Block 1 -->
     <div
       class="col d-flex align-items-center justify-content-start Typography-01 fw-bold d-md-none d-lg-block"
@@ -168,12 +170,14 @@
     >
       {{ ActiveApp.App_Name }}
     </div>
+
     <!-- Active Service Name Block 2 "to preserve the UI" -->
     <div
       class="col d-flex align-items-center justify-content-start Typography-01 fw-bold d-md-none d-lg-block"
       style="max-width: 244px; min-width: 244px; margin-right: 20px"
       v-else
     ></div>
+
     <!-- Find Patient and the Bell Icon -->
     <div
       class="col d-flex align-items-center justify-content-center"
@@ -196,15 +200,17 @@
         </div>
       </div>
     </div>
+
     <!-- User Profile Dropdown -->
     <div
       class="col d-flex align-items-center justify-content-center Typography-01 m-2"
-      style="max-height: 42px; max-width: 65px"
+      style="max-height: 42px; max-width: 90px"
     >
       <UserProfile />
     </div>
   </div>
 </template>
+
 <script>
 import { useStore } from "vuex";
 import * as bootstrap from "bootstrap";
@@ -283,6 +289,7 @@ export default {
   },
 };
 </script>
+
 <style lang="scss" scoped>
 @import "./../../../../scss/NAVIG.scss";
 // @import "./style/NAVIG.scss";
