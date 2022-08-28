@@ -24,10 +24,15 @@
 </template>
 
 <script setup>
-import Header from "../BIOMD-FormHeader.vue";
 import VendorInformation from "../BIOMD-VENDOR/VENDOR-VendorInformation.vue";
 import CustomerService from "../BIOMD-VENDOR/VENDOR-CustomerService.vue";
-import Btn from "../BIOMD-Btn.vue";
+
+import Header from "../BIOMD-UI/UI-FormHeader.vue";
+import Btn from "../BIOMD-UI/UI-Btn.vue";
+
+import { ref, inject } from "vue";
+
+const vendorInfo = inject("vendorInfo");
 
 const emit = defineEmits(["updatePage"]);
 

@@ -82,7 +82,10 @@
 </template>
 
 <script setup>
-import Section from "../BIOMD-Section.vue";
+import { ref, inject } from "vue";
+import Section from "../BIOMD-UI/UI-Section.vue";
+
+const assetInfo = inject("assetInfo");
 </script>
 
 <style lang="scss" scoped>

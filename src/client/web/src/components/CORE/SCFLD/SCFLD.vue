@@ -265,7 +265,7 @@ export default {
 @import "../SCFLD/style/SCFLD.scss";
 
 .container-fluid {
-  /* overflow-y: hidden !important; Hide vertical scrollbar */
+  overflow-y: scroll !important; /* Hide vertical scrollbar */
   overflow-x: hidden !important; /* Hide horizontal scrollbar */
 }
 </style>

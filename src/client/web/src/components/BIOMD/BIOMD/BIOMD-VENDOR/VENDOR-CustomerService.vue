@@ -13,10 +13,10 @@
       <!-- Representative Name -->
       <div class="col">
         <Input
-          label="Representative Name"
+          label="Contact Name"
           type="text"
-          id="repName"
-          placeholder="Enter Representative Name"
+          id="contactName"
+          placeholder="Enter Contact Name"
         />
       </div>
       <!-- Email  -->
@@ -50,9 +50,9 @@
 </template>
 
 <script setup>
-import Btn from "../BIOMD-Btn.vue";
-import Input from "../BIOMD-Input.vue";
-import Section from "../BIOMD-Section.vue";
+import Btn from "../BIOMD-UI/UI-Btn.vue";
+import Input from "../BIOMD-UI/UI-Input.vue";
+import Section from "../BIOMD-UI/UI-Section.vue";
 </script>
 
 <style lang="scss" scoped>

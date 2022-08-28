@@ -59,8 +59,8 @@
 </template>
 
 <script setup>
-import Input from "../BIOMD-Input.vue";
-import Section from "../BIOMD-Section.vue";
+import Input from "../BIOMD-UI/UI-Input.vue";
+import Section from "../BIOMD-UI/UI-Section.vue";
 </script>
 
 <style lang="scss" scoped>

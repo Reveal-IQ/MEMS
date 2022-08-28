@@ -17,9 +17,19 @@
       <AdditionalInformation />
       <div class="d-flex justify-content-center py-3">
         <div class="">
-          <Btn BtnName="Create Asset" backgroundColor="#27AE60" class="mb-3" />
+          <Btn
+            BtnName="Create Asset"
+            backgroundColor="#27AE60"
+            class="mb-3"
+            :showLoading="true"
+            @click="createRecord"
+          />
 
-          <Btn BtnName="Clear Content" />
+          <Btn
+            BtnName="Clear Content"
+            @click="clearContent"
+            :showLoading="true"
+          />
         </div>
       </div>
     </main>
@@ -27,22 +37,59 @@
 </template>
 
 <script setup>
-import Header from "../BIOMD-FormHeader.vue";
-import AdditionalInformation from "./ASSET-AdditionalInformation.vue";
-import EquipmentAcquisition from "./ASSET-EquipmentAcquisition.vue";
-import EquipmentLocation from "./ASSET-EquipmentLocation.vue";
+import { ref, inject } from "vue";
+
+// Import Sections
 import GeneralInformation from "./ASSET-GeneralInformation.vue";
-import MultipleEquipmentEntry from "./ASSET-MultipleEquipmentEntry.vue";
+import EquipmentLocation from "./ASSET-EquipmentLocation.vue";
+import EquipmentAcquisition from "./ASSET-EquipmentAcquisition.vue";
 import MaintenanceAndSupport from "./ASSET-MaintenanceAndSupport.vue";
-import Btn from "../BIOMD-Btn.vue";
+import MultipleEquipmentEntry from "./ASSET-MultipleEquipmentEntry.vue";
+import AdditionalInformation from "./ASSET-AdditionalInformation.vue";
 
-import { inject } from "vue";
+// Import UI Components
+import Header from "../BIOMD-UI/UI-FormHeader.vue";
+import Btn from "../BIOMD-UI/UI-Btn.vue";
 
+// Inject Asset Info
+const assetInfo = inject("assetInfo");
+const commonNameList = inject("commonNameList");
+
+// Emit
 const emit = defineEmits(["updatePage"]);
 
-const assetInfo = inject("assetInfo");
+// Create Record
+// const createRecord = async () => {
+//   try {
+//     // Create Request Packet
+//     var req  = {
+//       Expiry: 20000,
+//       Type: "REQUEST",
+//       Request: {
+//         Module: "MEMS",
+//         ServiceCode: "BIOMD",
+//         API: "CREATE_RECORD",
+//         Collection: "assets",
+//         Record: {
 
-// navigations
+//         }
+//       }
+//     }
+//   } catch (error) {
+//     console.log(error)
+//   }
+// }
+
+// Clear User Input
+const clearContent = async () => {
+  // commonNameList.value = null;
+
+  assetInfo.value.Equipment_Number = null;
+  assetInfo.value.Serial_Number = null;
+  assetInfo.value.Year_of_Manufacture = null;
+};
+
+// Navigation
 const goBack = () => {
   emit("updatePage", "landing");
 };

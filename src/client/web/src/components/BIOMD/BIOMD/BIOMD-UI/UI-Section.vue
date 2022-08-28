@@ -15,5 +15,5 @@ const props = defineProps({
 </script>
 
 <style lang="scss" scoped>
-@import "../BIOMD/Style/BIOMD.scss";
+@import "../Style/BIOMD.scss";
 </style>

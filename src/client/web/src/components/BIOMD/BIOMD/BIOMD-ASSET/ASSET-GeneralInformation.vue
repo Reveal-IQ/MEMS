@@ -8,6 +8,7 @@
           type="number"
           id="equipmentNumber"
           placeholder="Enter Equipment Number"
+          v-model="assetInfo.Equipment_Number"
         />
       </div>
 
@@ -16,12 +17,11 @@
         <label for="commonNameList" class="form-label"
           >Equipment Common Name</label
         >
-        <select
-          id="commonNameList"
-          class="form-select"
-          aria-label="Default select example"
-        >
-          <option selected>Select Common Name</option>
+        <select id="commonNameList" class="form-select">
+          <option selected disabled>Select Common Name</option>
+          <option v-for="commonName in commonNameList" :key="commonName.index">
+            {{ commonName }}
+          </option>
         </select>
       </div>
 
@@ -46,6 +46,7 @@
           type="text"
           id="serialNumber"
           placeholder="Enter Serial Number"
+          v-model="assetInfo.Serial_Number"
         />
       </div>
       <!-- Model Name -->
@@ -78,6 +79,7 @@
           type="date"
           id="yearOfManufacture"
           placeholder="Enter Year of manufacture"
+          v-model="assetInfo.Year_of_Manufacture"
         />
       </div>
     </div>
@@ -94,9 +96,21 @@
 </template>
 
 <script setup>
-import Btn from "../BIOMD-Btn.vue";
-import Input from "../BIOMD-Input.vue";
-import Section from "../BIOMD-Section.vue";
+import { ref, inject, provide } from "vue";
+
+import Btn from "../BIOMD-UI/UI-Btn.vue";
+import Input from "../BIOMD-UI/UI-Input.vue";
+import Section from "../BIOMD-UI/UI-Section.vue";
+
+// Inject Asset Information
+const assetInfo = inject("assetInfo");
+
+const commonNameList = ref(["concentrator", "bp apparatus", "gun thermometer"]);
+const descriptionList = ref(null);
+const modelList = ref(null);
+const manufacturerList = ref(null);
+
+provide("commonNameList", commonNameList);
 </script>
 
 <style lang="scss" scoped>
