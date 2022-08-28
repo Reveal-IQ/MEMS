@@ -19,7 +19,7 @@
 </template>
 
 <script setup>
-import Section from "../BIOMD-Section.vue";
+import Section from "../BIOMD-UI/UI-Section.vue";
 </script>
 
 <style lang="scss" scoped>

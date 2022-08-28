@@ -38,8 +38,8 @@
 </template>
 
 <script setup>
-import Btn from "../BIOMD-Btn";
-import Section from "../BIOMD-Section.vue";
+import Btn from "../BIOMD-UI/UI-Btn.vue";
+import Section from "../BIOMD-UI/UI-Section.vue";
 </script>
 
 <style lang="scss" scoped>

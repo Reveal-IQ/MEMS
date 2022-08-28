@@ -14,7 +14,11 @@
       </div>
     </div>
     <div class="col-sm-2 mx-auto" v-if="showLoader">
-      <img src="../../../assets/media/btn_loader.gif" alt="" class="gifImage" />
+      <img
+        src="../../../../assets/media/btn_loader.gif"
+        alt=""
+        class="gifImage"
+      />
     </div>
   </div>
 </template>

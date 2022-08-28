@@ -23,10 +23,11 @@
 </template>
 
 <script setup>
-import Header from "../BIOMD-FormHeader.vue";
 import ModelDescription from "../BIOMD-MODEL/MODEL-ModelDescription.vue";
 import VendorSupport from "../BIOMD-MODEL/MODEL-VendorSupport.vue";
-import Btn from "../BIOMD-Btn.vue";
+
+import Header from "../BIOMD-UI/UI-FormHeader.vue";
+import Btn from "../BIOMD-UI/UI-Btn.vue";
 
 const emit = defineEmits(["updatePage"]);
 
