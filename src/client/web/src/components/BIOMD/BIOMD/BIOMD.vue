@@ -37,9 +37,36 @@ import MODEL from "../BIOMD/BIOMD-MODEL/MODEL.vue";
 import MANUFACTURER from "../BIOMD/BIOMD-MANUFACTURER/MANUFACTURER.vue";
 import Landing from "../BIOMD/BIOMD-UI/UI-Landing.vue";
 
-import { ref, provide } from "vue";
+import { ref, toRefs, provide, computed } from "vue";
+import { useStore } from "vuex";
 
 const compState = ref("landing"); //asset, facility, model, manufacturer, vendor
+
+const props = defineProps({
+  tabid: {
+    type: String,
+  },
+});
+// store variables
+const store = useStore();
+const { tabid } = toRefs(props);
+const currentPage = ref("userInfo");
+const adminpanelState = computed(
+  () => store.state.globalStore.appState.ADPNL[`${tabid.value}`]
+);
+const changeServiceState = (serviceState) =>
+  store.dispatch("changeServiceState", serviceState);
+const sendSocketReq = (request) => {
+  store.dispatch("sendSocketReq", request);
+};
+changeServiceState({
+  service: "ADPNL",
+  tabcode: tabid.value,
+  status: "dashBoard",
+});
+function changePage(val) {
+  currentPage.value = val;
+}
 
 // Collect Data for Model
 const modelInfo = ref({

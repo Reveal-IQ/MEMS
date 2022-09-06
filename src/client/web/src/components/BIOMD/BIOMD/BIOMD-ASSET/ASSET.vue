@@ -38,6 +38,7 @@
 
 <script setup>
 import { ref, inject } from "vue";
+import { useStore } from "vuex";
 
 // Import Sections
 import GeneralInformation from "./ASSET-GeneralInformation.vue";
@@ -58,27 +59,26 @@ const commonNameList = inject("commonNameList");
 // Emit
 const emit = defineEmits(["updatePage"]);
 
-// Create Record
-// const createRecord = async () => {
-//   try {
-//     // Create Request Packet
-//     var req  = {
-//       Expiry: 20000,
-//       Type: "REQUEST",
-//       Request: {
-//         Module: "MEMS",
-//         ServiceCode: "BIOMD",
-//         API: "CREATE_RECORD",
-//         Collection: "assets",
-//         Record: {
+const store = useStore();
 
-//         }
-//       }
-//     }
-//   } catch (error) {
-//     console.log(error)
-//   }
-// }
+// Create Record
+async function createRecord() {
+  var sendSocketReq = {
+    Expiry: 20000,
+    Type: "REQUEST",
+    Request: {
+      Module: "MEMS",
+      ServiceCode: "BIOMD",
+      API: "CREATE_RECORD",
+    },
+  };
+  let res = await store.dispatch("sendHTTPReq", sendSocketReq);
+  if (res.Type === "REQUEST") {
+    console.log("Equipment Successfully Created");
+  } else {
+    console.log("Unable to Create New Asset Record");
+  }
+}
 
 // Clear User Input
 const clearContent = async () => {

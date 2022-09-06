@@ -18,6 +18,7 @@
             BtnName="Create Manufacturer"
             backgroundColor="#27AE60"
             class="mb-3"
+            @click="createRecord"
           />
 
           <Btn BtnName="Clear Content" />
@@ -28,6 +29,8 @@
 </template>
 
 <script setup>
+import { useStore } from "vuex";
+
 import ManufacturerInformation from "../BIOMD-MANUFACTURER/MANUFACTURER-ManufacturerInformation.vue";
 
 import Header from "../BIOMD-UI/UI-FormHeader.vue";
@@ -38,6 +41,26 @@ const emit = defineEmits(["updatePage"]);
 const goBack = () => {
   emit("updatePage", "landing");
 };
+
+const store = useStore();
+
+async function createRecord() {
+  var sendSocketReq = {
+    Expiry: 20000,
+    Type: "REQUEST",
+    Request: {
+      Module: "MEMS",
+      ServiceCode: "BIOMD",
+      API: "CREATE_RECORD",
+    },
+  };
+  let res = await store.dispatch("sendHTTPReq", sendSocketReq);
+  if (res.Type === "REQUEST") {
+    console.log("API Success...");
+  } else {
+    console.log("something went wrong");
+  }
+}
 </script>
 
 <style lang="scss" scoped></style>

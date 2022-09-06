@@ -89,6 +89,7 @@
           BtnName="Add Parent Asset"
           backgroundColor="#1266F1"
           :icon="'search'"
+          @click="addParent"
         />
       </div>
     </div>
@@ -97,6 +98,7 @@
 
 <script setup>
 import { ref, inject, provide } from "vue";
+import { useStore } from "vuex";
 
 import Btn from "../BIOMD-UI/UI-Btn.vue";
 import Input from "../BIOMD-UI/UI-Input.vue";
@@ -104,6 +106,26 @@ import Section from "../BIOMD-UI/UI-Section.vue";
 
 // Inject Asset Information
 const assetInfo = inject("assetInfo");
+
+const store = useStore();
+
+async function addParent() {
+  var sendSocketReq = {
+    Expiry: 20000,
+    Type: "REQUEST",
+    Request: {
+      Module: "MEMS",
+      ServiceCode: "BIOMD",
+      API: "FIND",
+    },
+  };
+  let res = await store.dispatch("sendHTTPReq", sendSocketReq);
+  if (res.Type === "REQUEST") {
+    console.log("Asset Parent Successfully Found");
+  } else {
+    console.log("Unable to Find Asset Parent");
+  }
+}
 
 const commonNameList = ref(["concentrator", "bp apparatus", "gun thermometer"]);
 const descriptionList = ref(null);
