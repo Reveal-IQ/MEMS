@@ -31,6 +31,7 @@
           BtnName="Add Personnel"
           backgroundColor="#1266F1"
           :icon="'search'"
+          @click="addRecord"
         />
       </div>
     </div>
@@ -38,8 +39,34 @@
 </template>
 
 <script setup>
+import { inject } from "vue";
+import { useStore } from "vuex";
+
 import Btn from "../BIOMD-UI/UI-Btn.vue";
 import Section from "../BIOMD-UI/UI-Section.vue";
+
+const modelInfo = inject("modelInfo");
+
+const store = useStore();
+
+// API Call
+async function addRecord() {
+  var sendSocketReq = {
+    Expiry: 20000,
+    Type: "REQUEST",
+    Request: {
+      Module: "MEMS",
+      ServiceCode: "BIOMD",
+      API: "FIND",
+    },
+  };
+  let res = await store.dispatch("sendHTTPReq", sendSocketReq);
+  if (res.Type === "REQUEST") {
+    console.log("API Success...");
+  } else {
+    console.log("Unable to Find Asset Parent");
+  }
+}
 </script>
 
 <style lang="scss" scoped>

@@ -14,7 +14,12 @@
       <div class="d-flex justify-content-center py-3">
         <!-- btn-green and a-link are custom css for MEMS check base.css -->
         <div class="">
-          <Btn BtnName="Create Vendor" backgroundColor="#27AE60" class="mb-3" />
+          <Btn
+            BtnName="Create Vendor"
+            backgroundColor="#27AE60"
+            class="mb-3"
+            @click="createRecord"
+          />
 
           <Btn BtnName="Clear Content" />
         </div>
@@ -24,15 +29,37 @@
 </template>
 
 <script setup>
+import { ref, inject } from "vue";
+import { useStore } from "vuex";
+
 import VendorInformation from "../BIOMD-VENDOR/VENDOR-VendorInformation.vue";
 import CustomerService from "../BIOMD-VENDOR/VENDOR-CustomerService.vue";
 
 import Header from "../BIOMD-UI/UI-FormHeader.vue";
 import Btn from "../BIOMD-UI/UI-Btn.vue";
 
-import { ref, inject } from "vue";
-
 const vendorInfo = inject("vendorInfo");
+
+const store = useStore();
+
+// API Call
+async function createRecord() {
+  var sendSocketReq = {
+    Expiry: 20000,
+    Type: "REQUEST",
+    Request: {
+      Module: "MEMS",
+      ServiceCode: "BIOMD",
+      API: "CREATE_RECORD",
+    },
+  };
+  let res = await store.dispatch("sendHTTPReq", sendSocketReq);
+  if (res.Type === "REQUEST") {
+    console.log("API Success...");
+  } else {
+    console.log("Something Went Wrong");
+  }
+}
 
 const emit = defineEmits(["updatePage"]);
 

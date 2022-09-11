@@ -89,7 +89,7 @@
           BtnName="Add Parent Asset"
           backgroundColor="#1266F1"
           :icon="'search'"
-          @click="addParent"
+          @click="addRecord"
         />
       </div>
     </div>
@@ -109,7 +109,7 @@ const assetInfo = inject("assetInfo");
 
 const store = useStore();
 
-async function addParent() {
+async function addRecord() {
   var sendSocketReq = {
     Expiry: 20000,
     Type: "REQUEST",
@@ -121,7 +121,7 @@ async function addParent() {
   };
   let res = await store.dispatch("sendHTTPReq", sendSocketReq);
   if (res.Type === "REQUEST") {
-    console.log("Asset Parent Successfully Found");
+    console.log("API Success...");
   } else {
     console.log("Unable to Find Asset Parent");
   }
