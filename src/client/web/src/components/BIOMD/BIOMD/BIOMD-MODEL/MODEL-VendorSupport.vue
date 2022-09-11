@@ -27,10 +27,16 @@
 
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 g-3">
       <div class="col">
-        <Btn
+        <!-- <Btn
           BtnName="Add Personnel"
           backgroundColor="#1266F1"
           :icon="'search'"
+          @click="addRecord"
+        /> -->
+        <Btn2
+          BtnName="Add Personnel"
+          backgroundColor="#1266F1"
+          :icon="'plus'"
           @click="addRecord"
         />
       </div>
@@ -42,7 +48,7 @@
 import { inject } from "vue";
 import { useStore } from "vuex";
 
-import Btn from "../BIOMD-UI/UI-Btn.vue";
+import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 import Section from "../BIOMD-UI/UI-Section.vue";
 
 const modelInfo = inject("modelInfo");

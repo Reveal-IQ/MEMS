@@ -1,7 +1,12 @@
 <template>
   <div class="container">
     <div class="d-flex flex-row justify-content-between">
-      <button @click="goBack" class="col-2 btn btn-secondary my-3">Back</button>
+      <Btn2
+        BtnName="Back"
+        :icon="'arrow-left'"
+        @click="goBack"
+        class="col-lg-2 col-md-3 col-sm-4 my-3"
+      />
     </div>
     <Header
       title="Create New Vendor"
@@ -37,6 +42,7 @@ import CustomerService from "../BIOMD-VENDOR/VENDOR-CustomerService.vue";
 
 import Header from "../BIOMD-UI/UI-FormHeader.vue";
 import Btn from "../BIOMD-UI/UI-Btn.vue";
+import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 
 const vendorInfo = inject("vendorInfo");
 

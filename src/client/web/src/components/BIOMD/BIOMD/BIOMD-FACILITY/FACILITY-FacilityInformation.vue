@@ -86,8 +86,8 @@
           />
         </div>
 
-        <div class="col-lg-2 align-self-center g-3">
-          <Btn BtnName="Generate GPS Coordinates" :icon="'globe'" />
+        <div class="col-lg-3 align-self-center g-3">
+          <Btn2 BtnName="Generate GPS Coordinates" :icon="'globe'" />
         </div>
 
         <!-- Department List -->
@@ -105,7 +105,7 @@
 </template>
 
 <script setup>
-import Btn from "../BIOMD-UI/UI-Btn.vue";
+import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 import Input from "../BIOMD-UI/UI-Input.vue";
 import Section from "../BIOMD-UI/UI-Section.vue";
 </script>

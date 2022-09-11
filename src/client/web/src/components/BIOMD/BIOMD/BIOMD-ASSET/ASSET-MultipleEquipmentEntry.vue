@@ -85,7 +85,7 @@
           {{ equipmentCount }}
         </span> -->
 
-        <button
+        <!-- <button
           type="button"
           class="btn btn-primary position-relative"
           @click="addEquipment"
@@ -97,7 +97,21 @@
             {{ equipmentCount }}
             <span class="visually-hidden">unread messages</span>
           </span>
-        </button>
+        </button> -->
+        <Btn2
+          BtnName="Add New Equipment"
+          backgroundColor="#1266F1"
+          :icon="'plus'"
+          @click="addEquipment"
+          class="position-relative"
+        >
+          <span
+            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+          >
+            {{ equipmentCount }}
+            <span class="visually-hidden">unread messages</span>
+          </span>
+        </Btn2>
       </div>
     </div>
   </Section>
@@ -107,6 +121,7 @@
 import { ref, inject } from "vue";
 
 import Btn from "../BIOMD-UI/UI-Btn.vue";
+import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 import Input from "../BIOMD-UI/UI-Input.vue";
 import Section from "../BIOMD-UI/UI-Section.vue";
 

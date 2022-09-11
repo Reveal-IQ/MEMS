@@ -38,19 +38,25 @@
         />
       </div>
     </div>
-    <div class="col pt-2 pb-2 pl-3 pr-3 p-3">
-      <Btn
+    <div class="col">
+      <!-- <Btn
         BtnName="Add New Contact"
         backgroundColor="#1266F1"
         :icon="'plus'"
         class=""
+      /> -->
+      <Btn2
+        BtnName="Add New Contact"
+        backgroundColor="#1266F1"
+        :icon="'plus'"
+        @click=""
       />
     </div>
   </Section>
 </template>
 
 <script setup>
-import Btn from "../BIOMD-UI/UI-Btn.vue";
+import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 import Input from "../BIOMD-UI/UI-Input.vue";
 import Section from "../BIOMD-UI/UI-Section.vue";
 </script>
