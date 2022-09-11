@@ -50,6 +50,7 @@
         backgroundColor="#1266F1"
         :icon="'plus'"
         @click=""
+        class="rounded-pill"
       />
     </div>
   </Section>

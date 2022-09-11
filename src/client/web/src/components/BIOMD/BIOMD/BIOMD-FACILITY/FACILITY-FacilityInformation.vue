@@ -87,7 +87,11 @@
         </div>
 
         <div class="col-lg-3 align-self-center g-3">
-          <Btn2 BtnName="Generate GPS Coordinates" :icon="'globe'" />
+          <Btn2
+            BtnName="Generate GPS Coordinates"
+            :icon="'globe'"
+            class="rounded-pill"
+          />
         </div>
 
         <!-- Department List -->

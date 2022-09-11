@@ -38,6 +38,7 @@
           backgroundColor="#1266F1"
           :icon="'plus'"
           @click="addRecord"
+          class="rounded-pill"
         />
       </div>
     </div>

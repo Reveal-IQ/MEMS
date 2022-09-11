@@ -40,7 +40,7 @@
       </div>
 
       <!-- Serial Number -->
-      <div class="col-lg-4 mb-3">
+      <div class="col-lg-3 mb-3">
         <Input
           label="Serial Number"
           type="text"
@@ -61,7 +61,7 @@
         </select>
       </div>
       <!-- Manufacturer -->
-      <div class="col-lg-4 mb-3">
+      <div class="col-lg-5 mb-3">
         <label for="manufacturerList" class="form-label">Manufacturer</label>
         <select
           id="manufacturerList"
@@ -73,7 +73,7 @@
       </div>
 
       <!-- Year of Manufacture -->
-      <div class="col-lg-4 mb-3">
+      <div class="col-lg-3 mb-3">
         <Input
           label="Year of manufacture"
           type="date"
@@ -84,7 +84,7 @@
       </div>
     </div>
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
-      <div class="col">
+      <div class="col-lg-12 col-md-6">
         <!-- <Btn
           BtnName="Add Parent Asset"
           backgroundColor="#1266F1"
@@ -96,6 +96,7 @@
           backgroundColor="#1266F1"
           :icon="'search'"
           @click="addRecord"
+          class="col-lg-3 col-md-12 rounded-pill"
         />
       </div>
     </div>

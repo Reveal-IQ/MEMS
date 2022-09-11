@@ -103,7 +103,7 @@
           backgroundColor="#1266F1"
           :icon="'plus'"
           @click="addEquipment"
-          class="position-relative"
+          class="position-relative rounded-pill"
         >
           <span
             class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
