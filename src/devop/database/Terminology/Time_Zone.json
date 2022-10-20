@@ -1,0 +1,2200 @@
+{
+    "Time_Zone": [
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "A",
+            "Time_Zone_Name": "Alpha Time Zone",
+            "Loci_Name_Country": "Military",
+            "UTC_Time_Zone": "UTC +1",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "ACDT",
+            "Time_Zone_Name": "Australian Central Daylight Time",
+            "Loci_Name_Country": "Australia",
+            "UTC_Time_Zone": "UTC +10:30",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "ACST",
+            "Time_Zone_Name": "Australian Central Standard Time",
+            "Loci_Name_Country": "Australia",
+            "UTC_Time_Zone": "UTC +9:30",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "ACT",
+            "Time_Zone_Name": "Acre Time",
+            "Loci_Name_Country": "South America",
+            "UTC_Time_Zone": "UTC -5",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "ACT",
+            "Time_Zone_Name": "Australian Central Time",
+            "Loci_Name_Country": "Australia",
+            "UTC_Time_Zone": "UTC +9:30 / +10:30",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "ACWST",
+            "Time_Zone_Name": "Australian Central Western Standard Time",
+            "Loci_Name_Country": "Australia",
+            "UTC_Time_Zone": "UTC +8:45",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "ADT",
+            "Time_Zone_Name": "Arabia Daylight Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +4",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "ADT",
+            "Time_Zone_Name": "Atlantic Daylight Time",
+            "Loci_Name_Country": "North America",
+            "UTC_Time_Zone": "UTC -3",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "AEDT",
+            "Time_Zone_Name": "Australian Eastern Daylight Time",
+            "Loci_Name_Country": "Australia",
+            "UTC_Time_Zone": "UTC +11",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "AEST",
+            "Time_Zone_Name": "Australian Eastern Standard Time",
+            "Loci_Name_Country": "Australia",
+            "UTC_Time_Zone": "UTC +10",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "AET",
+            "Time_Zone_Name": "Australian Eastern Time",
+            "Loci_Name_Country": "Australia",
+            "UTC_Time_Zone": "UTC +10:00 / +11:00",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "AFT",
+            "Time_Zone_Name": "Afghanistan Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +4:30",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "AKDT",
+            "Time_Zone_Name": "Alaska Daylight Time",
+            "Loci_Name_Country": "North America",
+            "UTC_Time_Zone": "UTC -8",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "AKST",
+            "Time_Zone_Name": "Alaska Standard Time",
+            "Loci_Name_Country": "North America",
+            "UTC_Time_Zone": "UTC -9",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "ALMT",
+            "Time_Zone_Name": "Alma-Ata Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +6",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "AMST",
+            "Time_Zone_Name": "Amazon Summer Time",
+            "Loci_Name_Country": "South America",
+            "UTC_Time_Zone": "UTC -3",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "AMST",
+            "Time_Zone_Name": "Armenia Summer Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +5",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "AMT",
+            "Time_Zone_Name": "Amazon Time",
+            "Loci_Name_Country": "South America",
+            "UTC_Time_Zone": "UTC -4",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "AMT",
+            "Time_Zone_Name": "Armenia Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +4",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "ANAST",
+            "Time_Zone_Name": "Anadyr Summer Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +12",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "ANAT",
+            "Time_Zone_Name": "Anadyr Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +12",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "AQTT",
+            "Time_Zone_Name": "Aqtobe Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +5",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "ART",
+            "Time_Zone_Name": "Argentina Time",
+            "Loci_Name_Country": "Antarctica",
+            "UTC_Time_Zone": "UTC -3",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "AST",
+            "Time_Zone_Name": "Arabia Standard Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +3",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "AST",
+            "Time_Zone_Name": "Atlantic Standard Time",
+            "Loci_Name_Country": "North America",
+            "UTC_Time_Zone": "UTC -4",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "AT",
+            "Time_Zone_Name": "Atlantic Time",
+            "Loci_Name_Country": "North America",
+            "UTC_Time_Zone": "UTC -4:00 / -3:00",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "AWDT",
+            "Time_Zone_Name": "Australian Western Daylight Time",
+            "Loci_Name_Country": "Australia",
+            "UTC_Time_Zone": "UTC +9",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "AWST",
+            "Time_Zone_Name": "Australian Western Standard Time",
+            "Loci_Name_Country": "Australia",
+            "UTC_Time_Zone": "UTC +8",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "AZOST",
+            "Time_Zone_Name": "Azores Summer Time",
+            "Loci_Name_Country": "Atlantic",
+            "UTC_Time_Zone": "UTC +0",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "AZOT",
+            "Time_Zone_Name": "Azores Time",
+            "Loci_Name_Country": "Atlantic",
+            "UTC_Time_Zone": "UTC -1",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "AZST",
+            "Time_Zone_Name": "Azerbaijan Summer Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +5",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "AZT",
+            "Time_Zone_Name": "Azerbaijan Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +4",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "AoE",
+            "Time_Zone_Name": "Anywhere on Earth",
+            "Loci_Name_Country": "Pacific",
+            "UTC_Time_Zone": "UTC -12",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "B",
+            "Time_Zone_Name": "Bravo Time Zone",
+            "Loci_Name_Country": "Military",
+            "UTC_Time_Zone": "UTC +2",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "BNT",
+            "Time_Zone_Name": "Brunei Darussalam Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +8",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "BOT",
+            "Time_Zone_Name": "Bolivia Time",
+            "Loci_Name_Country": "South America",
+            "UTC_Time_Zone": "UTC -4",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "BRST",
+            "Time_Zone_Name": "Brasília Summer Time",
+            "Loci_Name_Country": "South America",
+            "UTC_Time_Zone": "UTC -2",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "BRT",
+            "Time_Zone_Name": "Brasília Time",
+            "Loci_Name_Country": "South America",
+            "UTC_Time_Zone": "UTC -3",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "BST",
+            "Time_Zone_Name": "Bangladesh Standard Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +6",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "BST",
+            "Time_Zone_Name": "Bougainville Standard Time",
+            "Loci_Name_Country": "Pacific",
+            "UTC_Time_Zone": "UTC +11",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "BST",
+            "Time_Zone_Name": "British Summer Time",
+            "Loci_Name_Country": "Europe",
+            "UTC_Time_Zone": "UTC +1",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "BTT",
+            "Time_Zone_Name": "Bhutan Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +6",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "C",
+            "Time_Zone_Name": "Charlie Time Zone",
+            "Loci_Name_Country": "Military",
+            "UTC_Time_Zone": "UTC +3",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "CAST",
+            "Time_Zone_Name": "Casey Time",
+            "Loci_Name_Country": "Antarctica",
+            "UTC_Time_Zone": "UTC +8",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "CAT",
+            "Time_Zone_Name": "Central Africa Time",
+            "Loci_Name_Country": "Africa",
+            "UTC_Time_Zone": "UTC +2",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "CCT",
+            "Time_Zone_Name": "Cocos Islands Time",
+            "Loci_Name_Country": "Indian Ocean",
+            "UTC_Time_Zone": "UTC +6:30",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "CDT",
+            "Time_Zone_Name": "Central Daylight Time",
+            "Loci_Name_Country": "North America",
+            "UTC_Time_Zone": "UTC -5",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "CDT",
+            "Time_Zone_Name": "Cuba Daylight Time",
+            "Loci_Name_Country": "Caribbean",
+            "UTC_Time_Zone": "UTC -4",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "CEST",
+            "Time_Zone_Name": "Central European Summer Time",
+            "Loci_Name_Country": "Europe",
+            "UTC_Time_Zone": "UTC +2",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "CET",
+            "Time_Zone_Name": "Central European Time",
+            "Loci_Name_Country": "Europe",
+            "UTC_Time_Zone": "UTC +1",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "CHADT",
+            "Time_Zone_Name": "Chatham Island Daylight Time",
+            "Loci_Name_Country": "Pacific",
+            "UTC_Time_Zone": "UTC +13:45",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "CHAST",
+            "Time_Zone_Name": "Chatham Island Standard Time",
+            "Loci_Name_Country": "Pacific",
+            "UTC_Time_Zone": "UTC +12:45",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "CHOST",
+            "Time_Zone_Name": "Choibalsan Summer Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +9",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "CHOT",
+            "Time_Zone_Name": "Choibalsan Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +8",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "CHUT",
+            "Time_Zone_Name": "Chuuk Time",
+            "Loci_Name_Country": "Pacific",
+            "UTC_Time_Zone": "UTC +10",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "CIDST",
+            "Time_Zone_Name": "Cayman Islands Daylight Saving Time",
+            "Loci_Name_Country": "Caribbean",
+            "UTC_Time_Zone": "UTC -4",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "CIST",
+            "Time_Zone_Name": "Cayman Islands Standard Time",
+            "Loci_Name_Country": "Caribbean",
+            "UTC_Time_Zone": "UTC -5",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "CKT",
+            "Time_Zone_Name": "Cook Island Time",
+            "Loci_Name_Country": "Pacific",
+            "UTC_Time_Zone": "UTC -10",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "CLST",
+            "Time_Zone_Name": "Chile Summer Time",
+            "Loci_Name_Country": "South America",
+            "UTC_Time_Zone": "UTC -3",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "CLT",
+            "Time_Zone_Name": "Chile Standard Time",
+            "Loci_Name_Country": "South America",
+            "UTC_Time_Zone": "UTC -4",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "COT",
+            "Time_Zone_Name": "Colombia Time",
+            "Loci_Name_Country": "South America",
+            "UTC_Time_Zone": "UTC -5",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "CST",
+            "Time_Zone_Name": "Central Standard Time",
+            "Loci_Name_Country": "North America",
+            "UTC_Time_Zone": "UTC -6",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "CST",
+            "Time_Zone_Name": "China Standard Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +8",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "CST",
+            "Time_Zone_Name": "Cuba Standard Time",
+            "Loci_Name_Country": "Caribbean",
+            "UTC_Time_Zone": "UTC -5",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "CT",
+            "Time_Zone_Name": "Central Time",
+            "Loci_Name_Country": "North America",
+            "UTC_Time_Zone": "UTC -6:00 / -5:00",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "CVT",
+            "Time_Zone_Name": "Cape Verde Time",
+            "Loci_Name_Country": "Africa",
+            "UTC_Time_Zone": "UTC -1",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "CXT",
+            "Time_Zone_Name": "Christmas Island Time",
+            "Loci_Name_Country": "Australia",
+            "UTC_Time_Zone": "UTC +7",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "ChST",
+            "Time_Zone_Name": "Chamorro Standard Time",
+            "Loci_Name_Country": "Pacific",
+            "UTC_Time_Zone": "UTC +10",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "D",
+            "Time_Zone_Name": "Delta Time Zone",
+            "Loci_Name_Country": "Military",
+            "UTC_Time_Zone": "UTC +4",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "DAVT",
+            "Time_Zone_Name": "Davis Time",
+            "Loci_Name_Country": "Antarctica",
+            "UTC_Time_Zone": "UTC +7",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "DDUT",
+            "Time_Zone_Name": "Dumont-d'Urville Time",
+            "Loci_Name_Country": "Antarctica",
+            "UTC_Time_Zone": "UTC +10",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "E",
+            "Time_Zone_Name": "Echo Time Zone",
+            "Loci_Name_Country": "Military",
+            "UTC_Time_Zone": "UTC +5",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "EASST",
+            "Time_Zone_Name": "Easter Island Summer Time",
+            "Loci_Name_Country": "Pacific",
+            "UTC_Time_Zone": "UTC -5",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "EAST",
+            "Time_Zone_Name": "Easter Island Standard Time",
+            "Loci_Name_Country": "Pacific",
+            "UTC_Time_Zone": "UTC -6",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "EAT",
+            "Time_Zone_Name": "Eastern Africa Time",
+            "Loci_Name_Country": "Africa",
+            "UTC_Time_Zone": "UTC +3",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "ECT",
+            "Time_Zone_Name": "Ecuador Time",
+            "Loci_Name_Country": "South America",
+            "UTC_Time_Zone": "UTC -5",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "EDT",
+            "Time_Zone_Name": "Eastern Daylight Time",
+            "Loci_Name_Country": "North America",
+            "UTC_Time_Zone": "UTC -4",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "EEST",
+            "Time_Zone_Name": "Eastern European Summer Time",
+            "Loci_Name_Country": "Europe",
+            "UTC_Time_Zone": "UTC +3",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "EET",
+            "Time_Zone_Name": "Eastern European Time",
+            "Loci_Name_Country": "Europe",
+            "UTC_Time_Zone": "UTC +2",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "EGST",
+            "Time_Zone_Name": "Eastern Greenland Summer Time",
+            "Loci_Name_Country": "North America",
+            "UTC_Time_Zone": "UTC +0",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "EGT",
+            "Time_Zone_Name": "East Greenland Time",
+            "Loci_Name_Country": "North America",
+            "UTC_Time_Zone": "UTC -1",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "EST",
+            "Time_Zone_Name": "Eastern Standard Time",
+            "Loci_Name_Country": "North America",
+            "UTC_Time_Zone": "UTC -5",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "ET",
+            "Time_Zone_Name": "Eastern Time",
+            "Loci_Name_Country": "North America",
+            "UTC_Time_Zone": "UTC -5:00 / -4:00",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "F",
+            "Time_Zone_Name": "Foxtrot Time Zone",
+            "Loci_Name_Country": "Military",
+            "UTC_Time_Zone": "UTC +6",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "FET",
+            "Time_Zone_Name": "Further-Eastern European Time",
+            "Loci_Name_Country": "Europe",
+            "UTC_Time_Zone": "UTC +3",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "FJST",
+            "Time_Zone_Name": "Fiji Summer Time",
+            "Loci_Name_Country": "Pacific",
+            "UTC_Time_Zone": "UTC +13",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "FJT",
+            "Time_Zone_Name": "Fiji Time",
+            "Loci_Name_Country": "Pacific",
+            "UTC_Time_Zone": "UTC +12",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "FKST",
+            "Time_Zone_Name": "Falkland Islands Summer Time",
+            "Loci_Name_Country": "South America",
+            "UTC_Time_Zone": "UTC -3",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "FKT",
+            "Time_Zone_Name": "Falkland Island Time",
+            "Loci_Name_Country": "South America",
+            "UTC_Time_Zone": "UTC -4",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "FNT",
+            "Time_Zone_Name": "Fernando de Noronha Time",
+            "Loci_Name_Country": "South America",
+            "UTC_Time_Zone": "UTC -2",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "G",
+            "Time_Zone_Name": "Golf Time Zone",
+            "Loci_Name_Country": "Military",
+            "UTC_Time_Zone": "UTC +7",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "GALT",
+            "Time_Zone_Name": "Galapagos Time",
+            "Loci_Name_Country": "Pacific",
+            "UTC_Time_Zone": "UTC -6",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "GAMT",
+            "Time_Zone_Name": "Gambier Time",
+            "Loci_Name_Country": "Pacific",
+            "UTC_Time_Zone": "UTC -9",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "GET",
+            "Time_Zone_Name": "Georgia Standard Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +4",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "GFT",
+            "Time_Zone_Name": "French Guiana Time",
+            "Loci_Name_Country": "South America",
+            "UTC_Time_Zone": "UTC -3",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "GILT",
+            "Time_Zone_Name": "Gilbert Island Time",
+            "Loci_Name_Country": "Pacific",
+            "UTC_Time_Zone": "UTC +12",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "GMT",
+            "Time_Zone_Name": "Greenwich Mean Time",
+            "Loci_Name_Country": "Europe",
+            "UTC_Time_Zone": "UTC +0",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "GST",
+            "Time_Zone_Name": "Gulf Standard Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +4",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "GST",
+            "Time_Zone_Name": "South Georgia Time",
+            "Loci_Name_Country": "South America",
+            "UTC_Time_Zone": "UTC -2",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "GYT",
+            "Time_Zone_Name": "Guyana Time",
+            "Loci_Name_Country": "South America",
+            "UTC_Time_Zone": "UTC -4",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "H",
+            "Time_Zone_Name": "Hotel Time Zone",
+            "Loci_Name_Country": "Military",
+            "UTC_Time_Zone": "UTC +8",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "HDT",
+            "Time_Zone_Name": "Hawaii-Aleutian Daylight Time",
+            "Loci_Name_Country": "North America",
+            "UTC_Time_Zone": "UTC -9",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "HKT",
+            "Time_Zone_Name": "Hong Kong Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +8",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "HOVST",
+            "Time_Zone_Name": "Hovd Summer Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +8",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "HOVT",
+            "Time_Zone_Name": "Hovd Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +7",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "HST",
+            "Time_Zone_Name": "Hawaii Standard Time",
+            "Loci_Name_Country": "North America",
+            "UTC_Time_Zone": "UTC -10",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "I",
+            "Time_Zone_Name": "India Time Zone",
+            "Loci_Name_Country": "Military",
+            "UTC_Time_Zone": "UTC +9",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "ICT",
+            "Time_Zone_Name": "Indochina Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +7",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "IDT",
+            "Time_Zone_Name": "Israel Daylight Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +3",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "IOT",
+            "Time_Zone_Name": "Indian Chagos Time",
+            "Loci_Name_Country": "Indian Ocean",
+            "UTC_Time_Zone": "UTC +6",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "IRDT",
+            "Time_Zone_Name": "Iran Daylight Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +4:30",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "IRKST",
+            "Time_Zone_Name": "Irkutsk Summer Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +9",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "IRKT",
+            "Time_Zone_Name": "Irkutsk Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +8",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "IRST",
+            "Time_Zone_Name": "Iran Standard Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +3:30",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "IST",
+            "Time_Zone_Name": "India Standard Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +5:30",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "IST",
+            "Time_Zone_Name": "Irish Standard Time",
+            "Loci_Name_Country": "Europe",
+            "UTC_Time_Zone": "UTC +1",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "IST",
+            "Time_Zone_Name": "Israel Standard Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +2",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "JST",
+            "Time_Zone_Name": "Japan Standard Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +9",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "K",
+            "Time_Zone_Name": "Kilo Time Zone",
+            "Loci_Name_Country": "Military",
+            "UTC_Time_Zone": "UTC +10",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "KGT",
+            "Time_Zone_Name": "Kyrgyzstan Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +6",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "KOST",
+            "Time_Zone_Name": "Kosrae Time",
+            "Loci_Name_Country": "Pacific",
+            "UTC_Time_Zone": "UTC +11",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "KRAST",
+            "Time_Zone_Name": "Krasnoyarsk Summer Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +8",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "KRAT",
+            "Time_Zone_Name": "Krasnoyarsk Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +7",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "KST",
+            "Time_Zone_Name": "Korea Standard Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +9",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "KUYT",
+            "Time_Zone_Name": "Kuybyshev Time",
+            "Loci_Name_Country": "Europe",
+            "UTC_Time_Zone": "UTC +4",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "L",
+            "Time_Zone_Name": "Lima Time Zone",
+            "Loci_Name_Country": "Military",
+            "UTC_Time_Zone": "UTC +11",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "LHDT",
+            "Time_Zone_Name": "Lord Howe Daylight Time",
+            "Loci_Name_Country": "Australia",
+            "UTC_Time_Zone": "UTC +11",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "LHST",
+            "Time_Zone_Name": "Lord Howe Standard Time",
+            "Loci_Name_Country": "Australia",
+            "UTC_Time_Zone": "UTC +10:30",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "LINT",
+            "Time_Zone_Name": "Line Islands Time",
+            "Loci_Name_Country": "Pacific",
+            "UTC_Time_Zone": "UTC +14",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "M",
+            "Time_Zone_Name": "Mike Time Zone",
+            "Loci_Name_Country": "Military",
+            "UTC_Time_Zone": "UTC +12",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "MAGST",
+            "Time_Zone_Name": "Magadan Summer Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +12",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "MAGT",
+            "Time_Zone_Name": "Magadan Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +11",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "MART",
+            "Time_Zone_Name": "Marquesas Time",
+            "Loci_Name_Country": "Pacific",
+            "UTC_Time_Zone": "UTC -9:30",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "MAWT",
+            "Time_Zone_Name": "Mawson Time",
+            "Loci_Name_Country": "Antarctica",
+            "UTC_Time_Zone": "UTC +5",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "MDT",
+            "Time_Zone_Name": "Mountain Daylight Time",
+            "Loci_Name_Country": "North America",
+            "UTC_Time_Zone": "UTC -6",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "MHT",
+            "Time_Zone_Name": "Marshall Islands Time",
+            "Loci_Name_Country": "Pacific",
+            "UTC_Time_Zone": "UTC +12",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "MMT",
+            "Time_Zone_Name": "Myanmar Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +6:30",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "MSD",
+            "Time_Zone_Name": "Moscow Daylight Time",
+            "Loci_Name_Country": "Europe",
+            "UTC_Time_Zone": "UTC +4",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "MSK",
+            "Time_Zone_Name": "Moscow Standard Time",
+            "Loci_Name_Country": "Europe",
+            "UTC_Time_Zone": "UTC +3",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "MST",
+            "Time_Zone_Name": "Mountain Standard Time",
+            "Loci_Name_Country": "North America",
+            "UTC_Time_Zone": "UTC -7",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "MT",
+            "Time_Zone_Name": "Mountain Time",
+            "Loci_Name_Country": "North America",
+            "UTC_Time_Zone": "UTC -7:00 / -6:00",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "MUT",
+            "Time_Zone_Name": "Mauritius Time",
+            "Loci_Name_Country": "Africa",
+            "UTC_Time_Zone": "UTC +4",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "MVT",
+            "Time_Zone_Name": "Maldives Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +5",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "MYT",
+            "Time_Zone_Name": "Malaysia Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +8",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "N",
+            "Time_Zone_Name": "November Time Zone",
+            "Loci_Name_Country": "Military",
+            "UTC_Time_Zone": "UTC -1",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "NCT",
+            "Time_Zone_Name": "New Caledonia Time",
+            "Loci_Name_Country": "Pacific",
+            "UTC_Time_Zone": "UTC +11",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "NDT",
+            "Time_Zone_Name": "Newfoundland Daylight Time",
+            "Loci_Name_Country": "North America",
+            "UTC_Time_Zone": "UTC -2:30",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "NFDT",
+            "Time_Zone_Name": "Norfolk Daylight Time",
+            "Loci_Name_Country": "Australia",
+            "UTC_Time_Zone": "UTC +12",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "NFT",
+            "Time_Zone_Name": "Norfolk Time",
+            "Loci_Name_Country": "Australia",
+            "UTC_Time_Zone": "UTC +11",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "NOVST",
+            "Time_Zone_Name": "Novosibirsk Summer Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +7",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "NOVT",
+            "Time_Zone_Name": "Novosibirsk Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +7",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "NPT",
+            "Time_Zone_Name": "Nepal Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +5:45",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "NRT",
+            "Time_Zone_Name": "Nauru Time",
+            "Loci_Name_Country": "Pacific",
+            "UTC_Time_Zone": "UTC +12",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "NST",
+            "Time_Zone_Name": "Newfoundland Standard Time",
+            "Loci_Name_Country": "North America",
+            "UTC_Time_Zone": "UTC -3:30",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "NUT",
+            "Time_Zone_Name": "Niue Time",
+            "Loci_Name_Country": "Pacific",
+            "UTC_Time_Zone": "UTC -11",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "NZDT",
+            "Time_Zone_Name": "New Zealand Daylight Time",
+            "Loci_Name_Country": "Pacific",
+            "UTC_Time_Zone": "UTC +13",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "NZST",
+            "Time_Zone_Name": "New Zealand Standard Time",
+            "Loci_Name_Country": "Pacific",
+            "UTC_Time_Zone": "UTC +12",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "O",
+            "Time_Zone_Name": "Oscar Time Zone",
+            "Loci_Name_Country": "Military",
+            "UTC_Time_Zone": "UTC -2",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "OMSST",
+            "Time_Zone_Name": "Omsk Summer Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +7",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "OMST",
+            "Time_Zone_Name": "Omsk Standard Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +6",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "ORAT",
+            "Time_Zone_Name": "Oral Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +5",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "P",
+            "Time_Zone_Name": "Papa Time Zone",
+            "Loci_Name_Country": "Military",
+            "UTC_Time_Zone": "UTC -3",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "PDT",
+            "Time_Zone_Name": "Pacific Daylight Time",
+            "Loci_Name_Country": "North America",
+            "UTC_Time_Zone": "UTC -7",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "PET",
+            "Time_Zone_Name": "Peru Time",
+            "Loci_Name_Country": "South America",
+            "UTC_Time_Zone": "UTC -5",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "PETST",
+            "Time_Zone_Name": "Kamchatka Summer Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +12",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "PETT",
+            "Time_Zone_Name": "Kamchatka Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +12",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "PGT",
+            "Time_Zone_Name": "Papua New Guinea Time",
+            "Loci_Name_Country": "Pacific",
+            "UTC_Time_Zone": "UTC +10",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "PHOT",
+            "Time_Zone_Name": "Phoenix Island Time",
+            "Loci_Name_Country": "Pacific",
+            "UTC_Time_Zone": "UTC +13",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "PHT",
+            "Time_Zone_Name": "Philippine Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +8",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "PKT",
+            "Time_Zone_Name": "Pakistan Standard Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +5",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "PMDT",
+            "Time_Zone_Name": "Pierre & Miquelon Daylight Time",
+            "Loci_Name_Country": "North America",
+            "UTC_Time_Zone": "UTC -2",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "PMST",
+            "Time_Zone_Name": "Pierre & Miquelon Standard Time",
+            "Loci_Name_Country": "North America",
+            "UTC_Time_Zone": "UTC -3",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "PONT",
+            "Time_Zone_Name": "Pohnpei Standard Time",
+            "Loci_Name_Country": "Pacific",
+            "UTC_Time_Zone": "UTC +11",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "PST",
+            "Time_Zone_Name": "Pacific Standard Time",
+            "Loci_Name_Country": "North America",
+            "UTC_Time_Zone": "UTC -8",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "PST",
+            "Time_Zone_Name": "Pitcairn Standard Time",
+            "Loci_Name_Country": "Pacific",
+            "UTC_Time_Zone": "UTC -8",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "PT",
+            "Time_Zone_Name": "Pacific Time",
+            "Loci_Name_Country": "North America",
+            "UTC_Time_Zone": "UTC -8:00 / -7:00",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "PWT",
+            "Time_Zone_Name": "Palau Time",
+            "Loci_Name_Country": "Pacific",
+            "UTC_Time_Zone": "UTC +9",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "PYST",
+            "Time_Zone_Name": "Paraguay Summer Time",
+            "Loci_Name_Country": "South America",
+            "UTC_Time_Zone": "UTC -3",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "PYT",
+            "Time_Zone_Name": "Paraguay Time",
+            "Loci_Name_Country": "South America",
+            "UTC_Time_Zone": "UTC -4",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "PYT",
+            "Time_Zone_Name": "Pyongyang Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +8:30",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "Q",
+            "Time_Zone_Name": "Quebec Time Zone",
+            "Loci_Name_Country": "Military",
+            "UTC_Time_Zone": "UTC -4",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "QYZT",
+            "Time_Zone_Name": "Qyzylorda Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +6",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "R",
+            "Time_Zone_Name": "Romeo Time Zone",
+            "Loci_Name_Country": "Military",
+            "UTC_Time_Zone": "UTC -5",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "RET",
+            "Time_Zone_Name": "Reunion Time",
+            "Loci_Name_Country": "Africa",
+            "UTC_Time_Zone": "UTC +4",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "ROTT",
+            "Time_Zone_Name": "Rothera Time",
+            "Loci_Name_Country": "Antarctica",
+            "UTC_Time_Zone": "UTC -3",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "S",
+            "Time_Zone_Name": "Sierra Time Zone",
+            "Loci_Name_Country": "Military",
+            "UTC_Time_Zone": "UTC -6",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "SAKT",
+            "Time_Zone_Name": "Sakhalin Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +11",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "SAMT",
+            "Time_Zone_Name": "Samara Time",
+            "Loci_Name_Country": "Europe",
+            "UTC_Time_Zone": "UTC +4",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "SAST",
+            "Time_Zone_Name": "South Africa Standard Time",
+            "Loci_Name_Country": "Africa",
+            "UTC_Time_Zone": "UTC +2",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "SBT",
+            "Time_Zone_Name": "Solomon Islands Time",
+            "Loci_Name_Country": "Pacific",
+            "UTC_Time_Zone": "UTC +11",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "SCT",
+            "Time_Zone_Name": "Seychelles Time",
+            "Loci_Name_Country": "Africa",
+            "UTC_Time_Zone": "UTC +4",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "SGT",
+            "Time_Zone_Name": "Singapore Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +8",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "SRET",
+            "Time_Zone_Name": "Srednekolymsk Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +11",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "SRT",
+            "Time_Zone_Name": "Suriname Time",
+            "Loci_Name_Country": "South America",
+            "UTC_Time_Zone": "UTC -3",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "SST",
+            "Time_Zone_Name": "Samoa Standard Time",
+            "Loci_Name_Country": "Pacific",
+            "UTC_Time_Zone": "UTC -11",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "SYOT",
+            "Time_Zone_Name": "Syowa Time",
+            "Loci_Name_Country": "Antarctica",
+            "UTC_Time_Zone": "UTC +3",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "T",
+            "Time_Zone_Name": "Tango Time Zone",
+            "Loci_Name_Country": "Military",
+            "UTC_Time_Zone": "UTC -7",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "TAHT",
+            "Time_Zone_Name": "Tahiti Time",
+            "Loci_Name_Country": "Pacific",
+            "UTC_Time_Zone": "UTC -10",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "TFT",
+            "Time_Zone_Name": "French Southern and Antarctic Time",
+            "Loci_Name_Country": "Indian Ocean",
+            "UTC_Time_Zone": "UTC +5",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "TJT",
+            "Time_Zone_Name": "Tajikistan Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +5",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "TKT",
+            "Time_Zone_Name": "Tokelau Time",
+            "Loci_Name_Country": "Pacific",
+            "UTC_Time_Zone": "UTC +13",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "TLT",
+            "Time_Zone_Name": "East Timor Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +9",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "TMT",
+            "Time_Zone_Name": "Turkmenistan Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +5",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "TOST",
+            "Time_Zone_Name": "Tonga Summer Time",
+            "Loci_Name_Country": "Pacific",
+            "UTC_Time_Zone": "UTC +14",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "TOT",
+            "Time_Zone_Name": "Tonga Time",
+            "Loci_Name_Country": "Pacific",
+            "UTC_Time_Zone": "UTC +13",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "TRT",
+            "Time_Zone_Name": "Turkey Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +3",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "TVT",
+            "Time_Zone_Name": "Tuvalu Time",
+            "Loci_Name_Country": "Pacific",
+            "UTC_Time_Zone": "UTC +12",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "U",
+            "Time_Zone_Name": "Uniform Time Zone",
+            "Loci_Name_Country": "Military",
+            "UTC_Time_Zone": "UTC -8",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "ULAST",
+            "Time_Zone_Name": "Ulaanbaatar Summer Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +9",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "ULAT",
+            "Time_Zone_Name": "Ulaanbaatar Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +8",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "UTC",
+            "Time_Zone_Name": "Coordinated Universal Time",
+            "Loci_Name_Country": "Worldwide",
+            "UTC_Time_Zone": "UTC",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "UYST",
+            "Time_Zone_Name": "Uruguay Summer Time",
+            "Loci_Name_Country": "South America",
+            "UTC_Time_Zone": "UTC -2",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "UYT",
+            "Time_Zone_Name": "Uruguay Time",
+            "Loci_Name_Country": "South America",
+            "UTC_Time_Zone": "UTC -3",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "UZT",
+            "Time_Zone_Name": "Uzbekistan Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +5",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "V",
+            "Time_Zone_Name": "Victor Time Zone",
+            "Loci_Name_Country": "Military",
+            "UTC_Time_Zone": "UTC -9",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "VET",
+            "Time_Zone_Name": "Venezuelan Standard Time",
+            "Loci_Name_Country": "South America",
+            "UTC_Time_Zone": "UTC -4",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "VLAST",
+            "Time_Zone_Name": "Vladivostok Summer Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +11",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "VLAT",
+            "Time_Zone_Name": "Vladivostok Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +10",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "VOST",
+            "Time_Zone_Name": "Vostok Time",
+            "Loci_Name_Country": "Antarctica",
+            "UTC_Time_Zone": "UTC +6",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "VUT",
+            "Time_Zone_Name": "Vanuatu Time",
+            "Loci_Name_Country": "Pacific",
+            "UTC_Time_Zone": "UTC +11",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "W",
+            "Time_Zone_Name": "Whiskey Time Zone",
+            "Loci_Name_Country": "Military",
+            "UTC_Time_Zone": "UTC -10",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "WAKT",
+            "Time_Zone_Name": "Wake Time",
+            "Loci_Name_Country": "Pacific",
+            "UTC_Time_Zone": "UTC +12",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "WARST",
+            "Time_Zone_Name": "Western Argentine Summer Time",
+            "Loci_Name_Country": "South America",
+            "UTC_Time_Zone": "UTC -3",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "WAST",
+            "Time_Zone_Name": "West Africa Summer Time",
+            "Loci_Name_Country": "Africa",
+            "UTC_Time_Zone": "UTC +2",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "WAT",
+            "Time_Zone_Name": "West Africa Time",
+            "Loci_Name_Country": "Africa",
+            "UTC_Time_Zone": "UTC +1",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "WEST",
+            "Time_Zone_Name": "Western European Summer Time",
+            "Loci_Name_Country": "Europe",
+            "UTC_Time_Zone": "UTC +1",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "WET",
+            "Time_Zone_Name": "Western European Time",
+            "Loci_Name_Country": "Europe",
+            "UTC_Time_Zone": "UTC +0",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "WFT",
+            "Time_Zone_Name": "Wallis and Futuna Time",
+            "Loci_Name_Country": "Pacific",
+            "UTC_Time_Zone": "UTC +12",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "WGST",
+            "Time_Zone_Name": "Western Greenland Summer Time",
+            "Loci_Name_Country": "North America",
+            "UTC_Time_Zone": "UTC -2",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "WGT",
+            "Time_Zone_Name": "West Greenland Time",
+            "Loci_Name_Country": "North America",
+            "UTC_Time_Zone": "UTC -3",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "WIB",
+            "Time_Zone_Name": "Western Indonesian Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +7",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "WIT",
+            "Time_Zone_Name": "Eastern Indonesian Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +9",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "WITA",
+            "Time_Zone_Name": "Central Indonesian Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +8",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "WST",
+            "Time_Zone_Name": "West Samoa Time",
+            "Loci_Name_Country": "Pacific",
+            "UTC_Time_Zone": "UTC +14",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "WST",
+            "Time_Zone_Name": "Western Sahara Summer Time",
+            "Loci_Name_Country": "Africa",
+            "UTC_Time_Zone": "UTC +1",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "WT",
+            "Time_Zone_Name": "Western Sahara Standard Time",
+            "Loci_Name_Country": "Africa",
+            "UTC_Time_Zone": "UTC +0",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "X",
+            "Time_Zone_Name": "X-ray Time Zone",
+            "Loci_Name_Country": "Military",
+            "UTC_Time_Zone": "UTC -11",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "Y",
+            "Time_Zone_Name": "Yankee Time Zone",
+            "Loci_Name_Country": "Military",
+            "UTC_Time_Zone": "UTC -12",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "YAKST",
+            "Time_Zone_Name": "Yakutsk Summer Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +10",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "YAKT",
+            "Time_Zone_Name": "Yakutsk Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +9",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "YAPT",
+            "Time_Zone_Name": "Yap Time",
+            "Loci_Name_Country": "Pacific",
+            "UTC_Time_Zone": "UTC +10",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "YEKST",
+            "Time_Zone_Name": "Yekaterinburg Summer Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +6",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "YEKT",
+            "Time_Zone_Name": "Yekaterinburg Time",
+            "Loci_Name_Country": "Asia",
+            "UTC_Time_Zone": "UTC +5",
+            "Version": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "TIMZN",
+            "Type_Name": "Time Zone",
+            "Time_Zone_Code": "Z",
+            "Time_Zone_Name": "Zulu Time Zone",
+            "Loci_Name_Country": "Military",
+            "UTC_Time_Zone": "UTC +0",
+            "Version": "20201013-V0.1"
+        }
+    ]
+}

@@ -1,0 +1,146 @@
+/*-- 
+************************************
+*  Created By : Reveal IQ          *
+*  Author     : Bharath Kumar      *
+*  Date       : 20 MAY 2021        *
+*  Version    : 0.5.4.00.03-0222   *
+************************************
+--*/
+@import "../../../../GLOBAL/Styles/font-style.scss";
+@import "../../../../GLOBAL/Styles/colors.scss";
+
+$border-radius: 0.25rem;
+.paddingleft {
+	padding-left: 0.9em;
+}
+.hr {
+	width: 80%;
+	height: 0.2px;
+	align-self: center;
+	background-color: white;
+	opacity: 20%;
+}
+.active:hover {
+	background-color: #ffffff;
+	color: #27ae60;
+	font-size: 45px;
+}
+.active {
+	background-color: #44464e;
+	color: #27ae60;
+	font-size: 45px;
+}
+.appLauncherOverlay {
+	position: fixed;
+	height: 460px;
+	max-width: 500px !important;
+	min-width: 500px !important;
+	background-color: #54626f !important;
+	border: 3px solid #37a3ea !important;
+	z-index: 1001;
+	cursor: default;
+	border-radius: 15px !important;
+	max-height: 460px !important;
+	min-height: 460px !important;
+}
+.logo {
+	letter-spacing: 0.3em;
+	font-size: 0.7em;
+	font-weight: 600;
+	position: absolute;
+	bottom: 1em;
+}
+.rounded-circle {
+	height: 4em;
+	width: 4em;
+}
+.hr {
+	width: 75%;
+	height: 0.2px !important;
+	align-self: center;
+	background-color: white;
+	opacity: 20% !important;
+	border-top: none;
+}
+.userProfileOverlay {
+	position: fixed;
+	height: 200px !important;
+	width: 220px !important;
+	max-height: 200px !important;
+	min-height: 220px !important;
+	background-color: #54626f !important;
+	border: 3px solid #37a3ea !important;
+	z-index: 1001;
+	cursor: default;
+	border-radius: 20px !important;
+}
+.hr {
+	width: 100%;
+	height: 0.2px !important;
+	align-self: center;
+	background-color: white;
+	opacity: 20% !important;
+	border-top: none;
+}
+.icon-red {
+	color: #c0392b;
+}
+.icon-bar a {
+	display: block;
+	text-align: center;
+	color: white;
+}
+.icon-bar a:hover {
+	background-color: #ffffff;
+	transition: all 0.5s;
+}
+.active {
+	background-color: #44464e;
+}
+.hr {
+	width: 80%;
+	height: 0.2px;
+	align-self: center;
+	background-color: white;
+	opacity: 20%;
+}
+.activeapp-icon {
+	height: 2.5em;
+	width: 2.5em;
+	background-color: #44464e;
+}
+.overlay {
+	width: 20px;
+	position: absolute;
+	background-color: #44464e;
+	z-index: 1;
+	margin-top: 0em;
+	margin-left: 9.5em;
+}
+.fonticon {
+	display: inline-block;
+}
+.rectangle {
+	margin-left: 2.05rem;
+	margin-bottom: 0.07rem;
+	position: absolute;
+	width: 120px !important;
+	height: 30px !important;
+	background: #44464e;
+	border-radius: 0px 5px 5px 0px;
+}
+.circle {
+	position: relative;
+	display: block;
+	width: 40px;
+	height: 40px;
+	border-radius: 40px;
+	left: 0%;
+	background: #44464e;
+}
+.hoverEffect:hover {
+	background-color: rgba(255, 255, 255, 0.2) !important;
+}
+.onhoverApp:hover {
+	color: rgba(41, 128, 185, 1);
+}

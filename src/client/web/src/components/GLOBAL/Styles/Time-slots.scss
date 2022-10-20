@@ -1,0 +1,94 @@
+/*
+***********************************
+*  Created By : Reveal IQ         *
+*  Author     : Bharathi          *
+*  Date       : 28 OCT 2020       *
+*  Version    : 0.1.0.01.01-1020  *
+***********************************
+*/
+@import "../Styles/colors.scss";
+.patientLimit {
+    width: 30px;
+    background: 0;
+    border: 0;
+    color: #e67e22;
+  }
+  .patientLimit::-webkit-input-placeholder {
+    color: #e67e22;
+  }
+  .blockBlur {
+    border-radius: 6px;
+  
+    animation: pulse 1s infinite;
+    @keyframes pulse {
+      0% {
+        background-color: rgba(112, 112, 112, 0.2);
+      }
+      50% {
+        background-color: rgba(112, 112, 112, 0.25);
+      }
+      100% {
+        background-color: rgba(112, 112, 112, 0.2);
+      }
+    }
+    text-align: center;
+    height: 105px;
+    width: 105px;
+  }
+  .ptLimitSection {
+    color: #e67e22;
+    padding: 10px 0 0 0px;
+  }
+  .ptLimitBlur {
+    animation: pulse 0.5s infinite;
+    color: rgba(112, 112, 112, 0.1);
+    @keyframes pulse {
+      0% {
+        background-color: rgba(112, 112, 112, 0.1);
+      }
+      50% {
+        background-color: rgba(112, 112, 112, 0.15);
+      }
+      100% {
+        background-color: rgba(112, 112, 112, 0.1);
+      }
+    }
+  }
+  .patientLimitErr {
+    width: 30px;
+    background: 0;
+    border: 0;
+    color: rgba(112, 112, 112, 0.1);
+  }
+  .patientLimitErr::-webkit-input-placeholder {
+    color: rgba(112, 112, 112, 0.1);
+  }
+  .blockgrayDetails {
+    border-radius: 6px;
+    color: $Black;
+    text-align: center;
+    background: $InvisibleSilver;
+    height: 105px;
+    width: 105px;
+    border: 1px solid $Heather;
+  }
+  .blockSuc {
+    border-radius: 6px;
+    color: $Black;
+    text-align: center;
+    background: rgba(46, 204, 113, 0.1);
+    height: 105px;
+    width: 105px;
+    border: 1px solid $AOkayGreen;
+  }
+  .blockName {
+    color: rgba(0, 0, 0, 0.5);
+    padding: 5px 0 0 8px;
+  }
+  .timeDisplay {
+    color: #c0392b;
+  }
+  .miniteVisit {
+    padding: 0 0 5px 0;
+    color: rgba(0, 0, 0, 0.5);
+  }

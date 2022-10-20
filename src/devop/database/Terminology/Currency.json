@@ -1,0 +1,2685 @@
+{
+    "Currency": [
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "AFGHANISTAN",
+            "Currency_Name": "Afghani",
+            "Currency_Code": "AFN",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "ÅLAND ISLANDS",
+            "Currency_Name": "Euro",
+            "Currency_Code": "EUR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "ALBANIA",
+            "Currency_Name": "Lek",
+            "Currency_Code": "ALL",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "ALGERIA",
+            "Currency_Name": "Algerian Dinar",
+            "Currency_Code": "DZD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "AMERICAN SAMOA",
+            "Currency_Name": "US Dollar",
+            "Currency_Code": "USD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "ANDORRA",
+            "Currency_Name": "Euro",
+            "Currency_Code": "EUR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "ANGOLA",
+            "Currency_Name": "Kwanza",
+            "Currency_Code": "AOA",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "ANGUILLA",
+            "Currency_Name": "East Caribbean Dollar",
+            "Currency_Code": "XCD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "ANTARCTICA",
+            "Currency_Name": "No universal currency",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "ANTIGUA AND BARBUDA",
+            "Currency_Name": "East Caribbean Dollar",
+            "Currency_Code": "XCD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "ARGENTINA",
+            "Currency_Name": "Argentine Peso",
+            "Currency_Code": "ARS",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "ARMENIA",
+            "Currency_Name": "Armenian Dram",
+            "Currency_Code": "AMD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "ARUBA",
+            "Currency_Name": "Aruban Florin",
+            "Currency_Code": "AWG",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "AUSTRALIA",
+            "Currency_Name": "Australian Dollar",
+            "Currency_Code": "AUD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "AUSTRIA",
+            "Currency_Name": "Euro",
+            "Currency_Code": "EUR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "AZERBAIJAN",
+            "Currency_Name": "Azerbaijan Manat",
+            "Currency_Code": "AZN",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "BAHAMAS (THE)",
+            "Currency_Name": "Bahamian Dollar",
+            "Currency_Code": "BSD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "BAHRAIN",
+            "Currency_Name": "Bahraini Dinar",
+            "Currency_Code": "BHD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "BANGLADESH",
+            "Currency_Name": "Taka",
+            "Currency_Code": "BDT",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "BARBADOS",
+            "Currency_Name": "Barbados Dollar",
+            "Currency_Code": "BBD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "BELARUS",
+            "Currency_Name": "Belarusian Ruble",
+            "Currency_Code": "BYN",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "BELGIUM",
+            "Currency_Name": "Euro",
+            "Currency_Code": "EUR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "BELIZE",
+            "Currency_Name": "Belize Dollar",
+            "Currency_Code": "BZD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "BENIN",
+            "Currency_Name": "CFA Franc BCEAO",
+            "Currency_Code": "XOF",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "BERMUDA",
+            "Currency_Name": "Bermudian Dollar",
+            "Currency_Code": "BMD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "BHUTAN",
+            "Currency_Name": "Indian Rupee",
+            "Currency_Code": "INR",
+            "Currency_Symbol": "0x20B9",
+            "ISO": "ISO 4217:2015",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "BHUTAN",
+            "Currency_Name": "Ngultrum",
+            "Currency_Code": "BTN",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "BOLIVIA (PLURINATIONAL STATE OF)",
+            "Currency_Name": "Boliviano",
+            "Currency_Code": "BOB",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "BOLIVIA (PLURINATIONAL STATE OF)",
+            "Currency_Name": "Mvdol",
+            "Currency_Code": "BOV",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "BONAIRE, SINT EUSTATIUS AND SABA",
+            "Currency_Name": "US Dollar",
+            "Currency_Code": "USD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "BOSNIA AND HERZEGOVINA",
+            "Currency_Name": "Convertible Mark",
+            "Currency_Code": "BAM",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "BOTSWANA",
+            "Currency_Name": "Pula",
+            "Currency_Code": "BWP",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "BOUVET ISLAND",
+            "Currency_Name": "Norwegian Krone",
+            "Currency_Code": "NOK",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "BRAZIL",
+            "Currency_Name": "Brazilian Real",
+            "Currency_Code": "BRL",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "BRITISH INDIAN OCEAN TERRITORY (THE)",
+            "Currency_Name": "US Dollar",
+            "Currency_Code": "USD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "BRUNEI DARUSSALAM",
+            "Currency_Name": "Brunei Dollar",
+            "Currency_Code": "BND",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "BULGARIA",
+            "Currency_Name": "Bulgarian Lev",
+            "Currency_Code": "BGN",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "BURKINA FASO",
+            "Currency_Name": "CFA Franc BCEAO",
+            "Currency_Code": "XOF",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "BURUNDI",
+            "Currency_Name": "Burundi Franc",
+            "Currency_Code": "BIF",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "CABO VERDE",
+            "Currency_Name": "Cabo Verde Escudo",
+            "Currency_Code": "CVE",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "CAMBODIA",
+            "Currency_Name": "Riel",
+            "Currency_Code": "KHR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "CAMEROON",
+            "Currency_Name": "CFA Franc BEAC",
+            "Currency_Code": "XAF",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "CANADA",
+            "Currency_Name": "Canadian Dollar",
+            "Currency_Code": "CAD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "CAYMAN ISLANDS (THE)",
+            "Currency_Name": "Cayman Islands Dollar",
+            "Currency_Code": "KYD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "CENTRAL AFRICAN REPUBLIC (THE)",
+            "Currency_Name": "CFA Franc BEAC",
+            "Currency_Code": "XAF",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "CHAD",
+            "Currency_Name": "CFA Franc BEAC",
+            "Currency_Code": "XAF",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "CHILE",
+            "Currency_Name": "Chilean Peso",
+            "Currency_Code": "CLP",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "CHILE",
+            "Currency_Name": "Unidad de Fomento",
+            "Currency_Code": "CLF",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "CHINA",
+            "Currency_Name": "Yuan Renminbi",
+            "Currency_Code": "CNY",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "CHRISTMAS ISLAND",
+            "Currency_Name": "Australian Dollar",
+            "Currency_Code": "AUD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "COCOS (KEELING) ISLANDS (THE)",
+            "Currency_Name": "Australian Dollar",
+            "Currency_Code": "AUD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "COLOMBIA",
+            "Currency_Name": "Colombian Peso",
+            "Currency_Code": "COP",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "COLOMBIA",
+            "Currency_Name": "Unidad de Valor Real",
+            "Currency_Code": "COU",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "COMOROS (THE)",
+            "Currency_Name": "Comorian Franc ",
+            "Currency_Code": "KMF",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "CONGO (THE DEMOCRATIC REPUBLIC OF THE)",
+            "Currency_Name": "Congolese Franc",
+            "Currency_Code": "CDF",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "CONGO (THE)",
+            "Currency_Name": "CFA Franc BEAC",
+            "Currency_Code": "XAF",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "COOK ISLANDS (THE)",
+            "Currency_Name": "New Zealand Dollar",
+            "Currency_Code": "NZD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "COSTA RICA",
+            "Currency_Name": "Costa Rican Colon",
+            "Currency_Code": "CRC",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "CÔTE D'IVOIRE",
+            "Currency_Name": "CFA Franc BCEAO",
+            "Currency_Code": "XOF",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "CROATIA",
+            "Currency_Name": "Kuna",
+            "Currency_Code": "HRK",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "CUBA",
+            "Currency_Name": "Cuban Peso",
+            "Currency_Code": "CUP",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "CUBA",
+            "Currency_Name": "Peso Convertible",
+            "Currency_Code": "CUC",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "CURAÇAO",
+            "Currency_Name": "Netherlands Antillean Guilder",
+            "Currency_Code": "ANG",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "CYPRUS",
+            "Currency_Name": "Euro",
+            "Currency_Code": "EUR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "CZECHIA",
+            "Currency_Name": "Czech Koruna",
+            "Currency_Code": "CZK",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "DENMARK",
+            "Currency_Name": "Danish Krone",
+            "Currency_Code": "DKK",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "DJIBOUTI",
+            "Currency_Name": "Djibouti Franc",
+            "Currency_Code": "DJF",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "DOMINICA",
+            "Currency_Name": "East Caribbean Dollar",
+            "Currency_Code": "XCD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "DOMINICAN REPUBLIC (THE)",
+            "Currency_Name": "Dominican Peso",
+            "Currency_Code": "DOP",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "ECUADOR",
+            "Currency_Name": "US Dollar",
+            "Currency_Code": "USD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "EGYPT",
+            "Currency_Name": "Egyptian Pound",
+            "Currency_Code": "EGP",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "EL SALVADOR",
+            "Currency_Name": "El Salvador Colon",
+            "Currency_Code": "SVC",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "EL SALVADOR",
+            "Currency_Name": "US Dollar",
+            "Currency_Code": "USD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "EQUATORIAL GUINEA",
+            "Currency_Name": "CFA Franc BEAC",
+            "Currency_Code": "XAF",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "ERITREA",
+            "Currency_Name": "Nakfa",
+            "Currency_Code": "ERN",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "ESTONIA",
+            "Currency_Name": "Euro",
+            "Currency_Code": "EUR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "ESWATINI",
+            "Currency_Name": "Lilangeni",
+            "Currency_Code": "SZL",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "ETHIOPIA",
+            "Currency_Name": "Ethiopian Birr",
+            "Currency_Code": "ETB",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "EUROPEAN UNION",
+            "Currency_Name": "Euro",
+            "Currency_Code": "EUR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "FALKLAND ISLANDS (THE) [MALVINAS]",
+            "Currency_Name": "Falkland Islands Pound",
+            "Currency_Code": "FKP",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "FAROE ISLANDS (THE)",
+            "Currency_Name": "Danish Krone",
+            "Currency_Code": "DKK",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "FIJI",
+            "Currency_Name": "Fiji Dollar",
+            "Currency_Code": "FJD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "FINLAND",
+            "Currency_Name": "Euro",
+            "Currency_Code": "EUR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "FRANCE",
+            "Currency_Name": "Euro",
+            "Currency_Code": "EUR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "FRENCH GUIANA",
+            "Currency_Name": "Euro",
+            "Currency_Code": "EUR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "FRENCH POLYNESIA",
+            "Currency_Name": "CFP Franc",
+            "Currency_Code": "XPF",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "FRENCH SOUTHERN TERRITORIES (THE)",
+            "Currency_Name": "Euro",
+            "Currency_Code": "EUR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "GABON",
+            "Currency_Name": "CFA Franc BEAC",
+            "Currency_Code": "XAF",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "GAMBIA (THE)",
+            "Currency_Name": "Dalasi",
+            "Currency_Code": "GMD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "GEORGIA",
+            "Currency_Name": "Lari",
+            "Currency_Code": "GEL",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "GERMANY",
+            "Currency_Name": "Euro",
+            "Currency_Code": "EUR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "GHANA",
+            "Currency_Name": "Ghana Cedi",
+            "Currency_Code": "GHS",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "GIBRALTAR",
+            "Currency_Name": "Gibraltar Pound",
+            "Currency_Code": "GIP",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "GREECE",
+            "Currency_Name": "Euro",
+            "Currency_Code": "EUR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "GREENLAND",
+            "Currency_Name": "Danish Krone",
+            "Currency_Code": "DKK",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "GRENADA",
+            "Currency_Name": "East Caribbean Dollar",
+            "Currency_Code": "XCD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "GUADELOUPE",
+            "Currency_Name": "Euro",
+            "Currency_Code": "EUR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "GUAM",
+            "Currency_Name": "US Dollar",
+            "Currency_Code": "USD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "GUATEMALA",
+            "Currency_Name": "Quetzal",
+            "Currency_Code": "GTQ",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "GUERNSEY",
+            "Currency_Name": "Pound Sterling",
+            "Currency_Code": "GBP",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "GUINEA",
+            "Currency_Name": "Guinean Franc",
+            "Currency_Code": "GNF",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "GUINEA-BISSAU",
+            "Currency_Name": "CFA Franc BCEAO",
+            "Currency_Code": "XOF",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "GUYANA",
+            "Currency_Name": "Guyana Dollar",
+            "Currency_Code": "GYD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "HAITI",
+            "Currency_Name": "Gourde",
+            "Currency_Code": "HTG",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "HAITI",
+            "Currency_Name": "US Dollar",
+            "Currency_Code": "USD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "HEARD ISLAND AND McDONALD ISLANDS",
+            "Currency_Name": "Australian Dollar",
+            "Currency_Code": "AUD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "HOLY SEE (THE)",
+            "Currency_Name": "Euro",
+            "Currency_Code": "EUR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "HONDURAS",
+            "Currency_Name": "Lempira",
+            "Currency_Code": "HNL",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "HONG KONG",
+            "Currency_Name": "Hong Kong Dollar",
+            "Currency_Code": "HKD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "HUNGARY",
+            "Currency_Name": "Forint",
+            "Currency_Code": "HUF",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "ICELAND",
+            "Currency_Name": "Iceland Krona",
+            "Currency_Code": "ISK",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "INDIA",
+            "Currency_Name": "Indian Rupee",
+            "Currency_Code": "INR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "INDONESIA",
+            "Currency_Name": "Rupiah",
+            "Currency_Code": "IDR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "INTERNATIONAL MONETARY FUND (IMF) ",
+            "Currency_Name": "SDR (Special Drawing Right)",
+            "Currency_Code": "XDR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "IRAN (ISLAMIC REPUBLIC OF)",
+            "Currency_Name": "Iranian Rial",
+            "Currency_Code": "IRR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "IRAQ",
+            "Currency_Name": "Iraqi Dinar",
+            "Currency_Code": "IQD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "IRELAND",
+            "Currency_Name": "Euro",
+            "Currency_Code": "EUR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "ISLE OF MAN",
+            "Currency_Name": "Pound Sterling",
+            "Currency_Code": "GBP",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "ISRAEL",
+            "Currency_Name": "New Israeli Sheqel",
+            "Currency_Code": "ILS",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "ITALY",
+            "Currency_Name": "Euro",
+            "Currency_Code": "EUR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "JAMAICA",
+            "Currency_Name": "Jamaican Dollar",
+            "Currency_Code": "JMD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "JAPAN",
+            "Currency_Name": "Yen",
+            "Currency_Code": "JPY",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "JERSEY",
+            "Currency_Name": "Pound Sterling",
+            "Currency_Code": "GBP",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "JORDAN",
+            "Currency_Name": "Jordanian Dinar",
+            "Currency_Code": "JOD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "KAZAKHSTAN",
+            "Currency_Name": "Tenge",
+            "Currency_Code": "KZT",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "KENYA",
+            "Currency_Name": "Kenyan Shilling",
+            "Currency_Code": "KES",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "KIRIBATI",
+            "Currency_Name": "Australian Dollar",
+            "Currency_Code": "AUD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "KOREA (THE DEMOCRATIC PEOPLE’S REPUBLIC OF)",
+            "Currency_Name": "North Korean Won",
+            "Currency_Code": "KPW",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "KOREA (THE REPUBLIC OF)",
+            "Currency_Name": "Won",
+            "Currency_Code": "KRW",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "KUWAIT",
+            "Currency_Name": "Kuwaiti Dinar",
+            "Currency_Code": "KWD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "KYRGYZSTAN",
+            "Currency_Name": "Som",
+            "Currency_Code": "KGS",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "LAO PEOPLE’S DEMOCRATIC REPUBLIC (THE)",
+            "Currency_Name": "Lao Kip",
+            "Currency_Code": "LAK",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "LATVIA",
+            "Currency_Name": "Euro",
+            "Currency_Code": "EUR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "LEBANON",
+            "Currency_Name": "Lebanese Pound",
+            "Currency_Code": "LBP",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "LESOTHO",
+            "Currency_Name": "Loti",
+            "Currency_Code": "LSL",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "LESOTHO",
+            "Currency_Name": "Rand",
+            "Currency_Code": "ZAR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "LIBERIA",
+            "Currency_Name": "Liberian Dollar",
+            "Currency_Code": "LRD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "LIBYA",
+            "Currency_Name": "Libyan Dinar",
+            "Currency_Code": "LYD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "LIECHTENSTEIN",
+            "Currency_Name": "Swiss Franc",
+            "Currency_Code": "CHF",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "LITHUANIA",
+            "Currency_Name": "Euro",
+            "Currency_Code": "EUR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "LUXEMBOURG",
+            "Currency_Name": "Euro",
+            "Currency_Code": "EUR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "MACAO",
+            "Currency_Name": "Pataca",
+            "Currency_Code": "MOP",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "NORTH MACEDONIA",
+            "Currency_Name": "Denar",
+            "Currency_Code": "MKD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "MADAGASCAR",
+            "Currency_Name": "Malagasy Ariary",
+            "Currency_Code": "MGA",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "MALAWI",
+            "Currency_Name": "Malawi Kwacha",
+            "Currency_Code": "MWK",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "MALAYSIA",
+            "Currency_Name": "Malaysian Ringgit",
+            "Currency_Code": "MYR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "MALDIVES",
+            "Currency_Name": "Rufiyaa",
+            "Currency_Code": "MVR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "MALI",
+            "Currency_Name": "CFA Franc BCEAO",
+            "Currency_Code": "XOF",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "MALTA",
+            "Currency_Name": "Euro",
+            "Currency_Code": "EUR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "MARSHALL ISLANDS (THE)",
+            "Currency_Name": "US Dollar",
+            "Currency_Code": "USD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "MARTINIQUE",
+            "Currency_Name": "Euro",
+            "Currency_Code": "EUR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "MAURITANIA",
+            "Currency_Name": "Ouguiya",
+            "Currency_Code": "MRU",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "MAURITIUS",
+            "Currency_Name": "Mauritius Rupee",
+            "Currency_Code": "MUR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "MAYOTTE",
+            "Currency_Name": "Euro",
+            "Currency_Code": "EUR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "MEMBER COUNTRIES OF THE AFRICAN DEVELOPMENT BANK GROUP",
+            "Currency_Name": "ADB Unit of Account",
+            "Currency_Code": "XUA",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "MEXICO",
+            "Currency_Name": "Mexican Peso",
+            "Currency_Code": "MXN",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "MEXICO",
+            "Currency_Name": "Mexican Unidad de Inversion (UDI)",
+            "Currency_Code": "MXV",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "MICRONESIA (FEDERATED STATES OF)",
+            "Currency_Name": "US Dollar",
+            "Currency_Code": "USD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "MOLDOVA (THE REPUBLIC OF)",
+            "Currency_Name": "Moldovan Leu",
+            "Currency_Code": "MDL",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "MONACO",
+            "Currency_Name": "Euro",
+            "Currency_Code": "EUR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "MONGOLIA",
+            "Currency_Name": "Tugrik",
+            "Currency_Code": "MNT",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "MONTENEGRO",
+            "Currency_Name": "Euro",
+            "Currency_Code": "EUR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "MONTSERRAT",
+            "Currency_Name": "East Caribbean Dollar",
+            "Currency_Code": "XCD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "MOROCCO",
+            "Currency_Name": "Moroccan Dirham",
+            "Currency_Code": "MAD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "MOZAMBIQUE",
+            "Currency_Name": "Mozambique Metical",
+            "Currency_Code": "MZN",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "MYANMAR",
+            "Currency_Name": "Kyat",
+            "Currency_Code": "MMK",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "NAMIBIA",
+            "Currency_Name": "Namibia Dollar",
+            "Currency_Code": "NAD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "NAMIBIA",
+            "Currency_Name": "Rand",
+            "Currency_Code": "ZAR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "NAURU",
+            "Currency_Name": "Australian Dollar",
+            "Currency_Code": "AUD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "NEPAL",
+            "Currency_Name": "Nepalese Rupee",
+            "Currency_Code": "NPR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "NETHERLANDS (THE)",
+            "Currency_Name": "Euro",
+            "Currency_Code": "EUR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "NEW CALEDONIA",
+            "Currency_Name": "CFP Franc",
+            "Currency_Code": "XPF",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "NEW ZEALAND",
+            "Currency_Name": "New Zealand Dollar",
+            "Currency_Code": "NZD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "NICARAGUA",
+            "Currency_Name": "Cordoba Oro",
+            "Currency_Code": "NIO",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "NIGER (THE)",
+            "Currency_Name": "CFA Franc BCEAO",
+            "Currency_Code": "XOF",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "NIGERIA",
+            "Currency_Name": "Naira",
+            "Currency_Code": "NGN",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "NIUE",
+            "Currency_Name": "New Zealand Dollar",
+            "Currency_Code": "NZD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "NORFOLK ISLAND",
+            "Currency_Name": "Australian Dollar",
+            "Currency_Code": "AUD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "NORTHERN MARIANA ISLANDS (THE)",
+            "Currency_Name": "US Dollar",
+            "Currency_Code": "USD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "NORWAY",
+            "Currency_Name": "Norwegian Krone",
+            "Currency_Code": "NOK",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "OMAN",
+            "Currency_Name": "Rial Omani",
+            "Currency_Code": "OMR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "PAKISTAN",
+            "Currency_Name": "Pakistan Rupee",
+            "Currency_Code": "PKR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "PALAU",
+            "Currency_Name": "US Dollar",
+            "Currency_Code": "USD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "PALESTINE, STATE OF",
+            "Currency_Name": "No universal currency",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "PANAMA",
+            "Currency_Name": "Balboa",
+            "Currency_Code": "PAB",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "PANAMA",
+            "Currency_Name": "US Dollar",
+            "Currency_Code": "USD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "PAPUA NEW GUINEA",
+            "Currency_Name": "Kina",
+            "Currency_Code": "PGK",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "PARAGUAY",
+            "Currency_Name": "Guarani",
+            "Currency_Code": "PYG",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "PERU",
+            "Currency_Name": "Sol",
+            "Currency_Code": "PEN",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "PHILIPPINES (THE)",
+            "Currency_Name": "Philippine Peso",
+            "Currency_Code": "PHP",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "PITCAIRN",
+            "Currency_Name": "New Zealand Dollar",
+            "Currency_Code": "NZD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "POLAND",
+            "Currency_Name": "Zloty",
+            "Currency_Code": "PLN",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "PORTUGAL",
+            "Currency_Name": "Euro",
+            "Currency_Code": "EUR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "PUERTO RICO",
+            "Currency_Name": "US Dollar",
+            "Currency_Code": "USD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "QATAR",
+            "Currency_Name": "Qatari Rial",
+            "Currency_Code": "QAR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "RÉUNION",
+            "Currency_Name": "Euro",
+            "Currency_Code": "EUR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "ROMANIA",
+            "Currency_Name": "Romanian Leu",
+            "Currency_Code": "RON",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "RUSSIAN FEDERATION (THE)",
+            "Currency_Name": "Russian Ruble",
+            "Currency_Code": "RUB",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "RWANDA",
+            "Currency_Name": "Rwanda Franc",
+            "Currency_Code": "RWF",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "SAINT BARTHÉLEMY",
+            "Currency_Name": "Euro",
+            "Currency_Code": "EUR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "SAINT HELENA, ASCENSION AND TRISTAN DA CUNHA",
+            "Currency_Name": "Saint Helena Pound",
+            "Currency_Code": "SHP",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "SAINT KITTS AND NEVIS",
+            "Currency_Name": "East Caribbean Dollar",
+            "Currency_Code": "XCD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "SAINT LUCIA",
+            "Currency_Name": "East Caribbean Dollar",
+            "Currency_Code": "XCD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "SAINT MARTIN (FRENCH PART)",
+            "Currency_Name": "Euro",
+            "Currency_Code": "EUR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "SAINT PIERRE AND MIQUELON",
+            "Currency_Name": "Euro",
+            "Currency_Code": "EUR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "SAINT VINCENT AND THE GRENADINES",
+            "Currency_Name": "East Caribbean Dollar",
+            "Currency_Code": "XCD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "SAMOA",
+            "Currency_Name": "Tala",
+            "Currency_Code": "WST",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "SAN MARINO",
+            "Currency_Name": "Euro",
+            "Currency_Code": "EUR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "SAO TOME AND PRINCIPE",
+            "Currency_Name": "Dobra",
+            "Currency_Code": "STN",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "SAUDI ARABIA",
+            "Currency_Name": "Saudi Riyal",
+            "Currency_Code": "SAR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "SENEGAL",
+            "Currency_Name": "CFA Franc BCEAO",
+            "Currency_Code": "XOF",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "SERBIA",
+            "Currency_Name": "Serbian Dinar",
+            "Currency_Code": "RSD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "SEYCHELLES",
+            "Currency_Name": "Seychelles Rupee",
+            "Currency_Code": "SCR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "SIERRA LEONE",
+            "Currency_Name": "Leone",
+            "Currency_Code": "SLL",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "SINGAPORE",
+            "Currency_Name": "Singapore Dollar",
+            "Currency_Code": "SGD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "SINT MAARTEN (DUTCH PART)",
+            "Currency_Name": "Netherlands Antillean Guilder",
+            "Currency_Code": "ANG",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "SISTEMA UNITARIO DE COMPENSACION REGIONAL DE PAGOS \"SUCRE\"",
+            "Currency_Name": "Sucre",
+            "Currency_Code": "XSU",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "SLOVAKIA",
+            "Currency_Name": "Euro",
+            "Currency_Code": "EUR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "SLOVENIA",
+            "Currency_Name": "Euro",
+            "Currency_Code": "EUR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "SOLOMON ISLANDS",
+            "Currency_Name": "Solomon Islands Dollar",
+            "Currency_Code": "SBD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "SOMALIA",
+            "Currency_Name": "Somali Shilling",
+            "Currency_Code": "SOS",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "SOUTH AFRICA",
+            "Currency_Name": "Rand",
+            "Currency_Code": "ZAR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "SOUTH GEORGIA AND THE SOUTH SANDWICH ISLANDS",
+            "Currency_Name": "No universal currency",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "SOUTH SUDAN",
+            "Currency_Name": "South Sudanese Pound",
+            "Currency_Code": "SSP",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "SPAIN",
+            "Currency_Name": "Euro",
+            "Currency_Code": "EUR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "SRI LANKA",
+            "Currency_Name": "Sri Lanka Rupee",
+            "Currency_Code": "LKR",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "SUDAN (THE)",
+            "Currency_Name": "Sudanese Pound",
+            "Currency_Code": "SDG",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "SURINAME",
+            "Currency_Name": "Surinam Dollar",
+            "Currency_Code": "SRD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "SVALBARD AND JAN MAYEN",
+            "Currency_Name": "Norwegian Krone",
+            "Currency_Code": "NOK",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "SWEDEN",
+            "Currency_Name": "Swedish Krona",
+            "Currency_Code": "SEK",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "SWITZERLAND",
+            "Currency_Name": "Swiss Franc",
+            "Currency_Code": "CHF",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "SWITZERLAND",
+            "Currency_Name": "WIR Euro",
+            "Currency_Code": "CHE",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "SWITZERLAND",
+            "Currency_Name": "WIR Franc",
+            "Currency_Code": "CHW",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "SYRIAN ARAB REPUBLIC",
+            "Currency_Name": "Syrian Pound",
+            "Currency_Code": "SYP",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "TAIWAN (PROVINCE OF CHINA)",
+            "Currency_Name": "New Taiwan Dollar",
+            "Currency_Code": "TWD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "TAJIKISTAN",
+            "Currency_Name": "Somoni",
+            "Currency_Code": "TJS",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "TANZANIA, UNITED REPUBLIC OF",
+            "Currency_Name": "Tanzanian Shilling",
+            "Currency_Code": "TZS",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "THAILAND",
+            "Currency_Name": "Baht",
+            "Currency_Code": "THB",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "TIMOR-LESTE",
+            "Currency_Name": "US Dollar",
+            "Currency_Code": "USD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "TOGO",
+            "Currency_Name": "CFA Franc BCEAO",
+            "Currency_Code": "XOF",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "TOKELAU",
+            "Currency_Name": "New Zealand Dollar",
+            "Currency_Code": "NZD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "TONGA",
+            "Currency_Name": "Pa’anga",
+            "Currency_Code": "TOP",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "TRINIDAD AND TOBAGO",
+            "Currency_Name": "Trinidad and Tobago Dollar",
+            "Currency_Code": "TTD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "TUNISIA",
+            "Currency_Name": "Tunisian Dinar",
+            "Currency_Code": "TND",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "TURKEY",
+            "Currency_Name": "Turkish Lira",
+            "Currency_Code": "TRY",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "TURKMENISTAN",
+            "Currency_Name": "Turkmenistan New Manat",
+            "Currency_Code": "TMT",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "TURKS AND CAICOS ISLANDS (THE)",
+            "Currency_Name": "US Dollar",
+            "Currency_Code": "USD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "TUVALU",
+            "Currency_Name": "Australian Dollar",
+            "Currency_Code": "AUD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "UGANDA",
+            "Currency_Name": "Uganda Shilling",
+            "Currency_Code": "UGX",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "UKRAINE",
+            "Currency_Name": "Hryvnia",
+            "Currency_Code": "UAH",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "UNITED ARAB EMIRATES (THE)",
+            "Currency_Name": "UAE Dirham",
+            "Currency_Code": "AED",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "UNITED KINGDOM OF GREAT BRITAIN AND NORTHERN IRELAND (THE)",
+            "Currency_Name": "Pound Sterling",
+            "Currency_Code": "GBP",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "UNITED STATES MINOR OUTLYING ISLANDS (THE)",
+            "Currency_Name": "US Dollar",
+            "Currency_Code": "USD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "UNITED STATES OF AMERICA (THE)",
+            "Currency_Name": "US Dollar",
+            "Currency_Code": "USD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "UNITED STATES OF AMERICA (THE)",
+            "Currency_Name": "US Dollar (Next day)",
+            "Currency_Code": "USN",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "URUGUAY",
+            "Currency_Name": "Peso Uruguayo",
+            "Currency_Code": "UYU",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "URUGUAY",
+            "Currency_Name": "Uruguay Peso en Unidades Indexadas (UI)",
+            "Currency_Code": "UYI",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "URUGUAY",
+            "Currency_Name": "Unidad Previsional",
+            "Currency_Code": "UYW",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "UZBEKISTAN",
+            "Currency_Name": "Uzbekistan Sum",
+            "Currency_Code": "UZS",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "VANUATU",
+            "Currency_Name": "Vatu",
+            "Currency_Code": "VUV",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "VENEZUELA (BOLIVARIAN REPUBLIC OF)",
+            "Currency_Name": "Bolívar Soberano",
+            "Currency_Code": "VES",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "VIET NAM",
+            "Currency_Name": "Dong",
+            "Currency_Code": "VND",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "VIRGIN ISLANDS (BRITISH)",
+            "Currency_Name": "US Dollar",
+            "Currency_Code": "USD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "VIRGIN ISLANDS (U.S.)",
+            "Currency_Name": "US Dollar",
+            "Currency_Code": "USD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "WALLIS AND FUTUNA",
+            "Currency_Name": "CFP Franc",
+            "Currency_Code": "XPF",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "WESTERN SAHARA",
+            "Currency_Name": "Moroccan Dirham",
+            "Currency_Code": "MAD",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "YEMEN",
+            "Currency_Name": "Yemeni Rial",
+            "Currency_Code": "YER",
+            "ISO": "ISO 4217:2015",
+            "Currency_Symbol": "",
+            "Version_Schema": "20201013-V0.1"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "ZAMBIA",
+            "Currency_Name": "Zambian Kwacha",
+            "Currency_Code": "ZMW"
+        },
+        {
+            "Type_Code": "CURCY",
+            "Type_Name": "Currency",
+            "Loci_Name_Country": "ZIMBABWE",
+            "Currency_Name": "Zimbabwe Dollar",
+            "Currency_Code": "ZWL"
+        }
+    ]
+}
