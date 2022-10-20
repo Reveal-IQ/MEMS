@@ -62,7 +62,19 @@ Our team of volunteers always welcomes all the help and support we can get as th
   - Launch Nodejs Application on Cloud services
   - Architect database schema
 
-## Branching Strategy
+## Developer Guides
+
+### Porting Reveal Foundation
+The MEMS project is based on the Reveal Foundation to provide the scaffold to build on top off. This section provides instructions on how to port new releases of Reveal Foundation for use with the MEMS project.
+
+  - Revise the name API and Client container image names (mems/api: and mems/client:) in docker-compose.yml located at /src/devop
+  - Launch container using the command 
+    ```
+    docker-compose --project-name mems up
+    ```
+
+
+### Branching Strategy
 
 MAIN -> RC04
 - Change main application version number
