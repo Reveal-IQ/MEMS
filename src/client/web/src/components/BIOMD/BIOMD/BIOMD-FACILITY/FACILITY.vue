@@ -94,9 +94,24 @@ export default {
           Expiry: 20000,
           Type: "REQUEST",
           Request: {
+            Module: "MEMS",
             ServiceCode: "BIOMD",
             API: "CREATE_RECORD",
-            Collection: "facilities",
+            collection: "Facility",
+            record: {
+              facility_name: "Demo Hospital",
+              country: "Ghana",
+              area: "Upper East",
+              city: "Bawku",
+              address_1: "28 Waterbird Ln",
+              address_2: "Unit 223",
+              area_code: "00233",
+              location: {
+                latitude: "5.6098816",
+                longitude: "-0.2097152",
+              },
+              departments: ["NICU", "Theatre", "OPD"],
+            },
             Institute_Code: Institute_Code.value, //Dynamically changes when another institute logged in
           },
         },

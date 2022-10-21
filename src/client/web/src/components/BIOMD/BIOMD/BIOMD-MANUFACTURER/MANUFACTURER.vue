@@ -2,9 +2,9 @@
 ************************************
 Created By : Reveal Foundation  
 Author     : Edward Opoku-Agyemang           
-Date       : < 03-Sep-2022 >    
-Version    : < 0.0.1 >   
-Description: < Describe the application >          
+Date       : 03-Sep-2022
+Version    : 0.0.2   
+Description: Describe the application
 ************************************
 -->
 
@@ -103,7 +103,7 @@ export default {
             API: "CREATE_RECORD",
             collection: "Manufacturer",
             record: {
-              manufacturer_nam: "General Electric",
+              manufacturer_name: "General Electric",
               country: "UnitedStates of America",
               area: "California",
               city: "San Jose",
