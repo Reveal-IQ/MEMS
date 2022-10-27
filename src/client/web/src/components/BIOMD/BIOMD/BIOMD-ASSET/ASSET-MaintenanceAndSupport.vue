@@ -28,7 +28,7 @@
         </select>
       </div>
       <!-- Vendor -->
-      <div class="col-lg-6 mb-3">
+      <!-- <div class="col-lg-6 mb-3">
         <label for="vendorList" class="form-label">Vendor</label>
         <select
           id="vendorList"
@@ -37,7 +37,7 @@
         >
           <option selected>Select Vendor</option>
         </select>
-      </div>
+      </div> -->
       <!-- Status -->
       <div class="col-lg-6 mb-3">
         <label for="statusList" class="form-label">Status</label>
