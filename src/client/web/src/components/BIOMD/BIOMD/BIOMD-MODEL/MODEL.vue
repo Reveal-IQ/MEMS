@@ -99,9 +99,17 @@ export default {
           Expiry: 20000,
           Type: "REQUEST",
           Request: {
+            Module: "MEMS",
             ServiceCode: "BIOMD",
             API: "CREATE_RECORD",
-            Collection: "models",
+            collection: "Model",
+            record: {
+              vendor_id: "6351d2a54e7249001252bf39",
+              model_name: "Lullaby",
+              model_number: 23456,
+              vendor_site_ID: "GE-1234-01",
+              contact_id: [],
+            },
             Institute_Code: Institute_Code.value, //Dynamically changes when another institute logged in
           },
         },

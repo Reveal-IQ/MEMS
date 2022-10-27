@@ -98,9 +98,21 @@ export default {
           Expiry: 20000,
           Type: "REQUEST",
           Request: {
+            Module: "MEMS",
             ServiceCode: "BIOMD",
             API: "CREATE_RECORD",
-            Collection: "vendors",
+            collection: "Vendor",
+            record: {
+              vendor_name: "General Electric",
+              country: "UnitedStates of America",
+              area: "California",
+              city: "San Jose",
+              address_1: "5 NeccoSt, Boston",
+              address_2: "Unit 223",
+              areaCode: "95110",
+              contactID: [],
+              manufacturer_id: [],
+            },
             Institute_Code: Institute_Code.value, //Dynamically changes when another institute logged in
           },
         },
