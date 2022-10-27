@@ -196,11 +196,14 @@ module.exports.FIND_RECORD = async function (req, dbClient) {
     //Confirm Packet Received
     console.log(
       (await TIMESTAMP()) +
-      `: RCU-<FIND>-I001 : ADPNL processing request packet ID: ${req.ID}`
+      `: RCU-BIOMD-I001 : FIND_RECORDS processing request packet ID: ${req.ID}`
     );
 
+    //Copy Requester Information
+    var res = Object.assign({}, req);
+
     //req object defintion
-    var find = Object.assign({}, req.request.find);
+    var find = Object.assign({}, req.Request.find);
 
     // Check query
     var queries = find.queries;
@@ -224,7 +227,7 @@ module.exports.FIND_RECORD = async function (req, dbClient) {
 
     // Perform Find
     const collection = await dbClient.db(instituteCode).collection(find.collection);
-    let limit = find.return_array ? find.max_list : 1;
+    let limit = req.Request.return_array ? req.Request.max_list : 1;
     let result = await collection
       .find(createdFindQuery)
       .project(find.projection ? find.projection : {})
@@ -232,13 +235,13 @@ module.exports.FIND_RECORD = async function (req, dbClient) {
       .toArray();
 
     //Response Packet
-    var res = new Object();
     res.Type = "RESPONSE";
     res.Response = {
       records: result,
       success: true,
       message: result.length + " records found in " + find.collection,
     };
+  
   } catch (error) {
     //Log Error
     console.log((await TIMESTAMP()) + `: API-<FIND>-E001 : ${error}`);
