@@ -39,12 +39,6 @@
       </div>
     </div>
     <div class="col">
-      <!-- <Btn
-        BtnName="Add New Contact"
-        backgroundColor="#1266F1"
-        :icon="'plus'"
-        class=""
-      /> -->
       <Btn2
         BtnName="Add New Contact"
         backgroundColor="#1266F1"
