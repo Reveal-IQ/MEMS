@@ -8,6 +8,7 @@
           <Input
             label="Manufacturer Name"
             type="text"
+            v-model="manufacturerName"
             id="manufacturerName"
             placeholder="Enter Manufacturer Name"
           />
@@ -19,8 +20,12 @@
             id="countryList"
             class="form-select"
             aria-label="Default select example"
+            v-model="country"
           >
-            <option selected>Choose a Country</option>
+            <option selected disabled>Choose a Country</option>
+            <option v-for="name in countryList" :key="name">
+              {{ name }}
+            </option>
           </select>
         </div>
         <!-- Province/State/Region -->
@@ -32,8 +37,12 @@
             id="stateList"
             class="form-select"
             aria-label="Default select example"
+            v-model="region"
           >
-            <option selected>Choose a State</option>
+            <option selected disabled>Choose a Region</option>
+            <option v-for="name in regionList" :key="name">
+              {{ name }}
+            </option>
           </select>
         </div>
         <!-- City/District -->
@@ -43,8 +52,12 @@
             id="cityList"
             class="form-select"
             aria-label="Default select example"
+            v-model="city"
           >
-            <option selected>Choose a City</option>
+            <option selected disabled>Choose a City</option>
+            <option v-for="name in cityList" :key="name">
+              {{ name }}
+            </option>
           </select>
         </div>
       </div>
@@ -54,6 +67,7 @@
           <Input
             label="Street Address 1"
             type="text"
+            v-model="streetAddress1"
             id="street1"
             placeholder="Enter Street Address 1"
           />
@@ -63,6 +77,7 @@
           <Input
             label="Street Address 2"
             type="text"
+            v-model="streetAddress2"
             id="street2"
             placeholder="Enter Street Address 2"
           />
@@ -72,6 +87,7 @@
           <Input
             label="Zip/Postal Code"
             type="number"
+            v-model="zipCode"
             id="zip"
             placeholder="Enter Zip/Postal Code"
           />
@@ -82,8 +98,21 @@
 </template>
 
 <script setup>
+import { inject, ref } from "vue";
 import Input from "../BIOMD-UI/UI-Input.vue";
 import Section from "../BIOMD-UI/UI-Section.vue";
+
+const manufacturerName = inject("manufacturerName");
+const country = inject("country");
+const region = inject("region");
+const city = inject("city");
+const streetAddress1 = inject("streetAddress1");
+const streetAddress2 = inject("streetAddress2");
+const zipCode = inject("zipCode");
+
+const countryList = ref(["Ghana", "Canada", "USA"]);
+const regionList = ref(["Greater Accra", "Quebec", "California"]);
+const cityList = ref(["Accra", "Montreal", "Los Angeles"]);
 </script>
 
 <style lang="scss" scoped>

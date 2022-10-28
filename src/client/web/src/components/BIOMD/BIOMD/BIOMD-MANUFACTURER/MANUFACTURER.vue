@@ -48,7 +48,16 @@ Description: Describe the application
 
 <script>
 import { useStore } from "vuex"; // Access Vuew Store Variables and Methods
-import { ref, toRefs, watch, inject, watchEffect, computed } from "vue";
+import {
+  ref,
+  toRefs,
+  provide,
+  watch,
+  inject,
+  watchEffect,
+  computed,
+} from "vue";
+
 import ManufacturerInformation from "./MANUFACTURER-ManufacturerInformation.vue"; // Based on the requirement import keywords
 import Btn from "../BIOMD-UI/UI-Btn.vue";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
@@ -70,6 +79,24 @@ export default {
     const Institute_Code = computed(
       () => store.state.globalStore.UserInfo.Institute_Info.Code
     );
+
+    // const manufacturerInfo = ref({
+    //   manufacturerName: null,
+    //   country: null,
+    //   region: null,
+    //   city: null,
+    //   streetAddress1: null,
+    //   streetAddress2: null,
+    //   zipCode: null,
+    // });
+
+    const manufacturerName = ref(null);
+    const country = ref(null);
+    const region = ref(null);
+    const city = ref(null);
+    const streetAddress1 = ref(null);
+    const streetAddress2 = ref(null);
+    const zipCode = ref(null);
 
     const changeServiceState = (serviceState) =>
       store.dispatch("changeServiceState", serviceState);
@@ -103,13 +130,13 @@ export default {
             API: "CREATE_RECORD",
             collection: "Manufacturer",
             record: {
-              manufacturer_name: "General Electric",
-              country: "UnitedStates of America",
-              area: "California",
-              city: "San Jose",
-              address_1: "5 NeccoSt, Boston",
-              address_2: "Unit 223",
-              area_code: "95110",
+              manufacturer_name: manufacturerName.value,
+              country: country.value,
+              area: region.value,
+              city: city.value,
+              address_1: streetAddress1.value,
+              address_2: streetAddress2.value,
+              area_code: zipCode.value,
             },
             Institute_Code: Institute_Code.value, //Dynamically changes when another institute logged in
           },
@@ -142,6 +169,15 @@ export default {
     const goBack = () => {
       emit("updatePage", "landing");
     };
+
+    // provide("manufacturerInfo", manufacturerInfo);
+    provide("manufacturerName", manufacturerName);
+    provide("country", country);
+    provide("region", region);
+    provide("city", city);
+    provide("streetAddress1", streetAddress1);
+    provide("streetAddress2", streetAddress2);
+    provide("zipCode", zipCode);
 
     return {
       // Return variables/Display Variables in HTML DOM
