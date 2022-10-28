@@ -47,18 +47,10 @@ Description: Describe the application
 </template>
 
 <script>
-import { useStore } from "vuex"; // Access Vuew Store Variables and Methods
-import {
-  ref,
-  toRefs,
-  provide,
-  watch,
-  inject,
-  watchEffect,
-  computed,
-} from "vue";
+import { useStore } from "vuex";
+import { ref, toRefs, provide, computed } from "vue";
 
-import ManufacturerInformation from "./MANUFACTURER-ManufacturerInformation.vue"; // Based on the requirement import keywords
+import ManufacturerInformation from "./MANUFACTURER-ManufacturerInformation.vue";
 import Btn from "../BIOMD-UI/UI-Btn.vue";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 import Header from "../BIOMD-UI/UI-FormHeader.vue";
@@ -79,16 +71,6 @@ export default {
     const Institute_Code = computed(
       () => store.state.globalStore.UserInfo.Institute_Info.Code
     );
-
-    // const manufacturerInfo = ref({
-    //   manufacturerName: null,
-    //   country: null,
-    //   region: null,
-    //   city: null,
-    //   streetAddress1: null,
-    //   streetAddress2: null,
-    //   zipCode: null,
-    // });
 
     const manufacturerName = ref(null);
     const country = ref(null);
@@ -112,11 +94,7 @@ export default {
     const sendSocketReq = (request) => {
       store.dispatch("sendSocketReq", request);
     };
-    // Object to Store API Response Values
-    const getValues = ref({});
-    function function_name(parameters) {
-      // Write Function Code here .
-    }
+
     // Function to Send Request and Get Response by this template code .
     function createRecord() {
       // send Request as below .
@@ -170,7 +148,6 @@ export default {
       emit("updatePage", "landing");
     };
 
-    // provide("manufacturerInfo", manufacturerInfo);
     provide("manufacturerName", manufacturerName);
     provide("country", country);
     provide("region", region);
@@ -180,11 +157,7 @@ export default {
     provide("zipCode", zipCode);
 
     return {
-      // Return variables/Display Variables in HTML DOM
-      getValues,
-      // Send Functionality to HTML
       goBack,
-      function_name,
       redirectToPage,
       createRecord,
     };
