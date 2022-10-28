@@ -45,7 +45,7 @@ Description: < Describe the application >
 
 <script>
 import { useStore } from "vuex"; // Access Vuew Store Variables and Methods
-import { ref, toRefs, watch, inject, watchEffect, computed } from "vue";
+import { ref, toRefs, provide, computed } from "vue";
 
 import VendorInformation from "../BIOMD-VENDOR/VENDOR-VendorInformation.vue";
 import CustomerService from "../BIOMD-VENDOR/VENDOR-CustomerService.vue";
@@ -81,6 +81,14 @@ export default {
         status: "<Navigate_To_This_Page>",
       });
     }
+    const vendorName = ref(null);
+    const country = ref(null);
+    const region = ref(null);
+    const city = ref(null);
+    const streetAddress1 = ref(null);
+    const streetAddress2 = ref(null);
+    const zipCode = ref(null);
+
     // send Socket Request use to send rrequest packet for an API
     const sendSocketReq = (request) => {
       store.dispatch("sendSocketReq", request);
@@ -103,13 +111,13 @@ export default {
             API: "CREATE_RECORD",
             collection: "Vendor",
             record: {
-              vendor_name: "General Electric",
-              country: "UnitedStates of America",
-              area: "California",
-              city: "San Jose",
-              address_1: "5 NeccoSt, Boston",
-              address_2: "Unit 223",
-              areaCode: "95110",
+              vendor_name: vendorName.value,
+              country: country.value,
+              area: region.value,
+              city: city.value,
+              address_1: streetAddress1.value,
+              address_2: streetAddress2.value,
+              areaCode: zipCode.value,
               contactID: [],
               manufacturer_id: [],
             },
@@ -144,6 +152,14 @@ export default {
     const goBack = () => {
       emit("updatePage", "landing");
     };
+
+    provide("vendorName", vendorName);
+    provide("country", country);
+    provide("region", region);
+    provide("city", city);
+    provide("streetAddress1", streetAddress1);
+    provide("streetAddress2", streetAddress2);
+    provide("zipCode", zipCode);
 
     return {
       // Return variables/Display Variables in HTML DOM

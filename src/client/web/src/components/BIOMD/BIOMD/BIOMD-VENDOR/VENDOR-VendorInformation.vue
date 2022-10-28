@@ -12,7 +12,8 @@
               class="form-control"
               id="vendorName"
               aria-describedby="basic-addon3"
-              placeholder="Enter details"
+              placeholder="Enter Vendor Name"
+              v-model="vendorName"
             />
           </div>
         </div>
@@ -26,8 +27,12 @@
               id="countryList"
               aria-describedby="basic-addon3"
               placeholder="Select country"
+              v-model="country"
             >
               <option selected>Select country</option>
+              <option v-for="name in countryList" :key="name">
+                {{ name }}
+              </option>
             </select>
           </div>
         </div>
@@ -43,8 +48,12 @@
               id="statelist"
               aria-describedby="basic-addon3"
               placeholder="Select country"
+              v-model="region"
             >
               <option selected>Select province/state/region</option>
+              <option v-for="name in regionList" :key="name">
+                {{ name }}
+              </option>
             </select>
           </div>
         </div>
@@ -58,8 +67,12 @@
               id="cityList"
               aria-describedby="basic-addon3"
               placeholder="Select country"
+              v-model="city"
             >
               <option selected>Select city/district</option>
+              <option v-for="name in cityList" :key="name">
+                {{ name }}
+              </option>
             </select>
           </div>
         </div>
@@ -72,6 +85,7 @@
             type="text"
             id="street1"
             placeholder="Enter Street Address 1"
+            v-model="streetAddress1"
           />
         </div>
         <!-- Street Address 2 -->
@@ -81,6 +95,7 @@
             type="text"
             id="street2"
             placeholder="Enter Street Address 2"
+            v-model="streetAddress2"
           />
         </div>
         <!-- Zip / Postal Code -->
@@ -90,6 +105,7 @@
             type="number"
             id="zip"
             placeholder="Enter Zip/Postal Code"
+            v-model="zipCode"
           />
         </div>
         <!-- Site ID -->
@@ -98,7 +114,7 @@
             label="Site Id"
             type="text"
             id="siteId"
-            placeholder="Enter Zip/Postal Code"
+            placeholder="Enter Site ID"
           />
         </div>
       </div>
@@ -107,8 +123,21 @@
 </template>
 
 <script setup>
+import { inject, ref } from "vue";
 import Input from "../BIOMD-UI/UI-Input.vue";
 import Section from "../BIOMD-UI/UI-Section.vue";
+
+const vendorName = inject("vendorName");
+const country = inject("country");
+const region = inject("region");
+const city = inject("city");
+const streetAddress1 = inject("streetAddress1");
+const streetAddress2 = inject("streetAddress2");
+const zipCode = inject("zipCode");
+
+const countryList = ref(["Ghana", "Canada", "USA"]);
+const regionList = ref(["Greater Accra", "Quebec", "California"]);
+const cityList = ref(["Accra", "Montreal", "Los Angeles"]);
 </script>
 
 <style lang="scss" scoped>
