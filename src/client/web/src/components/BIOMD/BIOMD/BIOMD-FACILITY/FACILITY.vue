@@ -44,7 +44,7 @@ Description: < Describe the application >
 
 <script>
 import { useStore } from "vuex"; // Access Vuew Store Variables and Methods
-import { ref, toRefs, watch, inject, watchEffect, computed } from "vue";
+import { ref, toRefs, provide, computed } from "vue";
 import FacilityInformation from "./FACILITY-FacilityInformation.vue"; // Based on the requirement import keywords
 import Btn from "../BIOMD-UI/UI-Btn.vue";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
@@ -77,15 +77,20 @@ export default {
         status: "<Navigate_To_This_Page>",
       });
     }
+    const facilityName = ref(null);
+    const country = ref(null);
+    const region = ref(null);
+    const city = ref(null);
+    const streetAddress1 = ref(null);
+    const streetAddress2 = ref(null);
+    const zipCode = ref(null);
+    // const departments = ref(null);
+
     // send Socket Request use to send rrequest packet for an API
     const sendSocketReq = (request) => {
       store.dispatch("sendSocketReq", request);
     };
-    // Object to Store API Response Values
-    const getValues = ref({});
-    function function_name(parameters) {
-      // Write Function Code here .
-    }
+
     // Function to Send Request and Get Response by this template code .
     function createRecord() {
       // send Request as below .
@@ -99,18 +104,18 @@ export default {
             API: "CREATE_RECORD",
             collection: "Facility",
             record: {
-              facility_name: "Demo Hospital",
-              country: "Ghana",
-              area: "Upper East",
-              city: "Bawku",
-              address_1: "28 Waterbird Ln",
-              address_2: "Unit 223",
-              area_code: "00233",
+              facility_name: facilityName.value,
+              country: country.value,
+              area: region.value,
+              city: city.value,
+              address_1: streetAddress1.value,
+              address_2: streetAddress2.value,
+              area_code: zipCode.value,
               location: {
                 latitude: "5.6098816",
                 longitude: "-0.2097152",
               },
-              departments: ["NICU", "Theatre", "OPD"],
+              // departments: departments.value,
             },
             Institute_Code: Institute_Code.value, //Dynamically changes when another institute logged in
           },
@@ -144,12 +149,16 @@ export default {
       emit("updatePage", "landing");
     };
 
+    provide("facilityName", facilityName);
+    provide("country", country);
+    provide("region", region);
+    provide("city", city);
+    provide("streetAddress1", streetAddress1);
+    provide("streetAddress2", streetAddress2);
+    provide("zipCode", zipCode);
+
     return {
-      // Return variables/Display Variables in HTML DOM
-      getValues,
-      // Send Functionality to HTML
       goBack,
-      function_name,
       redirectToPage,
       createRecord,
     };
