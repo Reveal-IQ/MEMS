@@ -7,14 +7,12 @@
 [![Latest Release][release-shield]][release-url]
 [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
 
-
-
 <!-- PROJECT LOGO -->
 <br />
 <br />
 <div align="center">
   <a href="https://github.com/github_username/repo_name">
-    <img src= "https://user-images.githubusercontent.com/8020014/175838314-0ac6962f-8f3a-4873-ae9d-bfd603e92beb.svg" alt="Logo" height="100">
+    <img src= "https://user-images.githubusercontent.com/8020014/198841940-ea0dacf5-b8ab-4dce-a629-74443cdb5f86.svg" alt="Logo" height="100">
   </a>
 <br />
 <br />
