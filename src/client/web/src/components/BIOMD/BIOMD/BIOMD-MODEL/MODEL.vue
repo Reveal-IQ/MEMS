@@ -26,7 +26,7 @@ Description: < Describe the application >
 
       <main>
         <ModelDescription />
-        <VendorSupport />
+
         <div class="d-flex justify-content-center py-3">
           <div class="">
             <Btn
@@ -46,16 +46,15 @@ Description: < Describe the application >
 
 <script>
 import { useStore } from "vuex"; // Access Vuew Store Variables and Methods
-import { ref, toRefs, watch, inject, watchEffect, computed } from "vue";
+import { ref, toRefs, computed, provide } from "vue";
 
 import Btn from "../BIOMD-UI/UI-Btn.vue";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 import Header from "../BIOMD-UI/UI-FormHeader.vue";
 import ModelDescription from "../BIOMD-MODEL/MODEL-ModelDescription.vue";
-import VendorSupport from "../BIOMD-MODEL/MODEL-VendorSupport.vue";
 
 export default {
-  components: { ModelDescription, VendorSupport, Btn2, Btn, Header },
+  components: { ModelDescription, Btn2, Btn, Header },
   name: "model",
   // Define Props here
   props: {
@@ -82,15 +81,15 @@ export default {
         status: "<Navigate_To_This_Page>",
       });
     }
+    const modelName = ref(null);
+    const modelNumber = ref(null);
+    const vendorSiteId = ref(null);
+    const vendor = ref(null);
     // send Socket Request use to send rrequest packet for an API
     const sendSocketReq = (request) => {
       store.dispatch("sendSocketReq", request);
     };
-    // Object to Store API Response Values
-    const getValues = ref({});
-    function function_name(parameters) {
-      // Write Function Code here .
-    }
+
     // Function to Send Request and Get Response by this template code .
     function createRecord() {
       // send Request as below .
@@ -104,10 +103,10 @@ export default {
             API: "CREATE_RECORD",
             collection: "Model",
             record: {
-              vendor_id: "6351d2a54e7249001252bf39",
-              model_name: "Lullaby",
-              model_number: 23456,
-              vendor_site_ID: "GE-1234-01",
+              vendor_id: vendor.value,
+              model_name: modelName.value,
+              model_number: modelNumber.value,
+              vendor_site_ID: vendorSiteId.value,
               contact_id: [],
             },
             Institute_Code: Institute_Code.value, //Dynamically changes when another institute logged in
@@ -142,12 +141,13 @@ export default {
       emit("updatePage", "landing");
     };
 
+    provide("modelName", modelName);
+    provide("modelNumber", modelNumber);
+    provide("vendorSiteId", vendorSiteId);
+    provide("vendor", vendor);
+
     return {
-      // Return variables/Display Variables in HTML DOM
-      getValues,
-      // Send Functionality to HTML
       goBack,
-      function_name,
       redirectToPage,
       createRecord,
     };
