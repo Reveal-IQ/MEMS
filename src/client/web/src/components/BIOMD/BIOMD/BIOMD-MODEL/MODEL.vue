@@ -107,7 +107,6 @@ export default {
               model_name: modelName.value,
               model_number: modelNumber.value,
               vendor_site_ID: vendorSiteId.value,
-              contact_id: [],
             },
             Institute_Code: Institute_Code.value, //Dynamically changes when another institute logged in
           },
