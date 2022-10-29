@@ -2,7 +2,7 @@
 ************************************
 Created By : Reveal Foundation  
 Author     : Edward Opoku-Agyemang           
-Date       : 03-Sep-2022
+Date       : 03-Sep-2022 
 Version    : 0.0.2   
 Description: Describe the application
 ************************************
