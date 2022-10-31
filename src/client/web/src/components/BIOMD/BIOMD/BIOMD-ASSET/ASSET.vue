@@ -53,7 +53,7 @@ Description: < Describe the application >
 
 <script>
 import { useStore } from "vuex"; // Access Vuew Store Variables and Methods
-import { ref, toRefs, watch, inject, watchEffect, computed } from "vue";
+import { ref, toRefs, provide, computed } from "vue";
 
 import GeneralInformation from "./ASSET-GeneralInformation.vue";
 import EquipmentLocation from "./ASSET-EquipmentLocation.vue";
@@ -104,15 +104,40 @@ export default {
         status: "<Navigate_To_This_Page>",
       });
     }
+
+    const equipmentNumber = ref(null);
+    const commonName = ref(null);
+    const description = ref(null);
+    const serialNumber = ref(null);
+    const modelNumber = ref(null);
+    const manufacturerId = ref(null);
+    const manufacturerDate = ref(null);
+
+    const facilityId = ref(null);
+    const departmentId = ref(null);
+    const region = ref(null);
+    const district = ref(null);
+    const location = ref(null);
+
+    const supportTeam = ref(null);
+    const vendorId = ref(null);
+    const status = ref(null);
+    const userManual = ref(false);
+    const technicalManual = ref(false);
+
+    const purchaseOrder = ref(null);
+    const project = ref(null);
+    const purchaseCost = ref(null);
+    const purchaseDate = ref(null);
+    const acceptanceDate = ref(null);
+    const warrantyDate = ref(null);
+    const comment = ref(null);
+
     // send Socket Request use to send rrequest packet for an API
     const sendSocketReq = (request) => {
       store.dispatch("sendSocketReq", request);
     };
-    // Object to Store API Response Values
-    const getValues = ref({});
-    function function_name(parameters) {
-      // Write Function Code here .
-    }
+
     // Function to Send Request and Get Response by this template code .
     function createRecord() {
       // send Request as below .
@@ -126,28 +151,28 @@ export default {
             API: "CREATE_RECORD",
             collection: "Asset",
             record: {
-              assetCode: "12345AS",
-              commonName: "Phototherapy Unit",
-              description: "",
-              serialNumber: "12345AS3456",
-              model_id: "",
-              manufacturer_id: "",
-              manufactureDate: "",
-              facility_id: "",
-              department: "",
-              roomTag: "",
-              supportTeam: "",
-              vendor_id: "",
-              status: "",
-              user_manual: "",
-              technical_manual: "No",
-              purchaseOrderNumber: "",
-              project: "",
-              purchaseCost: "",
-              purchaseDate: "",
-              acceptanceDate: "",
-              warrantyDate: "",
-              generalComment: "",
+              assetCode: equipmentNumber.value,
+              commonName: commonName.value,
+              description: description.value,
+              serialNumber: serialNumber.value,
+              model_id: modelNumber.value,
+              manufacturer_id: manufacturerId.value,
+              manufactureDate: manufacturerDate.value,
+              facility_id: facilityId.value,
+              department: departmentId.value,
+              roomTag: location.value,
+              supportTeam: supportTeam.value,
+              vendor_id: vendorId.value,
+              status: status.value,
+              user_manual: userManual.value,
+              technical_manual: technicalManual.value,
+              purchaseOrderNumber: purchaseOrder.value,
+              project: project.value,
+              purchaseCost: purchaseCost.value,
+              purchaseDate: purchaseDate.value,
+              acceptanceDate: acceptanceDate.value,
+              warrantyDate: warrantyDate.value,
+              generalComment: comment.value,
             },
             Institute_Code: Institute_Code.value, //Dynamically changes when another institute logged in
           },
@@ -179,12 +204,36 @@ export default {
       emit("updatePage", "landing");
     };
 
+    provide("equipmentNumber", equipmentNumber);
+    provide("commonName", commonName);
+    provide("description", description);
+    provide("serialNumber", serialNumber);
+    provide("modelNumber", modelNumber);
+    provide("manufacturerId", manufacturerId);
+    provide("manufacturerDate", manufacturerDate);
+
+    provide("facilityId", facilityId);
+    provide("departmentId", departmentId);
+    provide("region", region);
+    provide("district", district);
+    provide("location", location);
+
+    provide("supportTeam", supportTeam);
+    provide("vendorId", vendorId);
+    provide("status", status);
+    provide("userManual", userManual);
+    provide("technicalManual", technicalManual);
+
+    provide("purchaseOrder", purchaseOrder);
+    provide("project", project);
+    provide("purchaseCost", purchaseCost);
+    provide("purchaseDate", purchaseDate);
+    provide("acceptanceDate", acceptanceDate);
+    provide("warrantyDate", warrantyDate);
+    provide("comment", comment);
+
     return {
-      // Return variables/Display Variables in HTML DOM
-      getValues,
-      // Send Functionality to HTML
       goBack,
-      function_name,
       redirectToPage,
       createRecord,
     };
