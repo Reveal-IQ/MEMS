@@ -8,6 +8,7 @@
           id="facilityList"
           class="form-select"
           aria-label="Default select example"
+          v-model="facilityId"
         >
           <option selected>Select Facility</option>
         </select>
@@ -19,6 +20,7 @@
           id="regionList"
           class="form-select"
           aria-label="Default select example"
+          v-model="region"
         >
           <option selected>Select Region</option>
         </select>
@@ -30,6 +32,7 @@
           id="districtList"
           class="form-select"
           aria-label="Default select example"
+          v-model="district"
         >
           <option selected>Select District</option>
         </select>
@@ -41,6 +44,7 @@
           id="departmentList"
           class="form-select"
           aria-label="Default select example"
+          v-model="departmentId"
         >
           <option selected>Select Department</option>
         </select>
@@ -52,6 +56,7 @@
           type="text"
           id="locationTag"
           placeholder="Add Location Tag"
+          v-model="location"
         />
       </div>
     </div>
@@ -63,6 +68,12 @@ import { ref, inject } from "vue";
 
 import Input from "../BIOMD-UI/UI-Input.vue";
 import Section from "../BIOMD-UI/UI-Section.vue";
+
+const facilityId = inject("facilityId");
+const departmentId = inject("departmentId");
+const region = inject("region");
+const district = inject("district");
+const location = inject("location");
 </script>
 
 <style lang="scss" scoped>
