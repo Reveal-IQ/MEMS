@@ -84,7 +84,7 @@ export default {
     const streetAddress1 = ref(null);
     const streetAddress2 = ref(null);
     const zipCode = ref(null);
-    // const departments = ref(null);
+    const departments = ref(null);
 
     // send Socket Request use to send rrequest packet for an API
     const sendSocketReq = (request) => {
@@ -115,7 +115,7 @@ export default {
                 latitude: "5.6098816",
                 longitude: "-0.2097152",
               },
-              // departments: departments.value,
+              departments: departments.value,
             },
             Institute_Code: Institute_Code.value, //Dynamically changes when another institute logged in
           },
@@ -156,6 +156,7 @@ export default {
     provide("streetAddress1", streetAddress1);
     provide("streetAddress2", streetAddress2);
     provide("zipCode", zipCode);
+    provide("departments", departments);
 
     return {
       goBack,

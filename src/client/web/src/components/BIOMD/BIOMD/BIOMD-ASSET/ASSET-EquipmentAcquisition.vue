@@ -22,6 +22,7 @@
           type="text"
           id="projectName"
           placeholder="Enter Project"
+          v-model="project"
         />
       </div>
     </div>
@@ -33,6 +34,7 @@
           type="number"
           id="purchaseCost"
           placeholder="Enter Purchase Cost"
+          v-model="purchaseCost"
         />
       </div>
       <!-- Purchase Date -->
@@ -42,6 +44,7 @@
           type="date"
           id="purchaseDate"
           placeholder="Enter Purchase Date"
+          v-model="purchaseDate"
         />
       </div>
       <!-- Vendor -->
@@ -62,6 +65,7 @@
           type="date"
           id="acceptanceDate"
           placeholder="Select Acceptance Date"
+          v-model="acceptanceDate"
         />
       </div>
       <!-- Warranty Expiry Date -->
@@ -71,6 +75,7 @@
           type="date"
           id="warrantyDate"
           placeholder="Select Warranty Expiration Date"
+          v-model="warrantyDate"
         />
       </div>
     </div>
@@ -82,6 +87,13 @@ import { ref, inject } from "vue";
 
 import Input from "../BIOMD-UI/UI-Input.vue";
 import Section from "../BIOMD-UI/UI-Section.vue";
+
+const purchaseOrder = inject("purchaseOrder");
+const project = inject("project");
+const purchaseCost = inject("purchaseCost");
+const purchaseDate = inject("purchaseDate");
+const acceptanceDate = inject("acceptanceDate");
+const warrantyDate = inject("warrantyDate");
 </script>
 
 <style lang="scss" scoped>

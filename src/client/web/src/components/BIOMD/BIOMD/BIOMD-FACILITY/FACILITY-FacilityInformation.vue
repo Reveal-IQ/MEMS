@@ -117,6 +117,7 @@
             type="text"
             id="departmentTag"
             placeholder="Add Department Tag"
+            v-model="departments"
           />
         </div>
       </div>
@@ -137,6 +138,7 @@ const city = inject("city");
 const streetAddress1 = inject("streetAddress1");
 const streetAddress2 = inject("streetAddress2");
 const zipCode = inject("zipCode");
+const departments = inject("departments");
 
 const countryList = ref(["Ghana", "Canada", "USA"]);
 const regionList = ref(["Greater Accra", "Quebec", "California"]);

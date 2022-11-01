@@ -23,6 +23,7 @@
           id="supportTeamList"
           class="form-select"
           aria-label="Default select example"
+          v-model="supportTeam"
         >
           <option selected>Select Support Team</option>
         </select>
@@ -45,8 +46,12 @@
           id="statusList"
           class="form-select"
           aria-label="Default select example"
+          v-model="status"
         >
           <option selected>Select Equipment Status</option>
+          <option v-for="name in statusList" :key="name" :value="name">
+            {{ name }}
+          </option>
         </select>
       </div>
     </div>
@@ -59,6 +64,7 @@
           type="checkbox"
           value=""
           id="userManual"
+          v-model="userManual"
         />
         <label class="form-check-label" for="userManual">
           User Manual Available?
@@ -72,6 +78,7 @@
           type="checkbox"
           value=""
           id="techManual"
+          v-model="technicalManual"
         />
         <label class="form-check-label" for="techManual">
           Technical Manual Available?
@@ -84,6 +91,18 @@
 <script setup>
 import { ref, inject } from "vue";
 import Section from "../BIOMD-UI/UI-Section.vue";
+
+const supportTeam = inject("supportTeam");
+const vendorId = inject("vendorId");
+const status = inject("status");
+const userManual = inject("userManual");
+const technicalManual = inject("technicalManual");
+
+const statusList = ref([
+  "Operational",
+  "Decommissioned",
+  "Requires Maintenance",
+]);
 </script>
 
 <style lang="scss" scoped>
