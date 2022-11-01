@@ -8,6 +8,7 @@
           type="number"
           id="equipmentNumber"
           placeholder="Enter Equipment Number"
+          v-model="equipmentNumber"
         />
       </div>
 
@@ -16,10 +17,10 @@
         <label for="commonNameList" class="form-label"
           >Equipment Common Name</label
         >
-        <select id="commonNameList" class="form-select">
+        <select id="commonNameList" class="form-select" v-model="commonName">
           <option selected disabled>Select Common Name</option>
-          <option v-for="commonName in commonNameList" :key="commonName.index">
-            {{ commonName }}
+          <option v-for="name in commonNameList" :key="name">
+            {{ name }}
           </option>
         </select>
       </div>
@@ -33,6 +34,7 @@
           id="descriptionList"
           class="form-select"
           aria-label="Default select example"
+          v-model="description"
         >
           <option selected>Select Class</option>
         </select>
@@ -45,6 +47,7 @@
           type="text"
           id="serialNumber"
           placeholder="Enter Serial Number"
+          v-model="serialNumber"
         />
       </div>
       <!-- Model Name -->
@@ -54,6 +57,7 @@
           id="modelList"
           class="form-select"
           aria-label="Default select example"
+          v-model="modelId"
         >
           <option selected>Select Model Name</option>
         </select>
@@ -65,6 +69,7 @@
           id="manufacturerList"
           class="form-select"
           aria-label="Default select example"
+          v-model="manufacturerId"
         >
           <option selected>Select Manufacturer</option>
         </select>
@@ -77,17 +82,12 @@
           type="date"
           id="yearOfManufacture"
           placeholder="Enter Year of manufacture"
+          v-model="manufacturerDate"
         />
       </div>
     </div>
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
       <div class="col-lg-12 col-md-6">
-        <!-- <Btn
-          BtnName="Add Parent Asset"
-          backgroundColor="#1266F1"
-          :icon="'search'"
-          @click="addRecord"
-        /> -->
         <Btn2
           BtnName="Search Parent Equipment"
           backgroundColor="#1266F1"
@@ -101,17 +101,21 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, inject } from "vue";
 import { useStore } from "vuex";
 
-import Btn from "../BIOMD-UI/UI-Btn.vue";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 import Input from "../BIOMD-UI/UI-Input.vue";
 import Section from "../BIOMD-UI/UI-Section.vue";
 
 // Inject Asset Information
-
-// const store = useStore();
+const equipmentNumber = inject("equipmentNumber");
+const commonName = inject("commonName");
+const description = inject("description");
+const serialNumber = inject("serialNumber");
+const modelId = inject("modelId");
+const manufacturerId = inject("manufacturerId");
+const manufacturerDate = inject("manufacturerDate");
 
 const commonNameList = ref(["concentrator", "bp apparatus", "gun thermometer"]);
 </script>

@@ -109,7 +109,7 @@ export default {
     const commonName = ref(null);
     const description = ref(null);
     const serialNumber = ref(null);
-    const modelNumber = ref(null);
+    const modelId = ref(null);
     const manufacturerId = ref(null);
     const manufacturerDate = ref(null);
 
@@ -155,7 +155,7 @@ export default {
               commonName: commonName.value,
               description: description.value,
               serialNumber: serialNumber.value,
-              model_id: modelNumber.value,
+              model_id: modelId.value,
               manufacturer_id: manufacturerId.value,
               manufactureDate: manufacturerDate.value,
               facility_id: facilityId.value,
@@ -208,7 +208,7 @@ export default {
     provide("commonName", commonName);
     provide("description", description);
     provide("serialNumber", serialNumber);
-    provide("modelNumber", modelNumber);
+    provide("modelId", modelId);
     provide("manufacturerId", manufacturerId);
     provide("manufacturerDate", manufacturerDate);
 
