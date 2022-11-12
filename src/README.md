@@ -43,19 +43,23 @@ To access hostfiles:
 ```
 Mac: sudo nano /etc/hosts
 ```
+6. Install and turn on [CORS Extension](https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?hl=en)
 
-6. Install Node Modules
+
+
+
+7. Install Node Modules
 ```
 npm install
 ```
 
-7. Launch client as a development enviroment
+8. Launch client as a development enviroment
 ```
 npm run serve
 ```
 
-8. Web Client will launch on localhost port 8080
-9. Navigate to the webpage and begin the default setup process
+9. Web Client will launch on localhost port 8080
+10. Navigate to the webpage and begin the default setup process
 
 ### Initalize Database
 Follow these instructions to initalise the MongoDB database with a root user. 
