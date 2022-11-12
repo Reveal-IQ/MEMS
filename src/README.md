@@ -13,12 +13,12 @@ This guide will have you up and running quickly. Use the following instruction t
 
 1. Create a Clone
 ```
-git clone git@github.com:Reveal-IQ/Reveal-Foundation.git
+git clone git@github.com:Reveal-IQ/MEMS.git
 ```
 2. Navigate to root folder containg docker compose file. Launch docker containers
 ```
-Mac/Windows: docker-compose --project-name RevealFoundation up 
-Linux: docker compose --project-name RevealFoundation up 
+Mac/Windows: docker-compose --project-name MEMS up 
+Linux: docker compose --project-name MEMS up 
 ```
 3. Verify the following containers have launched successfully
  - **reveal/api** : Backend web application
@@ -32,18 +32,30 @@ Linux: docker compose --project-name RevealFoundation up
 ```
 cd client/web
 ```
-5. Install Node Modules
+5. Add Hostfiles
+
+Add the following to hostfiles:
+```
+127.0.0.1       dev.reveal.health
+```
+
+To access hostfiles:
+```
+Mac: sudo nano /etc/hosts
+```
+
+6. Install Node Modules
 ```
 npm install
 ```
 
-6. Launch client as a development enviroment
+7. Launch client as a development enviroment
 ```
 npm run serve
 ```
 
-7. Web Client will launch on localhost port 8080
-8. Navigate to the webpage and begin the default setup process
+8. Web Client will launch on localhost port 8080
+9. Navigate to the webpage and begin the default setup process
 
 ### Initalize Database
 Follow these instructions to initalise the MongoDB database with a root user. 
