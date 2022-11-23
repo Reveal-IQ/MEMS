@@ -45,10 +45,7 @@ Mac: sudo nano /etc/hosts
 ```
 6. Install and turn on [CORS Extension](https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?hl=en)
 
-
-
-
-7. Install Node Modules
+7. Navigate to Client and Install Node Modules
 ```
 npm install
 ```
