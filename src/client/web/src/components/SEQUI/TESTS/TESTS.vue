@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid" style="max-height:100vh;overflow-y:scroll;">
     <div class="row mx-auto my-3" style="max-width:600px">
       <div class="col-10 input-group my-4">
         <input type="file" class="form-control" ref="inputYamlFile" id="inputYamlFile" @change="onFileChange">
@@ -310,6 +310,9 @@ export default {
   thead { display: table-row-group;}
   tfoot { display: table-row-group; }
   tr { page-break-inside: avoid; }
+}
+.container-fluid::-webkit-scrollbar {
+  display: none;
 }
 
 pre {
