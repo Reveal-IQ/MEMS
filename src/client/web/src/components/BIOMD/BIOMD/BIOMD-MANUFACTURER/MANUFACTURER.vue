@@ -13,17 +13,9 @@ Description: Describe the application
     <div class="container p-4 m-4">
       <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
       <div class="d-flex flex-row justify-content-between">
-        <Btn2
-          BtnName="Back"
-          :icon="'arrow-left'"
-          @click="goBack()"
-          class="col-lg-2 col-md-3 col-sm-4 my-3"
-        />
+        <Btn2 BtnName="Back" :icon="'arrow-left'" @click="goBack()" class="col-lg-2 col-md-3 col-sm-4 my-3" />
       </div>
-      <Header
-        title="Create New Manufacturer"
-        subTitle="Enter all details required for this equipment manufacturer"
-      />
+      <Header title="Create New Manufacturer" subTitle="Enter all details required for this equipment manufacturer" />
 
       <main>
         <ManufacturerInformation />
@@ -31,12 +23,7 @@ Description: Describe the application
         <div class="d-flex justify-content-center py-3">
           <!-- btn-green and a-link are custom css for MEMS check base.css -->
           <div class="">
-            <Btn
-              BtnName="Create Manufacturer"
-              backgroundColor="#27AE60"
-              class="mb-3"
-              @click="createRecord()"
-            />
+            <Btn BtnName="Create Manufacturer" backgroundColor="#27AE60" class="mb-3" @click="createRecord()" />
 
             <Btn BtnName="Clear Content" />
           </div>
@@ -80,6 +67,11 @@ export default {
     const streetAddress2 = ref(null);
     const zipCode = ref(null);
 
+    // Navigate to selected page to edit
+    const changePage = async (page) => {
+      emit("updatePage", page);
+    };
+
     const changeServiceState = (serviceState) =>
       store.dispatch("changeServiceState", serviceState);
     //Redirect to another page
@@ -121,15 +113,7 @@ export default {
         },
         callback: (res) => {
           if (res.Type === "RESPONSE") {
-            // Console the Response Packet
-            Type: "RESPONSE";
-            Response: {
-              // ID:
-              Success: TRUE;
-              Collection: "manufacturers";
-              Message: "Created Record";
-            }
-
+            changePage('success')
             console.log("Response Packet -->", res.Response);
             getValues.value = res.Response.Site_Info[0]; //Assigning response values to getValues Object
           } else if (res.Type === "ERROR") {
@@ -163,7 +147,9 @@ export default {
     };
   },
   components: { ManufacturerInformation, Btn2, Btn, Header },
+
 };
+
 </script>
 
 <style lang="scss" scoped>
