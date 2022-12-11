@@ -86,7 +86,10 @@ export default {
 .RevealContainer {
   min-height: 100vh;
   max-height: 100vh;
-  overflow-y: scroll;
   background-color: $InvisibleSilver;
+  overflow: scroll;
+}
+.RevealContainer::-webkit-scrollbar {
+  display: none;
 }
 </style>
