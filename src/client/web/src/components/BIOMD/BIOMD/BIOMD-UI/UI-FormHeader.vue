@@ -1,8 +1,10 @@
 <template>
-  <h1 class="title fs2xl">{{ title }}</h1>
-  <p class="sub-title fsSm">
-    {{ subTitle }}
-  </p>
+  <div>
+    <h1 class="title fs2xl">{{ title }}</h1>
+    <p class="sub-title fsSm">
+      {{ subTitle }}
+    </p>
+  </div>
 </template>
 
 <script setup>

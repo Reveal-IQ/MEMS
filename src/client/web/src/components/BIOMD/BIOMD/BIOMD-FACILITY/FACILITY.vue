@@ -9,19 +9,37 @@ Description: < Describe the application >
 -->
 
 <template>
-  <div class="container">
-    <div class="d-flex flex-row justify-content-between">
-      <Btn2
-        BtnName="Back"
-        :icon="'arrow-left'"
-        @click="goBack()"
-        class="col-lg-2 col-md-3 col-sm-4 my-3"
-      />
-    </div>
-    <Header
-      title="Create New Facility"
-      subTitle="Enter all details required for this medical facility"
-    />
+  <div class="RevealContainer">
+  <div class="container p-4 m-4">
+    <div
+        class="d-lg-flex align-items-center flex-lg-row flex-md-row flex-sm-column justify-content-between"
+      >
+        <div class="d-flex mt-3">
+          <Header
+            title="New Facility"
+            subTitle="Create a new facility with this form"
+          />
+        </div>
+        <div class="d-flex">
+          <span class="d-sm-block">
+            <Btn2
+              BtnName="Return"
+              :icon="'arrow-left'"
+              backgroundColor="none"
+              @click="goBack"
+              class="text-secondary"
+            />
+          </span>
+          <span class="ms-4 d-sm-block">
+            <Btn2
+              BtnName="Dashboard"
+              backgroundColor="#2A94B6"
+              @click="goBack"
+              class="text-light"
+            />
+          </span>
+        </div>
+      </div>
 
     <main>
       <FacilityInformation />
@@ -40,6 +58,7 @@ Description: < Describe the application >
       </div>
     </main>
   </div>
+</div>
 </template>
 
 <script>
