@@ -1,13 +1,13 @@
 <template>
   <button
     type="button"
-    class="btn buttonBackground"
+    class="btn buttonBackground d-inline-flex align-items-center fs-6 rounded-pill"
+    :class="class"
     :style="'--color:' + backgroundColor"
     @click="emitClickEvent()"
   >
-    {{ BtnName }}
-
-    <font-awesome-icon :icon="icon" size="1x" class="text-light" />
+    <font-awesome-icon :icon="icon" size="1x" class="me-2" />
+    <span>{{ BtnName }}</span>
 
     <slot />
   </button>
@@ -18,6 +18,10 @@ const props = defineProps({
   BtnName: {
     type: String,
     default: "Button Name",
+  },
+  class: {
+    type: String,
+    default: "",
   },
   showLoader: {
     type: Boolean,

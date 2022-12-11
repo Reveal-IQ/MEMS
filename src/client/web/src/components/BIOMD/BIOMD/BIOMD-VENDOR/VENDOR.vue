@@ -9,37 +9,56 @@ Description: < Describe the application >
 -->
 
 <template>
-  <div class="container">
-    <div class="d-flex flex-row justify-content-between">
-      <Btn2
-        BtnName="Back"
-        :icon="'arrow-left'"
-        @click="goBack"
-        class="col-lg-2 col-md-3 col-sm-4 my-3"
-      />
-    </div>
-    <Header
-      title="Create New Vendor"
-      subTitle="Enter all details required for this equipment vendor"
-    />
-
-    <main>
-      <VendorInformation />
-      <CustomerService />
-      <div class="d-flex justify-content-center py-3">
-        <!-- btn-green and a-link are custom css for MEMS check base.css -->
-        <div class="">
-          <Btn
-            BtnName="Create Vendor"
-            backgroundColor="#27AE60"
-            class="mb-3"
-            @click="createRecord"
+  <div class="RevealContainer mb-5">
+    <div class="container p-4 m-4">
+      <div
+        class="d-lg-flex align-items-center flex-lg-row flex-md-row flex-sm-column justify-content-between"
+      >
+        <div class="d-flex mt-3">
+          <Header
+            title="Create New Vendor"
+            subTitle="Enter all details required for this equipment vendor"
           />
-
-          <Btn BtnName="Clear Content" />
+        </div>
+        <div class="d-flex">
+          <span class="d-sm-block">
+            <Btn2
+              BtnName="Return"
+              :icon="'arrow-left'"
+              backgroundColor="none"
+              @click="goBack"
+              class="text-secondary"
+            />
+          </span>
+          <span class="ms-4 d-sm-block">
+            <Btn2
+              BtnName="Dashboard"
+              backgroundColor="#2A94B6"
+              @click="goBack"
+              class="text-light"
+            />
+          </span>
         </div>
       </div>
-    </main>
+
+      <main>
+        <VendorInformation />
+        <CustomerService />
+        <div class="d-flex justify-content-center py-3">
+          <!-- btn-green and a-link are custom css for MEMS check base.css -->
+          <div class="">
+            <Btn
+              BtnName="Create Vendor"
+              backgroundColor="#27AE60"
+              class="mb-3"
+              @click="createRecord"
+            />
+
+            <Btn BtnName="Clear Content" />
+          </div>
+        </div>
+      </main>
+    </div>
   </div>
 </template>
 
@@ -174,4 +193,10 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.RevealContainer {
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow-y: scroll;
+}
+</style>
