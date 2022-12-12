@@ -9,7 +9,7 @@
             type="text"
             id="facilityName"
             placeholder="Enter Facility Name"
-            v-model="facilityName"
+            v-model="facilityInfo.facilityName"
           />
         </div>
         <!-- Country -->

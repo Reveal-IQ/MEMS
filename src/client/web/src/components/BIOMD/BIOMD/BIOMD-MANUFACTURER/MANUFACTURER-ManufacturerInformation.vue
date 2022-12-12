@@ -8,7 +8,7 @@
           <Input
             label="Manufacturer Name"
             type="text"
-            v-model="manufacturerName"
+            v-model="manufacturerInfo.manufacturerName"
             id="manufacturerName"
             placeholder="Enter Manufacturer Name"
           />
@@ -67,7 +67,7 @@
             id="cityList"
             class="form-select"
             aria-label="Default select example"
-            v-model="city"
+            v-model="manufacturerInfo.city"
           >
             <option selected disabled>Choose a City</option>
             <option v-for="name in cityList" :key="name">
@@ -82,7 +82,7 @@
           <Input
             label="Street Address 1"
             type="text"
-            v-model="streetAddress1"
+            v-model="manufacturerInfo.streetAddress1"
             id="street1"
             placeholder="Enter Street Address 1"
           />
@@ -92,7 +92,7 @@
           <Input
             label="Street Address 2"
             type="text"
-            v-model="streetAddress2"
+            v-model="manufacturerInfo.streetAddress2"
             id="street2"
             placeholder="Enter Street Address 2"
           />
@@ -102,7 +102,7 @@
           <Input
             label="Zip/Postal Code"
             type="number"
-            v-model="zipCode"
+            v-model="manufacturerInfo.zipCode"
             id="zip"
             placeholder="Enter Zip/Postal Code"
           />

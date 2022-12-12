@@ -13,7 +13,7 @@
               id="vendorName"
               aria-describedby="basic-addon3"
               placeholder="Enter Vendor Name"
-              v-model="vendorName"
+              v-model="vendorInfo.vendorName"
             />
           </div>
         </div>
@@ -75,7 +75,7 @@
               id="cityList"
               aria-describedby="basic-addon3"
               placeholder="Select country"
-              v-model="city"
+              v-model="vendorInfo.city"
             >
               <option selected>Select city/district</option>
               <option v-for="name in cityList" :key="name">
@@ -93,7 +93,7 @@
             type="text"
             id="street1"
             placeholder="Enter Street Address 1"
-            v-model="streetAddress1"
+            v-model="vendorInfo.streetAddress1"
           />
         </div>
         <!-- Street Address 2 -->
@@ -103,7 +103,7 @@
             type="text"
             id="street2"
             placeholder="Enter Street Address 2"
-            v-model="streetAddress2"
+            v-model="vendorInfo.streetAddress2"
           />
         </div>
         <!-- Zip / Postal Code -->
@@ -113,7 +113,7 @@
             type="number"
             id="zip"
             placeholder="Enter Zip/Postal Code"
-            v-model="zipCode"
+            v-model="vendorInfo.zipCode"
           />
         </div>
         <!-- Site ID -->
