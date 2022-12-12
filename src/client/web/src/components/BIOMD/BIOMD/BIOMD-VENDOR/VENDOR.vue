@@ -100,13 +100,15 @@ export default {
         status: "<Navigate_To_This_Page>",
       });
     }
-    const vendorName = ref(null);
-    const country = ref(null);
-    const region = ref(null);
-    const city = ref(null);
-    const streetAddress1 = ref(null);
-    const streetAddress2 = ref(null);
-    const zipCode = ref(null);
+    const vendorInfo = ref({
+      vendorName: null,
+      country: null,
+      state: null,
+      district: null,
+      streetAddress1: null,
+      streetAddress2: null,
+      zipCode: null,
+    });
 
     // send Socket Request use to send rrequest packet for an API
     const sendSocketReq = (request) => {
@@ -130,13 +132,13 @@ export default {
             API: "CREATE_RECORD",
             collection: "Vendor",
             record: {
-              vendor_name: vendorName.value,
-              country: country.value,
-              area: region.value,
-              city: city.value,
-              address_1: streetAddress1.value,
-              address_2: streetAddress2.value,
-              areaCode: zipCode.value,
+              vendor_name: vendorInfo.value.vendorName,
+              country: vendorInfo.value.country,
+              area: vendorInfo.value.state,
+              city: vendorInfo.value.district,
+              address_1: vendorInfo.value.streetAddress1,
+              address_2: vendorInfo.value.streetAddress2,
+              areaCode: vendorInfo.value.zipCode,
               contactID: [],
               manufacturer_id: [],
             },
@@ -172,13 +174,7 @@ export default {
       emit("updatePage", "landing");
     };
 
-    provide("vendorName", vendorName);
-    provide("country", country);
-    provide("region", region);
-    provide("city", city);
-    provide("streetAddress1", streetAddress1);
-    provide("streetAddress2", streetAddress2);
-    provide("zipCode", zipCode);
+    provide("vendorInfo", vendorInfo);
 
     return {
       // Return variables/Display Variables in HTML DOM
@@ -197,7 +193,7 @@ export default {
 .RevealContainer {
   min-height: 100vh;
   max-height: 100vh;
-  overflow:scroll;
+  overflow: scroll;
 }
 .RevealContainer::-webkit-scrollbar {
   display: none;
