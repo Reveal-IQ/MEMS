@@ -10,8 +10,8 @@ Description: < Describe the application >
 
 <template>
   <div class="RevealContainer">
-  <div class="container p-4 m-4">
-    <div
+    <div class="container p-4 m-4">
+      <div
         class="d-lg-flex align-items-center flex-lg-row flex-md-row flex-sm-column justify-content-between"
       >
         <div class="d-flex mt-3">
@@ -41,24 +41,24 @@ Description: < Describe the application >
         </div>
       </div>
 
-    <main>
-      <FacilityInformation />
+      <main>
+        <FacilityInformation />
 
-      <div class="d-flex justify-content-center py-3">
-        <div class="">
-          <Btn
-            BtnName="Create Facility"
-            backgroundColor="#27AE60"
-            class="mb-3"
-            @click="createRecord()"
-          />
+        <div class="d-flex justify-content-center py-3">
+          <div class="">
+            <Btn
+              BtnName="Create Facility"
+              backgroundColor="#27AE60"
+              class="mb-3"
+              @click="createRecord()"
+            />
 
-          <Btn BtnName="Clear Content" />
+            <Btn BtnName="Clear Content" />
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -96,20 +96,20 @@ export default {
         status: "<Navigate_To_This_Page>",
       });
     }
-    const facilityName = ref(null);
-    const country = ref(null);
-    const region = ref(null);
-    const city = ref(null);
-    const streetAddress1 = ref(null);
-    const streetAddress2 = ref(null);
-    const zipCode = ref(null);
-    const departments = ref(null);
-
+    const facilityInfo = ref({
+      facilityName: null,
+      country: null,
+      state: null,
+      district: null,
+      streetAddress1: null,
+      streetAddress2: null,
+      zipCode: null,
+      departments: null,
+    });
     // send Socket Request use to send rrequest packet for an API
     const sendSocketReq = (request) => {
       store.dispatch("sendSocketReq", request);
     };
-
     // Function to Send Request and Get Response by this template code .
     function createRecord() {
       // send Request as below .
@@ -123,18 +123,14 @@ export default {
             API: "CREATE_RECORD",
             collection: "Facility",
             record: {
-              facility_name: facilityName.value,
-              country: country.value,
-              area: region.value,
-              city: city.value,
-              address_1: streetAddress1.value,
-              address_2: streetAddress2.value,
-              area_code: zipCode.value,
-              location: {
-                latitude: "5.6098816",
-                longitude: "-0.2097152",
-              },
-              departments: departments.value,
+              facility_name: facilityInfo.value.facilityName,
+              country: facilityInfo.value.country,
+              area: facilityInfo.value.state,
+              city: facilityInfo.value.district,
+              address_1: facilityInfo.value.streetAddress1,
+              address_2: facilityInfo.value.streetAddress2,
+              area_code: facilityInfo.value.zipCode,
+              departments: facilityInfo.value.departments,
             },
             Institute_Code: Institute_Code.value, //Dynamically changes when another institute logged in
           },
@@ -168,14 +164,7 @@ export default {
       emit("updatePage", "landing");
     };
 
-    provide("facilityName", facilityName);
-    provide("country", country);
-    provide("region", region);
-    provide("city", city);
-    provide("streetAddress1", streetAddress1);
-    provide("streetAddress2", streetAddress2);
-    provide("zipCode", zipCode);
-    provide("departments", departments);
+    provide("facilityInfo", facilityInfo);
 
     return {
       goBack,
@@ -197,5 +186,4 @@ export default {
 .RevealContainer::-webkit-scrollbar {
   display: none;
 }
-
 </style>

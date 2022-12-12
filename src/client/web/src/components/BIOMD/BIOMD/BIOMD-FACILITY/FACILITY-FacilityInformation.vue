@@ -15,34 +15,47 @@
         <!-- Country -->
         <div class="col">
           <label for="countryList" class="form-label">Country</label>
-          <select
+          <input
+            class="form-control"
+            list="countryOptions"
             id="countryList"
-            class="form-select"
-            aria-label="Default select example"
-            v-model="country"
-          >
-            <option selected>Choose a Country</option>
-            <option v-for="name in countryList" :key="name" :value="name">
-              {{ name }}
+            placeholder="Type to search..."
+            v-model="facilityInfo.country"
+            @input="fetchCountry()"
+            @change="fetchState()"
+            autocomplete="off"
+          />
+          <datalist id="countryOptions">
+            <option
+              v-for="country in countryList"
+              :key="country.index"
+              :value="country.Loci_Code_Country"
+            >
+              {{ country.Loci_Name_Country }}
             </option>
-          </select>
+          </datalist>
         </div>
         <!-- Province/State/Region -->
         <div class="col">
-          <label for="stateList" class="form-label"
-            >Province/State/Region</label
-          >
-          <select
+          <label for="stateList" class="form-label">State</label>
+          <input
+            class="form-control"
+            list="stateOptions"
             id="stateList"
-            class="form-select"
-            aria-label="Default select example"
-            v-model="region"
-          >
-            <option selected>Choose a State</option>
-            <option v-for="name in regionList" :key="name" :value="name">
-              {{ name }}
+            placeholder="Type to search..."
+            v-model="facilityInfo.state"
+            @input="fetchState()"
+            autocomplete="off"
+          />
+          <datalist id="stateOptions">
+            <option
+              v-for="state in stateList"
+              :key="state.id"
+              :value="state.Loci_Code_State"
+            >
+              {{ state.Loci_Name_State }}
             </option>
-          </select>
+          </datalist>
         </div>
         <!-- City/District -->
         <div class="col">
@@ -51,7 +64,7 @@
             id="cityList"
             class="form-select"
             aria-label="Default select example"
-            v-model="city"
+            v-model="facilityInfo.city"
           >
             <option selected>Choose a City</option>
             <option v-for="name in cityList" :key="name" :value="name">
@@ -68,7 +81,7 @@
             type="text"
             id="street1"
             placeholder="Enter Street Address 1"
-            v-model="streetAddress1"
+            v-model="facilityInfo.streetAddress1"
           />
         </div>
         <!-- Street Address 2 -->
@@ -78,7 +91,7 @@
             type="text"
             id="street2"
             placeholder="Enter Street Address 2"
-            v-model="streetAddress2"
+            v-model="facilityInfo.streetAddress2"
           />
         </div>
         <!-- Zip / Postal Code -->
@@ -88,7 +101,7 @@
             type="number"
             id="zip"
             placeholder="Enter Zip/Postal Code"
-            v-model="zipCode"
+            v-model="facilityInfo.zipCode"
           />
         </div>
 
@@ -117,7 +130,7 @@
             type="text"
             id="departmentTag"
             placeholder="Add Department Tag"
-            v-model="departments"
+            v-model="facilityInfo.departments"
           />
         </div>
       </div>
@@ -126,23 +139,85 @@
 </template>
 
 <script setup>
-import { ref, inject } from "vue";
+import { ref, inject, onMounted } from "vue";
+import { useStore } from "vuex";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 import Input from "../BIOMD-UI/UI-Input.vue";
 import Section from "../BIOMD-UI/UI-Section.vue";
-
-const facilityName = inject("facilityName");
-const country = inject("country");
-const region = inject("region");
-const city = inject("city");
-const streetAddress1 = inject("streetAddress1");
-const streetAddress2 = inject("streetAddress2");
-const zipCode = inject("zipCode");
-const departments = inject("departments");
-
-const countryList = ref(["Ghana", "Canada", "USA"]);
-const regionList = ref(["Greater Accra", "Quebec", "California"]);
+const store = useStore();
+const facilityInfo = inject("facilityInfo");
+const countryList = ref(null);
+const stateList = ref(["Greater Accra", "Quebec", "California"]);
 const cityList = ref(["Accra", "Montreal", "Los Angeles"]);
+const sendSocketReq = (request) => {
+  store.dispatch("sendSocketReq", request);
+};
+function fetchCountry() {
+  sendSocketReq({
+    data: {
+      Expiry: 20000,
+      Type: "REQUEST",
+      Request: {
+        Module: "GLOBAL",
+        ServiceCode: "GLOBL",
+        API: "GET_GEO_LIST",
+        Max_List: 500,
+        Criteria: {
+          Type_Code: "CNTY",
+          Loci_Name_Country: "",
+        },
+      },
+    },
+    callback: (res) => {
+      if (res.Type === "RESPONSE") {
+        console.log("Response Packet -->", res.Response);
+        countryList.value = res.Response.Country_List; //Assigning response values to getValues Object
+      } else if (res.Type === "ERROR") {
+        // Error response received during fetching
+        Type: "ERROR";
+        Response: {
+          Error_Code: "API-GET_GEO_LIST-E001";
+          Error_Msg: "GET_GEO_LIST_API: Failed to execute query";
+        }
+      }
+    },
+  });
+}
+function fetchState() {
+  sendSocketReq({
+    data: {
+      Expiry: 20000,
+      Type: "REQUEST",
+      Request: {
+        Module: "GLOBAL",
+        ServiceCode: "GLOBL",
+        API: "GET_GEO_LIST",
+        Max_List: 500,
+        Criteria: {
+          Type_Code: "STATE",
+          Loci_Code_Country: facilityInfo.value.country,
+          Loci_Name_State: "",
+        },
+      },
+    },
+    callback: (res) => {
+      if (res.Type === "RESPONSE") {
+        console.log("Response Packet -->", res.Response);
+        stateList.value = res.Response.State_List; //Assigning response values to getValues Object
+      } else if (res.Type === "ERROR") {
+        // Error response received during fetching
+        Type: "ERROR";
+        Response: {
+          Error_Code: "API-GET_GEO_LIST-E001";
+          Error_Msg: "GET_GEO_LIST_API: Failed to execute query";
+        }
+      }
+    },
+  });
+}
+onMounted(() => {
+  fetchCountry();
+});
 </script>
 
 <style lang="scss" scoped>
