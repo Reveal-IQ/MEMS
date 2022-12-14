@@ -56,18 +56,23 @@
         </div>
         <!-- City/District -->
         <div class="col">
-          <label for="cityList" class="form-label">City/District</label>
-          <select
-            id="cityList"
-            class="form-select"
-            aria-label="Default select example"
-            v-model="facilityInfo.city"
-          >
-            <option selected>Choose a City</option>
-            <option v-for="name in cityList" :key="name" :value="name">
-              {{ name }}
-            </option>
-          </select>
+          <label for="districtList" class="form-label">District</label>
+          <input
+            class="form-control"
+            list="districtOptions"
+            id="districtList"
+            placeholder="Type to search..."
+            v-model="facilityInfo.selectedDistrict.Loci_Name_Area_L1"
+            @input="fetchDistrict"
+            autocomplete="off"
+          />
+          <datalist id="districtOptions">
+            <option
+              v-for="district in districtList"
+              :key="district.index"
+              :value="district.Loci_Name_Area_L1"
+            ></option>
+          </datalist>
         </div>
       </div>
       <div class="row g-3 mt-3">
@@ -145,8 +150,8 @@ const store = useStore();
 const facilityInfo = inject("facilityInfo");
 const Global_Facility_Definition = inject("Global_Facility_Definition");
 const countryList = ref(null);
-const stateList = ref(["Greater Accra", "Quebec", "California"]);
-const cityList = ref(["Accra", "Montreal", "Los Angeles"]);
+const stateList = ref(null);
+const districtList = ref(null);
 const sendSocketReq = (request) => {
   store.dispatch("sendSocketReq", request);
 };
@@ -228,14 +233,14 @@ const fetchState = async (event) => {
       Global_Facility_Definition.value.facilityAddress.State =
         facilityInfo.value.selectedState.Loci_Code_State;
       // validateInput("Country");
-      // await fetchState();
+      await fetchDistrict();
     } else {
       // Clear Country, State, District, Mandal, Postal Code
       Global_Facility_Definition.value.facilityAddress.State = null;
       Global_Facility_Definition.value.facilityAddress.District = null;
       facilityInfo.value.selectedDistrict = {
-        Loci_Name_Country: null,
-        Loci_Code_Country: null,
+        Loci_Name_Area: null,
+        Loci_Code_Area: null,
       };
       sendSocketReq({
         data: {
@@ -258,6 +263,64 @@ const fetchState = async (event) => {
           if (res.Type === "RESPONSE") {
             console.log("Response Packet -->", res.Response);
             stateList.value = res.Response.State_List; //Assigning response values to getValues Object
+          } else if (res.Type === "ERROR") {
+            // Error response received during fetching
+            Type: "ERROR";
+            Response: {
+              Error_Code: "API-GET_GEO_LIST-E001";
+              Error_Msg: "GET_GEO_LIST_API: Failed to execute query";
+            }
+          }
+        },
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const fetchDistrict = async (event) => {
+  try {
+    const selectedDistrict = event ? event.target.value : "";
+    if (
+      event &&
+      (!(event instanceof InputEvent) ||
+        event.inputType === "insertReplacementText")
+    ) {
+      // determine if the value is in the datalist. If so, someone selected a value in the list!
+      facilityInfo.value.selectedDistrict = districtList.value.find((state) => {
+        return selectedDistrict === state.Loci_Name_Area_L1;
+      });
+      Global_Facility_Definition.value.facilityAddress.District =
+        facilityInfo.value.selectedDistrict.Loci_Code_Area_L1;
+      // validateInput("Country");
+      // await fetchState();
+    } else {
+      // Clear Country, State, District, Mandal, Postal Code
+      Global_Facility_Definition.value.facilityAddress.District = null;
+      sendSocketReq({
+        data: {
+          Expiry: 20000,
+          Type: "REQUEST",
+          Request: {
+            Module: "GLOBAL",
+            ServiceCode: "GLOBL",
+            API: "GET_GEO_LIST",
+            Max_List: 500,
+            Criteria: {
+              Type_Code: "ARL1",
+              Loci_Code_Country:
+                Global_Facility_Definition.value.facilityAddress.Country,
+              Loci_Code_State:
+                Global_Facility_Definition.value.facilityAddress.State,
+              Loci_Name_District: "",
+            },
+          },
+        },
+        callback: (res) => {
+          if (res.Type === "RESPONSE") {
+            console.log("Response Packet -->", res.Response);
+            districtList.value = res.Response.ARL1_List; //Assigning response values to getValues Object
           } else if (res.Type === "ERROR") {
             // Error response received during fetching
             Type: "ERROR";

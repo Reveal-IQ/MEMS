@@ -101,8 +101,8 @@ export default {
       selectedCountry: { Loci_Name_Country: null, Loci_Code_Country: null },
       selectedState: { Loci_Name_State: null, Loci_Code_State: null },
       selectedDistrict: {
-        Loci_Name_District: null,
-        Loci_Code_District: null,
+        Loci_Name_Area_L1: null,
+        Loci_Code_Area_L1: null,
       },
       streetAddress1: null,
       streetAddress2: null,
@@ -115,8 +115,8 @@ export default {
         Country: null,
         State: null,
         District: null,
-      }
-    })
+      },
+    });
     // send Socket Request use to send rrequest packet for an API
     const sendSocketReq = (request) => {
       store.dispatch("sendSocketReq", request);
@@ -176,7 +176,7 @@ export default {
     };
 
     provide("facilityInfo", facilityInfo);
-    provide("Global_Facility_Definition", Global_Facility_Definition)
+    provide("Global_Facility_Definition", Global_Facility_Definition);
 
     return {
       goBack,
