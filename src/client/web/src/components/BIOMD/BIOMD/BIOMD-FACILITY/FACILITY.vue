@@ -98,14 +98,25 @@ export default {
     }
     const facilityInfo = ref({
       facilityName: null,
-      country: null,
-      state: null,
-      district: null,
+      selectedCountry: { Loci_Name_Country: null, Loci_Code_Country: null },
+      selectedState: { Loci_Name_State: null, Loci_Code_State: null },
+      selectedDistrict: {
+        Loci_Name_District: null,
+        Loci_Code_District: null,
+      },
       streetAddress1: null,
       streetAddress2: null,
       zipCode: null,
       departments: null,
     });
+
+    const Global_Facility_Definition = ref({
+      facilityAddress: {
+        Country: null,
+        State: null,
+        District: null,
+      }
+    })
     // send Socket Request use to send rrequest packet for an API
     const sendSocketReq = (request) => {
       store.dispatch("sendSocketReq", request);
@@ -124,9 +135,9 @@ export default {
             collection: "Facility",
             record: {
               facility_name: facilityInfo.value.facilityName,
-              country: facilityInfo.value.country,
-              area: facilityInfo.value.state,
-              city: facilityInfo.value.district,
+              country: Global_Facility_Definition.value.facilityAddress.Country,
+              area: Global_Facility_Definition.value.facilityAddress.State,
+              city: Global_Facility_Definition.value.facilityAddress.District,
               address_1: facilityInfo.value.streetAddress1,
               address_2: facilityInfo.value.streetAddress2,
               area_code: facilityInfo.value.zipCode,
@@ -165,6 +176,7 @@ export default {
     };
 
     provide("facilityInfo", facilityInfo);
+    provide("Global_Facility_Definition", Global_Facility_Definition)
 
     return {
       goBack,
