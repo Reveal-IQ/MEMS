@@ -91,12 +91,23 @@ export default {
 
     const manufacturerInfo = ref({
       manufacturerName: null,
-      country: null,
-      state: null,
-      city: null,
+      selectedCountry: { Loci_Name_Country: null, Loci_Code_Country: null },
+      selectedState: { Loci_Name_State: null, Loci_Code_State: null },
+      selectedDistrict: {
+        Loci_Name_District: null,
+        Loci_Code_District: null,
+      },
       streetAddress1: null,
       streetAddress2: null,
       zipCode: null,
+    });
+
+    const Global_Manufacturer_Definition = ref({
+      manufacturerAddress: {
+        Country: null,
+        State: null,
+        District: null,
+      },
     });
 
     const changeServiceState = (serviceState) =>
@@ -128,9 +139,13 @@ export default {
             collection: "Manufacturer",
             record: {
               manufacturer_name: manufacturerInfo.value.manufacturerName,
-              country: manufacturerInfo.value.country,
-              area: manufacturerInfo.value.state,
-              city: manufacturerInfo.value.city,
+              country:
+                Global_Manufacturer_Definition.value.manufacturerAddress
+                  .Country,
+              area: Global_Manufacturer_Definition.value.manufacturerAddress
+                .State,
+              city: Global_Manufacturer_Definition.value.manufacturerAddress
+                .District,
               address_1: manufacturerInfo.value.streetAddress1,
               address_2: manufacturerInfo.value.streetAddress2,
               area_code: manufacturerInfo.value.zipCode,
@@ -168,6 +183,7 @@ export default {
     };
 
     provide("manufacturerInfo", manufacturerInfo);
+    provide("Global_Manufacturer_Definition", Global_Manufacturer_Definition);
 
     return {
       goBack,
