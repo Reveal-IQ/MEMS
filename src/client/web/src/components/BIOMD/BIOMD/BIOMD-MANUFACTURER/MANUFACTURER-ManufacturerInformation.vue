@@ -137,9 +137,11 @@ const fetchCountry = async (event) => {
         event.inputType === "insertReplacementText")
     ) {
       // determine if the value is in the datalist. If so, someone selected a value in the list!
-      manufacturerInfo.value.selectedCountry = countryList.value.find((country) => {
-        return selectedCountry === country.Loci_Name_Country;
-      });
+      manufacturerInfo.value.selectedCountry = countryList.value.find(
+        (country) => {
+          return selectedCountry === country.Loci_Name_Country;
+        }
+      );
       Global_Manufacturer_Definition.value.manufacturerAddress.Country =
         manufacturerInfo.value.selectedCountry.Loci_Code_Country;
       // validateInput("Country");
@@ -154,8 +156,8 @@ const fetchCountry = async (event) => {
       };
       Global_Manufacturer_Definition.value.manufacturerAddress.District = null;
       manufacturerInfo.value.selectedDistrict = {
-        Loci_Name_Country: null,
-        Loci_Code_Country: null,
+        Loci_Name_Area_L1: null,
+        Loci_Code_Area_L1: null,
       };
       sendSocketReq({
         data: {
@@ -212,8 +214,8 @@ const fetchState = async (event) => {
       Global_Manufacturer_Definition.value.manufacturerAddress.State = null;
       Global_Manufacturer_Definition.value.manufacturerAddress.District = null;
       manufacturerInfo.value.selectedDistrict = {
-        Loci_Name_Country: null,
-        Loci_Code_Country: null,
+        Loci_Name_Area_L1: null,
+        Loci_Code_Area_L1: null,
       };
       sendSocketReq({
         data: {
@@ -227,7 +229,8 @@ const fetchState = async (event) => {
             Criteria: {
               Type_Code: "STATE",
               Loci_Code_Country:
-                Global_Manufacturer_Definition.value.manufacturerAddress.Country,
+                Global_Manufacturer_Definition.value.manufacturerAddress
+                  .Country,
               Loci_Name_State: "",
             },
           },
@@ -261,9 +264,11 @@ const fetchDistrict = async (event) => {
         event.inputType === "insertReplacementText")
     ) {
       // determine if the value is in the datalist. If so, someone selected a value in the list!
-      manufacturerInfo.value.selectedDistrict = districtList.value.find((state) => {
-        return selectedDistrict === state.Loci_Name_Area_L1;
-      });
+      manufacturerInfo.value.selectedDistrict = districtList.value.find(
+        (state) => {
+          return selectedDistrict === state.Loci_Name_Area_L1;
+        }
+      );
       Global_Manufacturer_Definition.value.manufacturerAddress.District =
         manufacturerInfo.value.selectedDistrict.Loci_Code_Area_L1;
       // validateInput("Country");
@@ -283,7 +288,8 @@ const fetchDistrict = async (event) => {
             Criteria: {
               Type_Code: "ARL1",
               Loci_Code_Country:
-                Global_Manufacturer_Definition.value.manufacturerAddress.Country,
+                Global_Manufacturer_Definition.value.manufacturerAddress
+                  .Country,
               Loci_Code_State:
                 Global_Manufacturer_Definition.value.manufacturerAddress.State,
               Loci_Name_District: "",

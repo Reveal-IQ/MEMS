@@ -181,8 +181,8 @@ const fetchCountry = async (event) => {
       };
       Global_Facility_Definition.value.facilityAddress.District = null;
       facilityInfo.value.selectedDistrict = {
-        Loci_Name_Country: null,
-        Loci_Code_Country: null,
+        Loci_Name_Area_L1: null,
+        Loci_Code_Area_L1: null,
       };
       sendSocketReq({
         data: {
@@ -239,8 +239,8 @@ const fetchState = async (event) => {
       Global_Facility_Definition.value.facilityAddress.State = null;
       Global_Facility_Definition.value.facilityAddress.District = null;
       facilityInfo.value.selectedDistrict = {
-        Loci_Name_Area: null,
-        Loci_Code_Area: null,
+        Loci_Name_Area_L1: null,
+        Loci_Code_Area_L1: null,
       };
       sendSocketReq({
         data: {

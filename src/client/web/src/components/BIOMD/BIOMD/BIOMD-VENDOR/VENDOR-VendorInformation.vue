@@ -62,22 +62,23 @@
         </div>
         <!-- City/District -->
         <div class="col">
-          <label for="cityList" class="form-label">City/District</label>
-          <div class="select-group mb-3">
-            <select
-              type="text"
-              class="form-select"
-              id="cityList"
-              aria-describedby="basic-addon3"
-              placeholder="Select country"
-              v-model="vendorInfo.city"
-            >
-              <option selected>Select city/district</option>
-              <option v-for="name in cityList" :key="name">
-                {{ name }}
-              </option>
-            </select>
-          </div>
+          <label for="districtList" class="form-label">District</label>
+          <input
+            class="form-control"
+            list="districtOptions"
+            id="districtList"
+            placeholder="Type to search..."
+            v-model="vendorInfo.selectedDistrict.Loci_Name_Area_L1"
+            @input="fetchDistrict"
+            autocomplete="off"
+          />
+          <datalist id="districtOptions">
+            <option
+              v-for="district in districtList"
+              :key="district.index"
+              :value="district.Loci_Name_Area_L1"
+            ></option>
+          </datalist>
         </div>
       </div>
       <div class="row g-3 mt-3">
@@ -135,7 +136,7 @@ const vendorInfo = inject("vendorInfo");
 const Global_Vendor_Definition = inject("Global_Vendor_Definition");
 const countryList = ref(null);
 const stateList = ref(null);
-// const cityList = ref(["Accra", "Montreal", "Los Angeles"]);
+const districtList = ref(null);
 const sendSocketReq = (request) => {
   store.dispatch("sendSocketReq", request);
 };
@@ -166,8 +167,8 @@ const fetchCountry = async (event) => {
       };
       Global_Vendor_Definition.value.vendorAddress.District = null;
       vendorInfo.value.selectedDistrict = {
-        Loci_Name_Country: null,
-        Loci_Code_Country: null,
+        Loci_Name_Area_L1: null,
+        Loci_Code_Area_L1: null,
       };
       sendSocketReq({
         data: {
@@ -219,14 +220,14 @@ const fetchState = async (event) => {
       Global_Vendor_Definition.value.vendorAddress.State =
         vendorInfo.value.selectedState.Loci_Code_State;
       // validateInput("Country");
-      // await fetchState();
+      await fetchDistrict();
     } else {
       // Clear Country, State, District, Mandal, Postal Code
       Global_Vendor_Definition.value.vendorAddress.State = null;
       Global_Vendor_Definition.value.vendorAddress.District = null;
       vendorInfo.value.selectedDistrict = {
-        Loci_Name_Country: null,
-        Loci_Code_Country: null,
+        Loci_Name_Area_L1: null,
+        Loci_Code_Area_L1: null,
       };
       sendSocketReq({
         data: {
@@ -249,6 +250,64 @@ const fetchState = async (event) => {
           if (res.Type === "RESPONSE") {
             console.log("Response Packet -->", res.Response);
             stateList.value = res.Response.State_List; //Assigning response values to getValues Object
+          } else if (res.Type === "ERROR") {
+            // Error response received during fetching
+            Type: "ERROR";
+            Response: {
+              Error_Code: "API-GET_GEO_LIST-E001";
+              Error_Msg: "GET_GEO_LIST_API: Failed to execute query";
+            }
+          }
+        },
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const fetchDistrict = async (event) => {
+  try {
+    const selectedDistrict = event ? event.target.value : "";
+    if (
+      event &&
+      (!(event instanceof InputEvent) ||
+        event.inputType === "insertReplacementText")
+    ) {
+      // determine if the value is in the datalist. If so, someone selected a value in the list!
+      vendorInfo.value.selectedDistrict = districtList.value.find((state) => {
+        return selectedDistrict === state.Loci_Name_Area_L1;
+      });
+      Global_Vendor_Definition.value.vendorAddress.District =
+        vendorInfo.value.selectedDistrict.Loci_Code_Area_L1;
+      // validateInput("Country");
+      // await fetchState();
+    } else {
+      // Clear Country, State, District, Mandal, Postal Code
+      Global_Vendor_Definition.value.vendorAddress.District = null;
+      sendSocketReq({
+        data: {
+          Expiry: 20000,
+          Type: "REQUEST",
+          Request: {
+            Module: "GLOBAL",
+            ServiceCode: "GLOBL",
+            API: "GET_GEO_LIST",
+            Max_List: 500,
+            Criteria: {
+              Type_Code: "ARL1",
+              Loci_Code_Country:
+                Global_Vendor_Definition.value.vendorAddress.Country,
+              Loci_Code_State:
+                Global_Vendor_Definition.value.vendorAddress.State,
+              Loci_Name_District: "",
+            },
+          },
+        },
+        callback: (res) => {
+          if (res.Type === "RESPONSE") {
+            console.log("Response Packet -->", res.Response);
+            districtList.value = res.Response.ARL1_List; //Assigning response values to getValues Object
           } else if (res.Type === "ERROR") {
             // Error response received during fetching
             Type: "ERROR";

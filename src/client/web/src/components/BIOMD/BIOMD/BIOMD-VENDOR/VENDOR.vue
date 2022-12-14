@@ -105,8 +105,8 @@ export default {
       selectedCountry: { Loci_Name_Country: null, Loci_Code_Country: null },
       selectedState: { Loci_Name_State: null, Loci_Code_State: null },
       selectedDistrict: {
-        Loci_Name_District: null,
-        Loci_Code_District: null,
+        Loci_Name_Area_L1: null,
+        Loci_Code_Area_L1: null,
       },
       streetAddress1: null,
       streetAddress2: null,
