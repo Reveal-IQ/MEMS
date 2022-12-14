@@ -102,12 +102,23 @@ export default {
     }
     const vendorInfo = ref({
       vendorName: null,
-      country: null,
-      state: null,
-      district: null,
+      selectedCountry: { Loci_Name_Country: null, Loci_Code_Country: null },
+      selectedState: { Loci_Name_State: null, Loci_Code_State: null },
+      selectedDistrict: {
+        Loci_Name_District: null,
+        Loci_Code_District: null,
+      },
       streetAddress1: null,
       streetAddress2: null,
       zipCode: null,
+    });
+
+    const Global_Vendor_Definition = ref({
+      vendorAddress: {
+        Country: null,
+        State: null,
+        District: null,
+      },
     });
 
     // send Socket Request use to send rrequest packet for an API
@@ -133,9 +144,9 @@ export default {
             collection: "Vendor",
             record: {
               vendor_name: vendorInfo.value.vendorName,
-              country: vendorInfo.value.country,
-              area: vendorInfo.value.state,
-              city: vendorInfo.value.district,
+              country: Global_Vendor_Definition.value.vendorAddress.Country,
+              area: Global_Vendor_Definition.value.vendorAddress.State,
+              city: Global_Vendor_Definition.value.vendorAddress.District,
               address_1: vendorInfo.value.streetAddress1,
               address_2: vendorInfo.value.streetAddress2,
               areaCode: vendorInfo.value.zipCode,
@@ -175,6 +186,7 @@ export default {
     };
 
     provide("vendorInfo", vendorInfo);
+    provide("Global_Vendor_Definition", Global_Vendor_Definition);
 
     return {
       // Return variables/Display Variables in HTML DOM

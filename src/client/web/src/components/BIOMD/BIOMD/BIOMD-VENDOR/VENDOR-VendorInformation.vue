@@ -25,19 +25,16 @@
             list="countryOptions"
             id="countryList"
             placeholder="Type to search..."
-            v-model="vendorInfo.country"
-            @input="fetchCountry()"
-            @change="fetchState()"
+            v-model="vendorInfo.selectedCountry.Loci_Name_Country"
+            @input="fetchCountry"
             autocomplete="off"
           />
           <datalist id="countryOptions">
             <option
               v-for="country in countryList"
               :key="country.index"
-              :value="country.Loci_Code_Country"
-            >
-              {{ country.Loci_Name_Country }}
-            </option>
+              :value="country.Loci_Name_Country"
+            ></option>
           </datalist>
         </div>
         <!-- Province/State/Region -->
@@ -51,18 +48,16 @@
             list="stateOptions"
             id="stateList"
             placeholder="Type to search..."
-            v-model="vendorInfo.state"
-            @input="fetchState()"
+            v-model="vendorInfo.selectedState.Loci_Name_State"
+            @input="fetchState"
             autocomplete="off"
           />
           <datalist id="stateOptions">
             <option
               v-for="state in stateList"
               :key="state.index"
-              :value="state.Loci_Code_State"
-            >
-              {{ state.Loci_Name_State }}
-            </option>
+              :value="state.Loci_Name_State"
+            ></option>
           </datalist>
         </div>
         <!-- City/District -->
@@ -137,75 +132,139 @@ import Input from "../BIOMD-UI/UI-Input.vue";
 import Section from "../BIOMD-UI/UI-Section.vue";
 const store = useStore();
 const vendorInfo = inject("vendorInfo");
+const Global_Vendor_Definition = inject("Global_Vendor_Definition");
 const countryList = ref(null);
 const stateList = ref(null);
 // const cityList = ref(["Accra", "Montreal", "Los Angeles"]);
 const sendSocketReq = (request) => {
   store.dispatch("sendSocketReq", request);
 };
-function fetchCountry() {
-  sendSocketReq({
-    data: {
-      Expiry: 20000,
-      Type: "REQUEST",
-      Request: {
-        Module: "GLOBAL",
-        ServiceCode: "GLOBL",
-        API: "GET_GEO_LIST",
-        Max_List: 500,
-        Criteria: {
-          Type_Code: "CNTY",
-          Loci_Name_Country: "",
+
+const fetchCountry = async (event) => {
+  try {
+    const selectedCountry = event ? event.target.value : "";
+    if (
+      event &&
+      (!(event instanceof InputEvent) ||
+        event.inputType === "insertReplacementText")
+    ) {
+      // determine if the value is in the datalist. If so, someone selected a value in the list!
+      vendorInfo.value.selectedCountry = countryList.value.find((country) => {
+        return selectedCountry === country.Loci_Name_Country;
+      });
+      Global_Vendor_Definition.value.vendorAddress.Country =
+        vendorInfo.value.selectedCountry.Loci_Code_Country;
+      // validateInput("Country");
+      await fetchState();
+    } else {
+      // Clear Country, State, District, Mandal, Postal Code
+      Global_Vendor_Definition.value.vendorAddress.Country = null;
+      Global_Vendor_Definition.value.vendorAddress.State = null;
+      vendorInfo.value.selectedState = {
+        Loci_Name_Country: null,
+        Loci_Code_Country: null,
+      };
+      Global_Vendor_Definition.value.vendorAddress.District = null;
+      vendorInfo.value.selectedDistrict = {
+        Loci_Name_Country: null,
+        Loci_Code_Country: null,
+      };
+      sendSocketReq({
+        data: {
+          Expiry: 20000,
+          Type: "REQUEST",
+          Request: {
+            Module: "GLOBAL",
+            ServiceCode: "GLOBL",
+            API: "GET_GEO_LIST",
+            Max_List: 500,
+            Criteria: {
+              Type_Code: "CNTY",
+              Loci_Name_Country: "",
+            },
+          },
         },
-      },
-    },
-    callback: (res) => {
-      if (res.Type === "RESPONSE") {
-        console.log("Response Packet -->", res.Response);
-        countryList.value = res.Response.Country_List; //Assigning response values to getValues Object
-      } else if (res.Type === "ERROR") {
-        // Error response received during fetching
-        Type: "ERROR";
-        Response: {
-          Error_Code: "API-GET_GEO_LIST-E001";
-          Error_Msg: "GET_GEO_LIST_API: Failed to execute query";
-        }
-      }
-    },
-  });
-}
-function fetchState() {
-  sendSocketReq({
-    data: {
-      Expiry: 20000,
-      Type: "REQUEST",
-      Request: {
-        Module: "GLOBAL",
-        ServiceCode: "GLOBL",
-        API: "GET_GEO_LIST",
-        Max_List: 500,
-        Criteria: {
-          Type_Code: "STATE",
-          Loci_Code_Country: vendorInfo.value.country,
-          Loci_Name_State: "",
+        callback: (res) => {
+          if (res.Type === "RESPONSE") {
+            console.log("Response Packet -->", res.Response);
+            countryList.value = res.Response.Country_List; //Assigning response values to getValues Object
+          } else if (res.Type === "ERROR") {
+            // Error response received during fetching
+            Type: "ERROR";
+            Response: {
+              Error_Code: "API-GET_GEO_LIST-E001";
+              Error_Msg: "GET_GEO_LIST_API: Failed to execute query";
+            }
+          }
         },
-      },
-    },
-    callback: (res) => {
-      if (res.Type === "RESPONSE") {
-        console.log("Response Packet -->", res.Response);
-        stateList.value = res.Response.State_List; //Assigning response values to getValues Object
-      } else if (res.Type === "ERROR") {
-        // Error response received during fetching
-        Type: "ERROR";
-        Response: {
-          Error_Code: "API-GET_GEO_LIST-E001";
-          Error_Msg: "GET_GEO_LIST_API: Failed to execute query";
-        }
-      }
-    },
-  });
-}
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const fetchState = async (event) => {
+  try {
+    const selectedState = event ? event.target.value : "";
+    if (
+      event &&
+      (!(event instanceof InputEvent) ||
+        event.inputType === "insertReplacementText")
+    ) {
+      // determine if the value is in the datalist. If so, someone selected a value in the list!
+      vendorInfo.value.selectedState = stateList.value.find((state) => {
+        return selectedState === state.Loci_Name_State;
+      });
+      Global_Vendor_Definition.value.vendorAddress.State =
+        vendorInfo.value.selectedState.Loci_Code_State;
+      // validateInput("Country");
+      // await fetchState();
+    } else {
+      // Clear Country, State, District, Mandal, Postal Code
+      Global_Vendor_Definition.value.vendorAddress.State = null;
+      Global_Vendor_Definition.value.vendorAddress.District = null;
+      vendorInfo.value.selectedDistrict = {
+        Loci_Name_Country: null,
+        Loci_Code_Country: null,
+      };
+      sendSocketReq({
+        data: {
+          Expiry: 20000,
+          Type: "REQUEST",
+          Request: {
+            Module: "GLOBAL",
+            ServiceCode: "GLOBL",
+            API: "GET_GEO_LIST",
+            Max_List: 500,
+            Criteria: {
+              Type_Code: "STATE",
+              Loci_Code_Country:
+                Global_Vendor_Definition.value.vendorAddress.Country,
+              Loci_Name_State: "",
+            },
+          },
+        },
+        callback: (res) => {
+          if (res.Type === "RESPONSE") {
+            console.log("Response Packet -->", res.Response);
+            stateList.value = res.Response.State_List; //Assigning response values to getValues Object
+          } else if (res.Type === "ERROR") {
+            // Error response received during fetching
+            Type: "ERROR";
+            Response: {
+              Error_Code: "API-GET_GEO_LIST-E001";
+              Error_Msg: "GET_GEO_LIST_API: Failed to execute query";
+            }
+          }
+        },
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 onMounted(() => {
   fetchCountry();
 });
