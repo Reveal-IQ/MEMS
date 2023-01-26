@@ -128,13 +128,26 @@ export default {
         status: "<Navigate_To_This_Page>",
       });
     }
-    const vendorName = ref(null);
-    const country = ref(null);
-    const region = ref(null);
-    const city = ref(null);
-    const streetAddress1 = ref(null);
-    const streetAddress2 = ref(null);
-    const zipCode = ref(null);
+    const vendorInfo = ref({
+      vendorName: null,
+      selectedCountry: { Loci_Name_Country: null, Loci_Code_Country: null },
+      selectedState: { Loci_Name_State: null, Loci_Code_State: null },
+      selectedDistrict: {
+        Loci_Name_Area_L1: null,
+        Loci_Code_Area_L1: null,
+      },
+      streetAddress1: null,
+      streetAddress2: null,
+      zipCode: null,
+    });
+
+    const Global_Vendor_Definition = ref({
+      vendorAddress: {
+        Country: null,
+        State: null,
+        District: null,
+      },
+    });
 
     // send Socket Request use to send rrequest packet for an API
     const sendSocketReq = (request) => {
@@ -158,13 +171,13 @@ export default {
             API: "CREATE_RECORD",
             collection: "Vendor",
             record: {
-              vendor_name: vendorName.value,
-              country: country.value,
-              area: region.value,
-              city: city.value,
-              address_1: streetAddress1.value,
-              address_2: streetAddress2.value,
-              areaCode: zipCode.value,
+              vendor_name: vendorInfo.value.vendorName,
+              country: Global_Vendor_Definition.value.vendorAddress.Country,
+              area: Global_Vendor_Definition.value.vendorAddress.State,
+              city: Global_Vendor_Definition.value.vendorAddress.District,
+              address_1: vendorInfo.value.streetAddress1,
+              address_2: vendorInfo.value.streetAddress2,
+              areaCode: vendorInfo.value.zipCode,
               contactID: [],
               manufacturer_id: [],
             },
