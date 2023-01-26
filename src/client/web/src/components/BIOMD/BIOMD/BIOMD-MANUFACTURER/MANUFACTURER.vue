@@ -89,13 +89,26 @@ export default {
       () => store.state.globalStore.UserInfo.Institute_Info.Code
     );
 
-    const manufacturerName = ref(null);
-    const country = ref(null);
-    const region = ref(null);
-    const city = ref(null);
-    const streetAddress1 = ref(null);
-    const streetAddress2 = ref(null);
-    const zipCode = ref(null);
+    const manufacturerInfo = ref({
+      manufacturerName: null,
+      selectedCountry: { Loci_Name_Country: null, Loci_Code_Country: null },
+      selectedState: { Loci_Name_State: null, Loci_Code_State: null },
+      selectedDistrict: {
+        Loci_Name_Area_L1: null,
+        Loci_Code_Area_L1: null,
+      },
+      streetAddress1: null,
+      streetAddress2: null,
+      zipCode: null,
+    });
+
+    const Global_Manufacturer_Definition = ref({
+      manufacturerAddress: {
+        Country: null,
+        State: null,
+        District: null,
+      },
+    });
 
     const changeServiceState = (serviceState) =>
       store.dispatch("changeServiceState", serviceState);
@@ -125,13 +138,17 @@ export default {
             API: "CREATE_RECORD",
             collection: "Manufacturer",
             record: {
-              manufacturer_name: manufacturerName.value,
-              country: country.value,
-              area: region.value,
-              city: city.value,
-              address_1: streetAddress1.value,
-              address_2: streetAddress2.value,
-              area_code: zipCode.value,
+              manufacturer_name: manufacturerInfo.value.manufacturerName,
+              country:
+                Global_Manufacturer_Definition.value.manufacturerAddress
+                  .Country,
+              area: Global_Manufacturer_Definition.value.manufacturerAddress
+                .State,
+              city: Global_Manufacturer_Definition.value.manufacturerAddress
+                .District,
+              address_1: manufacturerInfo.value.streetAddress1,
+              address_2: manufacturerInfo.value.streetAddress2,
+              area_code: manufacturerInfo.value.zipCode,
             },
             Institute_Code: Institute_Code.value, //Dynamically changes when another institute logged in
           },
@@ -165,13 +182,8 @@ export default {
       emit("updatePage", "landing");
     };
 
-    provide("manufacturerName", manufacturerName);
-    provide("country", country);
-    provide("region", region);
-    provide("city", city);
-    provide("streetAddress1", streetAddress1);
-    provide("streetAddress2", streetAddress2);
-    provide("zipCode", zipCode);
+    provide("manufacturerInfo", manufacturerInfo);
+    provide("Global_Manufacturer_Definition", Global_Manufacturer_Definition);
 
     return {
       goBack,
@@ -193,5 +205,4 @@ export default {
 .RevealContainer::-webkit-scrollbar {
   display: none;
 }
-
 </style>
