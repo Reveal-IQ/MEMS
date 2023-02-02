@@ -34,7 +34,7 @@ Description: < Describe the application >
             <Btn2
               BtnName="Dashboard"
               backgroundColor="#2A94B6"
-              @click="goBack"
+              @click="goNext"
               class="text-light"
             />
           </span>
@@ -44,6 +44,24 @@ Description: < Describe the application >
       <main>
         <VendorInformation />
         <CustomerService />
+        <ManufacturerInformation>
+          <Btn2
+            BtnName="Add Manufacturer"
+            backgroundColor="#1266F1"
+            :icon="'plus'"
+            @click="changePage('manufacturerInfo')"
+            class="rounded-pill"
+          />
+        </ManufacturerInformation>
+        <ModelInformation>
+          <Btn2
+            BtnName="Add Model"
+            backgroundColor="#1266F1"
+            :icon="'plus'"
+            @click="changePage('modelInfo')"
+            class="rounded-pill"
+          />
+        </ModelInformation>
         <div class="d-flex justify-content-center py-3">
           <!-- btn-green and a-link are custom css for MEMS check base.css -->
           <div class="">
@@ -68,12 +86,22 @@ import { ref, toRefs, provide, computed } from "vue";
 
 import VendorInformation from "../BIOMD-VENDOR/VENDOR-VendorInformation.vue";
 import CustomerService from "../BIOMD-VENDOR/VENDOR-CustomerService.vue";
+import ManufacturerInformation from "../BIOMD-VENDOR/VENDOR-ManufacturerInfo.vue";
+import ModelInformation from "../BIOMD-VENDOR/VENDOR-ModelInfo.vue";
 import Btn from "../BIOMD-UI/UI-Btn.vue";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 import Header from "../BIOMD-UI/UI-FormHeader.vue";
 
 export default {
-  components: { CustomerService, VendorInformation, Btn2, Btn, Header },
+  components: {
+    CustomerService,
+    VendorInformation,
+    ManufacturerInformation,
+    ModelInformation,
+    Btn2,
+    Btn,
+    Header,
+  },
   name: "vendor",
   // Define Props here
   props: {
@@ -185,14 +213,24 @@ export default {
       emit("updatePage", "landing");
     };
 
-    provide("vendorInfo", vendorInfo);
-    provide("Global_Vendor_Definition", Global_Vendor_Definition);
+    const changePage = async (page) => {
+      emit("updatePage", page);
+    };
+
+    provide("vendorName", vendorName);
+    provide("country", country);
+    provide("region", region);
+    provide("city", city);
+    provide("streetAddress1", streetAddress1);
+    provide("streetAddress2", streetAddress2);
+    provide("zipCode", zipCode);
 
     return {
       // Return variables/Display Variables in HTML DOM
       getValues,
       // Send Functionality to HTML
       goBack,
+      changePage,
       function_name,
       redirectToPage,
       createRecord,
