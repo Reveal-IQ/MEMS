@@ -217,13 +217,8 @@ export default {
       emit("updatePage", page);
     };
 
-    provide("vendorName", vendorName);
-    provide("country", country);
-    provide("region", region);
-    provide("city", city);
-    provide("streetAddress1", streetAddress1);
-    provide("streetAddress2", streetAddress2);
-    provide("zipCode", zipCode);
+    provide("vendorInfo", vendorInfo);
+    provide("Global_Vendor_Definition", Global_Vendor_Definition);
 
     return {
       // Return variables/Display Variables in HTML DOM
