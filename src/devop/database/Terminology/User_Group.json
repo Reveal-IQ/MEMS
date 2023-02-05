@@ -1,0 +1,76 @@
+{
+    "User_Group":[
+        {
+            "Type_Code": "USRGP",
+            "Type_Name": "User Group",
+            "User_Group_Code": "DRX",
+            "User_Group_Name": "Physician",
+            "Patient_Visit": true,
+            "Version_Schema": ""
+        },
+        {
+            "Type_Code": "USRGP",
+            "Type_Name": "User Group",
+            "User_Group_Code": "DRJ",
+            "User_Group_Name": "Assistant Physician",
+            "Patient_Visit": true,
+            "Version_Schema": ""
+        },
+        {
+            "Type_Code": "USRGP",
+            "Type_Name": "User Group",
+            "User_Group_Code": "REF",
+            "User_Group_Name": "Referred Physician",
+            "Patient_Visit": false,
+            "Version_Schema": ""
+        },
+        {
+            "Type_Code": "USRGP",
+            "Type_Name": "User Group",
+            "User_Group_Code": "NUR",
+            "User_Group_Name": "Nurse",
+            "Patient_Visit": false,
+            "Version_Schema": ""
+        },
+        {
+            "Type_Code": "USRGP",
+            "Type_Name": "User Group",
+            "User_Group_Code": "LAB",
+            "User_Group_Name": "Technician Labs",
+            "Patient_Visit": false,
+            "Version_Schema": ""
+        },
+        {
+            "Type_Code": "USRGP",
+            "Type_Name": "User Group",
+            "User_Group_Code": "REG",
+            "User_Group_Name": "Receptionist",
+            "Patient_Visit": false,
+            "Version_Schema": ""
+        },
+        {
+            "Type_Code": "USRGP",
+            "Type_Name": "User Group",
+            "User_Group_Code": "MED",
+            "User_Group_Name": "Pharmacist",
+            "Patient_Visit": false,
+            "Version_Schema": ""
+        },
+        {
+            "Type_Code": "USRGP",
+            "Type_Name": "User Group",
+            "User_Group_Code": "ADM",
+            "User_Group_Name": "Administrator",
+            "Patient_Visit": false,
+            "Version_Schema": ""
+        },
+        {
+            "Type_Code": "USRGP",
+            "Type_Name": "User Group",
+            "User_Group_Code": "PAT",
+            "User_Group_Name": "Patient",
+            "Patient_Visit": false,
+            "Version_Schema": ""
+        }
+    ]
+}

@@ -1,0 +1,7 @@
+#Git files
+.git
+*.md
+.github
+
+# Dependency directories
+node_modules/

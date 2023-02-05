@@ -1,0 +1,1130 @@
+/*
+************************************
+*  Created By : Reveal IQ          *
+*  Author     : Jyoti              *
+*  Date       : 11 Feb 2022        *
+*  Version    : 0.4.3.03.10-1120   *
+************************************
+*/
+
+/********** ADPNL *********/
+
+@import "../../../GLOBAL/Styles/colors.scss";
+::-webkit-scrollbar{ 
+    display: none;
+}
+
+.mainPage{
+   background: white;
+   color: black;
+   overflow-y: scroll;
+}
+
+// DASHBOARD
+.first-row{
+  margin-top: 94px!important;
+}
+.second-row{
+  margin-top: 70px!important;
+}
+.userBaseBox{
+    padding: 0;
+    // margin: 50px 20px 20px 20px;
+    min-width: 300px;
+    min-height: 300px;
+    max-height: 300px;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 3px 3px 5px 5px;
+}
+.userBaseTitle{
+    padding: 13px 0 0 20px;
+    border-radius: 3px 3px 0px 0px;
+    height: 60px;
+    background: #2980B9;
+    color:White;
+}
+.userBaseBody{
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 3px 3px 5px 5px;
+    height: 240px;
+    background:white;
+}
+.userCount{
+    padding: 20px 20px 20px 20px;
+}
+.userListTitle{
+  margin-top: 90px;
+}
+.userListBtn{
+    background: #2980B9;
+    color: white;
+    border-radius: 30px;
+    min-width: 200px;
+    min-height: 30px;
+    border: 1px solid #2980B9;
+}
+.siteInfoBox{
+    padding: 0;
+    // margin: 50px 20px 20px 20px;
+    min-width: 400px;
+    min-height: 300px;
+    max-height: 300px;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 3px 3px 5px 5px;
+}
+.siteInfoTitle{
+    padding: 13px 0 0 20px;
+    border-radius: 3px 3px 0px 0px;
+    height: 60px;
+    background:#2980B9;
+    color:White;
+}
+.siteInfoBody{
+    padding: 20px 0 0 0;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 3px 3px 5px 5px;
+    height: 240px;
+    background:white;
+}
+.siteInfoText{
+    padding: 0 0 10px 20px;
+}
+.siteInfoVal{
+    color: #2980B9;;
+}
+.editInfoTitle{
+    margin-top: 10px;
+}
+.editInfoBtn{
+    background: #2980B9;
+    color: white;
+    border-radius: 30px;
+    min-width: 200px;
+    min-height: 30px;
+    border: 1px solid #2980B9;
+}
+.dbUsageBox{
+    padding: 0;
+    // margin: 50px 20px 20px 20px;
+    min-width: 300px;
+    min-height: 300px;
+    max-height: 300px;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 3px 3px 5px 5px;
+}
+.dbUsageTitle{
+    padding: 13px 0 0 20px;
+    border-radius: 3px 3px 0px 0px;
+    height: 60px;
+    background:#2980B9;
+    color:White;
+}
+.dbUsageBody{
+    padding: 20px 10px 10px 10px;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 3px 3px 5px 5px;
+    height: 240px;
+    background:white; 
+}
+.chartBox{
+    min-width: 170px;
+    padding: 0 0 0 0;
+}
+.pieCht{
+    background: green;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+.insightTitle{
+    margin-top: 15px;
+}
+.insightBtn{
+    background: #2980B9;
+    color: white;
+    border-radius: 30px;
+    min-width: 150px;
+    min-height: 30px;
+    border: 1px solid #2980B9;
+}
+.dataText{
+    color: #607D8B;
+}
+.dataTitle{
+    color: #000000;
+}
+.installBaseBox{
+  padding: 0;
+  margin: 50px 20px 20px 20px;
+  min-height: 300px;
+  min-width: 740px!important;
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 3px 3px 5px 5px;
+}
+.installBaseTitle{
+  padding: 13px 0 0 20px;
+  border-radius: 3px 3px 0px 0px;
+  height: 60px;
+  min-width: 740px!important;
+  background:#2980B9;
+  color:White;
+}
+.installBaseBody{
+    // padding: 20px 30px 30px 30px;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 3px 3px 5px 5px;
+    height: 350px;
+    min-width: 740px!important;
+    background:white;
+    overflow-x: scroll;
+    overflow-y: scroll;
+}
+.tableScroll{
+  min-width: 740px!important;
+}
+.installBaseTableHead{
+    color: rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5); 
+}
+.installBaseTableBody{
+  color: black;
+  max-height: 250px;
+}
+.table td, .table th {
+  padding: 10px 10px 10px 10px;
+}
+table tbody {
+  display: block;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+table thead, table tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+.userListtbody{
+  min-height: 50vh;
+}
+.activeStatus{
+  color: green;
+}
+.inactiveStatus{
+  color: red;
+}
+.userBoxLoding{
+  padding: 0;
+  margin: 50px 20px 20px 20px;
+  min-width: 300px;
+  min-height: 300px;
+  max-height: 300px;
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 3px 3px 5px 5px;
+}
+.boxTitleLoading{
+  padding: 13px 0 0 20px;
+  border-radius: 3px 3px 0px 0px;
+  width: 100%;
+  height: 60px;
+  background-color: rgba(112, 112, 112, 1);
+  animation: boxTitle 1s infinite;
+  @keyframes boxTitle {
+    0%,100%{opacity: .25}
+    50%{opacity:.3;}
+  }
+}
+.boxBodyLoading{
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 3px 3px 5px 5px;
+  width: 100%;
+  height: 240px;
+  background-color: rgba(112, 112, 112, 1);
+  animation: boxBody 1s infinite;
+  @keyframes boxBody {
+    0%,100%{opacity: .15}
+    50%{opacity:.2;}
+  }
+}
+// USER ACCOUNTS
+.userAccountsPage{
+    color: black;
+    min-height: 100vh!important;
+    max-height: 100vh!important;
+}
+.first_row{
+  margin-top: 121px!important;
+}
+.userAccountsTitle{
+  padding: 0 0 30px 0;
+}
+.userAccountsTitleText{
+  color: rgba(0, 0, 0, 1);
+  font-weight: bold;
+  opacity: 0.6;
+}
+button:focus{
+    outline: none;
+}
+.dropDown{
+    display: inline-block;
+}
+.addUserOption{
+    color:#2980B9;
+    padding: 0 20px 0 10px;
+    cursor: pointer;
+}
+.second_row{
+  margin-top: 92px;
+}
+.schUser{
+    width: 500px;
+    height: 50px;
+    background: #FFFFFF;
+    border: 2px solid #2980B9;
+    border-radius: 25px;
+}
+.schUserInput{
+    outline:none;
+    border:1pt solid #FFFFFF;
+    width: 350px;
+}
+.searchIcon{  
+    font-size: 25px;
+    color: #2980B9;
+}
+.userIcon{
+  color: #10607B;
+  cursor: pointer;
+}
+input.mediumFont::-webkit-input-placeholder { 
+    color: #BDC3C7;  
+}
+.third_row{
+  margin-top: 59px!important;
+}
+.userListBox{
+  //  padding: 0 10px 0 10px;
+   // min-width: 980px;
+}
+.userListPic{
+    width: 50px;
+    height: 50px;
+}
+.userListHead{
+    color: #90A4AE;
+    border-bottom: 1px solid #90A4AE;
+}
+.userListHeading{
+    width: fit-content;
+    //margin: 20px 0 10px 0;
+}
+.userListTableHead{
+  color: #90A4AE;
+ // padding: 20px 0 25px 0;
+  border-bottom: 1px solid #90A4AE; 
+}
+.userHeading{
+  padding: 0 0 10px 0;
+}
+.userNameHeading{
+  min-width: 150px;
+}
+.userDetail{
+  min-width: fit-content;
+}
+.resetBtnUA{
+    color:#FFFFFF;
+    background: #607D8B;
+    border-radius:20px;
+    padding: 5px 20px 5px 20px;
+    cursor: pointer;
+}
+.activeUA{
+    color:#FFFFFF;
+    background:#27AE60;
+    border-radius: 20px;
+    padding: 5px 20px 5px 20px;
+}
+.inactiveUA{
+  color:#FFFFFF;
+  background: #90A4AE;
+  border-radius: 20px;
+  padding: 5px 20px 5px 20px;
+}
+.userDetailLoading{
+  width: 100%;
+  height: 50px;
+  margin: 10px 0 10px 0;
+  color: rgba(112, 112, 112, 0);
+  background-color: rgba(112, 112, 112, 1);
+  animation: opacity 1s infinite;
+  @keyframes opacity {
+    0%,100%{opacity: .15}
+    50%{opacity:.3;}
+  }
+}
+// ADD USER
+  
+  .addUserTitleBox{
+    // padding: 50px 0 10px 15px;
+  }
+  .addUserTitle{
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+    opacity: 0.6;
+  }
+  .addUserText{
+    color: #000000;
+    opacity: 0.5;
+    // padding-top: 5px;
+  }
+  .newUserTitle{
+    color: black; 
+  }
+  .formOptions{
+    min-height: 80px;
+    //padding: 0 15px 0 15px;
+  }
+  .createOption{
+    color:#2980B9;
+   // margin: 10px 60px 10px 0;
+    background:0;
+    cursor: pointer;
+  }
+  .sucIcon{
+   color:#2980B9;
+  }
+  .sucBtnSpace{
+    padding: 0 0 0 15px;
+  }
+  .createOptionHidden{
+    color:rgba(41, 128, 185, 0.2);  
+    margin: 10px 60px 10px 0;   
+    cursor: default;  
+  }
+  .hiddenIcon{
+    display:inline-block;
+    color:rgba(41, 128, 185, 0.2);
+    cursor: default;  
+  }
+  .clearFormOption{
+    color:#E67E22;
+    margin: 10px 60px 10px 0;
+    cursor: pointer;
+   }
+  .broomIcon{
+    color:#E67E22;
+  }
+  .formHeight{
+    min-height:400px;
+    height: 80vh;
+    overflow: scroll;
+  }
+  .regitHeader{
+    height:10vh;
+    min-height:80px;
+  }
+  .regitHeading{  
+    display:inline-block;
+    vertical-align:middle;      
+  }
+  .personalCard{
+   background: rgba(144, 164, 174, 0.05);
+   padding:0 0 10px 0;
+   margin:0 0 50px 0;
+   height:auto;
+  }
+  .personalInfoBox{
+    margin-bottom: 30px;
+    background: rgba(144, 164, 174, 0.05);
+  }
+  .personalInfoHeading{
+    background: #16A085;
+    width: 100%;
+    height: 40px;
+  }
+  .personalInfoTitle{
+    font-size: 24px;
+    font-weight: 500;
+    color: #FFFFFF;
+    padding-left: 40px;
+  }
+  .excIcon{
+    font-size: 20px;
+    position: absolute;
+    color: white;
+    right: 30px;
+  }
+  .personalIcon{
+    margin:0 2vw 0 0;
+  }
+  .textboxSpace{
+    margin: 0  0  30px 0;
+  }
+  .errMsg{
+    color:#C0392B;
+  }
+  .yearLabel{
+   padding:20px 0 0 10px;
+  }
+  .ageSpace{
+   margin:0 0 20px 0;
+  }
+  .REGITLabel{
+    font-weight: 500;
+    color:#000000;
+  }
+  .sexLabel{
+  line-height:25px;
+  color:#000000;
+  }
+  .useAvatarBtn{
+    margin: 0 0px 0px 60px;
+    border: 1.5px solid #2980B9;
+    border-radius: 20px;
+    color: #2980B9;
+    padding: 1px 20px 1px 20px;
+    cursor: pointer;
+  }
+  .demograpicSecHeading{
+    width: 100%;
+    height: 40px;
+    background:#2980B9;
+  }
+  .demograpicTitle{
+    font-size: 24px;
+    font-weight: 500;
+    color: #FFFFFF;
+    padding-left: 40px;
+  }
+  .addinfoHeading{
+    height:4vh;
+    min-height:50px;
+    color:white;
+    vertical-align:top;
+    padding:10px 0 0 35px;
+  background:#90A4AE;
+  }
+  .locationWidth{
+    width:100%;
+  }
+  .checkBoxregitWidth{
+    min-width: 100px;
+    width: 150px;
+    display: inline-block;
+    font-weight: normal;
+    padding: 5px 20px 0 0;
+  }
+  .checkregitLabel{
+    display:inline-block;
+  }
+  .checkboxAlign{
+    vertical-align:middle;
+    display:inline-block;
+  }
+  .RegitemptyCheck{
+    margin:0 0 0 1vw;
+    color:white;
+    border:1pt solid #BDC3C7;
+    border-radius:2pt;
+  }
+  .Regitticked{
+    margin:0vw 0 0 1vw;
+  }
+  .verifyRegitPage{
+   min-height:300px;
+   min-width:768px;
+  }
+  .verifyHeader{
+   height:10vh;
+   min-height:100px;
+   color:#FFFFFF;
+  }
+  .verifyBtn{
+  border:0;
+   color:#2980B9;
+  
+   padding:7px 0vh 7px 0;
+   border-radius:14pt;
+   display:inline-block;
+   vertical-align:middle;
+   background:0;
+  }
+  .editprofileBtn{
+   margin:0 0 0 15px;
+   border:0;
+   color:#E67E22;
+   padding:7px 0vw 7px 20px;
+  
+   border-radius:14pt;
+   display:inline-block;
+   vertical-align:middle;
+   background:0;
+  }
+  .editBtn{
+   border:1.2pt solid #E67E22;
+   color:#E67E22;
+   padding:7px 0vw 7px 0vw;
+   width:160px;
+   border-radius:14pt;
+   display:inline-block;
+   vertical-align:middle;
+   background:0;
+  }
+  .newpatientBtn{
+   margin:0 0 0 15px;
+   border:1.2pt solid #2980B9;
+   color:#2980B9;
+   width:160px;
+   padding:7px 0vh 7px 0;
+   border-radius:14pt;
+   display:inline-block;
+   vertical-align:middle;
+   background:0;
+  }
+  .verifyPatientHeading{
+    height:4vh;
+    min-height:50px;
+    color:#FFFFFF;
+    background:#2980B9;
+  }
+  .verifyCheck{
+   height:4vh;
+   min-height:50px;
+   color:#FFFFFF;
+   background: #27AE60;
+  }
+  .verifyLabel{
+   display:inline-block;
+  }
+  .verifyIcon{
+   display:inline-block;  
+  
+  }
+  .verifycard{
+  background:#ECEFF1;
+  padding:3vh 0 3vh 0;
+  font-weight:bolder;
+  }
+  .verifyImg{
+    width: 200px;
+    height:200px;
+  }
+  .verifycardLabel{
+    padding: 0 0 15px 0;
+  }
+  .cardsubLabel{
+   font-weight:normal;
+  }
+  .containerSpace{
+    margin: 20px 40px 20px 25px;
+  }
+  @media screen and (min-width:100px) and (max-width:900px) {   
+    .iconFont{font-size: 23px}
+   
+  }
+  @media only screen and (min-width: 900px) and (max-width: 1024px) {  
+    .iconFont{font-size: 25px}
+    
+  }
+  @media only screen and (min-width: 1024px) and (max-width: 1366px) { 
+    .iconFont{font-size: 25px}
+  
+  }
+  @media only screen and (min-width:1366px) and (max-width: 1920px) {
+    .iconFont{font-size: 25px}
+  
+  }
+  .appAccessHeading{
+    // width: 100%;
+    height: 40px;
+    background: #90A4AE;
+  }
+  .appAccessTitle{
+    font-weight: 500; 
+    font-size: 24px;
+    font-weight: 500;
+    color: #FFFFFF;
+    padding-left: 40px;
+  }
+  .appAccessText{
+    color: #000000; 
+    font-weight: 500; 
+  }
+  .userAccServiceBox{
+    padding: 0 20px 0 0;
+    min-width: 500px;
+  }
+  .userAccessServicesList{
+    padding: 10px 30px 20px 0;  
+  }
+  .normalApp{
+    background: rgba(189, 195, 199, 0.1);
+    width: 370px;
+    height: 40px;
+    margin: 0 5px 5px 0;
+    border: 1px solid #BDC3C7;
+  }
+  .serviceIcon{
+    width: 30px;
+    height: 20px;
+    padding-left: 8px;
+  }
+  .serviceName{
+    padding-left: 10px;
+    min-width: fit-content;
+  }
+  .serviceAddOption{
+    padding: 0 15px 0 15px;
+    color: #2980B9;
+    cursor: pointer;
+  }
+  .serviceRemoveOption{
+    padding: 0 15px 0 5px;
+    color: #E67E22;
+    cursor: pointer;
+  }
+  .schService{
+    margin: 10px 55px 20px 55px;
+    min-width: 260px;
+    max-width: 260px;
+    min-height: 40px;
+    background: #FFFFFF;
+    border: 1px solid #2980B9;
+    border-radius: 25px;
+  }
+  .schServiceIcon{  
+    margin: 0 10px 0 10px;
+    font-size: 18px;
+    color: #2980B9;
+  }
+  .clearSchServiceIcon{
+    margin: 0 0 0 3px;
+    font-size: 16px;
+    right: 20px;
+    color: #2980B9;
+  }
+  .schServiceInput{
+    margin: 0 10px 0 10px;
+    outline:none;
+    font-size: 14px;
+    background: none;
+    border: 0;
+  }
+  // Physician Availability Schedule
+  .pasHeading{
+    width: 100%;
+    height: 40px;
+    background: #E67E22;
+  }
+  .pasTitle{
+    font-weight: 500; 
+    font-size: 24px;
+    font-weight: 500;
+    color: #FFFFFF;
+    padding-left: 40px;
+  }
+  .pasText{
+    color: #000000; 
+    font-weight: 500; 
+  }
+  .wrkScheduleBox{
+    margin: 50px 0 25px 0;  
+  }
+  .daysTitle{
+    font-weight: 600;
+    color: #000000;
+  }
+  .daysBody{
+    padding: 10px 0 0 0;
+  }
+  .day{
+    margin: 20px 40px 0 0;
+    color: #1A1818;
+    opacity: 0.3;
+    cursor: pointer;
+  }
+  .day:hover{
+    color: #0D988C;
+    opacity: 1;
+  }
+  .selectedDay{
+    margin: 20px 40px 0 0;
+    color: #0D988C;
+    opacity: 1;
+    cursor: pointer;
+  }
+  .dayOptions{
+    margin: 25px 0 0 60px;
+  }
+  .activateDayLabel{
+    padding: 0 15px 0 0;
+    color: #000000;  
+    font-weight: 500;
+  }
+  .slotBoxes{
+    padding: 25px 0 0 0;
+  }
+  .slotBox{
+    padding: 0 30px 0 0;
+  }
+  .timeSlotTitle{
+    font-weight: 500;
+  }
+  .slotMin{
+    font-weight: 500;
+    padding: 0 0 0 10px;
+  }
+  .timeSlot{
+    margin: 15px 30px 0 0;
+  }
+ 
+  .genTimeSlot{
+    padding: 25px 0 20px 0;
+  }
+  // Confirmation Page
+  .dayDetails{
+    padding-top: 20px;
+  }
+  .dayDetailsTitle{
+    width: 150px;
+    font-weight: 300;
+  }
+  .dayDetailsBody{
+    width: 150px;
+  }
+  // SITE INFORMATION
+  .siteInformationPage{
+    padding: 0 0 0 40px;
+  }
+  .siteInformationHeader{
+    padding: 40px 0 40px 0;
+  }
+  .siteInformationTitle{
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.6);
+  }
+  .siteInformationSubTitle{
+    color: rgba(0, 0, 0, 0.5);
+  }
+  .siteInfoForm{
+    height: 80vh;
+    overflow: scroll;
+  }
+  .uploadIcon{
+    font-size: 20px;
+    color: #2980B9;  
+    margin: 0 0 0 20px; 
+    cursor: pointer;
+  }
+  .editOption{
+    color: #2980B9;
+    cursor: pointer;
+    padding: 40px 0 20px 0;
+  }
+  .genSiteBox{
+    margin: 20px 0 50px 0;
+  }
+  .genSiteHeading{
+    background: #90A4AE;
+    height: 40px;
+  }
+  .genSiteTitle{
+    padding: 0 0 0 40px;
+    font-weight: 500;
+    color: #FFFFFF;
+  }
+  .genSiteBody{
+    padding: 30px 0 40px 25px;
+    background: rgba(144, 164, 174, 0.05);
+  }
+  .locationBox{
+    margin: 0 0 50px 0;
+  }
+  .locationHeading{
+    background: #2980B9;
+    height: 40px;
+  }
+  .locationTitle{
+    padding: 0 0 0 40px;
+    font-weight: 500;
+    color: #FFFFFF;
+  }
+  .locationBody{
+    padding: 30px 0 40px 25px;
+    background: rgba(144, 164, 174, 0.05);
+  }
+  .workingDays{
+    padding: 10px 0 20px 15px;
+  }
+  .workingDaysTitle{
+    font-weight: 500;
+  }
+  .workingDaysBody{
+    padding: 5px 0 0 0;
+  }
+  .workingDay{
+    margin: 10px 40px 0 0;
+    color: #000000;
+    cursor: pointer;
+  }
+  .workingDay:hover{
+    color: #1192F0;
+  }
+  .selectedWorkingDay{
+    margin: 10px 40px 0 0;
+    color: #1192F0;
+    cursor: pointer;
+  }
+  .contactBox{
+    margin: 0 0 50px 0;
+  }
+  .contactHeading{
+    background: #16A085;
+    height: 40px;
+  }
+  .contactTitle{
+    padding: 0 0 0 40px;
+    font-weight: 500;
+    color: #FFFFFF;
+  }
+  .contactBody{
+    padding: 30px 0 40px 25px;
+    background: rgba(144, 164, 174, 0.05);
+  }
+  .displayLogo{
+    width:150px;
+    height: 150px;
+  }
+  .lodingOptions{
+    min-width:  150px;
+    min-height: 40px;
+    margin-right: 50px;
+    background-color: rgba(112, 112, 112, 1);
+    animation: opacity 1s infinite;
+    @keyframes opacity {
+        0%,100%{opacity: .15}
+        50%{opacity:.2;}
+    }
+  }
+  .loadingCardTitle{
+    width: 100%;
+    height: 50px;
+    background-color: rgba(112, 112, 112, 1);
+    animation: op 1s infinite;
+    @keyframes op {
+        0%,100%{opacity: .25}
+        50%{opacity: .3;}
+    }
+  }
+  .loadingCardBody{
+    width: 100%;
+    height: 400px;
+    background-color: rgba(112, 112, 112, 1);
+    animation: opac 1s infinite;
+    @keyframes opac {
+        0%,100%{opacity: .15}
+        50%{opacity:.2;}
+    }
+  }
+  // User Confirmation User
+  .confirmSecHeading{
+    width: 100%;
+    height: 40px;
+    background:#2980B9;
+  }
+  .confirmSecTitle{
+    font-size: 24px;
+    font-weight: 500;
+    color: #FFFFFF;
+    padding-left: 40px;
+  }
+  .picCon{
+    width: 200px;
+    height: 200px;
+    background: rgba(189, 195, 199, 0.1);
+  }
+  .useInfoTextTitle{
+    color: #000000;
+    font-weight: 500;
+    padding: 20px 0 5px 0;
+  }
+  // DATABASE
+  .dbConnectBox{
+    padding: 0;
+    margin: 50px 20px 20px 20px;
+    min-height: 300px;
+    max-height: 300px;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 3px 3px 5px 5px;
+  }
+  .dbConnectTitle{
+    padding: 13px 0 0 20px;
+    border-radius: 3px 3px 0px 0px;
+    height: 60px;
+    background:#2980B9;
+    color: White;
+  }
+  .dbConnectBody{
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 3px 3px 5px 5px;
+    height: 240px;
+    background:white;
+    overflow: scroll; 
+  }
+  .dbConnectDetails{
+    margin: 30px 0 0 0;
+    padding: 20px 20px 20px 20px;
+    min-width: 740px; 
+    overflow-x: scroll;
+  }
+  .revealCloudCircle{
+    width: 80px;
+    height: 80px;
+    background: #C4C4C4;
+    border-radius: 50%;
+  }
+  .onSiteCircle{
+    width: 80px;
+    height: 80px;
+    background: #C4C4C4;
+    border-radius: 50%;    
+  }
+  .activeText{
+    padding: 0 20px 0 20px;
+    background: #27AE60;
+    border-radius: 20px;
+    color: white;
+    margin: 0 0 4px 0;
+  }
+  .activeUsersIcon{
+    width: 40px;
+    height: 40px;
+    background: #C4C4C4;
+    margin: 0 10px 0 0;
+  }
+  .greenLine{
+    width: 156px;
+    height: 4px;
+    background: #27AE60;
+    margin: 0 10px 0 10px;
+  }
+  .activeGreenLine{
+    padding: 10px 0 0 0;
+  }
+  .dataUsage{
+    padding: 3px 0 0 0;
+  }
+  .activeUsersNum{
+    padding: 0 0 0 20px;
+  }
+  .dbUseBox{
+    padding: 0;
+    margin: 50px 20px 20px 20px;
+    min-width: 350px;
+    max-width: 350px;
+    min-height: 300px;
+    max-height: 300px;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 3px 3px 5px 5px;  
+  }
+  .dbHealthBox{
+    padding: 0;
+    margin: 50px 20px 20px 20px;
+    min-width: 350px;
+    max-width: 350px;
+    min-height: 300px;
+    max-height: 300px;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 3px 3px 5px 5px;   
+  }
+  .dbHealthTitle{
+    padding: 13px 0 0 20px;
+    border-radius: 3px 3px 0px 0px;
+    height: 60px;
+    background:#2980B9;
+    color: White;    
+  }
+  .dbHealthBody{
+    padding: 30px 10px 0 10px;
+    background: white;
+  }
+  .dbHealthNow{
+    padding: 0 0 40px 0;
+  }
+  .lastBackupText{
+    padding: 0 0 15px 0;
+  }
+  .nowBtn{
+    margin: 0 50px 0 50px;
+    height: 30px;
+    background: #2980B9;
+    border-radius: 30px;
+    color: white;
+    cursor: pointer;
+  }
+
+// Warning Modal
+#closeDialog{ 
+  padding: 15% 0  0 15px; 
+  max-width: 1000px;
+}
+#closeContent{
+  border-radius: 20px;
+  border:0;
+  background:$LightGrayishCyan;
+  box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.25);
+}
+.warningHeader{
+  padding: 10px 30px 10px 30px;
+  border-radius: 20px 20px 0 0;
+  background:$WarningOrange;
+  width:  100%;
+  height: 100px;
+  border: 0;
+}
+.warningIcon{
+  width: 54px;
+  height: 54px;
+  margin: 0 35px 0 20px;
+  background: rgba(0, 0, 0, 0.6);
+}
+.warningTitle{
+  font-weight: bold;
+  color:white;
+}
+.warningBody{
+  width:100%;
+  padding-bottom: 10px;
+  color: #000000;
+}
+.confirmLabel{
+  padding: 30px 100px 0 100px;
+  color:$Black;
+}
+.confirmsublabel{
+  padding: 0 100px 0 100px;
+  color:$Black;
+}
+.warningFooter{
+  padding: 30px 60px 30px 100px;
+  margin-left:20px;
+}
+.ignoreBtn{
+  text-align: center;
+  padding: 5px 30px 5px 30px;
+  color: white;
+  border:1pt solid white;
+  border-radius: 30px;
+  background: rgba(230, 126, 34, 0.3);
+  margin-right: 20px;
+}
+.acceptBtn{
+  text-align: center;
+  padding: 5px 25px 5px 25px;
+  color: white;
+  border:1pt solid white;
+  border-radius: 30px;
+  background: #E67E22;
+}

@@ -1,0 +1,14 @@
+#Git files
+.git
+*.md
+.github
+
+# Dependency directories
+node_modules/
+
+# Configuration file
+lib/config/config.json
+
+# TLS and Database certificate key files
+lib/certificates/
+lib/certs/

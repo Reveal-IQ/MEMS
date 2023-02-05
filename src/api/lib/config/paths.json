@@ -1,0 +1,12 @@
+{
+    "HomeDir": "/src",
+    "MediaDir": "/datastorage",
+    "API": "/api",
+    "Database": "/lib/db",
+    "Init": "/services/Init",
+    "ComLink": "/services/Communication_Link",
+    "Certs": "/lib/certs",
+    "Config": "/lib/config",
+    "Default_Data": "/lib/default",
+    "Data": "/lib/data"
+}

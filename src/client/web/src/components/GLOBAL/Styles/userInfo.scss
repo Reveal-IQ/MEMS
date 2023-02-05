@@ -1,0 +1,99 @@
+@import "./colors.scss";
+.bellIcon{
+    height: 5vh;
+    min-height: 40px;
+    font-size: 15px; 
+    cursor: pointer;
+    background: $RevealTeal;
+}
+.logOut{
+    height: 5vh; 
+    min-height: 40px;
+    min-width: max-content;
+    cursor: pointer;
+    background: $RevealTeal;
+}
+.userInfoDropdown{ 
+    position: relative; 
+    display: inline-block;
+    padding-left: 20px;
+}
+.hoverUser{
+    height: 5vh;
+    min-height: 40px;
+    background: white; 
+}
+.userDetails{
+    height: 5vh;
+    min-height: 40px;
+    cursor: pointer;
+    padding: 0 5px 0 5px;
+    background: rgba($color: $RevealTeal, $alpha: 1.0);
+}
+.userDetails:hover{
+    background: rgba($color: $RevealTeal, $alpha: 0.5);
+    color: $White;
+}
+.userImg{ 
+    width: 30px;
+    background: $FollowerGrey;
+    border-radius: 50%;
+}
+.dropdown-menu{
+    width: 210px;
+    margin: 0 20px 0 0;
+    border: 1px solid $DeepBlue;
+    background: $DeepBlue;
+    border-radius: 0;
+    color: $InvisibleSilver;
+}
+.ImageSpace{ 
+    padding: 10px 0 0 0;
+}
+.menu-userImg{ 
+    height: 50px;
+    width: 50px;
+    background: $FollowerGrey;
+    border-radius: 50%;
+    padding: 1px;
+}
+.menu-userInfo{ 
+    border-bottom: 1pt solid $FollowerGrey;
+    color: $InvisibleSilver;
+    margin: 0 0 20px 0; 
+    text-align: center; 
+    text-transform: capitalize;
+}
+.settingLabel{ 
+    color: $InvisibleSilver;
+    text-align: left;
+    margin: 0 0 10px 0; 
+    padding-left: 20px;
+}
+.settingLabel:hover{ 
+    background: rgba(255, 255, 255, 0.3);;
+    color: $White;
+    text-align: left;
+    cursor: pointer;
+}
+.settingLabel1{ 
+    display: inline-block;
+    width: 100%;
+    color: $InvisibleSilver;
+}
+.settingLabel1:hover{ 
+    width: 100%;
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.3);
+    color: $White;
+    cursor: pointer;
+}
+.aboutLabel{ 
+    display: inline-block;
+    width: 50%; 
+    padding: 0 10px 0 20px;
+}
+.userHeaderversion{ 
+    display: inline-block; 
+    width: 45%; 
+}

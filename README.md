@@ -7,14 +7,12 @@
 [![Latest Release][release-shield]][release-url]
 [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
 
-
-
 <!-- PROJECT LOGO -->
 <br />
 <br />
 <div align="center">
   <a href="https://github.com/github_username/repo_name">
-    <img src= "https://user-images.githubusercontent.com/8020014/175838314-0ac6962f-8f3a-4873-ae9d-bfd603e92beb.svg" alt="Logo" height="100">
+    <img src= "https://user-images.githubusercontent.com/8020014/198841940-ea0dacf5-b8ab-4dce-a629-74443cdb5f86.svg" alt="Logo" height="100">
   </a>
 <br />
 <br />
@@ -62,7 +60,19 @@ Our team of volunteers always welcomes all the help and support we can get as th
   - Launch Nodejs Application on Cloud services
   - Architect database schema
 
-## Branching Strategy
+## Developer Guides
+
+### Porting Reveal Foundation
+The MEMS project is based on the Reveal Foundation to provide the scaffold to build on top off. This section provides instructions on how to port new releases of Reveal Foundation for use with the MEMS project.
+
+  - Revise the name API and Client container image names (mems/api: and mems/client:) in docker-compose.yml located at /src/devop
+  - Launch container using the command 
+    ```
+    docker-compose --project-name mems up
+    ```
+
+
+### Branching Strategy
 
 MAIN -> RC04
 - Change main application version number

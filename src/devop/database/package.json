@@ -1,0 +1,16 @@
+{
+  "name": "initdb",
+  "version": "0.1.0",
+  "description": "Initalise a reveal database",
+  "main": "initDB.js",
+  "dependencies": {
+    "directory-tree": "^3.2.2",
+    "mongodb": "^4.4.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Reveal IQ Pvt",
+  "license": "ISC"
+}

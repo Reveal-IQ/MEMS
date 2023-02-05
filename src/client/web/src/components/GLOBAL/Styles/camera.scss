@@ -1,0 +1,115 @@
+/* 
+***********************************
+*  Created By : Reveal IQ         *
+*  Author     : Bharathi          *
+*  Date       : 28 OCT 2020       *
+*  Version    : 0.1.0.01.01-1020  *
+***********************************
+*/
+.cameraNormal {
+    display: block;
+  }
+  .camerasub {
+    display: none;
+  }
+  .cameraIcon {
+    font-size: 2.5vw;
+    color: #000000;
+    border: 1pt solid #bdc3c7;
+    padding: 0.5vw;
+    background: #eceff1;
+  }
+  .cameravideo {
+    display: block;
+    min-height: 330px;
+    position: absolute;
+    min-width: 600px;
+    left: 0;
+    right: 0;
+  }
+  .retakeIcon {
+    font-size: 14px;
+    color: white;
+  }
+  .captureBtn {
+    background: 0;
+    color: white;
+    border: 2pt solid white;
+    border-radius: 20px;
+    margin: 10px 0 10px 10px;
+    padding: 4px 25px 4px 25px;
+  }
+  .retakeBtn {
+    display: inline-block;
+    background: 0;
+    color: white;
+    border: 2pt solid white;
+    border-radius: 20px;
+    margin: 10px 0 10px 10px;
+    padding: 4px 25px 4px 25px;
+  }
+  .retakeImgBtn {
+    outline: 0;
+    width: 300px;
+    height: 3.2em;
+    background: rgba(196, 196, 196, 0.1);
+    color: #000000;
+    border: 1pt solid rgba(196, 196, 196, 0.1);
+  }
+  .regImage {
+    display: block;
+    height: 300px;
+    width: 300px;
+    border: 0;
+  }
+  .regImgDump {
+    display: block;
+    border: 1pt solid rgba(189, 195, 199, 0.1);
+    background: rgba(189, 195, 199, 0.1);
+    height: 27vh;
+    width: 300px;
+  }
+  .retakeBtn {
+    background: 0;
+    color: #000000;
+    border: 1pt solid 0;
+    display: inline-block;
+  }
+  .snap_btn:hover {
+    height: 3.2em;
+    width: 50%;
+    background: #e0e0e0;
+    color: #000000;
+    border: 1pt solid #494141;
+  }
+  .snap_btn {
+    height: 3.2em;
+    width: 50%;
+    background: #ffffff;
+    color: #000000;
+    border: 1pt solid #ffffff;
+    outline: none;
+    display: inline-block;
+  }
+  .video-container {
+    height: 330px;
+    width: 600px;
+    overflow: hidden;
+    position: relative;
+    background: blue;
+  }
+  .cameraContainer {
+    background: 0;
+    border: 0;
+    height: 330px;
+    overflow: hidden;
+    width: 600px;
+    position: relative;
+  }
+  .cameraBtnSpace {
+    margin: 280px 0 0 0;
+  }
+  .retakeModalBtn {
+    padding: 0 0 0 1vw;
+    color: white;
+  }
