@@ -1,0 +1,242 @@
+GLOBL:
+  GLOBL01:
+    TESTNAME: "GLOBAL GET_GEO_LIST"
+    ACTION: "WS"
+    TYPE: "REQUEST"
+    Description: "Test Country list"
+    INPUT:
+      {
+        Expiry: "20000",
+        Type: "REQUEST",
+        Request:
+          {
+            Module: "GLOBAL",
+            ServiceCode: "GLOBL",
+            API: "GET_GEO_LIST",
+            Max_List: 5, 
+            Criteria: { 
+              Type_Code: "CNTY", 
+              Loci_Name_Country  : '' 
+            } 
+          },
+      }
+    OUTPUT:
+      {
+        Expiry: "20000",
+        Type: "RESPONSE",
+        Response: 
+        {
+           Country_List:            
+             [ 
+              {   
+                Type_Code: "CNTY",
+                Loci_Name_Country: "India",
+                Loci_Code_Country: "IND",
+
+              },
+              { 
+                Type_Code: "CNTY",
+                Loci_Name_Country: "Armenia", 
+                Loci_Code_Country: "ARM" 
+              } 
+             ]
+            
+        }
+
+      }
+    MEDIA: false
+    USERVERIFY: false
+
+  GLOBL02:
+    TESTNAME: "GLOBAL GET_GEO_LIST"
+    ACTION: "WS"
+    TYPE: "REQUEST"
+    Description: "Test converstion of Country Code to Name"
+    INPUT:
+      {
+        Expiry: "20000",
+        Type: "REQUEST",
+        Request:
+          {
+            Module: "GLOBAL",
+            ServiceCode: "GLOBL",
+            API: "GET_GEO_LIST",
+            Max_List: 5, 
+            Criteria: { 
+              Type_Code: "CNTY", 
+              Loci_Name_Country  : "Ind" 
+            } 
+          },
+      }
+    OUTPUT:
+      {
+        Expiry: "20000",
+        Type: "RESPONSE",
+        Response: 
+        {
+           Country_List: 
+           
+             [ 
+              {   
+                Type_Code: "CNTY",
+                Loci_Name_Country: "India",
+                Loci_Code_Country: "IND",
+
+              },
+              { 
+                Type_Code: "CNTY",
+                Loci_Name_Country: "Indonesia", 
+                Loci_Code_Country: "IDN" 
+              } 
+             ]
+             
+        }
+
+      }
+    MEDIA: false
+    USERVERIFY: false
+
+  GLOBL03:
+    TESTNAME: "GLOBAL GET_GEO_LIST"
+    ACTION: "WS"
+    TYPE: "REQUEST"
+    Description: "Test converstion of District ( ARL1 ) Code to Name"
+    INPUT:
+      {
+        Expiry: "20000",
+        Type: "REQUEST",
+        Request:
+          {
+            Module: "GLOBAL", 
+            ServiceCode: "GLOBL",
+            API: "GET_GEO_LIST",
+            Max_List: 5, 
+            Criteria: { 
+              Type_Code: "STATE", 
+              Loci_Code_Country  : "IND",
+              Loci_Name_State : "Andh" 
+            } 
+          },
+      }
+    OUTPUT:
+      {
+        Expiry: "20000",
+        Type: "RESPONSE",
+        Response: {
+          State_List:  
+            [
+              {
+                Type_Code: "STATE", 
+                Loci_Name_State: "Andra Pradesh",
+                Loci_Code_State: "AP",
+              },
+              { 
+                Type_Code: "STATE",
+                Loci_Name_State: "Andaman and Nicobar Islands",
+                Loci_Code_State: "AN"
+              }
+            ]   
+        }
+
+      }
+    MEDIA: false
+    USERVERIFY: false
+
+  GLOBL04:
+    TESTNAME: "GLOBAL GET_GEO_LIST"
+    ACTION: "WS"
+    TYPE: "REQUEST"
+    Description: "Test converstion of City ( ARL2 ) Code to Name"
+    INPUT:
+      {
+        Expiry: "20000",
+        Type: "REQUEST",
+        Request:
+          {
+            Module: "GLOBAL", 
+            ServiceCode: "GLOBL",
+            API: "GET_GEO_LIST",
+            Max_List: 5, 
+            Criteria: { 
+              Type_Code: "ARL1", 
+              Loci_Code_Country  : "IND",
+              Loci_Code_State : "AP",
+              Loci_Name_District: "Chit" 
+            } 
+          },
+      }
+    OUTPUT:
+      {
+        Expiry: "20000",
+        Type: "RESPONSE",
+        Response: {
+          District_List: 
+          
+            [
+              {
+                Type_Code: "ARL1", 
+                Loci_Name_District: "Chittoor",
+                Loci_Code_District: "Chittoor",
+              },
+              { 
+                Type_Code: "ARL1",
+                Loci_Name_District: "Chittoor",
+                Loci_Code_District: "Chittoor"
+              }
+            ] 
+           
+        }
+
+      }
+    MEDIA: false
+    USERVERIFY: false
+
+  GLOBL05:
+    TESTNAME: "GLOBAL GET_GEO_LIST"
+    ACTION: "WS"
+    TYPE: "REQUEST"
+    Description: "Test converstion of City ( ARL2 ) Code to Name"
+    INPUT:
+      {
+        Expiry: "20000",
+        Type: "REQUEST",
+        Request:
+          {
+            Module: "GLOBAL", 
+            ServiceCode: "GLOBL",
+            API: "GET_GEO_LIST",
+            Max_List: 5, 
+            Criteria: { 
+              Type_Code: "ARL2", 
+              Loci_Code_Country  : "IND",
+              Loci_Code_State : "AP",
+              Loci_Code_District: "Chittoor",
+              Loci_Name_City: “Tir” 
+            } 
+          },
+      }
+    OUTPUT:
+      {
+        Expiry: "20000",
+        Type: "RESPONSE",
+        Response: {
+          Manddal_List: 
+            [
+              {
+                Type_Code: "ARL2", 
+                Loci_Name_Mandal: "Tirupati",
+                Loci_Code_Mandal: "06E2",
+                Loci_Postal_Code: "517501"
+              },
+              { 
+                Type_Code: "ARL2",
+                Loci_Name_Mandal: "Tirumala",
+                Loci_Code_Mandal: "06DE",
+                Loci_Postal_Code: "517504"
+              }
+            ]   
+        }
+
+      }
+    MEDIA: false
+    USERVERIFY: false  
