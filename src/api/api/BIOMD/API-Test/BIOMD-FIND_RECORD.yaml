@@ -143,15 +143,13 @@ BIOMD:
               {
                 collection: "Manufacturer",
                 queries: [{
-                  field: "_id",
-                  op: "eq",
-                  value: "635187dcbe1e8400127667e1",
+                  op: "eq_id",
+                  value: "62ae5565ee3033c4977ea00d",
                 }],
 
               projection: {
-                _id: 0,
-                model_name: 1,
-                model_number: 1,
+                _id: 1,
+                ManufacturerName: 1
                 },
               },
           },
