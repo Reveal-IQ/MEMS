@@ -19,7 +19,7 @@
 <h3 align="center">Medical Equipment Managment System</h3>
 
   <p align="center">
-    project_description
+    Version 0.2.0-Alpha
     <br />
     <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
     <br />
