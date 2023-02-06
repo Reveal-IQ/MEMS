@@ -72,34 +72,71 @@ The MEMS project is based on the Reveal Foundation to provide the scaffold to bu
     ```
 
 
-### Branching Strategy
+## Release Management
 
-MAIN -> RC04
-- Change main application version number
-- Version: 0.4.0 <Release>.<Release Candidate>.<Minor Changes>
-  
-RC04 -> Feature Branch (RC04_NewViewVendor)
-  - Single contributor
+### Verioning
+The product shall follow [Semantic Versioning](https://semver.org/)
 
- RC04 -> Bug Branch (RC04_BUG_BugName)
-  -Single Contributor
-  -Single Bug
-
- Detached Branch (TST_RC04_FeatureName) 
-  - Test branch 
-  - Delete Branch when testing complete
-  
-Pull Request
-  - Feature/Bug PR (Feature Branch -> RC##)
-    - UI PR - Reviewer AS + Peer
-    - Backend PR - Reviewer AP
-    - PR Name: RC## <Feature/Bug Name>
- 
-  - Release Candidate (RC) PR (RC## -> Main) 
-    - Reviewed AS + AP 
-    - PR Name: RC## RELEASE
+Given a version number `<MAJOR>.<MINOR>.<PATCH>`, increment the:
+- MAJOR version when you make incompatible API changes
+- MINOR version when you add functionality in a backwards compatible manner
+- PATCH version when you make backwards compatible bug fixes
 
 
+## Branching Strategy
+
+The following branching strategy will provide ease to developers working on this code base.
+
+### Development Branch
+The development branch signifies the bleeding edge of the product. As such, this is the branch to base features and bugfix branches from.
+
+
+Release branch format: `develop`
+
+NOTE: The development branch will be a protected branch. As such, you will only be able to merge pull-requests to it.
+
+### Feature Branches
+Feature branches are used for changing the functionality of the product. This includes adding capabilities, optimizing existing data flows, or refactoring.
+
+Feature branch format: `feature/<ISSUE_ID>/<description>`
+
+For example:
+```bash
+git checkout -b feature/64/new-branching-strategy
+```
+
+### Bugfix Branches
+Bugfix branches are used to fix an issue in the product. The bug branch will typically be based off the develop or release branches.
+
+Bugfix branch format: `bugfix/<ISSUE_ID>/<description>`
+
+For example:
+```bash
+git checkout -b bugfix/22/request-id-unknown-in-respon
+```
+
+### Release Branches
+Release branches are long lived-branches that reflect the state of the product at ehe end of a milestone.
+
+Release branch format: `release/<MAJOR>.<MINOR>`
+
+> NOTE: The PATCH version is not included in the release branch naming as bugfixes in this release branch will correspond to an increment in the patch version numbering.
+
+For example:
+```bash
+git checkout -b release/0.1
+```
+
+These releases are important to maintain when bug-fixes are needed for particular deployments that can't easily upgrade to the newest version.
+
+**Cutting a Release**
+Once a milestone has been reached, the latest release branch should be created from the `develop` branch.
+
+If any bugs arise in the release branch, bugfixes should go to the release branch first.
+Once the bug fix is merged to the release branch, it can be cherry-picked back to the develop branch.
+
+### Main Branch
+The main branch should point to the latest release once it has been tested thoroughly.
 
 ## 📚 Documents
   - [User Requirements](https://1drv.ms/w/s!Aoyt_5MLLrQsi6hhpnkagfaawf1pcA?e=iVbRyr)
