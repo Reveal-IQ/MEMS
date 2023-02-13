@@ -16,7 +16,7 @@
   </a>
 <br />
 <br />
-<h3 align="center">Medical Equipment Managment System</h3>
+<h3 align="center">Medical Equipment Management System</h3>
 
   <p align="center">
     Version 0.2.0-Alpha
@@ -36,14 +36,14 @@
 
 ## 🏆 The Team
 
-### PR Approval Commitee 
+### PR Approval Committee
 
-### Sprint Planning Commitee 
+### Sprint Planning Committee
 
 
 
 ## ℹ️ How can you Support?
-Our team of volunteers always welcomes all the help and support we can get as this project requires a wide array of expertise from software developers to UI/UX designers. If have the skillset or require more flight-hours and looking for project to sharpen your skills, we encourage you to contact us at ???
+Our team of volunteers always welcomes all the help and support we can get as this project requires a wide array of expertise from software developers to UI/UX designers. If have the skill-set or require more flight-hours and looking for project to sharpen your skills, we encourage you to contact us at ???
 
 * **UI/UX Designers**
   - Create design guides for overall application theme
@@ -74,7 +74,7 @@ The MEMS project is based on the Reveal Foundation to provide the scaffold to bu
 
 ## Release Management
 
-### Verioning
+### Versioning
 The product shall follow [Semantic Versioning](https://semver.org/)
 
 Given a version number `<MAJOR>.<MINOR>.<PATCH>`, increment the:
@@ -112,11 +112,11 @@ Bugfix branch format: `bugfix/<ISSUE_ID>/<description>`
 
 For example:
 ```bash
-git checkout -b bugfix/22/request-id-unknown-in-respon
+git checkout -b bugfix/22/request-id-unknown-in-response
 ```
 
 ### Release Branches
-Release branches are long lived-branches that reflect the state of the product at ehe end of a milestone.
+Release branches are long lived-branches that reflect the state of the product at the end of a milestone.
 
 Release branch format: `release/<MAJOR>.<MINOR>`
 
