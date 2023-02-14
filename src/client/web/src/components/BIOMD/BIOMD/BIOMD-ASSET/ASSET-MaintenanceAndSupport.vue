@@ -36,7 +36,7 @@
           aria-label="Default select example"
           v-model="status"
         >
-          <option selected disabled value="AD">Active Deployed</option>
+          <option selected value="AD">Active Deployed</option>
           <option
             v-for="list in statusList"
             :key="list.value"
