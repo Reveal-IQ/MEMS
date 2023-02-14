@@ -140,7 +140,7 @@ export default {
 
     const supportTeam = ref(null);
     const vendorId = ref(null);
-    const status = ref(null);
+    const status = ref("AD");
     const userManual = ref(false);
     const technicalManual = ref(false);
 

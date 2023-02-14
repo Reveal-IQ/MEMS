@@ -28,18 +28,6 @@
           <option selected>Select Support Team</option>
         </select>
       </div>
-      <!-- Vendor -->
-      <!-- <div class="col-lg-6 mb-3">
-        <label for="vendorList" class="form-label">Vendor</label>
-        <select
-          id="vendorList"
-          class="form-select"
-          aria-label="Default select example"
-        >
-          <option selected>Select Vendor</option>
-        </select>
-      </div> -->
-      <!-- Status -->
       <div class="col-lg-6 mb-3">
         <label for="statusList" class="form-label">Status</label>
         <select
@@ -48,9 +36,13 @@
           aria-label="Default select example"
           v-model="status"
         >
-          <option selected>Select Equipment Status</option>
-          <option v-for="name in statusList" :key="name" :value="name">
-            {{ name }}
+          <option selected disabled value="AD">Active Deployed</option>
+          <option
+            v-for="list in statusList"
+            :key="list.value"
+            :value="list.value"
+          >
+            {{ list.name }}
           </option>
         </select>
       </div>
@@ -93,15 +85,16 @@ import { ref, inject } from "vue";
 import Section from "../BIOMD-UI/UI-Section.vue";
 
 const supportTeam = inject("supportTeam");
-const vendorId = inject("vendorId");
 const status = inject("status");
 const userManual = inject("userManual");
 const technicalManual = inject("technicalManual");
 
 const statusList = ref([
-  "Operational",
-  "Decommissioned",
-  "Requires Maintenance",
+  { name: "Active in Storage", value: "AA" },
+  { name: "Active in Service", value: "AS" },
+  { name: "Storage Repairable", value: "SR" },
+  { name: "Storage Parts", value: "SP" },
+  { name: "Disposed", value: "DS" },
 ]);
 </script>
 
