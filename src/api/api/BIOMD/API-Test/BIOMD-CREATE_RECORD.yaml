@@ -1,0 +1,235 @@
+BIOMD:
+  BIOMD01:
+    TESTNAME: "Create Manufacturer Record"
+    ACTION: "WS"
+    TYPE: "REQUEST"
+    Description: "Testing Create_Record API"
+    INPUT:
+      {
+        Expiry: "20000",
+        Type: "REQUEST",
+        Request:
+          {
+            Module: "MEMS",
+            ServiceCode: "BIOMD",
+            API: "CREATE_RECORD",
+            collection: "Manufacturer",
+            record:
+              {
+                manufacturer_name: "General Electric",
+                country: "United States of America",
+                area: "California",
+                city: "San Jose",
+                address_1: "5 Necco St, Boston",
+                address_2: "Unit 223",
+                area_code: "95110",
+              },
+          },
+      }
+    OUTPUT:
+      {
+        Type: "RESPONSE",
+        Response: { success: true, message: "Created Manufacturer Record" },
+      }
+    MEDIA: false
+    USERVERIFY: false
+
+  BIOMD02:
+    TESTNAME: "Create Vendor Record"
+    ACTION: "WS"
+    TYPE: "REQUEST"
+    Description: "Testing Create_Record API"
+    INPUT:
+      {
+        Expiry: "20000",
+        Type: "REQUEST",
+        Request:
+          {
+            Module: "MEMS",
+            ServiceCode: "BIOMD",
+            API: "CREATE_RECORD",
+            collection: "Vendor",
+            record:
+              {
+                vendor_name: "GE Distributor",
+                country: "Canada",
+                area: "Ontario",
+                city: "Toronto",
+                address1: "15 Yonge Street",
+                address2: "Unit 234",
+                areaCode: "M2K0K2",
+                siteID: 824,
+                Contacts: " ",
+                manufacturer_ID: ["MF01", "MF32"],
+              },
+          },
+      }
+    OUTPUT:
+      {
+        Type: "RESPONSE",
+        Response: { success: true, message: "Created Vendor Record" },
+      }
+    MEDIA: false
+    USERVERIFY: false
+
+  BIOMD03:
+    TESTNAME: "Create Facility Record"
+    ACTION: "WS"
+    TYPE: "REQUEST"
+    Description: "Testing Create_Record API"
+    INPUT:
+      {
+        Expiry: "20000",
+        Type: "REQUEST",
+        Request:
+          {
+            Module: "MEMS",
+            ServiceCode: "BIOMD",
+            API: "CREATE_RECORD",
+            collection: "Manufacturer",
+            record:
+              {
+                facility_name: "Ghana Medical Clinic",
+                country: "United States of America",
+                area: "California",
+                city: "San Jose",
+                address_1: "5 Necco St, Boston",
+                address_2: "Unit 223",
+                area_code: "95110",
+                location: { longitude: -73.974, latitude: 40.764 },
+                departments: ["Family Medicine", "Out Patient", "Pediatrics"],
+              },
+          },
+      }
+    OUTPUT:
+      {
+        Type: "RESPONSE",
+        Response: { success: true, message: "Created Manufacturer Record" },
+      }
+    MEDIA: false
+    USERVERIFY: false
+
+  BIOMD04:
+    TESTNAME: "Create Model Record"
+    ACTION: "WS"
+    TYPE: "REQUEST"
+    Description: "Testing Create_Record API"
+    INPUT:
+      {
+        Expiry: "20000",
+        Type: "REQUEST",
+        Request:
+          {
+            Module: "MEMS",
+            ServiceCode: "BIOMD",
+            API: "CREATE_RECORD",
+            collection: "Model",
+            record:
+              {
+                model_name: "MX 800",
+                model_number: 800,
+                vendor_id,
+                vendor_site_id: "A5422",
+                contact_id: [],
+              },
+          },
+      }
+    OUTPUT:
+      {
+        Type: "RESPONSE",
+        Response: { success: true, message: "Created Model Record" },
+      }
+    MEDIA: false
+    USERVERIFY: false
+
+  BIOMD05:
+    TESTNAME: "Create Contact Record"
+    ACTION: "WS"
+    TYPE: "REQUEST"
+    Description: "Testing Create_Record API"
+    INPUT:
+      {
+        Expiry: "20000",
+        Type: "REQUEST",
+        Request:
+          {
+            Module: "MEMS",
+            ServiceCode: "BIOMD",
+            API: "CREATE_RECORD",
+            collection: "Contact",
+            record:
+              {
+                name: "Ben Jose",
+                email: "ben.jose@example.com",
+                contact:
+                  [
+                    { 
+                      areaCode: 001,
+                      number: 41583493405, 
+                      type: "Emergency" 
+                    },
+                    {
+                      areaCode: 001,
+                      number: 41583493405,
+                      type: "General Line",
+                    },
+                  ],
+              },
+          },
+      }
+    OUTPUT:
+      {
+        Type: "RESPONSE",
+        Response: { success: true, message: "Created Contact Record" },
+      }
+    MEDIA: false
+    USERVERIFY: false
+
+  BIOMD06:
+    TESTNAME: "Create Asset Record"
+    ACTION: "WS"
+    TYPE: "REQUEST"
+    Description: "Testing Create_Record API"
+    INPUT:
+      {
+        Expiry: "20000",
+        Type: "REQUEST",
+        Request:
+          {
+            Module: "MEMS",
+            ServiceCode: "BIOMD",
+            API: "CREATE_RECORD",
+            collection: "Asset",
+            record:
+              {
+                _id: " ",
+                manufacturer_id: " ",
+                facility_id: " ",
+                vendor_id: " ",
+                model_id: " ",
+                assetCode: "A4F05",
+                description: "Test Description",
+                commonName: "Patient Monitor",
+                serialNumber: "123498275895RS",
+                manufacturerDate: 1664757154000,
+                roomTag: "A329",
+                supportTeam: " ",
+                status: "ACTIVE",
+                user_manual: "  ",
+                technical_manual: "  ",
+                purchaseOrderNumber: 12456,
+                projectTag: "Capital012",
+                purchaseCost: 1204.34,
+                purchaseDate: 1664757154000,
+                acceptanceDate: 1664757154000,
+                generalComment: "Working Great",
+              },
+          },
+      }
+    OUTPUT:
+      {
+        Type: "RESPONSE",
+        Response: { success: true, message: "Created Asset Record" },
+      }
+    MEDIA: false
+    USERVERIFY: false

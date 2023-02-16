@@ -1,0 +1,162 @@
+BIOMD:
+  BIOMD01:
+    TESTNAME: "FIND_RECORD Substring Match"
+    ACTION: "WS"
+    TYPE: "REQUEST"
+    Description: "Search Manufacturer Starting with Gen"
+    INPUT:
+      {
+        Expiry: "20000",
+        Type: "REQUEST",
+        Request:
+          {
+            Module: "MEMS",
+            ServiceCode: "BIOMD",
+            API: "FIND_RECORD",
+            return_array: true,
+            max_list: 5,
+            find:
+              {
+                collection: "Manufacturer",
+                queries: [{
+                  field: "manufacturer_name",
+                  op: "sb",
+                  value: "^Gen",
+                }],
+
+              projection: {
+                _id: 0,
+                manufacturer_name: 1,
+                country: 1,
+                Area: 1,
+                City: 1,
+                Address1: 1,
+                Address2: 1,
+                AreaCode: 1,
+                },
+              },
+          },
+      }
+    OUTPUT:
+      {
+
+      }
+    MEDIA: false
+    USERVERIFY: false
+
+  BIOMD02:
+    TESTNAME: "FIND_RECORD Substring Match"
+    ACTION: "WS"
+    TYPE: "REQUEST"
+    Description: "Get All Manufacturer"
+    INPUT:
+      {
+        Expiry: "20000",
+        Type: "REQUEST",
+        Request:
+          {
+            Module: "MEMS",
+            ServiceCode: "BIOMD",
+            API: "FIND_RECORD",
+            return_array: true,
+            max_list: 5,
+            find:
+              {
+                collection: "Manufacturer",
+                queries: [{
+                  field: "manufacturer_name",
+                  op: "sb",
+                  value: "^",
+                }],
+
+              projection: {
+                _id: 0,
+                manufacturer_name: 1,
+                },
+              },
+          },
+      }
+    OUTPUT:
+      {
+
+      }
+    MEDIA: false
+    USERVERIFY: false
+
+  BIOMD03:
+    TESTNAME: "FIND_RECORD Substring Match"
+    ACTION: "WS"
+    TYPE: "REQUEST"
+    Description: "Exact Match Vendor based on Manufacturer"
+    INPUT:
+      {
+        Expiry: "20000",
+        Type: "REQUEST",
+        Request:
+          {
+            Module: "MEMS",
+            ServiceCode: "BIOMD",
+            API: "FIND_RECORD",
+            return_array: true,
+            max_list: 5,
+            find:
+              {
+                collection: "Model",
+                queries: [{
+                  field: "vendor_id",
+                  op: "eq",
+                  value: "635187e7be1e8400127667e4",
+                }],
+
+              projection: {
+                _id: 0,
+                model_name: 1,
+                model_number: 1,
+                },
+              },
+          },
+      }
+    OUTPUT:
+      {
+
+      }
+    MEDIA: false
+    USERVERIFY: false
+
+  BIOMD04:
+    TESTNAME: "FIND_RECORD Substring Match"
+    ACTION: "WS"
+    TYPE: "REQUEST"
+    Description: "Find Manufacturer based on _ID"
+    INPUT:
+      {
+        Expiry: "20000",
+        Type: "REQUEST",
+        Request:
+          {
+            Module: "MEMS",
+            ServiceCode: "BIOMD",
+            API: "FIND_RECORD",
+            return_array: true,
+            max_list: 5,
+            find:
+              {
+                collection: "Manufacturer",
+                queries: [{
+                  op: "eq_id",
+                  value: "62ae5565ee3033c4977ea00d",
+                }],
+
+              projection: {
+                _id: 1,
+                ManufacturerName: 1
+                },
+              },
+          },
+      }
+    OUTPUT:
+      {
+
+      }
+    MEDIA: false
+    USERVERIFY: false
