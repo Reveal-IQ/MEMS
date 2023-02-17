@@ -26,7 +26,7 @@ Description: Describe the application
             BtnName="Return"
             :icon="'arrow-left'"
             backgroundColor="none"
-            @click="goBack"
+            @click="changePage()"
             class="text-secondary btn-sm"
           />
 
@@ -179,6 +179,10 @@ export default {
       emit("updatePage", "landing");
     };
 
+    const changePage = () => {
+      emit("updatePage", "vendorInfo")
+    }
+
     provide("manufacturerInfo", manufacturerInfo);
     provide("Global_Manufacturer_Definition", Global_Manufacturer_Definition);
 
@@ -186,6 +190,7 @@ export default {
       goBack,
       redirectToPage,
       createRecord,
+      changePage
     };
   },
   components: { ManufacturerInformation, Btn2, Btn, Header },
