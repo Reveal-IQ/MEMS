@@ -12,32 +12,29 @@ Description: < Describe the application >
   <div class="RevealContainer">
     <div class="container p-4 m-4">
       <div
-        class="d-lg-flex align-items-center flex-lg-row flex-md-row flex-sm-column justify-content-between"
+        class="d-lg-flex d-md-flex d-sm-flex gap-lg-0 gap-sm-5 align-items-center justify-content-lg-between justify-content-md-between justify-content-sm-center"
       >
-        <div class="d-flex mt-3">
+        <div class="mt-3">
           <Header
             title="New Asset"
             subTitle="Create a new asset with this form"
           />
         </div>
-        <div class="d-flex">
-          <span class="d-sm-block">
-            <Btn2
-              BtnName="Return"
-              :icon="'arrow-left'"
-              backgroundColor="none"
-              @click="goBack"
-              class="text-secondary"
-            />
-          </span>
-          <span class="ms-4 d-sm-block">
-            <Btn2
-              BtnName="Dashboard"
-              backgroundColor="#2A94B6"
-              @click="goBack"
-              class="text-light"
-            />
-          </span>
+        <div class="d-flex gap-2 d-md-block">
+          <Btn2
+            BtnName="Return"
+            :icon="'arrow-left'"
+            backgroundColor="none"
+            @click="goBack"
+            class="text-secondary btn-sm"
+          />
+
+          <Btn2
+            BtnName="Dashboard"
+            backgroundColor="#2A94B6"
+            @click="goBack"
+            class="text-light btn-sm"
+          />
         </div>
       </div>
 
@@ -136,7 +133,7 @@ export default {
     const departmentId = ref(null);
     const region = ref(null);
     const district = ref(null);
-    const location = ref(null);
+    const location = ref([]);
 
     const supportTeam = ref(null);
     const vendorId = ref(null);

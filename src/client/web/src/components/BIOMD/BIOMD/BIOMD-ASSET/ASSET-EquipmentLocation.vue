@@ -26,7 +26,7 @@
         </select>
       </div>
       <!-- District -->
-      <div class="col-lg-4 mb-3">
+      <div class="col-lg-6 mb-3">
         <label for="districtList" class="form-label">District</label>
         <select
           id="districtList"
@@ -38,7 +38,7 @@
         </select>
       </div>
       <!-- Department -->
-      <div class="col-lg-4 mb-3">
+      <div class="col-lg-6 mb-3">
         <label for="departmentList" class="form-label">Department</label>
         <select
           id="departmentList"
@@ -50,24 +50,19 @@
         </select>
       </div>
       <!-- Location -->
-      <div class="col-lg-4">
-        <Input
-          label="Location"
-          type="text"
-          id="locationTag"
-          placeholder="Add Location Tag"
-          v-model="location"
-        />
+    </div>
+    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
+      <div class="col-lg-12 col-md-12">
+        <UITagInput v-model="location" label="Location" customDelimiter="," placeholder="Enter Location Tag" />
       </div>
     </div>
   </Section>
 </template>
 
 <script setup>
-import { ref, inject } from "vue";
-
-import Input from "../BIOMD-UI/UI-Input.vue";
+import { inject } from "vue";
 import Section from "../BIOMD-UI/UI-Section.vue";
+import UITagInput from "../BIOMD-UI/UI-TagInput.vue";
 
 const facilityId = inject("facilityId");
 const departmentId = inject("departmentId");
