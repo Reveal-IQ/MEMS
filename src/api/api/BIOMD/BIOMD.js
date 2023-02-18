@@ -11,7 +11,6 @@
 //Required Libs
 // const { join } = require("path");
 // const media = require(join(CONFIG.Paths.HomeDir, CONFIG.Paths.API, "GLOBAL", "media"));
-const {ObjectId} = require('mongodb');
 const instituteCode = CONFIG.Database.Site_Database.Name;
 
 //Application Info
@@ -213,9 +212,6 @@ module.exports.FIND_RECORD = async function (req, dbClient) {
       let qry = queries[i]
       if (isValidOperator(qry.op)) {
         switch (qry.op) {
-          case "eq_id":
-            createdFindQuery["_id"] = ObjectId(qry.value);
-            break;
           case "eq":
             createdFindQuery[qry.field] = qry.value;
             break;
