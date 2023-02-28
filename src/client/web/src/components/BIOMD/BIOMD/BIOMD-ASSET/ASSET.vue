@@ -124,13 +124,15 @@ export default {
       });
     }
 
-    const equipmentNumber = ref(null);
-    const commonName = ref(null);
-    const description = ref(null);
-    const serialNumber = ref(null);
-    const modelId = ref(null);
-    const manufacturerId = ref(null);
-    const manufacturerDate = ref(null);
+    const GeneralInformation = ref({
+      equipmentNumber: null,
+      commonName: null,
+      description: null,
+      serialNumber: null,
+      modelId: null,
+      manufacturerId: null,
+      manufacturerDate: null,
+    });
 
     const facilityId = ref(null);
     const departmentId = ref(null);
@@ -170,13 +172,13 @@ export default {
             API: "CREATE_RECORD",
             collection: "Asset",
             record: {
-              assetCode: equipmentNumber.value,
-              commonName: commonName.value,
-              description: description.value,
-              serialNumber: serialNumber.value,
-              model_id: modelId.value,
-              manufacturer_id: manufacturerId.value,
-              manufactureDate: manufacturerDate.value,
+              assetCode: GeneralInformation.value.equipmentNumber,
+              commonName: GeneralInformation.value.commonName,
+              description: GeneralInformation.value.description,
+              serialNumber: GeneralInformation.value.serialNumber,
+              model_id: GeneralInformation.value.modelId,
+              manufacturer_id: GeneralInformation.value.manufacturerId,
+              manufactureDate: GeneralInformation.value.manufacturerDate,
               facility_id: facilityId.value,
               department: departmentId.value,
               roomTag: location.value,
@@ -219,17 +221,45 @@ export default {
       });
     }
 
+    const getManufacturer = () => {
+      sendSocketReq({
+        data: {
+          Expiry: 20000,
+          Type: "REQUEST",
+          Request: {
+            Module: "MEMS",
+            ServiceCode: "BIOMD",
+            API: "FIND_RECORD",
+            return_array: true,
+            max_list: 5,
+            find: {
+              collection: "Manufacturer",
+              queries: [
+                {
+                  field: "manufacturerName",
+                  op: "sb",
+                  value: "^",
+                },
+              ],
+              projection: {
+                _id: 0,
+                manufacturerName: GeneralInformation.manufacturerId,
+              },
+            },
+            Institute_Code: Institute_Code.value, //Dynamically changes when another institute logged in
+          },
+        },
+        OUTPUT: {},
+      });
+      MEDIA: false;
+      USERVERIFY: false;
+    };
+
     const goBack = () => {
       emit("updatePage", "landing");
     };
 
-    provide("equipmentNumber", equipmentNumber);
-    provide("commonName", commonName);
-    provide("description", description);
-    provide("serialNumber", serialNumber);
-    provide("modelId", modelId);
-    provide("manufacturerId", manufacturerId);
-    provide("manufacturerDate", manufacturerDate);
+    provide("GeneralInformation", GeneralInformation);
 
     provide("facilityId", facilityId);
     provide("departmentId", departmentId);
@@ -255,7 +285,11 @@ export default {
       goBack,
       redirectToPage,
       createRecord,
+      getManufacturer,
     };
+  },
+  mounted() {
+    this.getManufacturer();
   },
 };
 </script>

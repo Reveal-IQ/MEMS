@@ -65,14 +65,24 @@
       <!-- Manufacturer -->
       <div class="col-lg-5 mb-3">
         <label for="manufacturerList" class="form-label">Manufacturer</label>
-        <select
+        <input
+          class="form-control"
+          list="manufacturerListOptions"
           id="manufacturerList"
-          class="form-select"
+          placeholder="Select Manufacturer"
           aria-label="Default select example"
-          v-model="manufacturerId"
-        >
-          <option selected>Select Manufacturer</option>
-        </select>
+          v-model="GeneralInformation.manufacturerId"
+          autocomplete="off"
+        />
+        <datalist id="manufacturerListOptions">
+          <option
+            v-for="manufacturer in GeneralInformation.manufacturerId"
+            :key="manufacturer.index"
+            :value="manufacturer"
+          >
+            {{ manufacturer }}
+          </option>
+        </datalist>
       </div>
 
       <!-- Year of Manufacture -->
@@ -109,15 +119,12 @@ import Input from "../BIOMD-UI/UI-Input.vue";
 import Section from "../BIOMD-UI/UI-Section.vue";
 
 // Inject Asset Information
-const equipmentNumber = inject("equipmentNumber");
-const commonName = inject("commonName");
-const description = inject("description");
-const serialNumber = inject("serialNumber");
-const modelId = inject("modelId");
-const manufacturerId = inject("manufacturerId");
-const manufacturerDate = inject("manufacturerDate");
+const GeneralInformation = inject("GeneralInformation");
+
+const manufacturerList = ref([]);
 
 const commonNameList = ref(["concentrator", "bp apparatus", "gun thermometer"]);
+
 </script>
 
 <style lang="scss" scoped>
