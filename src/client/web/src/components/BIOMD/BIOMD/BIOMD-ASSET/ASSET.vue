@@ -232,7 +232,7 @@ export default {
             ServiceCode: "BIOMD",
             API: "FIND_RECORD",
             return_array: true,
-            max_list: 5,
+            max_list: 100,
             find: {
               collection: "Manufacturer",
               queries: [
@@ -243,7 +243,7 @@ export default {
                 },
               ],
               projection: {
-                _id: 0,
+                _id: 1,
                 manufacturer_name: 1,
               },
             },
@@ -253,17 +253,17 @@ export default {
         callback: (res) => {
           if (res.Type === "RESPONSE") {
             // Console the Response Packet
+            console.log("Response Packet -->", res.Response);
             Response: {
               Success: "TRUE";
-              Collection: "Manufacturer";
+              Collection: "manufacturers";
               Message: "Find Record";
             }
             const ManufacturerNameArray = [];
             res.Response.records.forEach((name) => {
-              ManufacturerNameArray.push(
-                name?.GeneralInformation.value.manufacturerName
-              );
+              ManufacturerNameArray.push(name.manufacturer_name);
             });
+
             GeneralInformation.value.manufacturerId = ManufacturerNameArray;
           } else if (res.Type === "ERROR") {
             // Error response received during fetching

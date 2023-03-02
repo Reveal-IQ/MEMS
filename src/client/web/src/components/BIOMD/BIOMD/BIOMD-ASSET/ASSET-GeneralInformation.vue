@@ -82,7 +82,7 @@
           <option
             v-for="manufacturer in GeneralInformation.manufacturerId"
             :key="manufacturer.index"
-            :value="manufacturer"
+            :value="manufacturer._id"
           >
             {{ manufacturer }}
           </option>
