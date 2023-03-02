@@ -131,6 +131,7 @@ export default {
       serialNumber: null,
       modelId: null,
       manufacturerId: null,
+      manufacturerName: null,
       manufacturerDate: null,
     });
 
@@ -177,7 +178,7 @@ export default {
               description: GeneralInformation.value.description,
               serialNumber: GeneralInformation.value.serialNumber,
               model_id: GeneralInformation.value.modelId,
-              manufacturer_id: GeneralInformation.value.manufacturerId,
+              manufacturer_id: GeneralInformation.value.manufacturerName,
               manufactureDate: GeneralInformation.value.manufacturerDate,
               facility_id: facilityId.value,
               department: departmentId.value,
@@ -236,23 +237,44 @@ export default {
               collection: "Manufacturer",
               queries: [
                 {
-                  field: "manufacturerName",
+                  field: "manufacturer_name",
                   op: "sb",
                   value: "^",
                 },
               ],
               projection: {
                 _id: 0,
-                manufacturerName: GeneralInformation.manufacturerId,
+                manufacturer_name: 1,
               },
             },
             Institute_Code: Institute_Code.value, //Dynamically changes when another institute logged in
           },
         },
-        OUTPUT: {},
+        callback: (res) => {
+          if (res.Type === "RESPONSE") {
+            // Console the Response Packet
+            Response: {
+              Success: "TRUE";
+              Collection: "Manufacturer";
+              Message: "Find Record";
+            }
+            const ManufacturerNameArray = [];
+            res.Response.records.forEach((name) => {
+              ManufacturerNameArray.push(
+                name?.GeneralInformation.value.manufacturerName
+              );
+            });
+            GeneralInformation.value.manufacturerId = ManufacturerNameArray;
+          } else if (res.Type === "ERROR") {
+            // Error response received during fetching
+            Type: "ERROR";
+            Response: {
+              Error_Code: "API-CREATE_RECORD-E001";
+              Error_Msg: "CREATE_RECORD_API: Failed to execute query";
+            }
+          }
+        },
       });
-      MEDIA: false;
-      USERVERIFY: false;
     };
 
     const goBack = () => {

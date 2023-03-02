@@ -8,7 +8,7 @@
           type="number"
           id="equipmentNumber"
           placeholder="Enter Equipment Number"
-          v-model="equipmentNumber"
+          v-model="GeneralInformation.equipmentNumber"
         />
       </div>
 
@@ -17,7 +17,11 @@
         <label for="commonNameList" class="form-label"
           >Equipment Common Name</label
         >
-        <select id="commonNameList" class="form-select" v-model="commonName">
+        <select
+          id="commonNameList"
+          class="form-select"
+          v-model="GeneralInformation.commonName"
+        >
           <option selected disabled>Select Common Name</option>
           <option v-for="name in commonNameList" :key="name">
             {{ name }}
@@ -34,7 +38,7 @@
           id="descriptionList"
           class="form-select"
           aria-label="Default select example"
-          v-model="description"
+          v-model="GeneralInformation.description"
         >
           <option selected>Select Class</option>
         </select>
@@ -47,7 +51,7 @@
           type="text"
           id="serialNumber"
           placeholder="Enter Serial Number"
-          v-model="serialNumber"
+          v-model="GeneralInformation.serialNumber"
         />
       </div>
       <!-- Model Name -->
@@ -57,7 +61,7 @@
           id="modelList"
           class="form-select"
           aria-label="Default select example"
-          v-model="modelId"
+          v-model="GeneralInformation.modelId"
         >
           <option selected>Select Model Name</option>
         </select>
@@ -71,7 +75,7 @@
           id="manufacturerList"
           placeholder="Select Manufacturer"
           aria-label="Default select example"
-          v-model="GeneralInformation.manufacturerId"
+          v-model="GeneralInformation.manufacturerName"
           autocomplete="off"
         />
         <datalist id="manufacturerListOptions">
@@ -92,7 +96,7 @@
           type="date"
           id="yearOfManufacture"
           placeholder="Enter Year of manufacture"
-          v-model="manufacturerDate"
+          v-model="GeneralInformation.manufacturerDate"
         />
       </div>
     </div>
@@ -102,7 +106,6 @@
           BtnName="Search Parent Equipment"
           backgroundColor="#1266F1"
           :icon="'search'"
-          @click="addRecord"
           class="col-lg-3 col-md-12 rounded-pill"
         />
       </div>
@@ -117,6 +120,10 @@ import { useStore } from "vuex";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 import Input from "../BIOMD-UI/UI-Input.vue";
 import Section from "../BIOMD-UI/UI-Section.vue";
+const store = useStore();
+const sendSocketReq = (request) => {
+  store.dispatch("sendSocketReq", request);
+};
 
 // Inject Asset Information
 const GeneralInformation = inject("GeneralInformation");
@@ -124,7 +131,6 @@ const GeneralInformation = inject("GeneralInformation");
 const manufacturerList = ref([]);
 
 const commonNameList = ref(["concentrator", "bp apparatus", "gun thermometer"]);
-
 </script>
 
 <style lang="scss" scoped>
