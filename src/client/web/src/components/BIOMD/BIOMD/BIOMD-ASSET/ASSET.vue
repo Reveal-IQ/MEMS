@@ -133,13 +133,18 @@ export default {
       selectedModel: { model_name: null, _id: null, model_number: null },
       manufacturerDate: null,
     });
+
+    const EquipmentLocation = ref({
+      selectedFacility: null,
+    })
     
     const Global_Asset_Information = ref({
       manufacturerId: null,
       modelId: null,
+      facilityId: {_id: null, facility_name: null},
     });
 
-    const facilityId = ref(null);
+    // const facilityId = ref(null);
     const departmentId = ref(null);
     const region = ref(null);
     const district = ref(null);
@@ -181,10 +186,10 @@ export default {
               commonName: GeneralInformation.value.commonName,
               description: GeneralInformation.value.description,
               serialNumber: GeneralInformation.value.serialNumber,
-              model_id: GeneralInformation.value.modelId,
+              model_id: Global_Asset_Information.value.modelId,
               manufacturer_id: Global_Asset_Information.value.manufacturerId,
               manufactureDate: GeneralInformation.value.manufacturerDate,
-              facility_id: facilityId.value,
+              facility_id: Global_Asset_Information.value.facilityId,
               department: departmentId.value,
               roomTag: location.value,
               supportTeam: supportTeam.value,
@@ -286,6 +291,7 @@ export default {
     };
 
     provide("GeneralInformation", GeneralInformation);
+    provide("EquipmentLocation", EquipmentLocation);
     provide("Global_Asset_Information", Global_Asset_Information);
 
     provide("facilityId", facilityId);

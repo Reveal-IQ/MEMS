@@ -55,16 +55,25 @@
         />
       </div>
       <!-- Model Name -->
-      <div class="col-lg-4 mb-3">
-        <label for="modelList" class="form-label">Model Name</label>
-        <select
+      <div class="col-lg-5 mb-3">
+        <label for="modelList" class="form-label">Model</label>
+        <input
+          class="form-control"
+          list="modelListOptions"
           id="modelList"
-          class="form-select"
+          placeholder="Select Model"
           aria-label="Default select example"
-          v-model="GeneralInformation.modelId"
-        >
-          <option selected>Select Model Name</option>
-        </select>
+          v-model="GeneralInformation.selectedModel.model_name"
+          @input="fetchModel"
+          autocomplete="off"
+        />
+        <datalist id="modelListOptions">
+          <option
+            v-for="model in modelList"
+            :key="model.index"
+            :value="model.model_name"
+          ></option>
+        </datalist>
       </div>
       <!-- Manufacturer -->
       <div class="col-lg-5 mb-3">
@@ -148,7 +157,7 @@ const fetchManufacturer = async (event) => {
         });
       Global_Asset_Information.value.manufacturerId =
         GeneralInformation.value.selectedManufacturer._id;
-        await fetchModel()
+      await fetchModel();
     } else {
       Global_Asset_Information.value.manufacturerId = null;
 
@@ -200,8 +209,68 @@ const fetchManufacturer = async (event) => {
 };
 
 const fetchModel = async (event) => {
+  try {
+    const selectedModel = event ? event.target.value : "";
+    if (
+      event &&
+      (!(event instanceof InputEvent) ||
+        event.inputType === "insertReplacementText")
+    ) {
+      GeneralInformation.value.selectedModel = modelList.value.find((model) => {
+        return selectedModel === model.model_name;
+      });
+      Global_Asset_Information.value.modelId =
+        GeneralInformation.value.selectedModel._id;
+    } else {
+      Global_Asset_Information.value.modelId = null;
 
-}
+      sendSocketReq({
+        data: {
+          Expiry: 20000,
+          Type: "REQUEST",
+          Request: {
+            Module: "MEMS",
+            ServiceCode: "BIOMD",
+            API: "FIND_RECORD",
+            return_array: true,
+            max_list: 100,
+            find: {
+              collection: "Model",
+              queries: [
+                {
+                  field: "model_name",
+                  op: "sb",
+                  value: "^",
+                },
+              ],
+              projection: {
+                _id: 1,
+                model_name: 1,
+                model_number: 1,
+              },
+            },
+          },
+        },
+        callback: (res) => {
+          if (res.Type === "RESPONSE") {
+            // Console the Response Packet
+            console.log("Response Packet -->", res.Response);
+            modelList.value = res.Response.records;
+          } else if (res.Type === "ERROR") {
+            // Error response received during fetching
+            Type: "ERROR";
+            Response: {
+              Error_Code: "API-CREATE_RECORD-E001";
+              Error_Msg: "CREATE_RECORD_API: Failed to execute query";
+            }
+          }
+        },
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 onMounted(() => {
   fetchManufacturer();
