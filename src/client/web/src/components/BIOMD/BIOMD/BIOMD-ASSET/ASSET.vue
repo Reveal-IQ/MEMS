@@ -135,13 +135,13 @@ export default {
     });
 
     const EquipmentLocation = ref({
-      selectedFacility: null,
+      selectedFacility: {_id: null, facility_name: null},
     })
     
     const Global_Asset_Information = ref({
       manufacturerId: null,
       modelId: null,
-      facilityId: {_id: null, facility_name: null},
+      facilityId: null,
     });
 
     // const facilityId = ref(null);
@@ -294,7 +294,7 @@ export default {
     provide("EquipmentLocation", EquipmentLocation);
     provide("Global_Asset_Information", Global_Asset_Information);
 
-    provide("facilityId", facilityId);
+    // provide("facilityId", facilityId);
     provide("departmentId", departmentId);
     provide("region", region);
     provide("district", district);
