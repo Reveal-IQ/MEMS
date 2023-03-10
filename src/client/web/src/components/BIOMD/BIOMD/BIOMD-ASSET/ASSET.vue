@@ -129,10 +129,14 @@ export default {
       commonName: null,
       description: null,
       serialNumber: null,
-      modelId: null,
-      manufacturerId: null,
-      manufacturerName: null,
+      selectedManufacturer: { manufacturer_name: null, _id: null },
+      selectedModel: { model_name: null, _id: null, model_number: null },
       manufacturerDate: null,
+    });
+    
+    const Global_Asset_Information = ref({
+      manufacturerId: null,
+      modelId: null,
     });
 
     const facilityId = ref(null);
@@ -178,7 +182,7 @@ export default {
               description: GeneralInformation.value.description,
               serialNumber: GeneralInformation.value.serialNumber,
               model_id: GeneralInformation.value.modelId,
-              manufacturer_id: GeneralInformation.value.manufacturerName,
+              manufacturer_id: Global_Asset_Information.value.manufacturerId,
               manufactureDate: GeneralInformation.value.manufacturerDate,
               facility_id: facilityId.value,
               department: departmentId.value,
@@ -222,66 +226,67 @@ export default {
       });
     }
 
-    const getManufacturer = () => {
-      sendSocketReq({
-        data: {
-          Expiry: 20000,
-          Type: "REQUEST",
-          Request: {
-            Module: "MEMS",
-            ServiceCode: "BIOMD",
-            API: "FIND_RECORD",
-            return_array: true,
-            max_list: 100,
-            find: {
-              collection: "Manufacturer",
-              queries: [
-                {
-                  field: "manufacturer_name",
-                  op: "sb",
-                  value: "^",
-                },
-              ],
-              projection: {
-                _id: 1,
-                manufacturer_name: 1,
-              },
-            },
-            Institute_Code: Institute_Code.value, //Dynamically changes when another institute logged in
-          },
-        },
-        callback: (res) => {
-          if (res.Type === "RESPONSE") {
-            // Console the Response Packet
-            console.log("Response Packet -->", res.Response);
-            Response: {
-              Success: "TRUE";
-              Collection: "manufacturers";
-              Message: "Find Record";
-            }
-            const ManufacturerNameArray = [];
-            res.Response.records.forEach((name) => {
-              ManufacturerNameArray.push(name.manufacturer_name);
-            });
+    // const getManufacturer = () => {
+    //   sendSocketReq({
+    //     data: {
+    //       Expiry: 20000,
+    //       Type: "REQUEST",
+    //       Request: {
+    //         Module: "MEMS",
+    //         ServiceCode: "BIOMD",
+    //         API: "FIND_RECORD",
+    //         return_array: true,
+    //         max_list: 100,
+    //         find: {
+    //           collection: "Manufacturer",
+    //           queries: [
+    //             {
+    //               field: "manufacturer_name",
+    //               op: "sb",
+    //               value: "^",
+    //             },
+    //           ],
+    //           projection: {
+    //             _id: 1,
+    //             manufacturer_name: 1,
+    //           },
+    //         },
+    //         Institute_Code: Institute_Code.value, //Dynamically changes when another institute logged in
+    //       },
+    //     },
+    //     callback: (res) => {
+    //       if (res.Type === "RESPONSE") {
+    //         // Console the Response Packet
+    //         console.log("Response Packet -->", res.Response);
+    //         Response: {
+    //           Success: "TRUE";
+    //           Collection: "manufacturers";
+    //           Message: "Find Record";
+    //         }
+    //         const ManufacturerNameArray = [];
+    //         res.Response.records.forEach((manufacturer) => {
+    //           ManufacturerNameArray.push(manufacturer.manufacturer_name, manufacturer._id);
+    //         });
 
-            GeneralInformation.value.manufacturerId = ManufacturerNameArray;
-          } else if (res.Type === "ERROR") {
-            // Error response received during fetching
-            Type: "ERROR";
-            Response: {
-              Error_Code: "API-CREATE_RECORD-E001";
-              Error_Msg: "CREATE_RECORD_API: Failed to execute query";
-            }
-          }
-        },
-      });
-    };
+    //         GeneralInformation.value.manufacturerId = ManufacturerNameArray;
+    //       } else if (res.Type === "ERROR") {
+    //         // Error response received during fetching
+    //         Type: "ERROR";
+    //         Response: {
+    //           Error_Code: "API-CREATE_RECORD-E001";
+    //           Error_Msg: "CREATE_RECORD_API: Failed to execute query";
+    //         }
+    //       }
+    //     },
+    //   });
+    // };
 
     const goBack = () => {
       emit("updatePage", "landing");
     };
 
     provide("GeneralInformation", GeneralInformation);
+    provide("Global_Asset_Information", Global_Asset_Information);
 
     provide("facilityId", facilityId);
     provide("departmentId", departmentId);
@@ -307,12 +312,12 @@ export default {
       goBack,
       redirectToPage,
       createRecord,
-      getManufacturer,
+      // getManufacturer,
     };
   },
-  mounted() {
-    this.getManufacturer();
-  },
+  // mounted() {
+  //   this.getManufacturer();
+  // },
 };
 </script>
 
