@@ -31,15 +31,15 @@
           id="regionList"
           placeholder="Select region"
           aria-label="Default select example"
-          v-model="EquipmentLocation.selectedFacility.area"
+          v-model="EquipmentLocation.selectedRegion.area"
           @input="fetchRegion"
           autocomplete="off"
         />
         <datalist id="regionListOptions">
           <option
-            v-for="facility in facilityList"
-            :key="facility.index"
-            :value="facility.area"
+            v-for="region in regionList"
+            :key="region.index"
+            :value="region.area"
           ></option>
         </datalist>
       </div>
@@ -52,15 +52,15 @@
           id="districtList"
           placeholder="Select district"
           aria-label="Default select example"
-          v-model="EquipmentLocation.selectedFacility.city"
+          v-model="EquipmentLocation.selectedDistrict.city"
           @input="fetchDistrict"
           autocomplete="off"
         />
         <datalist id="rdistrictListOptions">
           <option
-            v-for="facility in facilityList"
-            :key="facility.index"
-            :value="facility.city"
+            v-for="district in districtList"
+            :key="district.index"
+            :value="district.city"
           ></option>
         </datalist>
       </div>
@@ -186,7 +186,7 @@ const fetchFacility = async (event) => {
 //       (!(event instanceof InputEvent) ||
 //         event.inputType === "insertReplacementText")
 //     ) {
-//       EquipmentLocation.value.selectedRegion.area = regionList.value.find(
+//       EquipmentLocation.value.selectedRegion = regionList.value.find(
 //         (region) => {
 //           return selectedRegion === region.area;
 //         }
@@ -211,9 +211,9 @@ const fetchFacility = async (event) => {
 //               collection: "Facility",
 //               queries: [
 //                 {
-//                   field: "facility_name",
+//                   field: "area",
 //                   op: "sb",
-//                   value: "^",
+//                   value: EquipmentLocation.value.selectedFacility,
 //                 },
 //               ],
 //               projection: {

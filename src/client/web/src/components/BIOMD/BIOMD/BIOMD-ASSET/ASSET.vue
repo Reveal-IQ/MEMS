@@ -141,8 +141,8 @@ export default {
         area: null,
         city: null,
       },
-      selectedRegion: { area: null },
-      selectedDistrict: { city: null },
+      selectedRegion: {_id: null, area: null },
+      selectedDistrict: {_id: null, city: null },
       location: [],
     });
 

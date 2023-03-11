@@ -44,24 +44,6 @@ Description: < Describe the application >
       <main>
         <VendorInformation />
         <CustomerService />
-        <ManufacturerInformation>
-          <Btn2
-            BtnName="Add Manufacturer"
-            backgroundColor="#1266F1"
-            :icon="'plus'"
-            @click="changePage('manufacturerInfo')"
-            class="rounded-pill"
-          />
-        </ManufacturerInformation>
-        <ModelInformation>
-          <Btn2
-            BtnName="Add Model"
-            backgroundColor="#1266F1"
-            :icon="'plus'"
-            @click="changePage('modelInfo')"
-            class="rounded-pill"
-          />
-        </ModelInformation>
         <div class="d-flex justify-content-center py-3">
           <!-- btn-green and a-link are custom css for MEMS check base.css -->
           <div class="">
