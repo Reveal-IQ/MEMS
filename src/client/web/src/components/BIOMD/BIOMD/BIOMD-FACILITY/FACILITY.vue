@@ -107,7 +107,7 @@ export default {
       streetAddress1: null,
       streetAddress2: null,
       zipCode: null,
-      departments: null,
+      departments: [],
     });
 
     const Global_Facility_Definition = ref({

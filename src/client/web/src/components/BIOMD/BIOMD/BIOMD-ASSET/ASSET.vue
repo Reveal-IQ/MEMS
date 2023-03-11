@@ -136,7 +136,7 @@ export default {
     const departmentId = ref(null);
     const region = ref(null);
     const district = ref(null);
-    const location = ref(null);
+    const location = ref([]);
 
     const supportTeam = ref(null);
     const vendorId = ref(null);

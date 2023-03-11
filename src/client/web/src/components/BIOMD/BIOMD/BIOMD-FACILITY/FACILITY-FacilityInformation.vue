@@ -108,7 +108,7 @@
         </div>
 
         <!-- GPS Coordinates -->
-        <div class="col-lg-6">
+        <!-- <div class="col-lg-6">
           <Input
             label="GPS Coordinates"
             type="text"
@@ -123,16 +123,16 @@
             :icon="'globe'"
             class="rounded-pill"
           />
-        </div>
+        </div> -->
 
         <!-- Department List -->
         <div class="col-12">
-          <Input
-            label="Department"
-            type="text"
-            id="departmentTag"
-            placeholder="Add Department Tag"
+          <UITagInput
             v-model="facilityInfo.departments"
+            label="Department"
+            customDelimiter=","
+            placeholder="Enter Department Tag"
+            showCount="true"
           />
         </div>
       </div>
@@ -146,12 +146,15 @@ import { useStore } from "vuex";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 import Input from "../BIOMD-UI/UI-Input.vue";
 import Section from "../BIOMD-UI/UI-Section.vue";
+import UITagInput from "../BIOMD-UI/UI-TagInput.vue";
+
 const store = useStore();
 const facilityInfo = inject("facilityInfo");
 const Global_Facility_Definition = inject("Global_Facility_Definition");
 const countryList = ref(null);
 const stateList = ref(null);
 const districtList = ref(null);
+
 const sendSocketReq = (request) => {
   store.dispatch("sendSocketReq", request);
 };
