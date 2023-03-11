@@ -141,8 +141,9 @@ export default {
         area: null,
         city: null,
       },
-      area: null,
-      city: null
+      selectedRegion: { area: null },
+      selectedDistrict: { city: null },
+      location: [],
     });
 
     const EquipmentAcquisition = ref({
@@ -156,7 +157,7 @@ export default {
       project: null,
       acceptanceDate: null,
       warrantyDate: null,
-    })
+    });
 
     const Global_Asset_Information = ref({
       manufacturerId: null,
@@ -167,11 +168,7 @@ export default {
       vendorId: null,
     });
 
-    // const facilityId = ref(null);
     const departmentId = ref(null);
-    // const region = ref(null);
-    // const district = ref(null);
-    const location = ref(null);
 
     const supportTeam = ref(null);
 
@@ -216,7 +213,8 @@ export default {
               status: status.value,
               user_manual: userManual.value,
               technical_manual: technicalManual.value,
-              purchaseOrderNumber: EquipmentAcquisition.value.purchaseOrderNumber,
+              purchaseOrderNumber:
+                EquipmentAcquisition.value.purchaseOrderNumber,
               project: EquipmentAcquisition.value.project,
               purchaseCost: EquipmentAcquisition.value.purchaseCost,
               purchaseDate: EquipmentAcquisition.value.purchaseDate,
@@ -259,36 +257,22 @@ export default {
     provide("EquipmentAcquisition", EquipmentAcquisition);
     provide("Global_Asset_Information", Global_Asset_Information);
 
-    // provide("facilityId", facilityId);
     provide("departmentId", departmentId);
-    // provide("region", region);
-    // provide("district", district);
-    provide("location", location);
 
     provide("supportTeam", supportTeam);
-    // provide("vendorId", vendorId);
+
     provide("status", status);
     provide("userManual", userManual);
     provide("technicalManual", technicalManual);
 
-    // provide("purchaseOrder", purchaseOrder);
-    // provide("project", project);
-    // provide("purchaseCost", purchaseCost);
-    // provide("purchaseDate", purchaseDate);
-    // provide("acceptanceDate", acceptanceDate);
-    // provide("warrantyDate", warrantyDate);
     provide("comment", comment);
 
     return {
       goBack,
       redirectToPage,
       createRecord,
-      // getManufacturer,
     };
   },
-  // mounted() {
-  //   this.getManufacturer();
-  // },
 };
 </script>
 

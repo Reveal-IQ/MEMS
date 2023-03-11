@@ -44,39 +44,8 @@
         </select>
       </div>
 
-      <!-- Serial Number -->
-      <div class="col-lg-3 mb-3">
-        <Input
-          label="Serial Number"
-          type="text"
-          id="serialNumber"
-          placeholder="Enter Serial Number"
-          v-model="GeneralInformation.serialNumber"
-        />
-      </div>
-      <!-- Model Name -->
-      <div class="col-lg-5 mb-3">
-        <label for="modelList" class="form-label">Model</label>
-        <input
-          class="form-control"
-          list="modelListOptions"
-          id="modelList"
-          placeholder="Select Model"
-          aria-label="Default select example"
-          v-model="GeneralInformation.selectedModel.model_name"
-          @input="fetchModel"
-          autocomplete="off"
-        />
-        <datalist id="modelListOptions">
-          <option
-            v-for="model in modelList"
-            :key="model.index"
-            :value="model.model_name"
-          ></option>
-        </datalist>
-      </div>
       <!-- Manufacturer -->
-      <div class="col-lg-5 mb-3">
+      <div class="col-lg-6 mb-3">
         <label for="manufacturerList" class="form-label">Manufacturer</label>
         <input
           class="form-control"
@@ -97,8 +66,41 @@
         </datalist>
       </div>
 
+      <!-- Model Name -->
+      <div class="col-lg-6 mb-3">
+        <label for="modelList" class="form-label">Model</label>
+        <input
+          class="form-control"
+          list="modelListOptions"
+          id="modelList"
+          placeholder="Select Model"
+          aria-label="Default select example"
+          v-model="GeneralInformation.selectedModel.model_name"
+          @input="fetchModel"
+          autocomplete="off"
+        />
+        <datalist id="modelListOptions">
+          <option
+            v-for="model in modelList"
+            :key="model.index"
+            :value="model.model_name"
+          ></option>
+        </datalist>
+      </div>
+
+      <!-- Serial Number -->
+      <div class="col-lg-6 mb-3">
+        <Input
+          label="Serial Number"
+          type="text"
+          id="serialNumber"
+          placeholder="Enter Serial Number"
+          v-model="GeneralInformation.serialNumber"
+        />
+      </div>
+
       <!-- Year of Manufacture -->
-      <div class="col-lg-3 mb-3">
+      <div class="col-lg-6 mb-3">
         <Input
           label="Year of manufacture"
           type="date"
@@ -108,15 +110,14 @@
         />
       </div>
     </div>
-    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
-      <div class="col-lg-12 col-md-6">
-        <Btn2
-          BtnName="Search Parent Equipment"
-          backgroundColor="#1266F1"
-          :icon="'search'"
-          class="col-lg-3 col-md-12 rounded-pill"
-        />
-      </div>
+
+    <div class="col-lg-12 col-md-6">
+      <Btn2
+        BtnName="Search Parent Equipment"
+        backgroundColor="#1266F1"
+        :icon="'search'"
+        class="rounded-pill"
+      />
     </div>
   </Section>
 </template>
@@ -238,13 +239,13 @@ const fetchModel = async (event) => {
               collection: "Model",
               queries: [
                 {
-                  field: "model_name",
-                  op: "sb",
-                  value: "^",
+                  field: "manufacturer_id",
+                  op: "eq",
+                  value: Global_Asset_Information.value.manufacturerId,
                 },
               ],
               projection: {
-                _id: 1,
+                _id: 0,
                 model_name: 1,
                 model_number: 1,
               },

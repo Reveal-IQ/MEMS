@@ -34,7 +34,6 @@
           v-model="EquipmentLocation.selectedFacility.area"
           @input="fetchRegion"
           autocomplete="off"
-          disabled
         />
         <datalist id="regionListOptions">
           <option
@@ -56,7 +55,6 @@
           v-model="EquipmentLocation.selectedFacility.city"
           @input="fetchDistrict"
           autocomplete="off"
-          disabled
         />
         <datalist id="rdistrictListOptions">
           <option
@@ -85,7 +83,7 @@
           type="text"
           id="locationTag"
           placeholder="Add Location Tag"
-          v-model="location"
+          v-model="EquipmentLocation.location"
         />
       </div>
     </div>
@@ -105,11 +103,11 @@ const sendSocketReq = (request) => {
 
 const facilityList = ref(null);
 const regionList = ref(null);
+const districtList = ref(null);
 
 const EquipmentLocation = inject("EquipmentLocation");
 const Global_Asset_Information = inject("Global_Asset_Information");
 const departmentId = inject("departmentId");
-const location = inject("location");
 
 const fetchFacility = async (event) => {
   try {
@@ -126,8 +124,7 @@ const fetchFacility = async (event) => {
       );
       Global_Asset_Information.value.facilityId =
         EquipmentLocation.value.selectedFacility._id;
-      await fetchRegion();
-      await fetchDistrict();
+      // await fetchRegion();
     } else {
       Global_Asset_Information.value.facilityId = null;
 
@@ -181,143 +178,140 @@ const fetchFacility = async (event) => {
   }
 };
 
-const fetchRegion = async (event) => {
-  try {
-    const selectedRegion = event ? event.target.value : "";
-    if (
-      event &&
-      (!(event instanceof InputEvent) ||
-        event.inputType === "insertReplacementText")
-    ) {
-      EquipmentLocation.value.selectedRegion = regionList.value.find(
-        (region) => {
-          return selectedRegion === region.area;
-        }
-      );
-      Global_Asset_Information.value.region =
-        EquipmentLocation.value.selectedFacility.area;
-      // await fetchModel();
-    } else {
-      Global_Asset_Information.value.region = null;
+// const fetchRegion = async (event) => {
+//   try {
+//     const selectedRegion = event ? event.target.value : "";
+//     if (
+//       event &&
+//       (!(event instanceof InputEvent) ||
+//         event.inputType === "insertReplacementText")
+//     ) {
+//       EquipmentLocation.value.selectedRegion.area = regionList.value.find(
+//         (region) => {
+//           return selectedRegion === region.area;
+//         }
+//       );
+//       Global_Asset_Information.value.region =
+//         EquipmentLocation.value.selectedRegion.area;
+//       await fetchDistrict();
+//     } else {
+//       Global_Asset_Information.value.region = null;
 
-      sendSocketReq({
-        data: {
-          Expiry: 20000,
-          Type: "REQUEST",
-          Request: {
-            Module: "MEMS",
-            ServiceCode: "BIOMD",
-            API: "FIND_RECORD",
-            return_array: true,
-            max_list: 100,
-            find: {
-              collection: "Facility",
-              queries: [
-                {
-                  field: "area",
-                  op: "sb",
-                  value: "^",
-                },
-              ],
-              projection: {
-                _id: 1,
-                facility_name: 1,
-                country: 1,
-                area: 1,
-                city: 1,
-              },
-            },
-          },
-        },
-        callback: (res) => {
-          if (res.Type === "RESPONSE") {
-            // Console the Response Packet
-            console.log("Response Packet -->", res.Response);
-            facilityList.value = res.Response.records;
-          } else if (res.Type === "ERROR") {
-            // Error response received during fetching
-            Type: "ERROR";
-            Response: {
-              Error_Code: "API-CREATE_RECORD-E001";
-              Error_Msg: "CREATE_RECORD_API: Failed to execute query";
-            }
-          }
-        },
-      });
-    }
-  } catch (error) {
-    console.log(error);
-  }
-};
+//       sendSocketReq({
+//         data: {
+//           Expiry: 20000,
+//           Type: "REQUEST",
+//           Request: {
+//             Module: "MEMS",
+//             ServiceCode: "BIOMD",
+//             API: "FIND_RECORD",
+//             return_array: true,
+//             max_list: 100,
+//             find: {
+//               collection: "Facility",
+//               queries: [
+//                 {
+//                   field: "facility_name",
+//                   op: "sb",
+//                   value: "^",
+//                 },
+//               ],
+//               projection: {
+//                 _id: 0,
+//                 area: 1,
+//               },
+//             },
+//           },
+//         },
+//         callback: (res) => {
+//           if (res.Type === "RESPONSE") {
+//             // Console the Response Packet
+//             console.log("Response Packet -->", res.Response);
+//             regionList.value = res.Response.records;
+//           } else if (res.Type === "ERROR") {
+//             // Error response received during fetching
+//             Type: "ERROR";
+//             Response: {
+//               Error_Code: "API-CREATE_RECORD-E001";
+//               Error_Msg: "CREATE_RECORD_API: Failed to execute query";
+//             }
+//           }
+//         },
+//       });
+//     }
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
-const fetchDistrict = async (event) => {
-  try {
-    const selectedFacility = event ? event.target.value : "";
-    if (
-      event &&
-      (!(event instanceof InputEvent) ||
-        event.inputType === "insertReplacementText")
-    ) {
-      EquipmentLocation.value.selectedFacility = facilityList.value.find(
-        (facility) => {
-          return selectedFacility === facility.city;
-        }
-      );
-      Global_Asset_Information.value.district =
-        EquipmentLocation.value.selectedFacility.city;
-      // await fetchModel();
-    } else {
-      Global_Asset_Information.value.district = null;
+// const fetchDistrict = async (event) => {
+//   try {
+//     const selectedDistrict = event ? event.target.value : "";
+//     if (
+//       event &&
+//       (!(event instanceof InputEvent) ||
+//         event.inputType === "insertReplacementText")
+//     ) {
+//       EquipmentLocation.value.selectedDistrict = districtList.value.find(
+//         (district) => {
+//           return selectedDistrict === district.city;
+//         }
+//       );
+//       Global_Asset_Information.value.district =
+//         EquipmentLocation.value.selectedDistrict.city;
+//       // await fetchModel();
+//     } else {
+//       Global_Asset_Information.value.district = null;
 
-      sendSocketReq({
-        data: {
-          Expiry: 20000,
-          Type: "REQUEST",
-          Request: {
-            Module: "MEMS",
-            ServiceCode: "BIOMD",
-            API: "FIND_RECORD",
-            return_array: true,
-            max_list: 100,
-            find: {
-              collection: "Facility",
-              queries: [
-                {
-                  field: "city",
-                  op: "sb",
-                  value: "^",
-                },
-              ],
-              projection: {
-                _id: 1,
-                facility_name: 1,
-                country: 1,
-                area: 1,
-                city: 1,
-              },
-            },
-          },
-        },
-        callback: (res) => {
-          if (res.Type === "RESPONSE") {
-            // Console the Response Packet
-            console.log("Response Packet -->", res.Response);
-            facilityList.value = res.Response.records;
-          } else if (res.Type === "ERROR") {
-            // Error response received during fetching
-            Type: "ERROR";
-            Response: {
-              Error_Code: "API-CREATE_RECORD-E001";
-              Error_Msg: "CREATE_RECORD_API: Failed to execute query";
-            }
-          }
-        },
-      });
-    }
-  } catch (error) {
-    console.log(error);
-  }
-};
+//       sendSocketReq({
+//         data: {
+//           Expiry: 20000,
+//           Type: "REQUEST",
+//           Request: {
+//             Module: "MEMS",
+//             ServiceCode: "BIOMD",
+//             API: "FIND_RECORD",
+//             return_array: true,
+//             max_list: 100,
+//             find: {
+//               collection: "Facility",
+//               queries: [
+//                 {
+//                   field: "city",
+//                   op: "sb",
+//                   value: "^",
+//                 },
+//               ],
+//               projection: {
+//                 _id: 0,
+//                 facility_name: 0,
+//                 country: 0,
+//                 area: 0,
+//                 city: 1,
+//               },
+//             },
+//           },
+//         },
+//         callback: (res) => {
+//           if (res.Type === "RESPONSE") {
+//             // Console the Response Packet
+//             console.log("Response Packet -->", res.Response);
+//             districtList.value = res.Response.records;
+//           } else if (res.Type === "ERROR") {
+//             // Error response received during fetching
+//             Type: "ERROR";
+//             Response: {
+//               Error_Code: "API-CREATE_RECORD-E001";
+//               Error_Msg: "CREATE_RECORD_API: Failed to execute query";
+//             }
+//           }
+//         },
+//       });
+//     }
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
 onMounted(() => {
   fetchFacility();
