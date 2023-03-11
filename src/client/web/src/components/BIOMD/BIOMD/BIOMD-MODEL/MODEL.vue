@@ -25,7 +25,7 @@ Description: < Describe the application >
             BtnName="Return"
             :icon="'arrow-left'"
             backgroundColor="none"
-            @click="changePage()"
+            @click="goBack"
             class="text-secondary btn-sm"
           />
 
@@ -154,10 +154,6 @@ export default {
       emit("updatePage", "landing");
     };
 
-    const changePage = () => {
-      emit("updatePage", "vendorInfo")
-    }
-
     provide("modelName", modelName);
     provide("modelNumber", modelNumber);
     provide("vendorSiteId", vendorSiteId);
@@ -167,7 +163,6 @@ export default {
       goBack,
       redirectToPage,
       createRecord,
-      changePage
     };
   },
 };

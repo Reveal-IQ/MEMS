@@ -23,7 +23,7 @@
           id="supportTeamList"
           class="form-select"
           aria-label="Default select example"
-          v-model="supportTeam"
+          v-model="MaintenanceAndSupport.supportTeam"
         >
           <option selected>Select Support Team</option>
         </select>
@@ -34,9 +34,9 @@
           id="statusList"
           class="form-select"
           aria-label="Default select example"
-          v-model="status"
+          v-model="MaintenanceAndSupport.status"
         >
-          <option selected value="AD">Active Deployed</option>
+          <option selected value="Active Deployed">Active Deployed</option>
           <option
             v-for="list in statusList"
             :key="list.value"
@@ -56,7 +56,7 @@
           type="checkbox"
           value=""
           id="userManual"
-          v-model="userManual"
+          v-model="MaintenanceAndSupport.userManual"
         />
         <label class="form-check-label" for="userManual">
           User Manual Available?
@@ -70,7 +70,7 @@
           type="checkbox"
           value=""
           id="techManual"
-          v-model="technicalManual"
+          v-model="MaintenanceAndSupport.technicalManual"
         />
         <label class="form-check-label" for="techManual">
           Technical Manual Available?
@@ -84,17 +84,14 @@
 import { ref, inject } from "vue";
 import Section from "../BIOMD-UI/UI-Section.vue";
 
-const supportTeam = inject("supportTeam");
-const status = inject("status");
-const userManual = inject("userManual");
-const technicalManual = inject("technicalManual");
+const MaintenanceAndSupport = inject("MaintenanceAndSupport");
 
 const statusList = ref([
-  { name: "Active in Storage", value: "AA" },
-  { name: "Active in Service", value: "AS" },
-  { name: "Storage Repairable", value: "SR" },
-  { name: "Storage Parts", value: "SP" },
-  { name: "Disposed", value: "DS" },
+  { name: "Active in Storage", value: "Active in Storage" },
+  { name: "Active in Service", value: "Active in Service" },
+  { name: "Storage Repairable", value: "Storage Repairable" },
+  { name: "Storage Parts", value: "Storage Parts" },
+  { name: "Disposed", value: "Disposed" },
 ]);
 </script>
 

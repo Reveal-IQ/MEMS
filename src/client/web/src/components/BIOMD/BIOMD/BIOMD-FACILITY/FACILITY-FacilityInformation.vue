@@ -51,7 +51,6 @@
               v-for="state in stateList"
               :key="state.index"
               :value="state.Loci_Name_State"
-              
             ></option>
           </datalist>
         </div>
@@ -128,12 +127,12 @@
 
         <!-- Department List -->
         <div class="col-12">
-          <UITagInput
-            v-model="facilityInfo.departments"
+          <Input
             label="Department"
-            customDelimiter=","
-            placeholder="Enter Department Tag"
-            showCount="true"
+            type="text"
+            id="departmentTag"
+            placeholder="Add Department Tag"
+            v-model="facilityInfo.departments"
           />
         </div>
       </div>
@@ -147,7 +146,6 @@ import { useStore } from "vuex";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 import Input from "../BIOMD-UI/UI-Input.vue";
 import Section from "../BIOMD-UI/UI-Section.vue";
-import UITagInput from "../BIOMD-UI/UI-TagInput.vue";
 const store = useStore();
 const facilityInfo = inject("facilityInfo");
 const Global_Facility_Definition = inject("Global_Facility_Definition");

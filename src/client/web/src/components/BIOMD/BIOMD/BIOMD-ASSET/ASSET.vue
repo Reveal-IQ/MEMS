@@ -121,6 +121,13 @@ export default {
       });
     }
 
+    const MaintenanceAndSupport = ref({
+      status: "Active Deployed",
+      supportTeam: null,
+      userManual: false,
+      technicalManual: false,
+    })
+
     const equipmentNumber = ref(null);
     const commonName = ref(null);
     const description = ref(null);
@@ -137,7 +144,7 @@ export default {
 
     const supportTeam = ref(null);
     const vendorId = ref(null);
-    const status = ref("AD");
+    const status = ref("Active Deployed");
     const userManual = ref(false);
     const technicalManual = ref(false);
 
@@ -177,11 +184,11 @@ export default {
               facility_id: facilityId.value,
               department: departmentId.value,
               roomTag: location.value,
-              supportTeam: supportTeam.value,
+              supportTeam: MaintenanceAndSupport.value.supportTeam,
               vendor_id: vendorId.value,
-              status: status.value,
-              user_manual: userManual.value,
-              technical_manual: technicalManual.value,
+              status: MaintenanceAndSupport.value.status,
+              user_manual: MaintenanceAndSupport.value.userManual,
+              technical_manual: MaintenanceAndSupport.value.technicalManual,
               purchaseOrderNumber: purchaseOrder.value,
               project: project.value,
               purchaseCost: purchaseCost.value,
@@ -220,6 +227,8 @@ export default {
       emit("updatePage", "landing");
     };
 
+    provide("MaintenanceAndSupport", MaintenanceAndSupport)
+
     provide("equipmentNumber", equipmentNumber);
     provide("commonName", commonName);
     provide("description", description);
@@ -234,11 +243,11 @@ export default {
     provide("district", district);
     provide("location", location);
 
-    provide("supportTeam", supportTeam);
-    provide("vendorId", vendorId);
-    provide("status", status);
-    provide("userManual", userManual);
-    provide("technicalManual", technicalManual);
+    // provide("supportTeam", supportTeam);
+    // provide("vendorId", vendorId);
+    // provide("status", status);
+    // provide("userManual", userManual);
+    // provide("technicalManual", technicalManual);
 
     provide("purchaseOrder", purchaseOrder);
     provide("project", project);
