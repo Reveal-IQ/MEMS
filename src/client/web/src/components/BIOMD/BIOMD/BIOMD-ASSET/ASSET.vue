@@ -135,33 +135,50 @@ export default {
     });
 
     const EquipmentLocation = ref({
-      selectedFacility: {_id: null, facility_name: null},
+      selectedFacility: {
+        _id: null,
+        facility_name: null,
+        area: null,
+        city: null,
+      },
+      area: null,
+      city: null
+    });
+
+    const EquipmentAcquisition = ref({
+      selectedVendor: {
+        _id: null,
+        vendor_name: null,
+      },
+      purchaseOrderNumber: null,
+      purchaseCost: null,
+      purchaseDate: null,
+      project: null,
+      acceptanceDate: null,
+      warrantyDate: null,
     })
-    
+
     const Global_Asset_Information = ref({
       manufacturerId: null,
       modelId: null,
       facilityId: null,
+      region: null,
+      district: null,
+      vendorId: null,
     });
 
     // const facilityId = ref(null);
     const departmentId = ref(null);
-    const region = ref(null);
-    const district = ref(null);
+    // const region = ref(null);
+    // const district = ref(null);
     const location = ref(null);
 
     const supportTeam = ref(null);
-    const vendorId = ref(null);
+
     const status = ref(null);
     const userManual = ref(false);
     const technicalManual = ref(false);
 
-    const purchaseOrder = ref(null);
-    const project = ref(null);
-    const purchaseCost = ref(null);
-    const purchaseDate = ref(null);
-    const acceptanceDate = ref(null);
-    const warrantyDate = ref(null);
     const comment = ref(null);
 
     // send Socket Request use to send rrequest packet for an API
@@ -190,19 +207,21 @@ export default {
               manufacturer_id: Global_Asset_Information.value.manufacturerId,
               manufactureDate: GeneralInformation.value.manufacturerDate,
               facility_id: Global_Asset_Information.value.facilityId,
+              area: Global_Asset_Information.value.region,
+              city: Global_Asset_Information.value.district,
               department: departmentId.value,
               roomTag: location.value,
               supportTeam: supportTeam.value,
-              vendor_id: vendorId.value,
+              vendor_id: Global_Asset_Information.value.vendorId,
               status: status.value,
               user_manual: userManual.value,
               technical_manual: technicalManual.value,
-              purchaseOrderNumber: purchaseOrder.value,
-              project: project.value,
-              purchaseCost: purchaseCost.value,
-              purchaseDate: purchaseDate.value,
-              acceptanceDate: acceptanceDate.value,
-              warrantyDate: warrantyDate.value,
+              purchaseOrderNumber: EquipmentAcquisition.value.purchaseOrderNumber,
+              project: EquipmentAcquisition.value.project,
+              purchaseCost: EquipmentAcquisition.value.purchaseCost,
+              purchaseDate: EquipmentAcquisition.value.purchaseDate,
+              acceptanceDate: EquipmentAcquisition.value.acceptanceDate,
+              warrantyDate: EquipmentAcquisition.value.warrantyDate,
               generalComment: comment.value,
             },
             Institute_Code: Institute_Code.value, //Dynamically changes when another institute logged in
@@ -231,87 +250,33 @@ export default {
       });
     }
 
-    // const getManufacturer = () => {
-    //   sendSocketReq({
-    //     data: {
-    //       Expiry: 20000,
-    //       Type: "REQUEST",
-    //       Request: {
-    //         Module: "MEMS",
-    //         ServiceCode: "BIOMD",
-    //         API: "FIND_RECORD",
-    //         return_array: true,
-    //         max_list: 100,
-    //         find: {
-    //           collection: "Manufacturer",
-    //           queries: [
-    //             {
-    //               field: "manufacturer_name",
-    //               op: "sb",
-    //               value: "^",
-    //             },
-    //           ],
-    //           projection: {
-    //             _id: 1,
-    //             manufacturer_name: 1,
-    //           },
-    //         },
-    //         Institute_Code: Institute_Code.value, //Dynamically changes when another institute logged in
-    //       },
-    //     },
-    //     callback: (res) => {
-    //       if (res.Type === "RESPONSE") {
-    //         // Console the Response Packet
-    //         console.log("Response Packet -->", res.Response);
-    //         Response: {
-    //           Success: "TRUE";
-    //           Collection: "manufacturers";
-    //           Message: "Find Record";
-    //         }
-    //         const ManufacturerNameArray = [];
-    //         res.Response.records.forEach((manufacturer) => {
-    //           ManufacturerNameArray.push(manufacturer.manufacturer_name, manufacturer._id);
-    //         });
-
-    //         GeneralInformation.value.manufacturerId = ManufacturerNameArray;
-    //       } else if (res.Type === "ERROR") {
-    //         // Error response received during fetching
-    //         Type: "ERROR";
-    //         Response: {
-    //           Error_Code: "API-CREATE_RECORD-E001";
-    //           Error_Msg: "CREATE_RECORD_API: Failed to execute query";
-    //         }
-    //       }
-    //     },
-    //   });
-    // };
-
     const goBack = () => {
       emit("updatePage", "landing");
     };
 
     provide("GeneralInformation", GeneralInformation);
     provide("EquipmentLocation", EquipmentLocation);
+    provide("EquipmentAcquisition", EquipmentAcquisition);
     provide("Global_Asset_Information", Global_Asset_Information);
 
     // provide("facilityId", facilityId);
     provide("departmentId", departmentId);
-    provide("region", region);
-    provide("district", district);
+    // provide("region", region);
+    // provide("district", district);
     provide("location", location);
 
     provide("supportTeam", supportTeam);
-    provide("vendorId", vendorId);
+    // provide("vendorId", vendorId);
     provide("status", status);
     provide("userManual", userManual);
     provide("technicalManual", technicalManual);
 
-    provide("purchaseOrder", purchaseOrder);
-    provide("project", project);
-    provide("purchaseCost", purchaseCost);
-    provide("purchaseDate", purchaseDate);
-    provide("acceptanceDate", acceptanceDate);
-    provide("warrantyDate", warrantyDate);
+    // provide("purchaseOrder", purchaseOrder);
+    // provide("project", project);
+    // provide("purchaseCost", purchaseCost);
+    // provide("purchaseDate", purchaseDate);
+    // provide("acceptanceDate", acceptanceDate);
+    // provide("warrantyDate", warrantyDate);
     provide("comment", comment);
 
     return {

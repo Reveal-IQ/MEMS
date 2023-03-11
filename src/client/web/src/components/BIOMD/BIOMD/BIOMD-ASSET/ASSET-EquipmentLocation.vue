@@ -3,7 +3,7 @@
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
       <!-- Facility -->
       <div class="col-lg-6 mb-3">
-        <label for="facilityList" class="form-label">facility</label>
+        <label for="facilityList" class="form-label">Facility</label>
         <input
           class="form-control"
           list="facilityListOptions"
@@ -25,26 +25,46 @@
       <!-- Region -->
       <div class="col-lg-6 mb-3">
         <label for="regionList" class="form-label">Region</label>
-        <select
+        <input
+          class="form-control"
+          list="regionListOptions"
           id="regionList"
-          class="form-select"
+          placeholder="Select region"
           aria-label="Default select example"
-          v-model="region"
-        >
-          <option selected>Select Region</option>
-        </select>
+          v-model="EquipmentLocation.selectedFacility.area"
+          @input="fetchRegion"
+          autocomplete="off"
+          disabled
+        />
+        <datalist id="regionListOptions">
+          <option
+            v-for="facility in facilityList"
+            :key="facility.index"
+            :value="facility.area"
+          ></option>
+        </datalist>
       </div>
       <!-- District -->
       <div class="col-lg-4 mb-3">
         <label for="districtList" class="form-label">District</label>
-        <select
+        <input
+          class="form-control"
+          list="districtListOptions"
           id="districtList"
-          class="form-select"
+          placeholder="Select district"
           aria-label="Default select example"
-          v-model="district"
-        >
-          <option selected>Select District</option>
-        </select>
+          v-model="EquipmentLocation.selectedFacility.city"
+          @input="fetchDistrict"
+          autocomplete="off"
+          disabled
+        />
+        <datalist id="rdistrictListOptions">
+          <option
+            v-for="facility in facilityList"
+            :key="facility.index"
+            :value="facility.city"
+          ></option>
+        </datalist>
       </div>
       <!-- Department -->
       <div class="col-lg-4 mb-3">
@@ -84,12 +104,11 @@ const sendSocketReq = (request) => {
 };
 
 const facilityList = ref(null);
+const regionList = ref(null);
 
 const EquipmentLocation = inject("EquipmentLocation");
 const Global_Asset_Information = inject("Global_Asset_Information");
 const departmentId = inject("departmentId");
-const region = inject("region");
-const district = inject("district");
 const location = inject("location");
 
 const fetchFacility = async (event) => {
@@ -107,7 +126,8 @@ const fetchFacility = async (event) => {
       );
       Global_Asset_Information.value.facilityId =
         EquipmentLocation.value.selectedFacility._id;
-      // await fetchModel();
+      await fetchRegion();
+      await fetchDistrict();
     } else {
       Global_Asset_Information.value.facilityId = null;
 
@@ -133,6 +153,147 @@ const fetchFacility = async (event) => {
               projection: {
                 _id: 1,
                 facility_name: 1,
+                country: 1,
+                area: 1,
+                city: 1,
+              },
+            },
+          },
+        },
+        callback: (res) => {
+          if (res.Type === "RESPONSE") {
+            // Console the Response Packet
+            console.log("Response Packet -->", res.Response);
+            facilityList.value = res.Response.records;
+          } else if (res.Type === "ERROR") {
+            // Error response received during fetching
+            Type: "ERROR";
+            Response: {
+              Error_Code: "API-CREATE_RECORD-E001";
+              Error_Msg: "CREATE_RECORD_API: Failed to execute query";
+            }
+          }
+        },
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const fetchRegion = async (event) => {
+  try {
+    const selectedRegion = event ? event.target.value : "";
+    if (
+      event &&
+      (!(event instanceof InputEvent) ||
+        event.inputType === "insertReplacementText")
+    ) {
+      EquipmentLocation.value.selectedRegion = regionList.value.find(
+        (region) => {
+          return selectedRegion === region.area;
+        }
+      );
+      Global_Asset_Information.value.region =
+        EquipmentLocation.value.selectedFacility.area;
+      // await fetchModel();
+    } else {
+      Global_Asset_Information.value.region = null;
+
+      sendSocketReq({
+        data: {
+          Expiry: 20000,
+          Type: "REQUEST",
+          Request: {
+            Module: "MEMS",
+            ServiceCode: "BIOMD",
+            API: "FIND_RECORD",
+            return_array: true,
+            max_list: 100,
+            find: {
+              collection: "Facility",
+              queries: [
+                {
+                  field: "area",
+                  op: "sb",
+                  value: "^",
+                },
+              ],
+              projection: {
+                _id: 1,
+                facility_name: 1,
+                country: 1,
+                area: 1,
+                city: 1,
+              },
+            },
+          },
+        },
+        callback: (res) => {
+          if (res.Type === "RESPONSE") {
+            // Console the Response Packet
+            console.log("Response Packet -->", res.Response);
+            facilityList.value = res.Response.records;
+          } else if (res.Type === "ERROR") {
+            // Error response received during fetching
+            Type: "ERROR";
+            Response: {
+              Error_Code: "API-CREATE_RECORD-E001";
+              Error_Msg: "CREATE_RECORD_API: Failed to execute query";
+            }
+          }
+        },
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const fetchDistrict = async (event) => {
+  try {
+    const selectedFacility = event ? event.target.value : "";
+    if (
+      event &&
+      (!(event instanceof InputEvent) ||
+        event.inputType === "insertReplacementText")
+    ) {
+      EquipmentLocation.value.selectedFacility = facilityList.value.find(
+        (facility) => {
+          return selectedFacility === facility.city;
+        }
+      );
+      Global_Asset_Information.value.district =
+        EquipmentLocation.value.selectedFacility.city;
+      // await fetchModel();
+    } else {
+      Global_Asset_Information.value.district = null;
+
+      sendSocketReq({
+        data: {
+          Expiry: 20000,
+          Type: "REQUEST",
+          Request: {
+            Module: "MEMS",
+            ServiceCode: "BIOMD",
+            API: "FIND_RECORD",
+            return_array: true,
+            max_list: 100,
+            find: {
+              collection: "Facility",
+              queries: [
+                {
+                  field: "city",
+                  op: "sb",
+                  value: "^",
+                },
+              ],
+              projection: {
+                _id: 1,
+                facility_name: 1,
+                country: 1,
+                area: 1,
+                city: 1,
               },
             },
           },
