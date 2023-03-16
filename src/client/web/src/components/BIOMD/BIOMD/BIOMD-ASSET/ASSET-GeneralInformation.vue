@@ -221,7 +221,7 @@ const fetchModel = async (event) => {
         return selectedModel === model.model_name;
       });
       Global_Asset_Information.value.modelId =
-        GeneralInformation.value.selectedModel._id;
+        GeneralInformation.value.selectedModel.model_name;
     } else {
       Global_Asset_Information.value.modelId = null;
 
@@ -240,7 +240,7 @@ const fetchModel = async (event) => {
               queries: [
                 {
                   field: "manufacturer_id",
-                  op: "eq",
+                  op: "sb",
                   value: Global_Asset_Information.value.manufacturerId,
                 },
               ],

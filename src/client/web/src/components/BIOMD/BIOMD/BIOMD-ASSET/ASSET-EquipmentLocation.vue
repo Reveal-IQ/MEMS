@@ -124,7 +124,7 @@ const fetchFacility = async (event) => {
       );
       Global_Asset_Information.value.facilityId =
         EquipmentLocation.value.selectedFacility._id;
-      // await fetchRegion();
+      await fetchRegion();
     } else {
       Global_Asset_Information.value.facilityId = null;
 
@@ -178,71 +178,71 @@ const fetchFacility = async (event) => {
   }
 };
 
-// const fetchRegion = async (event) => {
-//   try {
-//     const selectedRegion = event ? event.target.value : "";
-//     if (
-//       event &&
-//       (!(event instanceof InputEvent) ||
-//         event.inputType === "insertReplacementText")
-//     ) {
-//       EquipmentLocation.value.selectedRegion = regionList.value.find(
-//         (region) => {
-//           return selectedRegion === region.area;
-//         }
-//       );
-//       Global_Asset_Information.value.region =
-//         EquipmentLocation.value.selectedRegion.area;
-//       await fetchDistrict();
-//     } else {
-//       Global_Asset_Information.value.region = null;
+const fetchRegion = async (event) => {
+  try {
+    const selectedRegion = event ? event.target.value : "";
+    if (
+      event &&
+      (!(event instanceof InputEvent) ||
+        event.inputType === "insertReplacementText")
+    ) {
+      EquipmentLocation.value.selectedRegion = regionList.value.find(
+        (region) => {
+          return selectedRegion === region.area;
+        }
+      );
+      Global_Asset_Information.value.region =
+        EquipmentLocation.value.selectedRegion.area;
+      // await fetchDistrict();
+    } else {
+      Global_Asset_Information.value.region = null;
 
-//       sendSocketReq({
-//         data: {
-//           Expiry: 20000,
-//           Type: "REQUEST",
-//           Request: {
-//             Module: "MEMS",
-//             ServiceCode: "BIOMD",
-//             API: "FIND_RECORD",
-//             return_array: true,
-//             max_list: 100,
-//             find: {
-//               collection: "Facility",
-//               queries: [
-//                 {
-//                   field: "area",
-//                   op: "sb",
-//                   value: EquipmentLocation.value.selectedFacility,
-//                 },
-//               ],
-//               projection: {
-//                 _id: 0,
-//                 area: 1,
-//               },
-//             },
-//           },
-//         },
-//         callback: (res) => {
-//           if (res.Type === "RESPONSE") {
-//             // Console the Response Packet
-//             console.log("Response Packet -->", res.Response);
-//             regionList.value = res.Response.records;
-//           } else if (res.Type === "ERROR") {
-//             // Error response received during fetching
-//             Type: "ERROR";
-//             Response: {
-//               Error_Code: "API-CREATE_RECORD-E001";
-//               Error_Msg: "CREATE_RECORD_API: Failed to execute query";
-//             }
-//           }
-//         },
-//       });
-//     }
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
+      sendSocketReq({
+        data: {
+          Expiry: 20000,
+          Type: "REQUEST",
+          Request: {
+            Module: "MEMS",
+            ServiceCode: "BIOMD",
+            API: "FIND_RECORD",
+            return_array: true,
+            max_list: 100,
+            find: {
+              collection: "Facility",
+              queries: [
+                {
+                  field: "facility_name",
+                  op: "sb",
+                  value: Global_Asset_Information.value.facilityId,
+                },
+              ],
+              projection: {
+                _id: 0,
+                area: 1,
+              },
+            },
+          },
+        },
+        callback: (res) => {
+          if (res.Type === "RESPONSE") {
+            // Console the Response Packet
+            console.log("Response Packet -->", res.Response);
+            regionList.value = res.Response.records;
+          } else if (res.Type === "ERROR") {
+            // Error response received during fetching
+            Type: "ERROR";
+            Response: {
+              Error_Code: "API-CREATE_RECORD-E001";
+              Error_Msg: "CREATE_RECORD_API: Failed to execute query";
+            }
+          }
+        },
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 // const fetchDistrict = async (event) => {
 //   try {
