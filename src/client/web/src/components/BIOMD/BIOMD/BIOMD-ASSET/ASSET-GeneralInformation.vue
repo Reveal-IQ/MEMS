@@ -221,7 +221,7 @@ const fetchModel = async (event) => {
         return selectedModel === model.model_name;
       });
       Global_Asset_Information.value.modelId =
-        GeneralInformation.value.selectedModel.model_name;
+        GeneralInformation.value.selectedModel._id;
     } else {
       Global_Asset_Information.value.modelId = null;
 
@@ -245,7 +245,7 @@ const fetchModel = async (event) => {
                 },
               ],
               projection: {
-                _id: 0,
+                _id: 1,
                 model_name: 1,
                 model_number: 1,
               },
