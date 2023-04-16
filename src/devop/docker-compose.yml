@@ -92,7 +92,7 @@ services:
     # Enable TLS Security
     #entrypoint: ["mongod","--config","/config/dbconfig-DMODB01.conf"]
     ports:
-      - "27017:27017"
+      - "3030:27017"
   
 
 
