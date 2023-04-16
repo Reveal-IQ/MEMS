@@ -243,12 +243,6 @@ export default {
     provide("district", district);
     provide("location", location);
 
-    // provide("supportTeam", supportTeam);
-    // provide("vendorId", vendorId);
-    // provide("status", status);
-    // provide("userManual", userManual);
-    // provide("technicalManual", technicalManual);
-
     provide("purchaseOrder", purchaseOrder);
     provide("project", project);
     provide("purchaseCost", purchaseCost);

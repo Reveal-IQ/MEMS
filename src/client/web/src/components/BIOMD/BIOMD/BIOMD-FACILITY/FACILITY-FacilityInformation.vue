@@ -107,24 +107,6 @@
           />
         </div>
 
-        <!-- GPS Coordinates -->
-        <!-- <div class="col-lg-6">
-          <Input
-            label="GPS Coordinates"
-            type="text"
-            id="gps"
-            placeholder="Select GPS Coordinates"
-          />
-        </div>
-
-        <div class="col-lg-3 align-self-center g-3">
-          <Btn2
-            BtnName="Generate GPS Coordinates"
-            :icon="'globe'"
-            class="rounded-pill"
-          />
-        </div> -->
-
         <!-- Department List -->
         <div class="col-12">
           <Input
@@ -143,7 +125,6 @@
 <script setup>
 import { ref, inject, onMounted } from "vue";
 import { useStore } from "vuex";
-import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 import Input from "../BIOMD-UI/UI-Input.vue";
 import Section from "../BIOMD-UI/UI-Section.vue";
 const store = useStore();
