@@ -79,7 +79,7 @@
       <!-- Location -->
       <div class="col-lg-12 col-md-12">
         <UITagInput
-          v-model="location"
+          v-model="EquipmentLocation.location"
           label="Location"
           customDelimiter=","
           placeholder="Enter Location Tag"

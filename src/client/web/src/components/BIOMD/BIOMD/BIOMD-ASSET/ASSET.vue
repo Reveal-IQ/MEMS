@@ -121,7 +121,6 @@ export default {
       });
     }
 
-
     const GeneralInformation = ref({
       equipmentNumber: null,
       commonName: null,
@@ -139,8 +138,8 @@ export default {
         area: null,
         city: null,
       },
-      selectedRegion: {_id: null, area: null },
-      selectedDistrict: {_id: null, city: null },
+      selectedRegion: { _id: null, area: null },
+      selectedDistrict: { _id: null, city: null },
       location: [],
     });
 
@@ -165,22 +164,16 @@ export default {
       district: null,
       vendorId: null,
     });
-    
+
     const MaintenanceAndSupport = ref({
       status: "Active Deployed",
       supportTeam: null,
       userManual: false,
       technicalManual: false,
-    })
+    });
 
     const departmentId = ref(null);
-    const region = ref(null);
-    const district = ref(null);
-    const supportTeam = ref(null);
-    const vendorId = ref(null);
-    const status = ref("Active Deployed");
-    const userManual = ref(false);
-    const technicalManual = ref(false);
+
     const comment = ref(null);
 
     // send Socket Request use to send rrequest packet for an API
@@ -214,16 +207,16 @@ export default {
               department: departmentId.value,
               roomTag: EquipmentLocation.value.location,
               supportTeam: MaintenanceAndSupport.value.supportTeam,
-              vendor_id: vendorId.value,
+              vendor_id: Global_Asset_Information.value.vendorId,
               status: MaintenanceAndSupport.value.status,
               user_manual: MaintenanceAndSupport.value.userManual,
               technical_manual: MaintenanceAndSupport.value.technicalManual,
-              purchaseOrderNumber: purchaseOrder.value,
-              project: project.value,
-              purchaseCost: purchaseCost.value,
-              purchaseDate: purchaseDate.value,
-              acceptanceDate: acceptanceDate.value,
-              warrantyDate: warrantyDate.value,
+              purchaseOrderNumber: EquipmentAcquisition.value.purchaseOrder,
+              project: EquipmentAcquisition.value.project,
+              purchaseCost: EquipmentAcquisition.value.purchaseCost,
+              purchaseDate: EquipmentAcquisition.value.purchaseDate,
+              acceptanceDate: EquipmentAcquisition.value.acceptanceDate,
+              warrantyDate: EquipmentAcquisition.value.warrantyDate,
               generalComment: comment.value,
             },
             Institute_Code: Institute_Code.value, //Dynamically changes when another institute logged in
@@ -260,14 +253,8 @@ export default {
     provide("EquipmentLocation", EquipmentLocation);
     provide("EquipmentAcquisition", EquipmentAcquisition);
     provide("Global_Asset_Information", Global_Asset_Information);
-    provide("MaintenanceAndSupport", MaintenanceAndSupport)
+    provide("MaintenanceAndSupport", MaintenanceAndSupport);
     provide("departmentId", departmentId);
-    provide("purchaseOrder", purchaseOrder);
-    provide("project", project);
-    provide("purchaseCost", purchaseCost);
-    provide("purchaseDate", purchaseDate);
-    provide("acceptanceDate", acceptanceDate);
-    provide("warrantyDate", warrantyDate);
     provide("comment", comment);
 
     return {
