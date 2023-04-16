@@ -44,7 +44,7 @@
         </datalist>
       </div>
       <!-- District -->
-      <div class="col-lg-4 mb-3">
+      <div class="col-lg-6 mb-3">
         <label for="districtList" class="form-label">District</label>
         <input
           class="form-control"
@@ -65,7 +65,7 @@
         </datalist>
       </div>
       <!-- Department -->
-      <div class="col-lg-4 mb-3">
+      <div class="col-lg-6 mb-3">
         <label for="departmentList" class="form-label">Department</label>
         <select
           id="departmentList"
@@ -77,13 +77,12 @@
         </select>
       </div>
       <!-- Location -->
-      <div class="col-lg-4">
-        <Input
+      <div class="col-lg-12 col-md-12">
+        <UITagInput
+          v-model="location"
           label="Location"
-          type="text"
-          id="locationTag"
-          placeholder="Add Location Tag"
-          v-model="EquipmentLocation.location"
+          customDelimiter=","
+          placeholder="Enter Location Tag"
         />
       </div>
     </div>
@@ -95,6 +94,7 @@ import { ref, inject, onMounted } from "vue";
 import { useStore } from "vuex";
 import Input from "../BIOMD-UI/UI-Input.vue";
 import Section from "../BIOMD-UI/UI-Section.vue";
+import UITagInput from "../BIOMD-UI/UI-TagInput.vue";
 
 const store = useStore();
 const sendSocketReq = (request) => {

@@ -12,32 +12,29 @@ Description: < Describe the application >
   <div class="RevealContainer">
     <div class="container p-4 m-4">
       <div
-        class="d-lg-flex align-items-center flex-lg-row flex-md-row flex-sm-column justify-content-between"
+        class="d-lg-flex d-md-flex d-sm-flex gap-lg-0 gap-sm-5 align-items-center justify-content-lg-between justify-content-md-between justify-content-sm-center"
       >
-        <div class="d-flex mt-3">
+        <div class="mt-3">
           <Header
             title="New Asset"
             subTitle="Create a new asset with this form"
           />
         </div>
-        <div class="d-flex">
-          <span class="d-sm-block">
-            <Btn2
-              BtnName="Return"
-              :icon="'arrow-left'"
-              backgroundColor="none"
-              @click="goBack"
-              class="text-secondary"
-            />
-          </span>
-          <span class="ms-4 d-sm-block">
-            <Btn2
-              BtnName="Dashboard"
-              backgroundColor="#2A94B6"
-              @click="goBack"
-              class="text-light"
-            />
-          </span>
+        <div class="d-flex gap-2 d-md-block">
+          <Btn2
+            BtnName="Return"
+            :icon="'arrow-left'"
+            backgroundColor="none"
+            @click="goBack"
+            class="text-secondary btn-sm"
+          />
+
+          <Btn2
+            BtnName="Dashboard"
+            backgroundColor="#2A94B6"
+            @click="goBack"
+            class="text-light btn-sm"
+          />
         </div>
       </div>
 
@@ -124,6 +121,7 @@ export default {
       });
     }
 
+
     const GeneralInformation = ref({
       equipmentNumber: null,
       commonName: null,
@@ -167,15 +165,22 @@ export default {
       district: null,
       vendorId: null,
     });
+    
+    const MaintenanceAndSupport = ref({
+      status: "Active Deployed",
+      supportTeam: null,
+      userManual: false,
+      technicalManual: false,
+    })
 
     const departmentId = ref(null);
-
+    const region = ref(null);
+    const district = ref(null);
     const supportTeam = ref(null);
-
-    const status = ref(null);
+    const vendorId = ref(null);
+    const status = ref("Active Deployed");
     const userManual = ref(false);
     const technicalManual = ref(false);
-
     const comment = ref(null);
 
     // send Socket Request use to send rrequest packet for an API
@@ -207,19 +212,18 @@ export default {
               area: Global_Asset_Information.value.region,
               city: Global_Asset_Information.value.district,
               department: departmentId.value,
-              roomTag: location.value,
-              supportTeam: supportTeam.value,
-              vendor_id: Global_Asset_Information.value.vendorId,
-              status: status.value,
-              user_manual: userManual.value,
-              technical_manual: technicalManual.value,
-              purchaseOrderNumber:
-                EquipmentAcquisition.value.purchaseOrderNumber,
-              project: EquipmentAcquisition.value.project,
-              purchaseCost: EquipmentAcquisition.value.purchaseCost,
-              purchaseDate: EquipmentAcquisition.value.purchaseDate,
-              acceptanceDate: EquipmentAcquisition.value.acceptanceDate,
-              warrantyDate: EquipmentAcquisition.value.warrantyDate,
+              roomTag: EquipmentLocation.value.location,
+              supportTeam: MaintenanceAndSupport.value.supportTeam,
+              vendor_id: vendorId.value,
+              status: MaintenanceAndSupport.value.status,
+              user_manual: MaintenanceAndSupport.value.userManual,
+              technical_manual: MaintenanceAndSupport.value.technicalManual,
+              purchaseOrderNumber: purchaseOrder.value,
+              project: project.value,
+              purchaseCost: purchaseCost.value,
+              purchaseDate: purchaseDate.value,
+              acceptanceDate: acceptanceDate.value,
+              warrantyDate: warrantyDate.value,
               generalComment: comment.value,
             },
             Institute_Code: Institute_Code.value, //Dynamically changes when another institute logged in
@@ -256,15 +260,14 @@ export default {
     provide("EquipmentLocation", EquipmentLocation);
     provide("EquipmentAcquisition", EquipmentAcquisition);
     provide("Global_Asset_Information", Global_Asset_Information);
-
+    provide("MaintenanceAndSupport", MaintenanceAndSupport)
     provide("departmentId", departmentId);
-
-    provide("supportTeam", supportTeam);
-
-    provide("status", status);
-    provide("userManual", userManual);
-    provide("technicalManual", technicalManual);
-
+    provide("purchaseOrder", purchaseOrder);
+    provide("project", project);
+    provide("purchaseCost", purchaseCost);
+    provide("purchaseDate", purchaseDate);
+    provide("acceptanceDate", acceptanceDate);
+    provide("warrantyDate", warrantyDate);
     provide("comment", comment);
 
     return {
