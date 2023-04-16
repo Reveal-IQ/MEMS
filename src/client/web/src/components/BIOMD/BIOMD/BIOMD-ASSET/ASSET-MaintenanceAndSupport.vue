@@ -23,34 +23,26 @@
           id="supportTeamList"
           class="form-select"
           aria-label="Default select example"
-          v-model="supportTeam"
+          v-model="MaintenanceAndSupport.supportTeam"
         >
           <option selected>Select Support Team</option>
         </select>
       </div>
-      <!-- Vendor -->
-      <!-- <div class="col-lg-6 mb-3">
-        <label for="vendorList" class="form-label">Vendor</label>
-        <select
-          id="vendorList"
-          class="form-select"
-          aria-label="Default select example"
-        >
-          <option selected>Select Vendor</option>
-        </select>
-      </div> -->
-      <!-- Status -->
       <div class="col-lg-6 mb-3">
         <label for="statusList" class="form-label">Status</label>
         <select
           id="statusList"
           class="form-select"
           aria-label="Default select example"
-          v-model="status"
+          v-model="MaintenanceAndSupport.status"
         >
-          <option selected>Select Equipment Status</option>
-          <option v-for="name in statusList" :key="name" :value="name">
-            {{ name }}
+          <option selected value="Active Deployed">Active Deployed</option>
+          <option
+            v-for="list in statusList"
+            :key="list.value"
+            :value="list.value"
+          >
+            {{ list.name }}
           </option>
         </select>
       </div>
@@ -64,7 +56,7 @@
           type="checkbox"
           value=""
           id="userManual"
-          v-model="userManual"
+          v-model="MaintenanceAndSupport.userManual"
         />
         <label class="form-check-label" for="userManual">
           User Manual Available?
@@ -78,7 +70,7 @@
           type="checkbox"
           value=""
           id="techManual"
-          v-model="technicalManual"
+          v-model="MaintenanceAndSupport.technicalManual"
         />
         <label class="form-check-label" for="techManual">
           Technical Manual Available?
@@ -92,16 +84,14 @@
 import { ref, inject } from "vue";
 import Section from "../BIOMD-UI/UI-Section.vue";
 
-const supportTeam = inject("supportTeam");
-const vendorId = inject("vendorId");
-const status = inject("status");
-const userManual = inject("userManual");
-const technicalManual = inject("technicalManual");
+const MaintenanceAndSupport = inject("MaintenanceAndSupport");
 
 const statusList = ref([
-  "Operational",
-  "Decommissioned",
-  "Requires Maintenance",
+  { name: "Active in Storage", value: "Active in Storage" },
+  { name: "Active in Service", value: "Active in Service" },
+  { name: "Storage Repairable", value: "Storage Repairable" },
+  { name: "Storage Parts", value: "Storage Parts" },
+  { name: "Disposed", value: "Disposed" },
 ]);
 </script>
 

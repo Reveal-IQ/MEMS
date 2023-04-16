@@ -12,32 +12,29 @@ Description: < Describe the application >
   <div class="RevealContainer">
     <div class="container p-4 m-4">
       <div
-        class="d-lg-flex align-items-center flex-lg-row flex-md-row flex-sm-column justify-content-between"
+        class="d-lg-flex d-md-flex d-sm-flex gap-lg-0 gap-sm-5 align-items-center justify-content-lg-between justify-content-md-between justify-content-sm-center"
       >
-        <div class="d-flex mt-3">
+        <div class="mt-3">
           <Header
             title="New Asset"
             subTitle="Create a new asset with this form"
           />
         </div>
-        <div class="d-flex">
-          <span class="d-sm-block">
-            <Btn2
-              BtnName="Return"
-              :icon="'arrow-left'"
-              backgroundColor="none"
-              @click="goBack"
-              class="text-secondary"
-            />
-          </span>
-          <span class="ms-4 d-sm-block">
-            <Btn2
-              BtnName="Dashboard"
-              backgroundColor="#2A94B6"
-              @click="goBack"
-              class="text-light"
-            />
-          </span>
+        <div class="d-flex gap-2 d-md-block">
+          <Btn2
+            BtnName="Return"
+            :icon="'arrow-left'"
+            backgroundColor="none"
+            @click="goBack"
+            class="text-secondary btn-sm"
+          />
+
+          <Btn2
+            BtnName="Dashboard"
+            backgroundColor="#2A94B6"
+            @click="goBack"
+            class="text-light btn-sm"
+          />
         </div>
       </div>
 
@@ -124,6 +121,13 @@ export default {
       });
     }
 
+    const MaintenanceAndSupport = ref({
+      status: "Active Deployed",
+      supportTeam: null,
+      userManual: false,
+      technicalManual: false,
+    })
+
     const equipmentNumber = ref(null);
     const commonName = ref(null);
     const description = ref(null);
@@ -136,11 +140,11 @@ export default {
     const departmentId = ref(null);
     const region = ref(null);
     const district = ref(null);
-    const location = ref(null);
+    const location = ref([]);
 
     const supportTeam = ref(null);
     const vendorId = ref(null);
-    const status = ref(null);
+    const status = ref("Active Deployed");
     const userManual = ref(false);
     const technicalManual = ref(false);
 
@@ -180,11 +184,11 @@ export default {
               facility_id: facilityId.value,
               department: departmentId.value,
               roomTag: location.value,
-              supportTeam: supportTeam.value,
+              supportTeam: MaintenanceAndSupport.value.supportTeam,
               vendor_id: vendorId.value,
-              status: status.value,
-              user_manual: userManual.value,
-              technical_manual: technicalManual.value,
+              status: MaintenanceAndSupport.value.status,
+              user_manual: MaintenanceAndSupport.value.userManual,
+              technical_manual: MaintenanceAndSupport.value.technicalManual,
               purchaseOrderNumber: purchaseOrder.value,
               project: project.value,
               purchaseCost: purchaseCost.value,
@@ -223,6 +227,8 @@ export default {
       emit("updatePage", "landing");
     };
 
+    provide("MaintenanceAndSupport", MaintenanceAndSupport)
+
     provide("equipmentNumber", equipmentNumber);
     provide("commonName", commonName);
     provide("description", description);
@@ -236,12 +242,6 @@ export default {
     provide("region", region);
     provide("district", district);
     provide("location", location);
-
-    provide("supportTeam", supportTeam);
-    provide("vendorId", vendorId);
-    provide("status", status);
-    provide("userManual", userManual);
-    provide("technicalManual", technicalManual);
 
     provide("purchaseOrder", purchaseOrder);
     provide("project", project);
