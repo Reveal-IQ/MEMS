@@ -8,7 +8,7 @@
           type="text"
           id="modelName"
           placeholder="Model Name"
-          v-model="modelName"
+          v-model="ModelDescription.modelName"
         />
       </div>
 
@@ -19,24 +19,30 @@
           type="text"
           id="modelNumber"
           placeholder="Model Number"
-          v-model="modelNumber"
+          v-model="ModelDescription.modelNumber"
         />
       </div>
 
-      <!-- Vendor Select -->
-      <div class="col-lg-6">
-        <label for="vendorList" class="form-label">Vendor</label>
-        <select
-          id="vendorList"
-          class="form-select"
+      <!-- Manufacturer -->
+      <div class="col-lg-6 mb-3">
+        <label for="manufacturerList" class="form-label">Manufacturer</label>
+        <input
+          class="form-control"
+          list="manufacturerListOptions"
+          id="manufacturerList"
+          placeholder="Select Manufacturer"
           aria-label="Default select example"
-          v-model="vendor"
-        >
-          <option selected disabled>Choose a Vendor</option>
-          <option v-for="name in vendorList" :key="name" :value="name">
-            {{ name }}
-          </option>
-        </select>
+          v-model="ModelDescription.selectedManufacturer.manufacturer_name"
+          @input="fetchManufacturer"
+          autocomplete="off"
+        />
+        <datalist id="manufacturerListOptions">
+          <option
+            v-for="manufacturer in manufacturerList"
+            :key="manufacturer.index"
+            :value="manufacturer.manufacturer_name"
+          ></option>
+        </datalist>
       </div>
 
       <!-- Vendor Site ID -->
@@ -46,7 +52,7 @@
           type="text"
           id="vendorSiteId"
           placeholder="Site ID"
-          v-model="vendorSiteId"
+          v-model="ModelDescription.vendorSiteId"
         />
       </div>
     </div>
@@ -54,20 +60,88 @@
 </template>
 
 <script setup>
-import { ref, inject } from "vue";
+import { ref, inject, onMounted } from "vue";
+import { useStore } from "vuex";
 import Input from "../BIOMD-UI/UI-Input.vue";
 import Section from "../BIOMD-UI/UI-Section.vue";
 
-const vendor = inject("vendor");
-const modelName = inject("modelName");
-const modelNumber = inject("modelNumber");
-const vendorSiteId = inject("vendorSiteId");
+const store = useStore();
+const sendSocketReq = (request) => {
+  store.dispatch("sendSocketReq", request);
+};
 
-const vendorList = ref([
-  "General Electric",
-  "Ghana Medical Help",
-  "Ghana Health Service",
-]);
+const ModelDescription = inject("ModelDescription");
+const Global_Model_Information = inject("Global_Model_Information");
+
+const manufacturerList = ref([]);
+
+const fetchManufacturer = async (event) => {
+  try {
+    const selectedManufacturer = event ? event.target.value : "";
+    if (
+      event &&
+      (!(event instanceof InputEvent) ||
+        event.inputType === "insertReplacementText")
+    ) {
+      ModelDescription.value.selectedManufacturer =
+        manufacturerList.value.find((manufacturer) => {
+          return selectedManufacturer === manufacturer.manufacturer_name;
+        });
+      Global_Model_Information.value.manufacturerId =
+        ModelDescription.value.selectedManufacturer._id;
+    } else {
+      Global_Model_Information.value.manufacturerId = null;
+
+      sendSocketReq({
+        data: {
+          Expiry: 20000,
+          Type: "REQUEST",
+          Request: {
+            Module: "MEMS",
+            ServiceCode: "BIOMD",
+            API: "FIND_RECORD",
+            return_array: true,
+            max_list: 100,
+            find: {
+              collection: "Manufacturer",
+              queries: [
+                {
+                  field: "manufacturer_name",
+                  op: "sb",
+                  value: "^",
+                },
+              ],
+              projection: {
+                _id: 1,
+                manufacturer_name: 1,
+              },
+            },
+          },
+        },
+        callback: (res) => {
+          if (res.Type === "RESPONSE") {
+            // Console the Response Packet
+            console.log("Response Packet -->", res.Response);
+            manufacturerList.value = res.Response.records;
+          } else if (res.Type === "ERROR") {
+            // Error response received during fetching
+            Type: "ERROR";
+            Response: {
+              Error_Code: "API-CREATE_RECORD-E001";
+              Error_Msg: "CREATE_RECORD_API: Failed to execute query";
+            }
+          }
+        },
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+onMounted(() => {
+  fetchManufacturer();
+});
 </script>
 
 <style lang="scss" scoped>

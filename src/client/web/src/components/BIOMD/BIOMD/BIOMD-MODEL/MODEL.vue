@@ -59,8 +59,8 @@ Description: < Describe the application >
 </template>
 
 <script>
-import { useStore } from "vuex"; // Access Vuew Store Variables and Methods
-import { ref, toRefs, computed, provide } from "vue";
+import { useStore } from "vuex"; 
+import { ref, computed, provide } from "vue";
 
 import Btn from "../BIOMD-UI/UI-Btn.vue";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
@@ -70,16 +70,13 @@ import ModelDescription from "../BIOMD-MODEL/MODEL-ModelDescription.vue";
 export default {
   components: { ModelDescription, Btn2, Btn, Header },
   name: "model",
-  // Define Props here
   props: {
     tabid: {
       type: String,
     },
   },
-  // Emit value can pass within this array
   emits: ["updatePage"],
   setup(props, { emit }) {
-    const { props_variable } = toRefs(props); // include variables from the props with help of toRefs
     const store = useStore();
     const Institute_Code = computed(
       () => store.state.globalStore.UserInfo.Institute_Info.Code
@@ -95,16 +92,22 @@ export default {
         status: "<Navigate_To_This_Page>",
       });
     }
-    const modelName = ref(null);
-    const modelNumber = ref(null);
-    const vendorSiteId = ref(null);
-    const vendor = ref(null);
-    // send Socket Request use to send rrequest packet for an API
+
+    const ModelDescription = ref({
+      modelName: null,
+      modelNumber: null,
+      selectedManufacturer: { manufacturer_name: null, _id: null },
+      vendorSiteId: null,
+    });
+
+    const Global_Model_Information = ref({
+      manufacturerId: null,
+    });
+
     const sendSocketReq = (request) => {
       store.dispatch("sendSocketReq", request);
     };
 
-    // Function to Send Request and Get Response by this template code .
     function createRecord() {
       // send Request as below .
       sendSocketReq({
@@ -117,12 +120,12 @@ export default {
             API: "CREATE_RECORD",
             collection: "Model",
             record: {
-              vendor_id: vendor.value,
-              model_name: modelName.value,
-              model_number: modelNumber.value,
-              vendor_site_ID: vendorSiteId.value,
+              manufacturer_id: Global_Model_Information.value.manufacturerId,
+              model_name: ModelDescription.value.modelName,
+              model_number: ModelDescription.value.modelNumber,
+              vendor_site_ID: ModelDescription.value.vendorSiteId,
             },
-            Institute_Code: Institute_Code.value, //Dynamically changes when another institute logged in
+            Institute_Code: Institute_Code.value,
           },
         },
         callback: (res) => {
@@ -154,10 +157,8 @@ export default {
       emit("updatePage", "landing");
     };
 
-    provide("modelName", modelName);
-    provide("modelNumber", modelNumber);
-    provide("vendorSiteId", vendorSiteId);
-    provide("vendor", vendor);
+    provide("ModelDescription", ModelDescription);
+    provide("Global_Model_Information", Global_Model_Information);
 
     return {
       goBack,

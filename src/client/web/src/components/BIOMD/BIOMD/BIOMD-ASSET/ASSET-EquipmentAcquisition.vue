@@ -22,7 +22,7 @@
           type="text"
           id="projectName"
           placeholder="Enter Project"
-          v-model="project"
+          v-model="EquipmentAcquisition.project"
         />
       </div>
     </div>
@@ -34,7 +34,7 @@
           type="number"
           id="purchaseCost"
           placeholder="Enter Purchase Cost"
-          v-model="purchaseCost"
+          v-model="EquipmentAcquisition.purchaseCost"
         />
       </div>
       <!-- Purchase Date -->
@@ -44,19 +44,29 @@
           type="date"
           id="purchaseDate"
           placeholder="Enter Purchase Date"
-          v-model="purchaseDate"
+          v-model="EquipmentAcquisition.purchaseDate"
         />
       </div>
       <!-- Vendor -->
       <div class="col-lg-4 mb-3">
         <label for="vendorList" class="form-label">Vendor</label>
-        <select
+        <input
+          class="form-control"
+          list="vendorListOptions"
           id="vendorList"
-          class="form-select"
+          placeholder="Select Vendor"
           aria-label="Default select example"
-        >
-          <option selected>Select Vendor</option>
-        </select>
+          v-model="EquipmentAcquisition.selectedVendor.vendor_name"
+          @input="fetchVendor"
+          autocomplete="off"
+        />
+        <datalist id="vendorListOptions">
+          <option
+            v-for="vendor in vendorList"
+            :key="vendor.index"
+            :value="vendor.vendor_name"
+          ></option>
+        </datalist>
       </div>
       <!-- Acceptance Date -->
       <div class="col-lg-4">
@@ -65,7 +75,7 @@
           type="date"
           id="acceptanceDate"
           placeholder="Select Acceptance Date"
-          v-model="acceptanceDate"
+          v-model="EquipmentAcquisition.acceptanceDate"
         />
       </div>
       <!-- Warranty Expiry Date -->
@@ -75,7 +85,7 @@
           type="date"
           id="warrantyDate"
           placeholder="Select Warranty Expiration Date"
-          v-model="warrantyDate"
+          v-model="EquipmentAcquisition.warrantyDate"
         />
       </div>
     </div>
@@ -83,17 +93,91 @@
 </template>
 
 <script setup>
-import { ref, inject } from "vue";
+import { ref, inject, onMounted } from "vue";
+import { useStore } from "vuex";
 
 import Input from "../BIOMD-UI/UI-Input.vue";
 import Section from "../BIOMD-UI/UI-Section.vue";
 
-const purchaseOrder = inject("purchaseOrder");
-const project = inject("project");
-const purchaseCost = inject("purchaseCost");
-const purchaseDate = inject("purchaseDate");
-const acceptanceDate = inject("acceptanceDate");
-const warrantyDate = inject("warrantyDate");
+const store = useStore();
+const sendSocketReq = (request) => {
+  store.dispatch("sendSocketReq", request);
+};
+
+const vendorList = ref(null);
+
+const EquipmentAcquisition = inject("EquipmentAcquisition");
+const Global_Asset_Information = inject("Global_Asset_Information");
+
+const fetchVendor = async (event) => {
+  try {
+    const selectedVendor = event ? event.target.value : "";
+    if (
+      event &&
+      (!(event instanceof InputEvent) ||
+        event.inputType === "insertReplacementText")
+    ) {
+      EquipmentAcquisition.value.selectedVendor = vendorList.value.find(
+        (vendor) => {
+          return selectedVendor === vendor.vendor_name;
+        }
+      );
+      Global_Asset_Information.value.vendorId =
+        EquipmentAcquisition.value.selectedVendor._id;
+      // await fetchModel();
+    } else {
+      Global_Asset_Information.value.vendorId = null;
+
+      sendSocketReq({
+        data: {
+          Expiry: 20000,
+          Type: "REQUEST",
+          Request: {
+            Module: "MEMS",
+            ServiceCode: "BIOMD",
+            API: "FIND_RECORD",
+            return_array: true,
+            max_list: 100,
+            find: {
+              collection: "Vendor",
+              queries: [
+                {
+                  field: "vendor_name",
+                  op: "sb",
+                  value: "^",
+                },
+              ],
+              projection: {
+                _id: 1,
+                vendor_name: 1,
+              },
+            },
+          },
+        },
+        callback: (res) => {
+          if (res.Type === "RESPONSE") {
+            // Console the Response Packet
+            console.log("Response Packet -->", res.Response);
+            vendorList.value = res.Response.records;
+          } else if (res.Type === "ERROR") {
+            // Error response received during fetching
+            Type: "ERROR";
+            Response: {
+              Error_Code: "API-CREATE_RECORD-E001";
+              Error_Msg: "CREATE_RECORD_API: Failed to execute query";
+            }
+          }
+        },
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+onMounted(() => {
+  fetchVendor();
+});
 </script>
 
 <style lang="scss" scoped>

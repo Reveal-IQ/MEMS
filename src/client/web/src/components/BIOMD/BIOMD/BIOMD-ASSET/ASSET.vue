@@ -121,39 +121,59 @@ export default {
       });
     }
 
+    const GeneralInformation = ref({
+      equipmentNumber: null,
+      commonName: null,
+      description: null,
+      serialNumber: null,
+      selectedManufacturer: { manufacturer_name: null, _id: null },
+      selectedModel: { model_name: null, _id: null, model_number: null },
+      manufacturerDate: null,
+    });
+
+    const EquipmentLocation = ref({
+      selectedFacility: {
+        _id: null,
+        facility_name: null,
+        area: null,
+        city: null,
+      },
+      selectedRegion: { _id: null, area: null },
+      selectedDistrict: { _id: null, city: null },
+      location: [],
+    });
+
+    const EquipmentAcquisition = ref({
+      selectedVendor: {
+        _id: null,
+        vendor_name: null,
+      },
+      purchaseOrderNumber: null,
+      purchaseCost: null,
+      purchaseDate: null,
+      project: null,
+      acceptanceDate: null,
+      warrantyDate: null,
+    });
+
+    const Global_Asset_Information = ref({
+      manufacturerId: null,
+      modelId: null,
+      facilityId: null,
+      region: null,
+      district: null,
+      vendorId: null,
+    });
+
     const MaintenanceAndSupport = ref({
       status: "Active Deployed",
       supportTeam: null,
       userManual: false,
       technicalManual: false,
-    })
+    });
 
-    const equipmentNumber = ref(null);
-    const commonName = ref(null);
-    const description = ref(null);
-    const serialNumber = ref(null);
-    const modelId = ref(null);
-    const manufacturerId = ref(null);
-    const manufacturerDate = ref(null);
-
-    const facilityId = ref(null);
     const departmentId = ref(null);
-    const region = ref(null);
-    const district = ref(null);
-    const location = ref([]);
 
-    const supportTeam = ref(null);
-    const vendorId = ref(null);
-    const status = ref("Active Deployed");
-    const userManual = ref(false);
-    const technicalManual = ref(false);
-
-    const purchaseOrder = ref(null);
-    const project = ref(null);
-    const purchaseCost = ref(null);
-    const purchaseDate = ref(null);
-    const acceptanceDate = ref(null);
-    const warrantyDate = ref(null);
     const comment = ref(null);
 
     // send Socket Request use to send rrequest packet for an API
@@ -174,27 +194,29 @@ export default {
             API: "CREATE_RECORD",
             collection: "Asset",
             record: {
-              assetCode: equipmentNumber.value,
-              commonName: commonName.value,
-              description: description.value,
-              serialNumber: serialNumber.value,
-              model_id: modelId.value,
-              manufacturer_id: manufacturerId.value,
-              manufactureDate: manufacturerDate.value,
-              facility_id: facilityId.value,
+              assetCode: GeneralInformation.value.equipmentNumber,
+              commonName: GeneralInformation.value.commonName,
+              description: GeneralInformation.value.description,
+              serialNumber: GeneralInformation.value.serialNumber,
+              model_id: Global_Asset_Information.value.modelId,
+              manufacturer_id: Global_Asset_Information.value.manufacturerId,
+              manufactureDate: GeneralInformation.value.manufacturerDate,
+              facility_id: Global_Asset_Information.value.facilityId,
+              area: Global_Asset_Information.value.region,
+              city: Global_Asset_Information.value.district,
               department: departmentId.value,
-              roomTag: location.value,
+              roomTag: EquipmentLocation.value.location,
               supportTeam: MaintenanceAndSupport.value.supportTeam,
-              vendor_id: vendorId.value,
+              vendor_id: Global_Asset_Information.value.vendorId,
               status: MaintenanceAndSupport.value.status,
               user_manual: MaintenanceAndSupport.value.userManual,
               technical_manual: MaintenanceAndSupport.value.technicalManual,
-              purchaseOrderNumber: purchaseOrder.value,
-              project: project.value,
-              purchaseCost: purchaseCost.value,
-              purchaseDate: purchaseDate.value,
-              acceptanceDate: acceptanceDate.value,
-              warrantyDate: warrantyDate.value,
+              purchaseOrderNumber: EquipmentAcquisition.value.purchaseOrder,
+              project: EquipmentAcquisition.value.project,
+              purchaseCost: EquipmentAcquisition.value.purchaseCost,
+              purchaseDate: EquipmentAcquisition.value.purchaseDate,
+              acceptanceDate: EquipmentAcquisition.value.acceptanceDate,
+              warrantyDate: EquipmentAcquisition.value.warrantyDate,
               generalComment: comment.value,
             },
             Institute_Code: Institute_Code.value, //Dynamically changes when another institute logged in
@@ -227,28 +249,12 @@ export default {
       emit("updatePage", "landing");
     };
 
-    provide("MaintenanceAndSupport", MaintenanceAndSupport)
-
-    provide("equipmentNumber", equipmentNumber);
-    provide("commonName", commonName);
-    provide("description", description);
-    provide("serialNumber", serialNumber);
-    provide("modelId", modelId);
-    provide("manufacturerId", manufacturerId);
-    provide("manufacturerDate", manufacturerDate);
-
-    provide("facilityId", facilityId);
+    provide("GeneralInformation", GeneralInformation);
+    provide("EquipmentLocation", EquipmentLocation);
+    provide("EquipmentAcquisition", EquipmentAcquisition);
+    provide("Global_Asset_Information", Global_Asset_Information);
+    provide("MaintenanceAndSupport", MaintenanceAndSupport);
     provide("departmentId", departmentId);
-    provide("region", region);
-    provide("district", district);
-    provide("location", location);
-
-    provide("purchaseOrder", purchaseOrder);
-    provide("project", project);
-    provide("purchaseCost", purchaseCost);
-    provide("purchaseDate", purchaseDate);
-    provide("acceptanceDate", acceptanceDate);
-    provide("warrantyDate", warrantyDate);
     provide("comment", comment);
 
     return {
