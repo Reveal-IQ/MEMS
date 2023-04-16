@@ -1,3 +1,5 @@
+// ui tag reference from https://github.com/mayank1513/tag-input
+
 <template>
   <label :for="id" v-if="label" class="form-label">{{ label }}</label>
   <div
