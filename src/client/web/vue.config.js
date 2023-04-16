@@ -25,7 +25,7 @@ module.exports = {
     ],
 
     devServer: {
-      allowedHosts: ['dev.reveal.health', 'reveal.health'],
+      allowedHosts: ['mems.revealfoundation.com', 'revealfoundation.com'],
     }
 
   }
