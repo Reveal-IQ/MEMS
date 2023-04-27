@@ -49,7 +49,7 @@ Description: < Describe the application >
               class="mb-3"
               @click="createRecord()"
             />
-            <Btn BtnName="Clear Content" />
+            <Btn BtnName="Clear Content" @click="clearContent()" />
           </div>
         </div>
       </main>
@@ -64,6 +64,7 @@ import FacilityInformation from "./FACILITY-FacilityInformation.vue"; // Based o
 import Btn from "../BIOMD-UI/UI-Btn.vue";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 import Header from "../BIOMD-UI/UI-FormHeader.vue";
+import { faCocktail } from "@fortawesome/free-solid-svg-icons";
 
 export default {
   name: "manufacturer",
@@ -171,6 +172,17 @@ export default {
       emit("updatePage", "landing");
     };
 
+    const clearContent = () => {
+      facilityInfo.value.facilityName = null;
+      facilityInfo.value.selectedCountry.Loci_Code_Country = null;
+      facilityInfo.value.selectedState.Loci_Code_State = null;
+      facilityInfo.value.selectedDistrict.Loci_Code_Area_L1 = null;
+      facilityInfo.value.streetAddress1 = null;
+      facilityInfo.value.streetAddress2 = null;
+      facilityInfo.value.zipCode = null;
+      facilityInfo.value.departments.splice(0);
+    };
+
     provide("facilityInfo", facilityInfo);
     provide("Global_Facility_Definition", Global_Facility_Definition);
 
@@ -178,6 +190,7 @@ export default {
       goBack,
       redirectToPage,
       createRecord,
+      clearContent,
     };
   },
   components: { FacilityInformation, Btn2, Btn, Header },

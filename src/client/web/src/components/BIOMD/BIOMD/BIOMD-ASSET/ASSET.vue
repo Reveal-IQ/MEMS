@@ -211,7 +211,7 @@ export default {
               status: MaintenanceAndSupport.value.status,
               user_manual: MaintenanceAndSupport.value.userManual,
               technical_manual: MaintenanceAndSupport.value.technicalManual,
-              purchaseOrderNumber: EquipmentAcquisition.value.purchaseOrder,
+              purchaseOrderNumber: EquipmentAcquisition.value.purchaseOrderNumber,
               project: EquipmentAcquisition.value.project,
               purchaseCost: EquipmentAcquisition.value.purchaseCost,
               purchaseDate: EquipmentAcquisition.value.purchaseDate,
@@ -249,6 +249,36 @@ export default {
       emit("updatePage", "landing");
     };
 
+    const clearContent = () => {
+      GeneralInformation.value.equipmentNumber = null;
+      GeneralInformation.value.commonName = null;
+      GeneralInformation.value.description = null;
+      GeneralInformation.value.serialNumber = null;
+      GeneralInformation.value.selectedManufacturer.manufacturer_name = null;
+      GeneralInformation.value.selectedModel.model_name = null;
+      GeneralInformation.value.manufacturerDate = null;
+
+      EquipmentLocation.value.selectedFacility.facility_name = null;
+      EquipmentLocation.value.selectedRegion.area = null;
+      EquipmentLocation.value.selectedDistrict.city = null;
+      EquipmentLocation.value.location.splice(0);
+
+      EquipmentAcquisition.value.selectedVendor.vendor_name = null;
+      EquipmentAcquisition.value.purchaseOrderNumber = null;
+      EquipmentAcquisition.value.purchaseCost = null;
+      EquipmentAcquisition.value.purchaseDate = null;
+      EquipmentAcquisition.value.project = null;
+      EquipmentAcquisition.value.acceptanceDate = null;
+      EquipmentAcquisition.value.warrantyDate = null;
+
+      MaintenanceAndSupport.value.status = "Active Deployed";
+      MaintenanceAndSupport.value.supportTeam = null;
+      MaintenanceAndSupport.value.userManual = false;
+      MaintenanceAndSupport.value.technicalManual = false;
+
+      comment.value = null;
+    }
+
     provide("GeneralInformation", GeneralInformation);
     provide("EquipmentLocation", EquipmentLocation);
     provide("EquipmentAcquisition", EquipmentAcquisition);
@@ -261,6 +291,7 @@ export default {
       goBack,
       redirectToPage,
       createRecord,
+      clearContent
     };
   },
 };

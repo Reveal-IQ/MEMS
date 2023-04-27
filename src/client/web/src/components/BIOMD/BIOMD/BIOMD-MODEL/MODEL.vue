@@ -50,7 +50,7 @@ Description: < Describe the application >
               @click="createRecord"
             />
 
-            <Btn BtnName="Clear Content" />
+            <Btn BtnName="Clear Content" @click="clearContent" />
           </div>
         </div>
       </main>
@@ -59,7 +59,7 @@ Description: < Describe the application >
 </template>
 
 <script>
-import { useStore } from "vuex"; 
+import { useStore } from "vuex";
 import { ref, computed, provide } from "vue";
 
 import Btn from "../BIOMD-UI/UI-Btn.vue";
@@ -157,6 +157,12 @@ export default {
       emit("updatePage", "landing");
     };
 
+    const clearContent = () => {
+      ModelDescription.value.modelName = null;
+      ModelDescription.value.modelNumber = null;
+      ModelDescription.value.vendorSiteId = null;
+    };
+
     provide("ModelDescription", ModelDescription);
     provide("Global_Model_Information", Global_Model_Information);
 
@@ -164,6 +170,7 @@ export default {
       goBack,
       redirectToPage,
       createRecord,
+      clearContent,
     };
   },
 };

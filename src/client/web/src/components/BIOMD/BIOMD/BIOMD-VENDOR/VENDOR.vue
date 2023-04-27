@@ -51,7 +51,7 @@ Description: < Describe the application >
               @click="createRecord"
             />
 
-            <Btn BtnName="Clear Content" />
+            <Btn BtnName="Clear Content" @click="clearContent" />
           </div>
         </div>
       </main>
@@ -192,6 +192,16 @@ export default {
       emit("updatePage", "landing");
     };
 
+    const clearContent = () => {
+      vendorInfo.value.vendorName = null;
+      vendorInfo.value.selectedCountry.Loci_Code_Country = null;
+      vendorInfo.value.selectedState.Loci_Code_State = null;
+      vendorInfo.value.selectedDistrict.Loci_Code_Area_L1 = null;
+      vendorInfo.value.streetAddress1 = null;
+      vendorInfo.value.streetAddress2 = null;
+      vendorInfo.value.zipCode = null;
+    };
+
     const changePage = async (page) => {
       emit("updatePage", page);
     };
@@ -208,6 +218,7 @@ export default {
       function_name,
       redirectToPage,
       createRecord,
+      clearContent,
     };
   },
 };

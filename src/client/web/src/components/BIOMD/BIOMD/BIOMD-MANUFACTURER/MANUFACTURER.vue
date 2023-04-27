@@ -52,7 +52,7 @@ Description: Describe the application
               @click="createRecord()"
             />
 
-            <Btn BtnName="Clear Content" />
+            <Btn BtnName="Clear Content" @click="clearContent()" />
           </div>
         </div>
       </main>
@@ -179,6 +179,16 @@ export default {
       emit("updatePage", "landing");
     };
 
+    const clearContent = () => {
+      manufacturerInfo.value.manufacturerName = null;
+      manufacturerInfo.value.selectedCountry.Loci_Code_Country = null;
+      manufacturerInfo.value.selectedState.Loci_Name_State = null;
+      manufacturerInfo.value.selectedDistrict.Loci_Code_Area_L1 = null;
+      manufacturerInfo.value.streetAddress1 = null;
+      manufacturerInfo.value.streetAddress2 = null;
+      manufacturerInfo.value.zipCode = null;
+    };
+
     provide("manufacturerInfo", manufacturerInfo);
     provide("Global_Manufacturer_Definition", Global_Manufacturer_Definition);
 
@@ -186,6 +196,7 @@ export default {
       goBack,
       redirectToPage,
       createRecord,
+      clearContent,
     };
   },
   components: { ManufacturerInformation, Btn2, Btn, Header },
