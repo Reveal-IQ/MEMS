@@ -40,6 +40,7 @@ Description: < Describe the application >
 
       <main>
         <FacilityInformation />
+        <!-- <SuccessPage /> -->
 
         <div class="d-flex justify-content-center py-3">
           <div class="">
@@ -64,6 +65,7 @@ import FacilityInformation from "./FACILITY-FacilityInformation.vue"; // Based o
 import Btn from "../BIOMD-UI/UI-Btn.vue";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 import Header from "../BIOMD-UI/UI-FormHeader.vue";
+import SuccessPage from "../BIOMD-UI/UI-SuccessPage.vue";
 
 export default {
   name: "manufacturer",
@@ -113,6 +115,9 @@ export default {
         District: null,
       },
     });
+    const changePage = (page) => {
+      emit("updatePage", page);
+    };
     // send Socket Request use to send rrequest packet for an API
     const sendSocketReq = (request) => {
       store.dispatch("sendSocketReq", request);
@@ -144,14 +149,7 @@ export default {
         },
         callback: (res) => {
           if (res.Type === "RESPONSE") {
-            // Console the Response Packet
-            Type: "RESPONSE";
-            Response: {
-              // ID:
-              Success: TRUE;
-              Collection: "facilities";
-              Message: "Created Record";
-            }
+            changePage("success");
 
             console.log("Response Packet -->", res.Response);
             getValues.value = res.Response.Site_Info[0]; //Assigning response values to getValues Object
@@ -178,9 +176,10 @@ export default {
       goBack,
       redirectToPage,
       createRecord,
+      changePage,
     };
   },
-  components: { FacilityInformation, Btn2, Btn, Header },
+  components: { FacilityInformation, Btn2, Btn, Header, SuccessPage },
 };
 </script>
 

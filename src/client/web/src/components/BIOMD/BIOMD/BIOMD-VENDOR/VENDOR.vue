@@ -128,6 +128,10 @@ export default {
       },
     });
 
+    const changePage = async (page) => {
+      emit("updatePage", page);
+    };
+
     // send Socket Request use to send rrequest packet for an API
     const sendSocketReq = (request) => {
       store.dispatch("sendSocketReq", request);
@@ -165,14 +169,7 @@ export default {
         },
         callback: (res) => {
           if (res.Type === "RESPONSE") {
-            // Console the Response Packet
-            Type: "RESPONSE";
-            Response: {
-              // ID:
-              Success: TRUE;
-              Collection: "vendors";
-              Message: "Created Record";
-            }
+            changePage("success");
 
             console.log("Response Packet -->", res.Response);
             getValues.value = res.Response.Site_Info[0]; //Assigning response values to getValues Object
@@ -190,10 +187,6 @@ export default {
 
     const goBack = () => {
       emit("updatePage", "landing");
-    };
-
-    const changePage = async (page) => {
-      emit("updatePage", page);
     };
 
     provide("vendorInfo", vendorInfo);
