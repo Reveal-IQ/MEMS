@@ -23,7 +23,7 @@
         <table class="table table-hover">
           <thead>
             <tr>
-              <th scope="col">Equipment ID</th>
+              <th scope="col">Asset Code</th>
               <th scope="col">Serial Number</th>
               <th scope="col">Model</th>
               <th scope="col">Manufacturer</th>
@@ -33,7 +33,12 @@
           </thead>
           <tbody>
             <tr v-for="equipment in inventoryList">
-              <td v-for="equipmentDetail in equipment">{{ equipmentDetail }}</td>
+              <td>{{ equipment.assetCode}}</td>
+              <td>{{ equipment.serialNumber}}</td>
+              <td>{{ equipment.Model}}</td>
+              <td>{{ equipment.Manufacturer}}</td>
+              <td>{{ equipment.Department}}</td>
+              <td>{{ equipment.Location}}</td>
             </tr>
           </tbody>
         </table>
@@ -105,12 +110,12 @@ import { ref } from "vue";
 //Demo Data
 var inventoryList =
   [{
-    EquipmentID: "A1404",
-    SerialNumber: "A358302F1",
+    Location: "Bay 7",
+    assetCode: "A1404",
+    serialNumber: "A358302F1",
     Model: "MX800",
     Manufacturer: "Philips",
-    Department: "ICU",
-    Location: "Bay 7"
+    Department: "ICU"
   },
   {
     EquipmentID: "12D78",
