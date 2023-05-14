@@ -1,27 +1,72 @@
 <template>
-  <div class="row">
-    <div class="card text-center w-75 mx-auto">
-      <!-- <div class="card-header">Message</div> -->
-      <div class="card-body">
-        <font-awesome-icon icon="check" size="3x" class="me-2 text-success" />
-        <h5 class="card-title text-success">Success</h5>
-        <p class="card-text">A new record was created.</p>
+  <div class="RevealContainer">
+    <div class="container p-4 m-4">
+      <div class="row">
+        <div class="card text-center p-3">
+          <div class="card-body mb-3">
+            <font-awesome-icon
+              icon="check"
+              size="5x"
+              class="me-2 text-success"
+            />
+            <div class="d-flex flex-column ml-2">
+              <span class="text-success">Success</span
+              ><span class="text-black-50"
+                >A new record has been successfully added</span
+              >
+            </div>
+          </div>
 
-        <div class="">
-          <Btn2
-            BtnName="Dashboard"
-            :icon="'arrow-left'"
-            backgroundColor="none"
-            @click="goBack"
-            class="text-secondary btn-sm"
-          />
-          <Btn2
-            BtnName="Create Another Record"
-            :icon="'plus-circle'"
-            backgroundColor="none"
-            class="text-secondary btn-sm"
-            @click="newRecord"
-          />
+          <div class="d-lg-flex d-md-flex d-block justify-content-between">
+            <Btn2
+              BtnName="Dashboard"
+              :icon="'arrow-left'"
+              backgroundColor="none"
+              @click="goBack('landing')"
+              class="text-secondary btn-sm"
+            />
+
+            <Btn2
+              BtnName="Add New Asset"
+              :icon="'plus-circle'"
+              backgroundColor="none"
+              @click="goBack('assetInfo')"
+              class="text-secondary btn-sm"
+            />
+
+            <Btn2
+              BtnName="Add New Facility"
+              :icon="'plus-circle'"
+              backgroundColor="none"
+              @click="goBack('facilityInfo')"
+              class="text-secondary btn-sm"
+            />
+          </div>
+          <div class="d-lg-flex d-md-flex d-block justify-content-between">
+            <Btn2
+              BtnName="Add New Model"
+              :icon="'plus-circle'"
+              backgroundColor="none"
+              @click="goBack('modelInfo')"
+              class="text-secondary btn-sm"
+            />
+
+            <Btn2
+              BtnName="Add New Manufacturer"
+              :icon="'plus-circle'"
+              backgroundColor="none"
+              @click="goBack('manufacturerInfo')"
+              class="text-secondary btn-sm"
+            />
+
+            <Btn2
+              BtnName="Add New Vendor"
+              :icon="'plus-circle'"
+              backgroundColor="none"
+              @click="goBack('vendorInfo')"
+              class="text-secondary btn-sm"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -29,24 +74,23 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 
-const emit = defineEmits(["updatePage", "newRecord"]);
+const emit = defineEmits(["updatePage"]);
 
-const newRecord = () => {
-  emit("newRecord", "assetInfo");
-};
-
-const goBack = () => {
-  emit("updatePage", "landing");
-};
-
-const compState = ref("");
-
-const updatePage = (page) => {
-  compState.value = page;
+const goBack = (page) => {
+  emit("updatePage", page);
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.RevealContainer {
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow: scroll;
+}
+
+.RevealContainer::-webkit-scrollbar {
+  display: none;
+}
+</style>
