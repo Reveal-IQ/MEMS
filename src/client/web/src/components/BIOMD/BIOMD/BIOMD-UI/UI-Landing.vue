@@ -33,20 +33,12 @@
         CardText="Use this form to Register all Facilities."
         @click="changePage('facilityInfo')"
       />
-
-      <Card
-        CardTitle="Success Page"
-        CardText="Use this form to Register all Facilities."
-        @click="changePage('success')"
-      />
     </div>
   </div>
 </template>
 
 <script setup>
 import Card from "../BIOMD-UI/UI-Card.vue";
-
-import { ref } from "vue";
 
 const emit = defineEmits(["updatePage"]);
 

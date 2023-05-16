@@ -17,53 +17,12 @@
             </div>
           </div>
 
-          <div class="d-lg-flex d-md-flex d-block justify-content-between">
+          <div class="d-lg-flex d-md-flex d-block justify-content-center">
             <Btn2
               BtnName="Dashboard"
               :icon="'arrow-left'"
               backgroundColor="none"
               @click="goBack('landing')"
-              class="text-secondary btn-sm"
-            />
-
-            <Btn2
-              BtnName="Add New Asset"
-              :icon="'plus-circle'"
-              backgroundColor="none"
-              @click="goBack('assetInfo')"
-              class="text-secondary btn-sm"
-            />
-
-            <Btn2
-              BtnName="Add New Facility"
-              :icon="'plus-circle'"
-              backgroundColor="none"
-              @click="goBack('facilityInfo')"
-              class="text-secondary btn-sm"
-            />
-          </div>
-          <div class="d-lg-flex d-md-flex d-block justify-content-between">
-            <Btn2
-              BtnName="Add New Model"
-              :icon="'plus-circle'"
-              backgroundColor="none"
-              @click="goBack('modelInfo')"
-              class="text-secondary btn-sm"
-            />
-
-            <Btn2
-              BtnName="Add New Manufacturer"
-              :icon="'plus-circle'"
-              backgroundColor="none"
-              @click="goBack('manufacturerInfo')"
-              class="text-secondary btn-sm"
-            />
-
-            <Btn2
-              BtnName="Add New Vendor"
-              :icon="'plus-circle'"
-              backgroundColor="none"
-              @click="goBack('vendorInfo')"
               class="text-secondary btn-sm"
             />
           </div>

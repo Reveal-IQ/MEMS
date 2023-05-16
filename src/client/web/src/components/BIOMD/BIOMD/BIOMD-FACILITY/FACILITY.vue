@@ -40,7 +40,6 @@ Description: < Describe the application >
 
       <main>
         <FacilityInformation />
-        <!-- <SuccessPage /> -->
 
         <div class="d-flex justify-content-center py-3">
           <div class="">
@@ -65,7 +64,6 @@ import FacilityInformation from "./FACILITY-FacilityInformation.vue"; // Based o
 import Btn from "../BIOMD-UI/UI-Btn.vue";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 import Header from "../BIOMD-UI/UI-FormHeader.vue";
-import SuccessPage from "../BIOMD-UI/UI-SuccessPage.vue";
 
 export default {
   name: "manufacturer",
@@ -179,7 +177,7 @@ export default {
       changePage,
     };
   },
-  components: { FacilityInformation, Btn2, Btn, Header, SuccessPage },
+  components: { FacilityInformation, Btn2, Btn, Header },
 };
 </script>
 
