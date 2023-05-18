@@ -78,7 +78,7 @@ const isValidOperator = async function (operator) {
 //Create a single BIOMD record
 module.exports.CREATE_RECORD = async function (req, dbClient) {
 
-  //Confirm Packet Received 
+  //Confirm Packet Received
   console.log(await TIMESTAMP() + `: RCU-BIOMD-I001 : CREATE RECORD api processing request packet ID: ${req.ID}`)
 
   //Copy Requester Information
@@ -289,13 +289,16 @@ module.exports.LIST_ASSETS = async function (req, dbClient) {
         $project: {
           manufacturer_id: { $toObjectId: "$manufacturer_id" },
           model_id: { $toObjectId: "$model_id" },
+          facility_id: { $toObjectId: "$facility_id" },
           ...projection
         },
       },
+      { $lookup: { from: "Facility", localField: "facility_id", foreignField: "_id", as: "facility" } },
       { $lookup: { from: "Manufacturer", localField: "manufacturer_id", foreignField: "_id", as: "manufacturer" } },
       { $lookup: { from: "Model", localField: "model_id", foreignField: "_id", as: "model" } },
       {
         $project: {
+          facility: { $arrayElemAt: ["$facility", 0] },
           manufacturer: { $arrayElemAt: ["$manufacturer", 0] },
           model: { $arrayElemAt: ["$model", 0] },
           ...projection
@@ -346,6 +349,23 @@ module.exports.LIST_VENDORS = async function (req, dbClient) {
     const records = await collection.aggregate([
       { $skip: skip },
       { $limit: limit },
+      {
+        $project: {
+          manufacturer_id: {
+            $map: {
+              input: "$manufacturer_id",
+              as: "manufacturer_id",
+              in: {
+                $convert: {
+                  input: "$$manufacturer_id",
+                  to: "objectId"
+                }
+              }
+            }
+          },
+          ...projection
+        }
+      },
       { $lookup: { from: "Manufacturer", localField: "manufacturer_id", foreignField: "_id", as: "manufacturers" } },
       {
         $project: {
