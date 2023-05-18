@@ -117,6 +117,10 @@ export default {
         status: "<Navigate_To_This_Page>",
       });
     }
+
+    const changePage = (page) => {
+      emit("updatePage", page);
+    };
     // send Socket Request use to send rrequest packet for an API
     const sendSocketReq = (request) => {
       store.dispatch("sendSocketReq", request);
@@ -152,14 +156,7 @@ export default {
         },
         callback: (res) => {
           if (res.Type === "RESPONSE") {
-            // Console the Response Packet
-            Type: "RESPONSE";
-            Response: {
-              // ID:
-              Success: TRUE;
-              Collection: "manufacturers";
-              Message: "Created Record";
-            }
+            changePage("success");
 
             console.log("Response Packet -->", res.Response);
             getValues.value = res.Response.Site_Info[0]; //Assigning response values to getValues Object
@@ -186,6 +183,7 @@ export default {
       goBack,
       redirectToPage,
       createRecord,
+      changePage,
     };
   },
   components: { ManufacturerInformation, Btn2, Btn, Header },

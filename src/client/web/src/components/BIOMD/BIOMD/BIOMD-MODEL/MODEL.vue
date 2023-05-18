@@ -59,7 +59,7 @@ Description: < Describe the application >
 </template>
 
 <script>
-import { useStore } from "vuex"; 
+import { useStore } from "vuex";
 import { ref, computed, provide } from "vue";
 
 import Btn from "../BIOMD-UI/UI-Btn.vue";
@@ -108,6 +108,10 @@ export default {
       store.dispatch("sendSocketReq", request);
     };
 
+    const changePage = async (page) => {
+      emit("updatePage", page);
+    };
+
     function createRecord() {
       // send Request as below .
       sendSocketReq({
@@ -130,14 +134,7 @@ export default {
         },
         callback: (res) => {
           if (res.Type === "RESPONSE") {
-            // Console the Response Packet
-            Type: "RESPONSE";
-            Response: {
-              // ID:
-              Success: TRUE;
-              Collection: "equipment_models";
-              Message: "Created Record";
-            }
+            changePage("success");
 
             console.log("Response Packet -->", res.Response);
             getValues.value = res.Response.Site_Info[0]; //Assigning response values to getValues Object
@@ -164,6 +161,7 @@ export default {
       goBack,
       redirectToPage,
       createRecord,
+      changePage,
     };
   },
 };

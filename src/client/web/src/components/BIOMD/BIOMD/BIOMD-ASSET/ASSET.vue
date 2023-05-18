@@ -176,6 +176,10 @@ export default {
 
     const comment = ref(null);
 
+    const changePage = (page) => {
+      emit("updatePage", page);
+    };
+
     // send Socket Request use to send rrequest packet for an API
     const sendSocketReq = (request) => {
       store.dispatch("sendSocketReq", request);
@@ -224,12 +228,7 @@ export default {
         },
         callback: (res) => {
           if (res.Type === "RESPONSE") {
-            // Console the Response Packet
-            Response: {
-              Success: TRUE;
-              Collection: "assets";
-              Message: "Created Record";
-            }
+            changePage("success");
 
             console.log("Response Packet -->", res.Response);
             getValues.value = res.Response.Site_Info[0]; //Assigning response values to getValues Object
@@ -261,6 +260,7 @@ export default {
       goBack,
       redirectToPage,
       createRecord,
+      changePage,
     };
   },
 };

@@ -30,7 +30,11 @@ Description: < Describe the application >
               @update-page="updatePage"
             />
             <MANUFACTURER
-              v-else="compState === 'manufacturerInfo'"
+              v-else-if="compState === 'manufacturerInfo'"
+              @update-page="updatePage"
+            />
+            <SuccessPage
+              v-else="compState === 'success'"
               @update-page="updatePage"
             />
           </div>
@@ -50,6 +54,7 @@ import VENDOR from "../BIOMD/BIOMD-VENDOR/VENDOR.vue";
 import MODEL from "../BIOMD/BIOMD-MODEL/MODEL.vue";
 import MANUFACTURER from "../BIOMD/BIOMD-MANUFACTURER/MANUFACTURER.vue";
 import Landing from "../BIOMD/BIOMD-UI/UI-Landing.vue";
+import SuccessPage from "../BIOMD/BIOMD-UI/UI-SuccessPage.vue";
 
 export default {
   components: {
@@ -59,6 +64,7 @@ export default {
     MODEL,
     MANUFACTURER,
     Landing,
+    SuccessPage
   },
   name: "BIOMD",
   // Define Props here
