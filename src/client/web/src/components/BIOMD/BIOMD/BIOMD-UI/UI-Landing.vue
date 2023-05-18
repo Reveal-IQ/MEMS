@@ -190,8 +190,6 @@ var fetchAssets = () => {
     data: req,
     callback: (res) => {
       inventoryList.value = res.Response.records
-
-      console.log("Vendor Support: "+ JSON.stringify(inventoryList))
     }
   }
   )
