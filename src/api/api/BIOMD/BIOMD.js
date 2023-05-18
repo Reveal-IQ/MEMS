@@ -11,7 +11,7 @@
 //Required Libs
 // const { join } = require("path");
 // const media = require(join(CONFIG.Paths.HomeDir, CONFIG.Paths.API, "GLOBAL", "media"));
-const {ObjectId} = require('mongodb');
+const { ObjectId } = require('mongodb');
 const instituteCode = CONFIG.Database.Site_Database.Name;
 
 //Application Info
@@ -47,6 +47,9 @@ const VENDORS = "vendors";
 
 const OPERATORS = ["eq", "in", "gt", "lt", "sb", "eq_id"];
 
+const DEFAULT_LIMIT_COUNT = 1000;
+const DEFAULT_SKIP_COUNT = 0;
+
 //Common Create Function
 const createOne = async function (doc, dbClient, collection) {
   const result = await dbClient.db(instituteCode).collection(collection).insertOne(doc);
@@ -75,7 +78,7 @@ const isValidOperator = async function (operator) {
 //Create a single BIOMD record
 module.exports.CREATE_RECORD = async function (req, dbClient) {
 
-  //Confirm Packet Received 
+  //Confirm Packet Received
   console.log(await TIMESTAMP() + `: RCU-BIOMD-I001 : CREATE RECORD api processing request packet ID: ${req.ID}`)
 
   //Copy Requester Information
@@ -245,7 +248,7 @@ module.exports.FIND_RECORD = async function (req, dbClient) {
       success: true,
       message: result.length + " records found in " + find.collection,
     };
-  
+
   } catch (error) {
     //Log Error
     console.log((await TIMESTAMP()) + `: API-<FIND>-E001 : ${error}`);
@@ -256,6 +259,138 @@ module.exports.FIND_RECORD = async function (req, dbClient) {
       Request_ID: req.ID,
       Error_Code: "API-FIND-E001",
       Error_Msg: "FIND_API: Failed to execute db query",
+    };
+  }
+
+  return res;
+};
+
+// List Assets API
+module.exports.LIST_ASSETS = async function (req, dbClient) {
+  try {
+    //Confirm Packet Received
+    console.log(
+      (await TIMESTAMP()) +
+      `: RCU-BIOMD-I001 : LIST_ASSETS processing request packet ID: ${req.ID}`
+    );
+
+    //Copy Requester Information
+    var res = Object.assign({}, req);
+
+    // Perform List query
+    const collection = await dbClient.db(instituteCode).collection("Asset");
+    const projection = (req && req.Request && req.Request.list && req.Request.list.projection) || { "_id": 1 };
+    const limit = (req && req.Request && req.Request.list && req.Request.list.limit) || DEFAULT_LIMIT_COUNT;
+    const skip = (req && req.Request && req.Request.list && req.Request.list.skip) || DEFAULT_SKIP_COUNT;
+    const records = await collection.aggregate([
+      { $skip: skip },
+      { $limit: limit },
+      {
+        $project: {
+          manufacturer_id: { $toObjectId: "$manufacturer_id" },
+          model_id: { $toObjectId: "$model_id" },
+          facility_id: { $toObjectId: "$facility_id" },
+          ...projection
+        },
+      },
+      { $lookup: { from: "Facility", localField: "facility_id", foreignField: "_id", as: "facility" } },
+      { $lookup: { from: "Manufacturer", localField: "manufacturer_id", foreignField: "_id", as: "manufacturer" } },
+      { $lookup: { from: "Model", localField: "model_id", foreignField: "_id", as: "model" } },
+      {
+        $project: {
+          facility: { $arrayElemAt: ["$facility", 0] },
+          manufacturer: { $arrayElemAt: ["$manufacturer", 0] },
+          model: { $arrayElemAt: ["$model", 0] },
+          ...projection
+        }
+      }]).toArray();
+
+    //Response Packet
+    res.Type = "RESPONSE";
+    res.Response = {
+      records,
+      success: true,
+      message: records.length + " records listed from Asset",
+    };
+
+  } catch (error) {
+    //Log Error
+    console.log((await TIMESTAMP()) + `: API-<LIST_ASSETS>-E001 : ${error}`);
+
+    //Error Request Packet
+    res.Type = "ERROR";
+    res.Response = {
+      Request_ID: req.ID,
+      Error_Code: "API-BIOMD-E003",
+      Error_Msg: "LIST_ASSETS: Failed to execute db query",
+    };
+  }
+
+  return res;
+};
+
+// List Vendors API
+module.exports.LIST_VENDORS = async function (req, dbClient) {
+  try {
+    //Confirm Packet Received
+    console.log(
+      (await TIMESTAMP()) +
+      `: RCU-BIOMD-I001 : LIST_VENDORS processing request packet ID: ${req.ID}`
+    );
+
+    //Copy Requester Information
+    var res = Object.assign({}, req);
+
+    // Perform List query
+    const collection = await dbClient.db(instituteCode).collection("Vendor");
+    const projection = (req && req.Request && req.Request.list && req.Request.list.projection) || { "_id": 1 };
+    const limit = (req && req.Request && req.Request.list && req.Request.list.limit) || DEFAULT_LIMIT_COUNT;
+    const skip = (req && req.Request && req.Request.list && req.Request.list.skip) || DEFAULT_SKIP_COUNT;
+    const records = await collection.aggregate([
+      { $skip: skip },
+      { $limit: limit },
+      {
+        $project: {
+          manufacturer_id: {
+            $map: {
+              input: "$manufacturer_id",
+              as: "manufacturer_id",
+              in: {
+                $convert: {
+                  input: "$$manufacturer_id",
+                  to: "objectId"
+                }
+              }
+            }
+          },
+          ...projection
+        }
+      },
+      { $lookup: { from: "Manufacturer", localField: "manufacturer_id", foreignField: "_id", as: "manufacturers" } },
+      {
+        $project: {
+          ...projection
+        }
+      }]).toArray();
+
+    //Response Packet
+    res.Type = "RESPONSE";
+    res.Response = {
+      records,
+      success: true,
+      message: records.length + " records listed from Vendor",
+    };
+
+  } catch (error) {
+    //Log Error
+    console.log((await TIMESTAMP()) + `: API-<LIST_VENDORS>-E001 : ${error}`);
+
+    //Error Request Packet
+    res.Type = "ERROR";
+    res.Response = {
+      Request_ID: req.ID,
+      Error_Code: "API-BIOMD-E004",
+      Error_Msg: "LIST_VENDORS: Failed to execute db query",
     };
   }
 
