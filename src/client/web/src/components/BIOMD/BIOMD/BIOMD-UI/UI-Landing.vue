@@ -27,6 +27,7 @@
               <th scope="col">Serial Number</th>
               <th scope="col">Model</th>
               <th scope="col">Manufacturer</th>
+              <th scope="col">Facility</th>
               <th scope="col">Department</th>
               <th scope="col">Location</th>
             </tr>
@@ -35,10 +36,11 @@
             <tr v-for="equipment in inventoryList">
               <td>{{ equipment.assetCode}}</td>
               <td>{{ equipment.serialNumber}}</td>
-              <td>{{ equipment.Model}}</td>
-              <td>{{ equipment.Manufacturer}}</td>
-              <td>{{ equipment.Department}}</td>
-              <td>{{ equipment.Location}}</td>
+              <td>{{ equipment.model.model_name}}</td>
+              <td>{{ equipment.manufacturer.manufacturer_name}}</td>
+              <td>{{ equipment.facility.facility_name }}</td>
+              <td>{{ equipment.department}}</td>
+              <td>{{ equipment.roomTag}}</td>
             </tr>
           </tbody>
         </table>
@@ -71,13 +73,17 @@
           </thead>
           <tbody>
             <tr v-for="vendor in vendorSupport">
-              <td v-for="vendorDetail in vendor">{{ vendorDetail }}</td>
+              <td>{{ vendor.vendor_name}}</td>
+              <td>{{ vendor.manufacturers}}</td>
+              <td>{{ vendor.contact[0].name}}</td>
+              <td>{{ vendor.contact[0].number}}</td>
+              <td>{{ vendor.contact[0].email}}</td>
+              <td>{{ vendor.location}}</td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
-
 
     <!--Additional Page Navigation-->
     <div class="col-8" style="margin-bottom:20px; margin-top:100px">
@@ -105,44 +111,97 @@
 
 //Imports
 import Card from "../BIOMD-UI/UI-Card.vue";
-import { ref } from "vue";
+import { ref, onMounted } from 'vue';
+import { useStore } from "vuex";
 
-//Demo Data
-var inventoryList =
-  [{
-    Location: "Bay 7",
-    assetCode: "A1404",
-    serialNumber: "A358302F1",
-    Model: "MX800",
-    Manufacturer: "Philips",
-    Department: "ICU"
-  },
-  {
-    EquipmentID: "12D78",
-    SerialNumber: "C3E720345",
-    Model: "Connex",
-    Manufacturer: "Baxter",
-    Department: "PACU",
-    Location: "Bay 16"
-  }]
+//Variables
+const vendorSupport = ref(null);
+const inventoryList = ref(null);
+const store = useStore();
 
-var vendorSupport =
-  [{
-    Vendor: "Life Care Technology Ghana Ltd",
-    Manufacturers: "Drager, Masimo, Zoll, Baxter",
-    ContactName: "John Dowe",
-    ContactNumber: "+233 246509395",
-    Email: "N/A",
-    Location: "Labone Crescent , ECO bank Junction , House no.7 , Accra"
-  },
+//Functions
+const sendSocketReq = (request) => {
+  store.dispatch("sendSocketReq", request);
+};
+
+//Fetch Vendor Support Information
+var fetchVendor = () => {
+  var req =
   {
-    Vendor: "Philips West Africa",
-    Manufacturers: "Philips",
-    ContactName: "Evelyn Lokko",
-    ContactNumber: "+233 242439406",
-    Email: "evelyn.lokko@philips.com",
-    Location: "2nd Floor BPAHeights, #11 Dodi Lane, Airport Residential Area"
-  }]
+    Expiry: 20000,
+    Type: "REQUEST",
+    Request: {
+      Module: "MEMS",
+      ServiceCode: "BIOMD",
+      API: "LIST_VENDORS",
+      list: {
+        projection: {
+          "vendor_name": 1,
+          "contact": 1,
+          "manufacturers": 1,
+        }
+      }
+    }
+  }
+  
+  sendSocketReq({
+    data: req,
+    callback: (res) => {
+      let vendorList = res.Response.records
+
+      //List Manufacturers
+      vendorList = vendorList.map( (i) => {
+        i.manufacturers = i.manufacturers.map(
+          e => e.manufacturer_name
+        ).join(", ");
+
+        return i
+      }
+      )
+
+      vendorSupport.value = vendorList
+    }
+  }
+  )
+}
+
+//Fetch Assets Support Information
+var fetchAssets = () => {
+  var req =
+  {
+    Expiry: 20000,
+    Type: "REQUEST",
+    Request: {
+      Module: "MEMS",
+      ServiceCode: "BIOMD",
+      API: "LIST_ASSETS",
+      list: {
+        projection: {
+          "assetCode": 1,
+          "serialNumber": 1,
+          "department":1,
+          "roomTag":1
+        }
+      }
+    }
+  }
+  
+  sendSocketReq({
+    data: req,
+    callback: (res) => {
+      inventoryList.value = res.Response.records
+
+      console.log("Vendor Support: "+ JSON.stringify(inventoryList))
+    }
+  }
+  )
+}
+
+//Lifecycle Hook
+onMounted(() => {
+  fetchVendor();
+  fetchAssets();
+});
 
 
 const emit = defineEmits(["updatePage"]);
