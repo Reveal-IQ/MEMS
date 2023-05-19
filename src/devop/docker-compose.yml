@@ -25,7 +25,7 @@ services:
   #Reveal Core Unit 
   API:
     build: ../api
-    image: "mems/api:0.1.0"
+    image: "mems/api:0.2.0"
     deploy:
       restart_policy:
         delay: 5s
@@ -53,7 +53,7 @@ services:
   #Reverse Proxy        
   PROXY:
     build: ./proxy
-    image: "mems/proxy:0.1.0"
+    image: "mems/proxy:0.2.0"
     ports:
       - "80:80"
       - "443:443"
@@ -70,7 +70,7 @@ services:
   #DMODB01 Mongo DB Database
   DMODB01:
     build: ./database/DMODB01
-    image: "mems/dmodb01:0.1.0"
+    image: "mems/dmodb01:0.2  .0"
     deploy:
       restart_policy:
         delay: 5s
