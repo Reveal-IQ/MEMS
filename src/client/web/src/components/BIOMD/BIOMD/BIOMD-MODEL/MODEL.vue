@@ -161,6 +161,7 @@ export default {
       ModelDescription.value.modelName = null;
       ModelDescription.value.modelNumber = null;
       ModelDescription.value.vendorSiteId = null;
+      ModelDescription.value.selectedManufacturer.manufacturer_name = null;
     };
 
     provide("ModelDescription", ModelDescription);

@@ -47,6 +47,7 @@
             class="form-control"
             list="stateOptions"
             id="stateList"
+            :disabled="isDisabled"
             placeholder="Type to search..."
             v-model="vendorInfo.selectedState.Loci_Name_State"
             @input="fetchState"
@@ -137,6 +138,7 @@ const Global_Vendor_Definition = inject("Global_Vendor_Definition");
 const countryList = ref(null);
 const stateList = ref(null);
 const districtList = ref(null);
+const isDisabled = ref(true);
 const sendSocketReq = (request) => {
   store.dispatch("sendSocketReq", request);
 };
@@ -157,6 +159,7 @@ const fetchCountry = async (event) => {
         vendorInfo.value.selectedCountry.Loci_Code_Country;
       // validateInput("Country");
       await fetchState();
+      isDisabled.value = !isDisabled.value
     } else {
       // Clear Country, State, District, Mandal, Postal Code
       Global_Vendor_Definition.value.vendorAddress.Country = null;

@@ -195,6 +195,7 @@ export default {
     const clearContent = () => {
       vendorInfo.value.vendorName = null;
       vendorInfo.value.selectedCountry.Loci_Code_Country = null;
+      Global_Vendor_Definition.value.vendorAddress.Country = null;
       vendorInfo.value.selectedState.Loci_Code_State = null;
       vendorInfo.value.selectedDistrict.Loci_Code_Area_L1 = null;
       vendorInfo.value.streetAddress1 = null;

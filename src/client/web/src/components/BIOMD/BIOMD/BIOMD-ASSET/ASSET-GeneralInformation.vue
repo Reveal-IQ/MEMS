@@ -76,6 +76,7 @@
           placeholder="Select Model"
           aria-label="Default select example"
           v-model="GeneralInformation.selectedModel.model_name"
+          :disabled="isDisabled"
           @input="fetchModel"
           autocomplete="off"
         />
@@ -135,6 +136,8 @@ const sendSocketReq = (request) => {
   store.dispatch("sendSocketReq", request);
 };
 
+const isDisabled = ref(true);
+
 const manufacturerList = ref(null);
 const modelList = ref(null);
 
@@ -159,6 +162,7 @@ const fetchManufacturer = async (event) => {
       Global_Asset_Information.value.manufacturerId =
         GeneralInformation.value.selectedManufacturer._id;
       await fetchModel();
+      isDisabled.value = false;
     } else {
       Global_Asset_Information.value.manufacturerId = null;
 
