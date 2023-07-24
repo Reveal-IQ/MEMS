@@ -40,11 +40,11 @@
     </div>
     <div class="col">
       <Btn2
-        BtnName="Add New Contact"
-        backgroundColor="#1266F1"
+        BtnName="Add"
         :icon="'plus'"
-        @click=""
-        class="rounded-pill"
+        backgroundColor="none"
+        @click="add"
+        class="text-primary btn-sm"
       />
     </div>
   </Section>

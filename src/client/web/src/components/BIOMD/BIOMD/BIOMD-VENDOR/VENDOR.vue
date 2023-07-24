@@ -41,6 +41,7 @@ Description: < Describe the application >
       <main>
         <VendorInformation />
         <CustomerService />
+        <ManufacturerInformation />
         <div class="d-flex justify-content-center py-3">
           <!-- btn-green and a-link are custom css for MEMS check base.css -->
           <div class="">
@@ -63,10 +64,10 @@ Description: < Describe the application >
 import { useStore } from "vuex"; // Access Vuew Store Variables and Methods
 import { ref, toRefs, provide, computed } from "vue";
 
-import VendorInformation from "../BIOMD-VENDOR/VENDOR-VendorInformation.vue";
-import CustomerService from "../BIOMD-VENDOR/VENDOR-CustomerService.vue";
-import ManufacturerInformation from "../BIOMD-VENDOR/VENDOR-ManufacturerInfo.vue";
-import ModelInformation from "../BIOMD-VENDOR/VENDOR-ModelInfo.vue";
+import VendorInformation from "./VENDOR-VendorInformation.vue";
+import CustomerService from "./VENDOR-CustomerService.vue";
+import ManufacturerInformation from "./VENDOR-ManufacturerInfo.vue";
+import ModelInformation from "./VENDOR-ModelInfo.vue";
 import Btn from "../BIOMD-UI/UI-Btn.vue";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 import Header from "../BIOMD-UI/UI-FormHeader.vue";
@@ -107,6 +108,7 @@ export default {
         status: "<Navigate_To_This_Page>",
       });
     }
+
     const vendorInfo = ref({
       vendorName: null,
       selectedCountry: { Loci_Name_Country: null, Loci_Code_Country: null },
@@ -120,12 +122,17 @@ export default {
       zipCode: null,
     });
 
+    const manufacturerInfo = ref({
+      selectedManufacturer: { manufacturer_name: null, _id: null },
+    });
+
     const Global_Vendor_Definition = ref({
       vendorAddress: {
         Country: null,
         State: null,
         District: null,
       },
+      manufacturerId: null,
     });
 
     const changePage = async (page) => {
@@ -162,7 +169,7 @@ export default {
               address_2: vendorInfo.value.streetAddress2,
               areaCode: vendorInfo.value.zipCode,
               contactID: [],
-              manufacturer_id: [],
+              manufacturer_id: Global_Vendor_Definition.value.manufacturerId,
             },
             Institute_Code: Institute_Code.value, //Dynamically changes when another institute logged in
           },
@@ -190,6 +197,7 @@ export default {
     };
 
     provide("vendorInfo", vendorInfo);
+    provide("manufacturerInfo", manufacturerInfo);
     provide("Global_Vendor_Definition", Global_Vendor_Definition);
 
     return {
