@@ -124,6 +124,7 @@ export default {
 
     const manufacturerInfo = ref({
       selectedManufacturer: { manufacturer_name: null, _id: null },
+      selectedModel: { model_name: null, _id: null },
     });
 
     const Global_Vendor_Definition = ref({
@@ -133,6 +134,7 @@ export default {
         District: null,
       },
       manufacturerId: null,
+      modelId: null,
     });
 
     const changePage = async (page) => {
@@ -170,6 +172,7 @@ export default {
               areaCode: vendorInfo.value.zipCode,
               contactID: [],
               manufacturer_id: Global_Vendor_Definition.value.manufacturerId,
+              model_id: Global_Vendor_Definition.value.modelId,
             },
             Institute_Code: Institute_Code.value, //Dynamically changes when another institute logged in
           },

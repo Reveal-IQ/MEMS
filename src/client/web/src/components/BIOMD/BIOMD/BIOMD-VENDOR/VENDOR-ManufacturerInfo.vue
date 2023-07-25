@@ -23,6 +23,19 @@
           />
         </datalist>
       </div>
+
+      <div class="col">
+        <label for="modelList" class="form-label">Model</label>
+        <ul>
+          <span
+            v-for="model in modelList"
+            :key="model.index"
+            :value="model.model_name"
+          >
+            {{ model.model_name }} | {{ model.model_number }}
+          </span>
+        </ul>
+      </div>
     </div>
     <div class="col">
       <Btn2
@@ -58,6 +71,7 @@ const sendSocketReq = (request) => {
 };
 
 const manufacturerList = ref(null);
+const modelList = ref(null);
 
 const manufacturerInfo = inject("manufacturerInfo");
 const Global_Vendor_Definition = inject("Global_Vendor_Definition");
@@ -112,6 +126,70 @@ const fetchManufacturer = async (event) => {
             // Console the Response Packet
             console.log("Response Packet -->", res.Response);
             manufacturerList.value = res.Response.records;
+          } else if (res.Type === "ERROR") {
+            // Error response received during fetching
+            Type: "ERROR";
+            Response: {
+              Error_Code: "API-CREATE_RECORD-E001";
+              Error_Msg: "CREATE_RECORD_API: Failed to execute query";
+            }
+          }
+        },
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const fetchModel = async (event) => {
+  try {
+    const selectedModel = event ? event.target.value : "";
+    if (
+      event &&
+      (!(event instanceof InputEvent) ||
+        event.inputType === "insertReplacementText")
+    ) {
+      manufacturerInfo.value.selectedModel = modelList.value.find((model) => {
+        return selectedModel === model.model_name;
+      });
+      Global_Vendor_Definition.value.modelId =
+        manufacturerInfo.value.selectedModel._id;
+    } else {
+      Global_Vendor_Definition.value.modelId = null;
+
+      sendSocketReq({
+        data: {
+          Expiry: 20000,
+          Type: "REQUEST",
+          Request: {
+            Module: "MEMS",
+            ServiceCode: "BIOMD",
+            API: "FIND_RECORD",
+            return_array: true,
+            max_list: 100,
+            find: {
+              collection: "Model",
+              queries: [
+                {
+                  field: "manufacturer_id",
+                  op: "sb",
+                  value: Global_Vendor_Definition.value.manufacturerId,
+                },
+              ],
+              projection: {
+                _id: 1,
+                model_name: 1,
+                model_number: 1,
+              },
+            },
+          },
+        },
+        callback: (res) => {
+          if (res.Type === "RESPONSE") {
+            // Console the Response Packet
+            console.log("Response Packet -->", res.Response);
+            modelList.value = res.Response.records;
           } else if (res.Type === "ERROR") {
             // Error response received during fetching
             Type: "ERROR";
