@@ -86,7 +86,7 @@ The Setup Wizard is required to be configured based on the implementation need. 
 >    - Password: Admin@123
 >    - SSL Certificates: SKIP
 > - Institute Information 
->   - Insitute Name: Demo Clinic 
+>   - Insitute Name: Demo Local Clinic 
 >   - Insitute Code: DMO [Code value must be unique ] 
 >   - Currency:  SKIP
 >   - Time Zone: SKIP
