@@ -25,18 +25,39 @@
       </div>
 
       <div class="col">
-        <label for="modelList" class="form-label">Model</label>
-        <ul>
-          <span
-            v-for="model in modelList"
-            :key="model.index"
-            :value="model.model_name"
-          >
-            {{ model.model_name }} | {{ model.model_number }}
-          </span>
-        </ul>
+        <table class="table fs-6">
+          <thead>
+            <tr>
+              <th scope="col" class="fs-6">Model Name</th>
+              <th scope="col" class="fs-6">Model Number</th>
+
+              <Btn2
+                BtnName="Add Model"
+                :icon="'plus'"
+                backgroundColor="none"
+                class="text-primary btn-sm fs-6"
+                data-bs-toggle="collapse"
+                data-bs-target="#modelInfo"
+                aria-expanded="false"
+              />
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              v-for="model in modelList"
+              :key="model.index"
+              :value="model.model_name"
+            >
+              <td scope="row">{{ model.model_name }}</td>
+
+              <td>{{ model.model_number }}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
+
+    <ModelInfo class="collapse" id="modelInfo" />
     <div class="col">
       <Btn2
         BtnName="Add"
@@ -61,6 +82,7 @@
 import { ref, inject, onMounted } from "vue";
 import { useStore } from "vuex";
 
+import ModelInfo from "./VENDOR-ModelInfo.vue";
 import Input from "../BIOMD-UI/UI-Input.vue";
 import Section from "../BIOMD-UI/UI-Section.vue";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
@@ -144,17 +166,17 @@ const fetchManufacturer = async (event) => {
 
 const fetchModel = async (event) => {
   try {
-    const selectedModel = event ? event.target.value : "";
+    const listedModels = event ? event.target.value : "";
     if (
       event &&
       (!(event instanceof InputEvent) ||
         event.inputType === "insertReplacementText")
     ) {
-      manufacturerInfo.value.selectedModel = modelList.value.find((model) => {
-        return selectedModel === model.model_name;
+      manufacturerInfo.value.listedModels = modelList.value.find((model) => {
+        return listedModels === model.model_name;
       });
       Global_Vendor_Definition.value.modelId =
-        manufacturerInfo.value.selectedModel._id;
+        manufacturerInfo.value.listedModels._id;
     } else {
       Global_Vendor_Definition.value.modelId = null;
 
@@ -205,6 +227,17 @@ const fetchModel = async (event) => {
     console.log(error);
   }
 };
+
+const isOpen = ref(false);
+
+function toggleModal() {
+  const x = document.getElementById("modelInfo");
+  if (x.style.display == "none") {
+    x.style.display == "block";
+  } else {
+    x.style.display == "none";
+  }
+}
 
 onMounted(() => {
   fetchManufacturer();

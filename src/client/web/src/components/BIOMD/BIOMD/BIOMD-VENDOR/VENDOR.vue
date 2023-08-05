@@ -124,7 +124,14 @@ export default {
 
     const manufacturerInfo = ref({
       selectedManufacturer: { manufacturer_name: null, _id: null },
-      selectedModel: { model_name: null, _id: null },
+      listedModels: { model_name: null, _id: null },
+    });
+
+    const modelDescription = ref({
+      modelName: null,
+      modelNumber: null,
+      selectedManufacturer: { manufacturer_name: null, _id: null },
+      // vendorSiteId: null,
     });
 
     const Global_Vendor_Definition = ref({
