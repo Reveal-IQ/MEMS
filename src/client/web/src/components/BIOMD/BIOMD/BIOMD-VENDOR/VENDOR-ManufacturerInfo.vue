@@ -6,15 +6,17 @@
       <!-- Manufacturer Information -->
       <div class="col">
         <label for="manufacturerList" class="form-label">Manufacturer</label>
-        <input
-          class="form-control"
-          list="manufacturerOptions"
-          id="manufacturerList"
-          placeholder="Search and Select Manufacturer..."
-          autocomplete="off"
-          v-model="manufacturerInfo.selectedManufacturer.manufacturer_name"
-          @input="fetchManufacturer"
-        />
+        <div class="input-group">
+          <input
+            class="form-control"
+            list="manufacturerOptions"
+            id="manufacturerList"
+            placeholder="Search and Select Manufacturer..."
+            autocomplete="off"
+            v-model="manufacturerInfo.selectedManufacturer.manufacturer_name"
+            @input="fetchManufacturer"
+          />
+        </div>
         <datalist id="manufacturerOptions">
           <option
             v-for="manufacturer in manufacturerList"
@@ -57,6 +59,7 @@
       </div>
     </div>
 
+    <NewManufacturer class="collapse" id="newManufacturer" />
     <ModelInfo class="collapse" id="modelInfo" />
     <div class="col">
       <Btn2
@@ -68,11 +71,13 @@
       />
 
       <Btn2
-        BtnName="New Manufacturer"
+        BtnName="Add Manufacturer"
         :icon="'plus'"
         backgroundColor="none"
-        @click=""
-        class="text-primary btn-sm"
+        class="text-primary btn-sm fs-6"
+        data-bs-toggle="collapse"
+        data-bs-target="#newManufacturer"
+        aria-expanded="false"
       />
     </div>
   </Section>
@@ -82,6 +87,7 @@
 import { ref, inject, onMounted } from "vue";
 import { useStore } from "vuex";
 
+import NewManufacturer from "./VENDOR-NewManufacturer.vue";
 import ModelInfo from "./VENDOR-ModelInfo.vue";
 import Input from "../BIOMD-UI/UI-Input.vue";
 import Section from "../BIOMD-UI/UI-Section.vue";
@@ -227,17 +233,6 @@ const fetchModel = async (event) => {
     console.log(error);
   }
 };
-
-const isOpen = ref(false);
-
-function toggleModal() {
-  const x = document.getElementById("modelInfo");
-  if (x.style.display == "none") {
-    x.style.display == "block";
-  } else {
-    x.style.display == "none";
-  }
-}
 
 onMounted(() => {
   fetchManufacturer();

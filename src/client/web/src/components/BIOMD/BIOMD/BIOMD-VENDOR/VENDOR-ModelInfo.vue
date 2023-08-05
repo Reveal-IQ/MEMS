@@ -145,10 +145,6 @@ const fetchManufacturer = async (event) => {
   }
 };
 
-const changePage = async (page) => {
-  emit("updatePage", page);
-};
-
 function createRecord() {
   // send Request as below .
   sendSocketReq({
