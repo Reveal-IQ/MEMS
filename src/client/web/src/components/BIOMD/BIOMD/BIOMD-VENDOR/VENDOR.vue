@@ -133,6 +133,15 @@ export default {
       selectedManufacturer: { manufacturer_name: null, _id: null },
     });
 
+    const contactInfo = ref([
+      {
+        contactNumber: null,
+        representativeName: null,
+        email: null,
+        contactType: null,
+      },
+    ]);
+
     const Global_Vendor_Definition = ref({
       vendorAddress: {
         Country: null,
@@ -171,7 +180,14 @@ export default {
               address_1: vendorInfo.value.streetAddress1,
               address_2: vendorInfo.value.streetAddress2,
               areaCode: vendorInfo.value.zipCode,
-              contactID: [],
+              contactID: [
+                {
+                  contact_number: contactInfo.value.contactNumber,
+                  representative_name: contactInfo.value.representativeName,
+                  email: contactInfo.value.email,
+                  contact_type: contactInfo.value.contactType,
+                },
+              ],
               manufacturer_id: Global_Vendor_Definition.value.manufacturerId,
               model_id: Global_Vendor_Definition.value.modelId,
             },
@@ -202,6 +218,7 @@ export default {
 
     provide("vendorInfo", vendorInfo);
     provide("manufacturerInfo", manufacturerInfo);
+    provide("contactInfo", contactInfo);
     provide("Global_Vendor_Definition", Global_Vendor_Definition);
 
     return {

@@ -2,125 +2,109 @@
   <main>
     <!-- The main form -->
     <Section sectionTitle="Vendor Information">
-      <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 g-3">
-        <!-- Vendor Name -->
-        <div class="col">
-          <label for="vendorName" class="form-label">Vendor Name</label>
-          <div class="input-group mb-3">
-            <input
-              type="text"
-              class="form-control"
-              id="vendorName"
-              aria-describedby="basic-addon3"
-              placeholder="Enter Vendor Name"
-              v-model="vendorInfo.vendorName"
-            />
-          </div>
-        </div>
-        <!-- Country -->
-        <div class="col">
-          <label for="countryList" class="form-label">Country</label>
+      <!-- Vendor Name -->
+      <div class="col-lg-6">
+        <label for="vendorName" class="form-label">Vendor Name</label>
+        <div class="input-group mb-3">
           <input
+            type="text"
             class="form-control"
-            list="countryOptions"
-            id="countryList"
-            placeholder="Type to search..."
-            v-model="vendorInfo.selectedCountry.Loci_Name_Country"
-            @input="fetchCountry"
-            autocomplete="off"
+            id="vendorName"
+            aria-describedby="basic-addon3"
+            placeholder="Enter Vendor Name"
+            v-model="vendorInfo.vendorName"
           />
-          <datalist id="countryOptions">
-            <option
-              v-for="country in countryList"
-              :key="country.index"
-              :value="country.Loci_Name_Country"
-            ></option>
-          </datalist>
-        </div>
-        <!-- Province/State/Region -->
-
-        <div class="col">
-          <label for="stateList" class="form-label"
-            >Province/State/Region</label
-          >
-          <input
-            class="form-control"
-            list="stateOptions"
-            id="stateList"
-            placeholder="Type to search..."
-            v-model="vendorInfo.selectedState.Loci_Name_State"
-            @input="fetchState"
-            autocomplete="off"
-          />
-          <datalist id="stateOptions">
-            <option
-              v-for="state in stateList"
-              :key="state.index"
-              :value="state.Loci_Name_State"
-            ></option>
-          </datalist>
-        </div>
-        <!-- City/District -->
-        <div class="col">
-          <label for="districtList" class="form-label">District</label>
-          <input
-            class="form-control"
-            list="districtOptions"
-            id="districtList"
-            placeholder="Type to search..."
-            v-model="vendorInfo.selectedDistrict.Loci_Name_Area_L1"
-            @input="fetchDistrict"
-            autocomplete="off"
-          />
-          <datalist id="districtOptions">
-            <option
-              v-for="district in districtList"
-              :key="district.index"
-              :value="district.Loci_Name_Area_L1"
-            ></option>
-          </datalist>
         </div>
       </div>
-      <div class="row g-3 mt-3">
-        <!-- Street Address 1 -->
-        <div class="col-12">
-          <Input
-            label="Street Address 1"
-            type="text"
-            id="street1"
-            placeholder="Enter Street Address 1"
-            v-model="vendorInfo.streetAddress1"
-          />
-        </div>
-        <!-- Street Address 2 -->
-        <div class="col-12">
-          <Input
-            label="Street Address 2"
-            type="text"
-            id="street2"
-            placeholder="Enter Street Address 2"
-            v-model="vendorInfo.streetAddress2"
-          />
-        </div>
-        <!-- Zip / Postal Code -->
-        <div class="col-lg-6">
-          <Input
-            label="Zip/Postal Code"
-            type="number"
-            id="zip"
-            placeholder="Enter Zip/Postal Code"
-            v-model="vendorInfo.zipCode"
-          />
-        </div>
-        <!-- Site ID -->
-        <div class="col-6">
-          <Input
-            label="Site Id"
-            type="text"
-            id="siteId"
-            placeholder="Enter Site ID"
-          />
-        </div>
+      <!-- Country -->
+      <div class="col-lg-6">
+        <label for="countryList" class="form-label">Country</label>
+        <input
+          class="form-control mb-3"
+          list="countryOptions"
+          id="countryList"
+          placeholder="Type to search..."
+          v-model="vendorInfo.selectedCountry.Loci_Name_Country"
+          @input="fetchCountry"
+          autocomplete="off"
+        />
+        <datalist id="countryOptions">
+          <option
+            v-for="country in countryList"
+            :key="country.index"
+            :value="country.Loci_Name_Country"
+          ></option>
+        </datalist>
+      </div>
+      <!-- Province/State/Region -->
+
+      <div class="col-lg-6">
+        <label for="stateList" class="form-label">Province/State/Region</label>
+        <input
+          class="form-control mb-3"
+          list="stateOptions"
+          id="stateList"
+          placeholder="Type to search..."
+          v-model="vendorInfo.selectedState.Loci_Name_State"
+          @input="fetchState"
+          autocomplete="off"
+        />
+        <datalist id="stateOptions">
+          <option
+            v-for="state in stateList"
+            :key="state.index"
+            :value="state.Loci_Name_State"
+          ></option>
+        </datalist>
+      </div>
+      <!-- City/District -->
+      <div class="col-lg-6">
+        <label for="districtList" class="form-label">District</label>
+        <input
+          class="form-control mb-3"
+          list="districtOptions"
+          id="districtList"
+          placeholder="Type to search..."
+          v-model="vendorInfo.selectedDistrict.Loci_Name_Area_L1"
+          @input="fetchDistrict"
+          autocomplete="off"
+        />
+        <datalist id="districtOptions">
+          <option
+            v-for="district in districtList"
+            :key="district.index"
+            :value="district.Loci_Name_Area_L1"
+          ></option>
+        </datalist>
+      </div>
+      <div class="col-lg-6">
+        <Input
+          label="Street Address 1"
+          type="text"
+          id="street1"
+          placeholder="Enter Street Address 1"
+          v-model="vendorInfo.streetAddress1"
+        />
+      </div>
+      <!-- Street Address 2 -->
+      <div class="col-lg-6">
+        <Input
+          label="Street Address 2"
+          type="text"
+          id="street2"
+          placeholder="Enter Street Address 2"
+          v-model="vendorInfo.streetAddress2"
+        />
+      </div>
+      <!-- Zip / Postal Code -->
+      <div class="col-lg-6">
+        <Input
+          label="Zip/Postal Code"
+          type="number"
+          id="zip"
+          placeholder="Enter Zip/Postal Code"
+          v-model="vendorInfo.zipCode"
+        />
       </div>
     </Section>
   </main>
