@@ -133,16 +133,14 @@ const fetchCountry = async (event) => {
       (!(event instanceof InputEvent) ||
         event.inputType === "insertReplacementText")
     ) {
-      // determine if the value is in the datalist. If so, someone selected a value in the list!
       vendorInfo.value.selectedCountry = countryList.value.find((country) => {
         return selectedCountry === country.Loci_Name_Country;
       });
       Global_Vendor_Definition.value.vendorAddress.Country =
         vendorInfo.value.selectedCountry.Loci_Code_Country;
-      // validateInput("Country");
+
       await fetchState();
     } else {
-      // Clear Country, State, District, Mandal, Postal Code
       Global_Vendor_Definition.value.vendorAddress.Country = null;
       Global_Vendor_Definition.value.vendorAddress.State = null;
       vendorInfo.value.selectedState = {
@@ -172,9 +170,8 @@ const fetchCountry = async (event) => {
         callback: (res) => {
           if (res.Type === "RESPONSE") {
             console.log("Response Packet -->", res.Response);
-            countryList.value = res.Response.Country_List; //Assigning response values to getValues Object
+            countryList.value = res.Response.Country_List;
           } else if (res.Type === "ERROR") {
-            // Error response received during fetching
             Type: "ERROR";
             Response: {
               Error_Code: "API-GET_GEO_LIST-E001";
@@ -197,16 +194,14 @@ const fetchState = async (event) => {
       (!(event instanceof InputEvent) ||
         event.inputType === "insertReplacementText")
     ) {
-      // determine if the value is in the datalist. If so, someone selected a value in the list!
       vendorInfo.value.selectedState = stateList.value.find((state) => {
         return selectedState === state.Loci_Name_State;
       });
       Global_Vendor_Definition.value.vendorAddress.State =
         vendorInfo.value.selectedState.Loci_Code_State;
-      // validateInput("Country");
+
       await fetchDistrict();
     } else {
-      // Clear Country, State, District, Mandal, Postal Code
       Global_Vendor_Definition.value.vendorAddress.State = null;
       Global_Vendor_Definition.value.vendorAddress.District = null;
       vendorInfo.value.selectedDistrict = {
@@ -233,9 +228,8 @@ const fetchState = async (event) => {
         callback: (res) => {
           if (res.Type === "RESPONSE") {
             console.log("Response Packet -->", res.Response);
-            stateList.value = res.Response.State_List; //Assigning response values to getValues Object
+            stateList.value = res.Response.State_List;
           } else if (res.Type === "ERROR") {
-            // Error response received during fetching
             Type: "ERROR";
             Response: {
               Error_Code: "API-GET_GEO_LIST-E001";
@@ -258,16 +252,12 @@ const fetchDistrict = async (event) => {
       (!(event instanceof InputEvent) ||
         event.inputType === "insertReplacementText")
     ) {
-      // determine if the value is in the datalist. If so, someone selected a value in the list!
       vendorInfo.value.selectedDistrict = districtList.value.find((state) => {
         return selectedDistrict === state.Loci_Name_Area_L1;
       });
       Global_Vendor_Definition.value.vendorAddress.District =
         vendorInfo.value.selectedDistrict.Loci_Code_Area_L1;
-      // validateInput("Country");
-      // await fetchState();
     } else {
-      // Clear Country, State, District, Mandal, Postal Code
       Global_Vendor_Definition.value.vendorAddress.District = null;
       sendSocketReq({
         data: {
@@ -291,9 +281,8 @@ const fetchDistrict = async (event) => {
         callback: (res) => {
           if (res.Type === "RESPONSE") {
             console.log("Response Packet -->", res.Response);
-            districtList.value = res.Response.ARL1_List; //Assigning response values to getValues Object
+            districtList.value = res.Response.ARL1_List;
           } else if (res.Type === "ERROR") {
-            // Error response received during fetching
             Type: "ERROR";
             Response: {
               Error_Code: "API-GET_GEO_LIST-E001";

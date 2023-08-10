@@ -38,8 +38,6 @@ const manufacturerInfo = ref({
   manufacturerName: null,
 });
 
-const hide = ref(false);
-
 const sendSocketReq = (request) => {
   store.dispatch("sendSocketReq", request);
 };
@@ -67,7 +65,6 @@ function createRecord() {
 
         console.log("Response Packet -->", res.Response);
       } else if (res.Type === "ERROR") {
-        // Error response received during fetching
         Type: "ERROR";
         Response: {
           Error_Code: "API-CREATE_RECORD-E001";
@@ -79,8 +76,4 @@ function createRecord() {
 }
 </script>
 
-<style lang="scss" scoped>
-.text-primary:hover {
-  color: #b62e2e;
-}
-</style>
+<style lang="scss" scoped></style>

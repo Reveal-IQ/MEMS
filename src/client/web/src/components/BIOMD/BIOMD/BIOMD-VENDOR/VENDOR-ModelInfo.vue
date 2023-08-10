@@ -130,11 +130,9 @@ const fetchManufacturer = async (event) => {
         },
         callback: (res) => {
           if (res.Type === "RESPONSE") {
-            // Console the Response Packet
             console.log("Response Packet -->", res.Response);
             manufacturerList.value = res.Response.records;
           } else if (res.Type === "ERROR") {
-            // Error response received during fetching
             Type: "ERROR";
             Response: {
               Error_Code: "API-CREATE_RECORD-E001";
@@ -176,7 +174,6 @@ function createRecord() {
 
         console.log("Response Packet -->", res.Response);
       } else if (res.Type === "ERROR") {
-        // Error response received during fetching
         Type: "ERROR";
         Response: {
           Error_Code: "API-CREATE_RECORD-E001";

@@ -43,7 +43,6 @@ Description: < Describe the application >
         <CustomerService />
         <ManufacturerInformation />
         <div class="d-flex justify-content-center py-3">
-          <!-- btn-green and a-link are custom css for MEMS check base.css -->
           <div class="">
             <Btn
               BtnName="Create Vendor"
@@ -62,7 +61,7 @@ Description: < Describe the application >
 
 <script>
 import { useStore } from "vuex"; // Access Vuew Store Variables and Methods
-import { ref, toRefs, provide, computed } from "vue";
+import { ref, provide, computed } from "vue";
 
 import VendorInformation from "./VENDOR-VendorInformation.vue";
 import CustomerService from "./VENDOR-CustomerService.vue";
@@ -92,7 +91,6 @@ export default {
   // Emit value can pass within this array
   emits: ["updatePage"],
   setup(props, { emit }) {
-    // const { props_variable } = toRefs(props); // include variables from the props with help of toRefs
     const store = useStore();
     const Institute_Code = computed(
       () => store.state.globalStore.UserInfo.Institute_Info.Code
@@ -156,13 +154,11 @@ export default {
       emit("updatePage", page);
     };
 
-    // send Socket Request use to send rrequest packet for an API
     const sendSocketReq = (request) => {
       store.dispatch("sendSocketReq", request);
     };
-    // Function to Send Request and Get Response by this template code .
+
     function createRecord() {
-      // send Request as below .
       sendSocketReq({
         data: {
           Expiry: 20000,
@@ -199,7 +195,6 @@ export default {
             changePage("success");
 
             console.log("Response Packet -->", res.Response);
-            getValues.value = res.Response.Site_Info[0]; //Assigning response values to getValues Object
           } else if (res.Type === "ERROR") {
             // Error response received during fetching
             Type: "ERROR";
