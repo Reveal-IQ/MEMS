@@ -1,54 +1,58 @@
 <template>
   <Section sectionTitle="Add New Model">
     <!-- Manufacturer -->
-    <div class="col-lg-6 mb-3">
-      <label for="manufacturerList" class="form-label">Manufacturer</label>
-      <input
-        class="form-control"
-        list="manufacturerListOptions"
-        id="manufacturerList"
-        placeholder="Select Manufacturer"
-        aria-label="Default select example"
-        v-model="ModelDescription.selectedManufacturer.manufacturer_name"
-        @input="fetchManufacturer"
-        autocomplete="off"
-      />
-      <datalist id="manufacturerListOptions">
-        <option
-          v-for="manufacturer in manufacturerList"
-          :key="manufacturer.index"
-          :value="manufacturer.manufacturer_name"
-        ></option>
-      </datalist>
-    </div>
+    <div class="d-flex">
+      <div class="col">
+        <div class="col-lg-6 mb-3">
+          <label for="manufacturerList" class="form-label">Manufacturer</label>
+          <input
+            class="form-control"
+            list="manufacturerListOptions"
+            id="manufacturerList"
+            placeholder="Select Manufacturer"
+            aria-label="Default select example"
+            v-model="ModelDescription.selectedManufacturer.manufacturer_name"
+            @input="fetchManufacturer"
+            autocomplete="off"
+          />
+          <datalist id="manufacturerListOptions">
+            <option
+              v-for="manufacturer in manufacturerList"
+              :key="manufacturer.index"
+              :value="manufacturer.manufacturer_name"
+            ></option>
+          </datalist>
+        </div>
+        <!-- Model Name -->
+        <div class="col-lg-6">
+          <Input
+            label="Model Name"
+            type="text"
+            id="modelName"
+            placeholder="Model Name"
+            v-model="ModelDescription.modelName"
+          />
+        </div>
 
-    <!-- Model Name -->
-    <div class="col-lg-6">
-      <Input
-        label="Model Name"
-        type="text"
-        id="modelName"
-        placeholder="Model Name"
-        v-model="ModelDescription.modelName"
-      />
+        <div class="col-lg-6">
+          <Input
+            label="Model Number"
+            type="text"
+            id="modelNumber"
+            placeholder="Model Number"
+            v-model="ModelDescription.modelNumber"
+          />
+        </div>
+        <Btn2
+          BtnName="Submit"
+          :icon="'plus'"
+          backgroundColor="none"
+          @click="createRecord"
+          class="text-primary btn-sm"
+        />
+      </div>
+      <slot />
     </div>
-
-    <div class="col-lg-6">
-      <Input
-        label="Model Number"
-        type="text"
-        id="modelNumber"
-        placeholder="Model Number"
-        v-model="ModelDescription.modelNumber"
-      />
-    </div>
-    <Btn2
-      BtnName="Submit"
-      :icon="'plus'"
-      backgroundColor="none"
-      @click="createRecord"
-      class="text-primary btn-sm"
-    />
   </Section>
 </template>
 
@@ -171,7 +175,6 @@ function createRecord() {
         ModelDescription.value.modelNumber = null;
 
         console.log("Response Packet -->", res.Response);
-        getValues.value = res.Response.Site_Info[0]; //Assigning response values to getValues Object
       } else if (res.Type === "ERROR") {
         // Error response received during fetching
         Type: "ERROR";

@@ -1,22 +1,24 @@
 <template>
   <Section sectionTitle="Add New Manufacturer">
-    <div class="col-lg-6">
-      <Input
-        label="Manufacturer Name"
-        type="text"
-        id="manufacturerName"
-        placeholder="Manufacturer Name"
-        v-model="manufacturerInfo.manufacturerName"
-      />
+    <div class="d-flex gap-5">
+      <div class="col-lg-6">
+        <Input
+          label="Manufacturer Name"
+          type="text"
+          id="manufacturerName"
+          placeholder="Manufacturer Name"
+          v-model="manufacturerInfo.manufacturerName"
+        />
+        <Btn2
+          BtnName="Submit"
+          :icon="'plus'"
+          backgroundColor="none"
+          @click="createRecord"
+          class="btn-sm"
+        />
+      </div>
+      <slot />
     </div>
-
-    <Btn2
-      BtnName="Submit"
-      :icon="'plus'"
-      backgroundColor="none"
-      @click="createRecord"
-      class="text-primary btn-sm"
-    />
   </Section>
 </template>
 
@@ -36,6 +38,8 @@ const manufacturerInfo = ref({
   manufacturerName: null,
 });
 
+const hide = ref(false);
+
 const sendSocketReq = (request) => {
   store.dispatch("sendSocketReq", request);
 };
@@ -53,18 +57,8 @@ function createRecord() {
         collection: "Manufacturer",
         record: {
           manufacturer_name: manufacturerInfo.value.manufacturerName,
-          // country:
-          //   Global_Manufacturer_Definition.value.manufacturerAddress
-          //     .Country,
-          // area: Global_Manufacturer_Definition.value.manufacturerAddress
-          //   .State,
-          // city: Global_Manufacturer_Definition.value.manufacturerAddress
-          //   .District,
-          // address_1: manufacturerInfo.value.streetAddress1,
-          // address_2: manufacturerInfo.value.streetAddress2,
-          // area_code: manufacturerInfo.value.zipCode,
         },
-        Institute_Code: Institute_Code.value, //Dynamically changes when another institute logged in
+        Institute_Code: Institute_Code.value,
       },
     },
     callback: (res) => {
@@ -72,7 +66,6 @@ function createRecord() {
         manufacturerInfo.value.manufacturerName = null;
 
         console.log("Response Packet -->", res.Response);
-        getValues.value = res.Response.Site_Info[0]; //Assigning response values to getValues Object
       } else if (res.Type === "ERROR") {
         // Error response received during fetching
         Type: "ERROR";
@@ -86,4 +79,8 @@ function createRecord() {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.text-primary:hover {
+  color: #b62e2e;
+}
+</style>

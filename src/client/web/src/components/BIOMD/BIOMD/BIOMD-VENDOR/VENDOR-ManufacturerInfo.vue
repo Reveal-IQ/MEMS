@@ -13,9 +13,17 @@
             id="manufacturerList"
             placeholder="Search and Select Manufacturer..."
             autocomplete="off"
-            v-model="manufacturerInfo.selectedManufacturer.manufacturer_name"
+            v-model="manufacturer.manufacturerName"
             @input="fetchManufacturer"
           />
+          <span class="input-group-text" id="basic-addon2">
+            <Btn2
+              BtnName=""
+              :icon="'plus'"
+              backgroundColor="none"
+              class="text-primary btn-sm fs-6"
+              @click="createRecord"
+          /></span>
         </div>
         <datalist id="manufacturerOptions">
           <option
@@ -27,20 +35,19 @@
       </div>
 
       <div class="col">
-        <table class="table fs-6">
+        <table class="table table-borderless fs-6">
           <thead>
             <tr>
-              <th scope="col" class="fs-6">Model Name</th>
-              <th scope="col" class="fs-6">Model Number</th>
+              <th scope="col" class="fs-6">Model</th>
+              <th scope="col" class="fs-6"></th>
 
               <Btn2
+                v-if="!isHidden"
                 BtnName="Add Model"
                 :icon="'plus'"
                 backgroundColor="none"
                 class="text-primary btn-sm fs-6"
-                data-bs-toggle="collapse"
-                data-bs-target="#modelInfo"
-                aria-expanded="false"
+                @click="isHidden = !isHidden"
               />
             </tr>
           </thead>
@@ -59,9 +66,23 @@
       </div>
     </div>
 
-    <NewManufacturer class="collapse" id="newManufacturer" />
-    <ModelInfo class="collapse" id="modelInfo" />
-    <div class="col">
+    <NewManufacturer v-if="hide">
+      <button
+        type="button"
+        class="btn-close"
+        aria-label="Close"
+        @click="hide = !hide"
+      ></button>
+    </NewManufacturer>
+    <ModelInfo v-if="isHidden">
+      <button
+        type="button"
+        class="btn-close"
+        aria-label="Close"
+        @click="isHidden = !isHidden"
+      ></button>
+    </ModelInfo>
+    <div class="col" v-if="!hide && !isHidden">
       <Btn2
         BtnName="Add"
         :icon="'plus'"
@@ -75,16 +96,14 @@
         :icon="'plus'"
         backgroundColor="none"
         class="text-primary btn-sm fs-6"
-        data-bs-toggle="collapse"
-        data-bs-target="#newManufacturer"
-        aria-expanded="false"
+        @click="hide = !hide"
       />
     </div>
   </Section>
 </template>
 
 <script setup>
-import { ref, inject, onMounted } from "vue";
+import { ref, inject, onMounted, computed } from "vue";
 import { useStore } from "vuex";
 
 import NewManufacturer from "./VENDOR-NewManufacturer.vue";
@@ -94,15 +113,26 @@ import Section from "../BIOMD-UI/UI-Section.vue";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 
 const store = useStore();
+const Institute_Code = computed(
+  () => store.state.globalStore.UserInfo.Institute_Info.Code
+);
 const sendSocketReq = (request) => {
   store.dispatch("sendSocketReq", request);
 };
+
+// Hide the buttons after model & manufacturer toggle
+const isHidden = ref(false);
+const hide = ref(false);
 
 const manufacturerList = ref(null);
 const modelList = ref(null);
 
 const manufacturerInfo = inject("manufacturerInfo");
 const Global_Vendor_Definition = inject("Global_Vendor_Definition");
+
+const manufacturer = ref({
+  manufacturerName: null,
+});
 
 const fetchManufacturer = async (event) => {
   try {
@@ -233,6 +263,52 @@ const fetchModel = async (event) => {
     console.log(error);
   }
 };
+
+async function createRecord(event) {
+  try {
+    const newManufacturer = event ? event.target.value : "";
+    if (
+      manufacturer.value.manufacturerName ===
+      manufacturerInfo.value.selectedManufacturer.manufacturer_name
+    ) {
+      console.log("already exists");
+      return newManufacturer === manufacturer.value.manufacturerName;
+    } else {
+      sendSocketReq({
+        data: {
+          Expiry: 20000,
+          Type: "REQUEST",
+          Request: {
+            Module: "MEMS",
+            ServiceCode: "BIOMD",
+            API: "CREATE_RECORD",
+            collection: "Manufacturer",
+            record: {
+              manufacturer_name: manufacturer.value.manufacturerName,
+            },
+            Institute_Code: Institute_Code.value,
+          },
+        },
+        callback: (res) => {
+          if (res.Type === "RESPONSE") {
+            manufacturer.value.manufacturerName = null;
+
+            console.log("Response Packet -->", res.Response);
+          } else if (res.Type === "ERROR") {
+            // Error response received during fetching
+            Type: "ERROR";
+            Response: {
+              Error_Code: "API-CREATE_RECORD-E001";
+              Error_Msg: "CREATE_RECORD_API: Failed to execute query";
+            }
+          }
+        },
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 onMounted(() => {
   fetchManufacturer();

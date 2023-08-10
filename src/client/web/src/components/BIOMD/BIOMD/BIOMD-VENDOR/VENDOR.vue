@@ -92,7 +92,7 @@ export default {
   // Emit value can pass within this array
   emits: ["updatePage"],
   setup(props, { emit }) {
-    const { props_variable } = toRefs(props); // include variables from the props with help of toRefs
+    // const { props_variable } = toRefs(props); // include variables from the props with help of toRefs
     const store = useStore();
     const Institute_Code = computed(
       () => store.state.globalStore.UserInfo.Institute_Info.Code
@@ -131,7 +131,6 @@ export default {
       modelName: null,
       modelNumber: null,
       selectedManufacturer: { manufacturer_name: null, _id: null },
-      // vendorSiteId: null,
     });
 
     const Global_Vendor_Definition = ref({
@@ -152,11 +151,6 @@ export default {
     const sendSocketReq = (request) => {
       store.dispatch("sendSocketReq", request);
     };
-    // Object to Store API Response Values
-    const getValues = ref({});
-    function function_name(parameters) {
-      // Write Function Code here .
-    }
     // Function to Send Request and Get Response by this template code .
     function createRecord() {
       // send Request as below .
@@ -181,7 +175,7 @@ export default {
               manufacturer_id: Global_Vendor_Definition.value.manufacturerId,
               model_id: Global_Vendor_Definition.value.modelId,
             },
-            Institute_Code: Institute_Code.value, //Dynamically changes when another institute logged in
+            Institute_Code: Institute_Code.value,
           },
         },
         callback: (res) => {
@@ -211,12 +205,8 @@ export default {
     provide("Global_Vendor_Definition", Global_Vendor_Definition);
 
     return {
-      // Return variables/Display Variables in HTML DOM
-      getValues,
-      // Send Functionality to HTML
       goBack,
       changePage,
-      function_name,
       redirectToPage,
       createRecord,
     };
