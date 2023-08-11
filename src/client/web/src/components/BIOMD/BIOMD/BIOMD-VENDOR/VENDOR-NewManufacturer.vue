@@ -1,20 +1,22 @@
 <template>
   <Section sectionTitle="Add New Manufacturer">
-    <div class="d-flex gap-5">
-      <div class="col-lg-6">
-        <Input
-          label="Manufacturer Name"
-          type="text"
-          id="manufacturerName"
-          placeholder="Manufacturer Name"
-          v-model="manufacturerInfo.manufacturerName"
-        />
+    <div class="d-flex">
+      <div class="col">
+        <div class="col-lg-6">
+          <Input
+            label="Manufacturer Name"
+            type="text"
+            id="manufacturerName"
+            placeholder="Manufacturer Name"
+            v-model="manufacturerInfo.manufacturerName"
+          />
+        </div>
         <Btn2
           BtnName="Submit"
           :icon="'plus'"
           backgroundColor="none"
           @click="createRecord"
-          class="btn-sm"
+          class="text-primary btn-sm"
         />
       </div>
       <slot />

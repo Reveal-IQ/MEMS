@@ -13,17 +13,9 @@
             id="manufacturerList"
             placeholder="Search and Select Manufacturer..."
             autocomplete="off"
-            v-model="manufacturer.manufacturerName"
+            v-model="manufacturerInfo.selectedManufacturer.manufacturer_name"
             @input="fetchManufacturer"
           />
-          <span class="input-group-text" id="basic-addon2">
-            <Btn2
-              BtnName=""
-              :icon="'plus'"
-              backgroundColor="none"
-              class="text-primary btn-sm fs-6"
-              @click="createRecord"
-          /></span>
         </div>
         <datalist id="manufacturerOptions">
           <option
@@ -56,10 +48,16 @@
               v-for="model in modelList"
               :key="model.index"
               :value="model.model_name"
+              v-if="modelList.length !== 0"
             >
               <td scope="row">{{ model.model_name }}</td>
 
               <td>{{ model.model_number }}</td>
+            </tr>
+            <tr v-else>
+              <td scope="row" class="text-danger fs-6" v-if="!isHidden">
+                Use Add to assign Model
+              </td>
             </tr>
           </tbody>
         </table>
@@ -113,9 +111,7 @@ import Section from "../BIOMD-UI/UI-Section.vue";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 
 const store = useStore();
-const Institute_Code = computed(
-  () => store.state.globalStore.UserInfo.Institute_Info.Code
-);
+
 const sendSocketReq = (request) => {
   store.dispatch("sendSocketReq", request);
 };
@@ -124,15 +120,11 @@ const sendSocketReq = (request) => {
 const isHidden = ref(false);
 const hide = ref(false);
 
-const manufacturerList = ref(null);
-const modelList = ref(null);
+const manufacturerList = ref([]);
+const modelList = ref([]);
 
 const manufacturerInfo = inject("manufacturerInfo");
 const Global_Vendor_Definition = inject("Global_Vendor_Definition");
-
-const manufacturer = ref({
-  manufacturerName: null,
-});
 
 const fetchManufacturer = async (event) => {
   try {
@@ -259,51 +251,6 @@ const fetchModel = async (event) => {
     console.log(error);
   }
 };
-
-async function createRecord(event) {
-  try {
-    const newManufacturer = event ? event.target.value : "";
-    if (
-      manufacturer.value.manufacturerName ===
-      manufacturerInfo.value.selectedManufacturer.manufacturer_name
-    ) {
-      console.log("already exists");
-      return newManufacturer === manufacturer.value.manufacturerName;
-    } else {
-      sendSocketReq({
-        data: {
-          Expiry: 20000,
-          Type: "REQUEST",
-          Request: {
-            Module: "MEMS",
-            ServiceCode: "BIOMD",
-            API: "CREATE_RECORD",
-            collection: "Manufacturer",
-            record: {
-              manufacturer_name: manufacturer.value.manufacturerName,
-            },
-            Institute_Code: Institute_Code.value,
-          },
-        },
-        callback: (res) => {
-          if (res.Type === "RESPONSE") {
-            manufacturer.value.manufacturerName = null;
-
-            console.log("Response Packet -->", res.Response);
-          } else if (res.Type === "ERROR") {
-            Type: "ERROR";
-            Response: {
-              Error_Code: "API-CREATE_RECORD-E001";
-              Error_Msg: "CREATE_RECORD_API: Failed to execute query";
-            }
-          }
-        },
-      });
-    }
-  } catch (error) {
-    console.log(error);
-  }
-}
 
 onMounted(() => {
   fetchManufacturer();

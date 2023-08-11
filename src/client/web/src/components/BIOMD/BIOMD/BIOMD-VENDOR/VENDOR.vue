@@ -125,12 +125,6 @@ export default {
       listedModels: { model_name: null, _id: null },
     });
 
-    const modelDescription = ref({
-      modelName: null,
-      modelNumber: null,
-      selectedManufacturer: { manufacturer_name: null, _id: null },
-    });
-
     const contactInfo = ref([
       {
         contactNumber: null,
@@ -176,7 +170,7 @@ export default {
               address_1: vendorInfo.value.streetAddress1,
               address_2: vendorInfo.value.streetAddress2,
               areaCode: vendorInfo.value.zipCode,
-              contactID: [
+              contact_info: [
                 {
                   contact_number: contactInfo.value.contactNumber,
                   representative_name: contactInfo.value.representativeName,
@@ -184,8 +178,14 @@ export default {
                   contact_type: contactInfo.value.contactType,
                 },
               ],
-              manufacturer_id: Global_Vendor_Definition.value.manufacturerId,
-              model_id: Global_Vendor_Definition.value.modelId,
+              manufacturer_list: [
+                {
+                  manufacturer: Global_Vendor_Definition.value.manufacturerId,
+                  model_list: [
+                    { model_id: Global_Vendor_Definition.value.modelId },
+                  ],
+                },
+              ],
             },
             Institute_Code: Institute_Code.value,
           },
