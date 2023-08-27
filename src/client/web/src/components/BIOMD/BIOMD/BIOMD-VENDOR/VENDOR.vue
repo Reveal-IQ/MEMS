@@ -41,8 +41,8 @@ Description: < Describe the application >
       <main>
         <VendorInformation />
         <CustomerService />
+        <ManufacturerInformation />
         <div class="d-flex justify-content-center py-3">
-          <!-- btn-green and a-link are custom css for MEMS check base.css -->
           <div class="">
             <Btn
               BtnName="Create Vendor"
@@ -61,12 +61,12 @@ Description: < Describe the application >
 
 <script>
 import { useStore } from "vuex"; // Access Vuew Store Variables and Methods
-import { ref, toRefs, provide, computed } from "vue";
+import { ref, provide, computed } from "vue";
 
-import VendorInformation from "../BIOMD-VENDOR/VENDOR-VendorInformation.vue";
-import CustomerService from "../BIOMD-VENDOR/VENDOR-CustomerService.vue";
-import ManufacturerInformation from "../BIOMD-VENDOR/VENDOR-ManufacturerInfo.vue";
-import ModelInformation from "../BIOMD-VENDOR/VENDOR-ModelInfo.vue";
+import VendorInformation from "./VENDOR-VendorInformation.vue";
+import CustomerService from "./VENDOR-CustomerService.vue";
+import ManufacturerInformation from "./VENDOR-ManufacturerInfo.vue";
+import ModelInformation from "./VENDOR-ModelInfo.vue";
 import Btn from "../BIOMD-UI/UI-Btn.vue";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 import Header from "../BIOMD-UI/UI-FormHeader.vue";
@@ -91,7 +91,6 @@ export default {
   // Emit value can pass within this array
   emits: ["updatePage"],
   setup(props, { emit }) {
-    const { props_variable } = toRefs(props); // include variables from the props with help of toRefs
     const store = useStore();
     const Institute_Code = computed(
       () => store.state.globalStore.UserInfo.Institute_Info.Code
@@ -107,6 +106,7 @@ export default {
         status: "<Navigate_To_This_Page>",
       });
     }
+
     const vendorInfo = ref({
       vendorName: null,
       selectedCountry: { Loci_Name_Country: null, Loci_Code_Country: null },
@@ -120,30 +120,39 @@ export default {
       zipCode: null,
     });
 
+    const manufacturerInfo = ref({
+      selectedManufacturer: { manufacturer_name: null, _id: null },
+      listedModels: { model_name: null, _id: null },
+    });
+
+    const contactInfo = ref([
+      {
+        contactNumber: null,
+        representativeName: null,
+        email: null,
+        contactType: null,
+      },
+    ]);
+
     const Global_Vendor_Definition = ref({
       vendorAddress: {
         Country: null,
         State: null,
         District: null,
       },
+      manufacturerId: null,
+      modelId: null,
     });
 
     const changePage = async (page) => {
       emit("updatePage", page);
     };
 
-    // send Socket Request use to send rrequest packet for an API
     const sendSocketReq = (request) => {
       store.dispatch("sendSocketReq", request);
     };
-    // Object to Store API Response Values
-    const getValues = ref({});
-    function function_name(parameters) {
-      // Write Function Code here .
-    }
-    // Function to Send Request and Get Response by this template code .
+
     function createRecord() {
-      // send Request as below .
       sendSocketReq({
         data: {
           Expiry: 20000,
@@ -161,10 +170,24 @@ export default {
               address_1: vendorInfo.value.streetAddress1,
               address_2: vendorInfo.value.streetAddress2,
               areaCode: vendorInfo.value.zipCode,
-              contactID: [],
-              manufacturer_id: [],
+              contact_info: [
+                {
+                  contact_number: contactInfo.value.contactNumber,
+                  representative_name: contactInfo.value.representativeName,
+                  email: contactInfo.value.email,
+                  contact_type: contactInfo.value.contactType,
+                },
+              ],
+              manufacturer_list: [
+                {
+                  manufacturer: Global_Vendor_Definition.value.manufacturerId,
+                  model_list: [
+                    { model_id: Global_Vendor_Definition.value.modelId },
+                  ],
+                },
+              ],
             },
-            Institute_Code: Institute_Code.value, //Dynamically changes when another institute logged in
+            Institute_Code: Institute_Code.value,
           },
         },
         callback: (res) => {
@@ -172,7 +195,6 @@ export default {
             changePage("success");
 
             console.log("Response Packet -->", res.Response);
-            getValues.value = res.Response.Site_Info[0]; //Assigning response values to getValues Object
           } else if (res.Type === "ERROR") {
             // Error response received during fetching
             Type: "ERROR";
@@ -190,15 +212,13 @@ export default {
     };
 
     provide("vendorInfo", vendorInfo);
+    provide("manufacturerInfo", manufacturerInfo);
+    provide("contactInfo", contactInfo);
     provide("Global_Vendor_Definition", Global_Vendor_Definition);
 
     return {
-      // Return variables/Display Variables in HTML DOM
-      getValues,
-      // Send Functionality to HTML
       goBack,
       changePage,
-      function_name,
       redirectToPage,
       createRecord,
     };

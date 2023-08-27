@@ -46,6 +46,10 @@ function emitClickEvent() {
 <style lang="scss" scoped>
 .buttonBackground {
   background-color: var(--color);
-  color: #ffffff;
+}
+
+button:focus {
+  outline: none;
+  box-shadow: none;
 }
 </style>
