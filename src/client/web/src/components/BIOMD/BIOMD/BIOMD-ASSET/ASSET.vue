@@ -40,6 +40,7 @@ Description: < Describe the application >
 
       <main>
         <GeneralInformation />
+        <Manufacturer />
         <EquipmentLocation />
         <MaintenanceAndSupport />
         <EquipmentAcquisition />
@@ -77,6 +78,7 @@ import EquipmentAcquisition from "./ASSET-EquipmentAcquisition.vue";
 import MaintenanceAndSupport from "./ASSET-MaintenanceAndSupport.vue";
 import MultipleEquipmentEntry from "./ASSET-MultipleEquipmentEntry.vue";
 import AdditionalInformation from "./ASSET-AdditionalInformation.vue";
+import Manufacturer from "./ASSET-Manufacturer.vue";
 
 import Btn from "../BIOMD-UI/UI-Btn.vue";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
@@ -90,6 +92,7 @@ export default {
     AdditionalInformation,
     MultipleEquipmentEntry,
     EquipmentAcquisition,
+    Manufacturer,
     Btn2,
     Btn,
     Header,

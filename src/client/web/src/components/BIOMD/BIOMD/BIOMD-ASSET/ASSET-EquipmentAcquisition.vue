@@ -1,92 +1,89 @@
 <template>
   <Section sectionTitle="Equipment Acquisition">
-    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
-      <!-- Purchase Order Number -->
-      <div class="col-lg-4 mb-3">
-        <label for="purchaseOrder" class="form-label"
-          >Purchase Order Number</label
-        >
-        <select
-          id="purchaseOrder"
-          class="form-select"
-          aria-label="Default select"
-        >
-          <option selected>Select PO Number</option>
+    <!-- Vendor -->
+    <div class="col-lg-6 mb-3">
+      <label for="vendorList" class="form-label">Vendor</label>
+      <input
+        class="form-control"
+        list="vendorListOptions"
+        id="vendorList"
+        placeholder="Select Vendor"
+        aria-label="Default select example"
+        v-model="EquipmentAcquisition.selectedVendor.vendor_name"
+        @input="fetchVendor"
+        autocomplete="off"
+      />
+      <datalist id="vendorListOptions">
+        <option
+          v-for="vendor in vendorList"
+          :key="vendor.index"
+          :value="vendor.vendor_name"
+        ></option>
+      </datalist>
+    </div>
+
+    <!-- Purchase Order Number -->
+    <div class="col-lg-6 mb-3">
+      <label for="purchaseOrder" class="form-label"
+        >Purchase Order Number</label
+      >
+      <select
+        id="purchaseOrder"
+        class="form-select"
+        aria-label="Default select"
+      >
+        <option selected>Select PO</option>
+      </select>
+    </div>
+
+    <!-- Acceptance Date -->
+    <div class="col-lg-6">
+      <Input
+        label="Acceptance Date"
+        type="date"
+        id="acceptanceDate"
+        placeholder="Select Acceptance Date"
+        v-model="EquipmentAcquisition.acceptanceDate"
+      />
+    </div>
+
+    <!-- Purchase Cost -->
+    <div class="col-lg-6 mb-3">
+      <label for="purchaseCost" class="form-label">Purchase Cost</label>
+      <div class="input-group mb-3">
+        <input
+          type="number"
+          class="form-control"
+          aria-label="Text input with dropdown button"
+          id="purchaseCost"
+        />
+        <select class="form-select">
+          <option selected>Currency</option>
+          <option value="USD">$</option>
+          <option value="GBP">£</option>
+          <option value="EUR">€</option>
+          <option value="CAD">CAD</option>
         </select>
       </div>
-
-      <!-- Project -->
-      <div class="col-lg-8">
-        <Input
-          label="Project"
-          type="text"
-          id="projectName"
-          placeholder="Enter Project"
-          v-model="EquipmentAcquisition.project"
-        />
-      </div>
     </div>
-    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
-      <!-- Purchase Cost -->
-      <div class="col-lg-4">
-        <Input
-          label="Purchase Cost"
-          type="number"
-          id="purchaseCost"
-          placeholder="Enter Purchase Cost"
-          v-model="EquipmentAcquisition.purchaseCost"
-        />
-      </div>
-      <!-- Purchase Date -->
-      <div class="col-lg-4">
-        <Input
-          label="Purchase Date"
-          type="date"
-          id="purchaseDate"
-          placeholder="Enter Purchase Date"
-          v-model="EquipmentAcquisition.purchaseDate"
-        />
-      </div>
-      <!-- Vendor -->
-      <div class="col-lg-4 mb-3">
-        <label for="vendorList" class="form-label">Vendor</label>
+
+    <!-- Average Cost -->
+    <div class="col-lg-6 mb-3">
+      <label for="averageCost" class="form-label">Average Cost</label>
+      <div class="input-group mb-3">
         <input
+          type="number"
           class="form-control"
-          list="vendorListOptions"
-          id="vendorList"
-          placeholder="Select Vendor"
-          aria-label="Default select example"
-          v-model="EquipmentAcquisition.selectedVendor.vendor_name"
-          @input="fetchVendor"
-          autocomplete="off"
+          aria-label="Text input with dropdown button"
+          id="averageCost"
         />
-        <datalist id="vendorListOptions">
-          <option
-            v-for="vendor in vendorList"
-            :key="vendor.index"
-            :value="vendor.vendor_name"
-          ></option>
-        </datalist>
-      </div>
-      <!-- Acceptance Date -->
-      <div class="col-lg-4">
-        <Input
-          label="Acceptance Date"
-          type="date"
-          id="acceptanceDate"
-          placeholder="Select Acceptance Date"
-          v-model="EquipmentAcquisition.acceptanceDate"
-        />
-      </div>
-      <!-- Warranty Expiry Date -->
-      <div class="col-lg-4">
-        <Input
-          label="Warranty Expiration Date"
-          type="date"
-          id="warrantyDate"
-          placeholder="Select Warranty Expiration Date"
-          v-model="EquipmentAcquisition.warrantyDate"
-        />
+        <select class="form-select">
+          <option selected>Currency</option>
+          <option value="USD">$</option>
+          <option value="GBP">£</option>
+          <option value="EUR">€</option>
+          <option value="CAD">CAD</option>
+        </select>
       </div>
     </div>
   </Section>
@@ -124,7 +121,6 @@ const fetchVendor = async (event) => {
       );
       Global_Asset_Information.value.vendorId =
         EquipmentAcquisition.value.selectedVendor._id;
-      // await fetchModel();
     } else {
       Global_Asset_Information.value.vendorId = null;
 
