@@ -39,12 +39,11 @@ Description: < Describe the application >
       </div>
 
       <main>
-        <GeneralInformation />
-        <Manufacturer />
-        <EquipmentLocation />
+        <AssetDetails />
+        <AssetLocation />
         <MaintenanceAndSupport />
-        <EquipmentAcquisition />
-        <MultipleEquipmentEntry />
+        <PurchaseDetails />
+        <!--<MultipleEquipmentEntry /> -->
         <AdditionalInformation />
         <div class="d-flex justify-content-center py-3">
           <div class="">
@@ -72,13 +71,12 @@ Description: < Describe the application >
 import { useStore } from "vuex"; // Access Vuew Store Variables and Methods
 import { ref, toRefs, provide, computed } from "vue";
 
-import GeneralInformation from "./ASSET-GeneralInformation.vue";
-import EquipmentLocation from "./ASSET-EquipmentLocation.vue";
-import EquipmentAcquisition from "./ASSET-EquipmentAcquisition.vue";
+import AssetDetails from "./ASSET-AssetDetails.vue";
+import AssetLocation from "./ASSET-AssetLocation.vue";
+import PurchaseDetails from "./ASSET-PurchaseDetails.vue";
 import MaintenanceAndSupport from "./ASSET-MaintenanceAndSupport.vue";
 import MultipleEquipmentEntry from "./ASSET-MultipleEquipmentEntry.vue";
 import AdditionalInformation from "./ASSET-AdditionalInformation.vue";
-import Manufacturer from "./ASSET-Manufacturer.vue";
 
 import Btn from "../BIOMD-UI/UI-Btn.vue";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
@@ -86,13 +84,12 @@ import Header from "../BIOMD-UI/UI-FormHeader.vue";
 
 export default {
   components: {
-    GeneralInformation,
-    EquipmentLocation,
+    AssetDetails,
+    AssetLocation,
     MaintenanceAndSupport,
     AdditionalInformation,
     MultipleEquipmentEntry,
-    EquipmentAcquisition,
-    Manufacturer,
+    PurchaseDetails,
     Btn2,
     Btn,
     Header,
@@ -124,60 +121,59 @@ export default {
       });
     }
 
-    const GeneralInformation = ref({
-      equipmentNumber: null,
-      commonName: null,
-      description: null,
+    const AssetDetails = ref({
+      assetCode: null,
+      selectedParentAsset: { _id: null },
       serialNumber: null,
       selectedManufacturer: { manufacturer_name: null, _id: null },
-      selectedModel: { model_name: null, _id: null, model_number: null },
+      selectedModel: {
+        model_name: null,
+        _id: null,
+        commonName: null,
+        UMDNSCode: null,
+      },
       manufacturerDate: null,
+      status: "Active Deployed",
     });
 
-    const EquipmentLocation = ref({
+    const AssetLocation = ref({
       selectedFacility: {
         _id: null,
-        facility_name: null,
-        area: null,
-        city: null,
+        name: null,
       },
-      selectedRegion: { _id: null, area: null },
-      selectedDistrict: { _id: null, city: null },
-      location: [],
-    });
-
-    const EquipmentAcquisition = ref({
-      selectedVendor: {
+      selectedDepartment: {
         _id: null,
-        vendor_name: null,
+        name: null,
+        shortName: null,
       },
-      purchaseOrderNumber: null,
-      purchaseCost: null,
-      purchaseDate: null,
-      project: null,
-      acceptanceDate: null,
-      warrantyDate: null,
+      locationName: null,
     });
 
-    const Global_Asset_Information = ref({
-      manufacturerId: null,
-      modelId: null,
-      facilityId: null,
-      region: null,
-      district: null,
-      vendorId: null,
+    const PurchaseDetails = ref({
+      selectedPurchaseOrder: {
+        _id: null,
+        purchaseOrderNumber: null,
+      },
+      acceptanceDate: null,
     });
 
     const MaintenanceAndSupport = ref({
-      status: "Active Deployed",
       supportTeam: null,
-      userManual: false,
-      technicalManual: false,
     });
 
-    const departmentId = ref(null);
+    const AdditionalInformation = ref({
+      comment: null,
+    });
 
-    const comment = ref(null);
+    const GlobalAssetInformation = ref({
+      parentAssetID: null,
+      manufacturerId: null,
+      modelID: null,
+      facilityID: null,
+      departmentID: null,
+      purchaseOrderID: null,
+      vendorID: null,
+    });
 
     const changePage = (page) => {
       emit("updatePage", page);
@@ -201,30 +197,25 @@ export default {
             API: "CREATE_RECORD",
             collection: "Asset",
             record: {
-              assetCode: GeneralInformation.value.equipmentNumber,
-              commonName: GeneralInformation.value.commonName,
-              description: GeneralInformation.value.description,
-              serialNumber: GeneralInformation.value.serialNumber,
-              model_id: Global_Asset_Information.value.modelId,
-              manufacturer_id: Global_Asset_Information.value.manufacturerId,
-              manufactureDate: GeneralInformation.value.manufacturerDate,
-              facility_id: Global_Asset_Information.value.facilityId,
-              area: Global_Asset_Information.value.region,
-              city: Global_Asset_Information.value.district,
-              department: departmentId.value,
-              roomTag: EquipmentLocation.value.location,
+              assetCode: AssetDetails.value.assetCode,
+              parentAssetID: GlobalAssetInformation.value.parentAssetID,
+              serialNumber: AssetDetails.value.serialNumber,
+              manufacturerID: GlobalAssetInformation.value.manufacturerId,
+              modelID: GlobalAssetInformation.value.modelID,
+              manufacturerDate: AssetDetails.value.manufacturerDate,
+              status: AssetDetails.value.status,
+
+              facilityID: GlobalAssetInformation.value.facilityID,
+              departmentID: GlobalAssetInformation.value.departmentID,
+              locationName: AssetLocation.value.locationName,
+
               supportTeam: MaintenanceAndSupport.value.supportTeam,
-              vendor_id: Global_Asset_Information.value.vendorId,
-              status: MaintenanceAndSupport.value.status,
-              user_manual: MaintenanceAndSupport.value.userManual,
-              technical_manual: MaintenanceAndSupport.value.technicalManual,
-              purchaseOrderNumber: EquipmentAcquisition.value.purchaseOrder,
-              project: EquipmentAcquisition.value.project,
-              purchaseCost: EquipmentAcquisition.value.purchaseCost,
-              purchaseDate: EquipmentAcquisition.value.purchaseDate,
-              acceptanceDate: EquipmentAcquisition.value.acceptanceDate,
-              warrantyDate: EquipmentAcquisition.value.warrantyDate,
-              generalComment: comment.value,
+
+              purchaseOrderID: GlobalAssetInformation.value.purchaseOrderID,
+              acceptanceDate: PurchaseDetails.value.acceptanceDate,
+              vendorID: GlobalAssetInformation.value.vendorID,
+
+              comment: AdditionalInformation.value.comment,
             },
             Institute_Code: Institute_Code.value, //Dynamically changes when another institute logged in
           },
@@ -251,13 +242,12 @@ export default {
       emit("updatePage", "landing");
     };
 
-    provide("GeneralInformation", GeneralInformation);
-    provide("EquipmentLocation", EquipmentLocation);
-    provide("EquipmentAcquisition", EquipmentAcquisition);
-    provide("Global_Asset_Information", Global_Asset_Information);
+    provide("AssetDetails", AssetDetails);
+    provide("AssetLocation", AssetLocation);
     provide("MaintenanceAndSupport", MaintenanceAndSupport);
-    provide("departmentId", departmentId);
-    provide("comment", comment);
+    provide("PurchaseDetails", PurchaseDetails);
+    provide("AdditionalInformation", AdditionalInformation);
+    provide("GlobalAssetInformation", GlobalAssetInformation);
 
     return {
       goBack,

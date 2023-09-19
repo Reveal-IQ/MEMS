@@ -1,12 +1,36 @@
 <template>
-  <Section sectionTitle="Manufacturer">
+  <Section sectionTitle="Asset Details">
+    <!-- Equipment Number -->
+    <div class="col-lg-6 mb-3">
+      <Input
+        label="Equipment Number"
+        type="number"
+        id="assetCode"
+        placeholder="Enter Equipment Number"
+        v-model="AssetDetails.assetCode"
+      />
+    </div>
+
+    <!-- Parent Asset -->
+    <div class="col-lg-6 mb-3">
+      <label for="parentAssetList" class="form-label">Parent Asset</label>
+      <select
+        id="parentAssetList"
+        class="form-select"
+        aria-label="Default select example"
+        v-model="AssetDetails.selectedParentAsset._id"
+      >
+        <option selected>Select Parent Asset</option>
+      </select>
+    </div>
+
     <div class="col-lg-6 mb-3">
       <Input
         label="Serial Number"
         type="text"
         id="serialNumber"
         placeholder="Enter Serial Number"
-        v-model="GeneralInformation.serialNumber"
+        v-model="AssetDetails.serialNumber"
       />
     </div>
     <!-- Manufacturer -->
@@ -18,7 +42,7 @@
         id="manufacturerList"
         placeholder="Select Manufacturer"
         aria-label="Default select example"
-        v-model="GeneralInformation.selectedManufacturer.manufacturer_name"
+        v-model="AssetDetails.selectedManufacturer.manufacturer_name"
         @input="fetchManufacturer"
         autocomplete="off"
       />
@@ -40,7 +64,7 @@
         id="modelList"
         placeholder="Select Model"
         aria-label="Default select example"
-        v-model="GeneralInformation.selectedModel.model_name"
+        v-model="AssetDetails.selectedModel.model_name"
         @input="fetchModel"
         autocomplete="off"
       />
@@ -60,8 +84,27 @@
         type="date"
         id="yearOfManufacture"
         placeholder="Enter Year of manufacture"
-        v-model="GeneralInformation.manufacturerDate"
+        v-model="AssetDetails.manufacturerDate"
       />
+    </div>
+
+    <div class="col-lg-6 mb-3">
+      <label for="statusList" class="form-label">Status</label>
+      <select
+        id="statusList"
+        class="form-select"
+        aria-label="Default select example"
+        v-model="AssetDetails.status"
+      >
+        <option selected value="Active Deployed">Active Deployed</option>
+        <option
+          v-for="list in statusList"
+          :key="list.value"
+          :value="list.value"
+        >
+          {{ list.name }}
+        </option>
+      </select>
     </div>
   </Section>
 </template>
@@ -81,9 +124,17 @@ const sendSocketReq = (request) => {
 const manufacturerList = ref(null);
 const modelList = ref(null);
 
+const statusList = ref([
+  { name: "Active in Storage", value: "Active in Storage" },
+  { name: "Active in Service", value: "Active in Service" },
+  { name: "Storage Repairable", value: "Storage Repairable" },
+  { name: "Storage Parts", value: "Storage Parts" },
+  { name: "Disposed", value: "Disposed" },
+]);
+
 // Inject Asset Information
-const GeneralInformation = inject("GeneralInformation");
-const Global_Asset_Information = inject("Global_Asset_Information");
+const AssetDetails = inject("AssetDetails");
+const GlobalAssetInformation = inject("GlobalAssetInformation");
 
 const fetchManufacturer = async (event) => {
   try {
@@ -93,15 +144,16 @@ const fetchManufacturer = async (event) => {
       (!(event instanceof InputEvent) ||
         event.inputType === "insertReplacementText")
     ) {
-      GeneralInformation.value.selectedManufacturer =
-        manufacturerList.value.find((manufacturer) => {
+      AssetDetails.value.selectedManufacturer = manufacturerList.value.find(
+        (manufacturer) => {
           return selectedManufacturer === manufacturer.manufacturer_name;
-        });
-      Global_Asset_Information.value.manufacturerId =
-        GeneralInformation.value.selectedManufacturer._id;
+        }
+      );
+      GlobalAssetInformation.value.manufacturerID =
+        AssetDetails.value.selectedManufacturer._id;
       await fetchModel();
     } else {
-      Global_Asset_Information.value.manufacturerId = null;
+      GlobalAssetInformation.value.manufacturerID = null;
 
       sendSocketReq({
         data: {
@@ -158,13 +210,13 @@ const fetchModel = async (event) => {
       (!(event instanceof InputEvent) ||
         event.inputType === "insertReplacementText")
     ) {
-      GeneralInformation.value.selectedModel = modelList.value.find((model) => {
+      AssetDetails.value.selectedModel = modelList.value.find((model) => {
         return selectedModel === model.model_name;
       });
-      Global_Asset_Information.value.modelId =
-        GeneralInformation.value.selectedModel._id;
+      GlobalAssetInformation.value.modelID =
+        AssetDetails.value.selectedModel._id;
     } else {
-      Global_Asset_Information.value.modelId = null;
+      GlobalAssetInformation.value.modelID = null;
 
       sendSocketReq({
         data: {
@@ -182,7 +234,7 @@ const fetchModel = async (event) => {
                 {
                   field: "manufacturer_id",
                   op: "sb",
-                  value: Global_Asset_Information.value.manufacturerId,
+                  value: GlobalAssetInformation.value.manufacturerID,
                 },
               ],
               projection: {
