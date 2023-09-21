@@ -90,7 +90,7 @@ const fetchFacility = async (event) => {
           return selectedFacility === facility.name;
         }
       );
-      GlobalAssetInformation.value.facilityId =
+      GlobalAssetInformation.value.facilityID =
         AssetLocation.value.selectedFacility._id;
       await fetchDepartment();
     } else {

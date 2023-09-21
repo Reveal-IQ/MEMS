@@ -57,6 +57,7 @@
 
     <!-- Model Name -->
     <div class="col-lg-6 mb-3">
+    <div>
       <label for="modelList" class="form-label">Model</label>
       <input
         class="form-control"
@@ -74,7 +75,15 @@
           :key="model.index"
           :value="model.model_name"
         ></option>
-      </datalist>
+      </datalist> 
+    </div>
+    <div class="py-3 px-2" v-if="AssetDetails.selectedModel.model_name">
+      <span class="fw-bold">Model Profile</span>
+      <div class="d-flex flex-column gap-1">
+        <span>Common Name: {{AssetDetails.selectedModel.commonName}}</span>
+        <span>Common Name: {{AssetDetails.selectedModel.UMDNSCode}}</span>
+      </div>
+    </div>
     </div>
 
     <!-- Year of Manufacture -->
@@ -123,6 +132,7 @@ const sendSocketReq = (request) => {
 
 const manufacturerList = ref(null);
 const modelList = ref(null);
+const modelProfile = ref(null);
 
 const statusList = ref([
   { name: "Active in Storage", value: "Active in Storage" },
@@ -240,7 +250,8 @@ const fetchModel = async (event) => {
               projection: {
                 _id: 1,
                 model_name: 1,
-                model_number: 1,
+                commonName: 1,
+                UMDNSCode: 1
               },
             },
           },

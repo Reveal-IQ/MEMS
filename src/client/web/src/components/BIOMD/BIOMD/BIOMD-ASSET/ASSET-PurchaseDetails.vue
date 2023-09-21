@@ -1,27 +1,5 @@
 <template>
   <Section sectionTitle="Equipment Acquisition">
-    <!-- Vendor -->
-    <!-- <div class="col-lg-6 mb-3">
-      <label for="vendorList" class="form-label">Vendor</label>
-      <input
-        class="form-control"
-        list="vendorListOptions"
-        id="vendorList"
-        placeholder="Select Vendor"
-        aria-label="Default select example"
-        v-model="PurchaseDetails.selectedVendor.vendor_name"
-        @input="fetchVendor"
-        autocomplete="off"
-      />
-      <datalist id="vendorListOptions">
-        <option
-          v-for="vendor in vendorList"
-          :key="vendor.index"
-          :value="vendor.vendor_name"
-        ></option>
-      </datalist>
-    </div> -->
-
     <!-- Purchase Order Number -->
     <div class="col-lg-6 mb-3">
       <label for="purchaseOrder" class="form-label"
@@ -47,45 +25,52 @@
       />
     </div>
 
-    <!-- Purchase Cost -->
-    <!-- <div class="col-lg-6 mb-3">
-      <label for="purchaseCost" class="form-label">Purchase Cost</label>
-      <div class="input-group mb-3">
-        <input
-          type="number"
-          class="form-control"
-          aria-label="Text input with dropdown button"
-          id="purchaseCost"
-        />
-        <select class="form-select">
-          <option selected>Currency</option>
-          <option value="USD">$</option>
-          <option value="GBP">£</option>
-          <option value="EUR">€</option>
-          <option value="CAD">CAD</option>
-        </select>
+    <div class="col-lg-12">
+      <div class="py-3 px-2">
+        <span class="fw-bold">PO Details</span>
+        <div class="d-flex flex-column gap-1">
+          <span>Vendor: </span>
+          <span>Purchase Order: </span>
+          <span>Purchase Date: </span>
+        </div>
       </div>
-    </div> -->
-
-    <!-- Average Cost -->
-    <!-- <div class="col-lg-6 mb-3">
-      <label for="averageCost" class="form-label">Average Cost</label>
-      <div class="input-group mb-3">
-        <input
-          type="number"
-          class="form-control"
-          aria-label="Text input with dropdown button"
-          id="averageCost"
-        />
-        <select class="form-select">
-          <option selected>Currency</option>
-          <option value="USD">$</option>
-          <option value="GBP">£</option>
-          <option value="EUR">€</option>
-          <option value="CAD">CAD</option>
-        </select>
+      <div class="py-3 px-2">
+        <span class="fw-bold">Select Equipment Line Item</span>
+        <table class="table table-striped table-borderless">
+          <thead class="">
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Item Name</th>
+              <th scope="col">Unit Price</th>
+              <th scope="col">Currency</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Received Quantity</th>
+              <th scope="col">Project</th>
+            </tr>
+          </thead>
+          <tbody class="align-middle">
+            <tr>
+              <td scope="row">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="defaultCheck1"
+                  />
+                </div>
+              </td>
+              <td scope="row">Intellivue MX800</td>
+              <td scope="row">80</td>
+              <td scope="row">USD</td>
+              <td scope="row">20</td>
+              <td scope="row">8</td>
+              <td scope="row">GMH</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </div> -->
+    </div>
   </Section>
 </template>
 

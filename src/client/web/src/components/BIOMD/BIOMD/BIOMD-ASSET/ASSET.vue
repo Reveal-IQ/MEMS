@@ -167,7 +167,7 @@ export default {
 
     const GlobalAssetInformation = ref({
       parentAssetID: null,
-      manufacturerId: null,
+      manufacturerID: null,
       modelID: null,
       facilityID: null,
       departmentID: null,
@@ -200,8 +200,10 @@ export default {
               assetCode: AssetDetails.value.assetCode,
               parentAssetID: GlobalAssetInformation.value.parentAssetID,
               serialNumber: AssetDetails.value.serialNumber,
-              manufacturerID: GlobalAssetInformation.value.manufacturerId,
+              manufacturerID: GlobalAssetInformation.value.manufacturerID,
               modelID: GlobalAssetInformation.value.modelID,
+              commonName: AssetDetails.value.selectedModel.commonName,
+              UMDNSCode: AssetDetails.value.selectedModel.UMDNSCode,
               manufacturerDate: AssetDetails.value.manufacturerDate,
               status: AssetDetails.value.status,
 
