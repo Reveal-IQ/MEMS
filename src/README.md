@@ -17,8 +17,8 @@ git clone git@github.com:Reveal-IQ/MEMS.git
 ```
 2. Navigate to root folder containg docker compose file. Launch docker containers
 ```
-Mac/Windows: docker-compose --project-name MEMS up
-Linux: docker compose --project-name MEMS up
+Mac/Windows: docker-compose --project-name mems up
+Linux: docker compose --project-name mems up
 ```
 3. Verify the following containers have launched successfully
  - **reveal/api** : Backend web application
@@ -36,7 +36,7 @@ cd client/web
 
 Add the following to hostfiles:
 ```
-127.0.0.1       dev.reveal.health
+127.0.0.1       mems.revealfoundation.com
 ```
 
 To access hostfiles:
@@ -97,7 +97,7 @@ The Setup Wizard is required to be configured based on the implementation need. 
 >    - Password: Admin@123
 >    - SSL Certificates: SKIP
 > - Institute Information
->   - Insitute Name: Demo Clinic
+>   - Insitute Name: Demo Local Clinic
 >   - Insitute Code: DMO [Code value must be unique ]
 >   - Currency:  SKIP
 >   - Time Zone: SKIP
