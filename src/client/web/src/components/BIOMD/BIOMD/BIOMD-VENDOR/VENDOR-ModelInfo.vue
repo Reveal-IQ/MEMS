@@ -62,6 +62,7 @@ import { useStore } from "vuex";
 import Input from "../BIOMD-UI/UI-Input.vue";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 import Section from "../BIOMD-UI/UI-Section.vue";
+import { ModelRecord } from "../../../../store/modules/recordSchema";
 
 const store = useStore();
 const Institute_Code = computed(
@@ -158,11 +159,11 @@ function createRecord() {
         ServiceCode: "BIOMD",
         API: "CREATE_RECORD",
         collection: "Model",
-        record: {
+        record: new ModelRecord({
           manufacturer_id: Global_Model_Information.value.manufacturerId,
           model_name: ModelDescription.value.modelName,
           model_number: ModelDescription.value.modelNumber,
-        },
+        }).serialize(),
         Institute_Code: Institute_Code.value,
       },
     },

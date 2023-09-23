@@ -48,9 +48,9 @@ const dbConnection = async (LocalDB) => {
 
 	//DB Setting
 	dbUrl = 'localhost'
-	dbPort = '27017'
+	dbPort = '3030'
 	dbUsername = 'DBadmin'
-	dbPassword = 'RevealAdmin123'
+	dbPassword = 'Admin@123'
 
 	//SSL Certificate Location (Place certificates in cert directory)
 	tlsCA = '../DMODB01/certs/DBchain.pem'//Certificate Authority Chain of Trust 
@@ -62,7 +62,7 @@ const dbConnection = async (LocalDB) => {
 
 	if(LocalDB){
 		//For Unsecure DB, Uncomment the following URI. 
-	    uri = 'mongodb://localhost:27017'
+	    uri = 'mongodb://localhost:3030'
 	}else{
 		// Connect to RevealDB
 		uri = 'mongodb://' + dbUsername + ':' + dbPassword + '@' + dbUrl + ':' + dbPort + '/?authSource=admin&readPreference=primary&appname=dbConfigTool&directConnection=true&tls=true&tlsCertificateKeyFile=' + tlsCrt + '&tlsCertificateKeyFilePassword=' + tlsPvtPass + '&tlsCAFile=' + tlsCA

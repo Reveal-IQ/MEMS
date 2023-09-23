@@ -11,6 +11,7 @@
 //Required Libs
 // const { join } = require("path");
 // const media = require(join(CONFIG.Paths.HomeDir, CONFIG.Paths.API, "GLOBAL", "media"));
+const BSON = require('bson');
 const { ObjectId } = require('mongodb');
 const instituteCode = CONFIG.Database.Site_Database.Name;
 
@@ -93,12 +94,13 @@ module.exports.CREATE_RECORD = async function (req, dbClient) {
   //Copy Requester Information
   let res = Object.assign({}, req);
 
-  //Decleration
+  //Declaration
   const collection = req.Request.collection;
 
   if (SUPPORTED_COLLECTIONS.includes(collection)) {
     try {
-      const insertID = await createOne(req.Request.record, dbClient, collection);
+      const record = BSON.deserialize(Uint8Array.from(req.Request.record));
+      const insertID = await createOne(record, dbClient, collection);
 
       res.Type = "RESPONSE";
       res.Response = {

@@ -68,6 +68,7 @@ import ManufacturerInformation from "./MANUFACTURER-ManufacturerInformation.vue"
 import Btn from "../BIOMD-UI/UI-Btn.vue";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 import Header from "../BIOMD-UI/UI-FormHeader.vue";
+import { ManufacturerRecord } from "../../../../store/modules/recordSchema";
 
 export default {
   name: "manufacturer",
@@ -138,7 +139,7 @@ export default {
             ServiceCode: "BIOMD",
             API: "CREATE_RECORD",
             collection: "Manufacturer",
-            record: {
+            record: new ManufacturerRecord({
               manufacturer_name: manufacturerInfo.value.manufacturerName,
               country:
                 Global_Manufacturer_Definition.value.manufacturerAddress
@@ -150,7 +151,7 @@ export default {
               address_1: manufacturerInfo.value.streetAddress1,
               address_2: manufacturerInfo.value.streetAddress2,
               area_code: manufacturerInfo.value.zipCode,
-            },
+            }).serialize(),
             Institute_Code: Institute_Code.value, //Dynamically changes when another institute logged in
           },
         },

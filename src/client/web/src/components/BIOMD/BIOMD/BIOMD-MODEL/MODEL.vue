@@ -66,6 +66,7 @@ import Btn from "../BIOMD-UI/UI-Btn.vue";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 import Header from "../BIOMD-UI/UI-FormHeader.vue";
 import ModelDescription from "../BIOMD-MODEL/MODEL-ModelDescription.vue";
+import { ModelRecord } from "../../../../store/modules/recordSchema";
 
 export default {
   components: { ModelDescription, Btn2, Btn, Header },
@@ -123,12 +124,12 @@ export default {
             ServiceCode: "BIOMD",
             API: "CREATE_RECORD",
             collection: "Model",
-            record: {
+            record: new ModelRecord({
               manufacturer_id: Global_Model_Information.value.manufacturerId,
               model_name: ModelDescription.value.modelName,
               model_number: ModelDescription.value.modelNumber,
               vendor_site_ID: ModelDescription.value.vendorSiteId,
-            },
+            }).serialize(),
             Institute_Code: Institute_Code.value,
           },
         },

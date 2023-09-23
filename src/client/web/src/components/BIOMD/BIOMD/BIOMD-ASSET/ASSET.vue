@@ -77,6 +77,7 @@ import EquipmentAcquisition from "./ASSET-EquipmentAcquisition.vue";
 import MaintenanceAndSupport from "./ASSET-MaintenanceAndSupport.vue";
 import MultipleEquipmentEntry from "./ASSET-MultipleEquipmentEntry.vue";
 import AdditionalInformation from "./ASSET-AdditionalInformation.vue";
+import { AssetRecord } from "../../../../store/modules/recordSchema";
 
 import Btn from "../BIOMD-UI/UI-Btn.vue";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
@@ -197,7 +198,7 @@ export default {
             ServiceCode: "BIOMD",
             API: "CREATE_RECORD",
             collection: "Asset",
-            record: {
+            record: new AssetRecord({
               assetCode: GeneralInformation.value.equipmentNumber,
               commonName: GeneralInformation.value.commonName,
               description: GeneralInformation.value.description,
@@ -222,7 +223,7 @@ export default {
               acceptanceDate: EquipmentAcquisition.value.acceptanceDate,
               warrantyDate: EquipmentAcquisition.value.warrantyDate,
               generalComment: comment.value,
-            },
+            }).serialize(),
             Institute_Code: Institute_Code.value, //Dynamically changes when another institute logged in
           },
         },
