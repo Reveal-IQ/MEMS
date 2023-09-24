@@ -4,7 +4,7 @@
     <div class="col-lg-6 mb-3">
       <Input
         label="Equipment Number"
-        type="number"
+        type="text"
         id="assetCode"
         placeholder="Enter Equipment Number"
         v-model="AssetDetails.assetCode"
@@ -57,33 +57,33 @@
 
     <!-- Model Name -->
     <div class="col-lg-6 mb-3">
-    <div>
-      <label for="modelList" class="form-label">Model</label>
-      <input
-        class="form-control"
-        list="modelListOptions"
-        id="modelList"
-        placeholder="Select Model"
-        aria-label="Default select example"
-        v-model="AssetDetails.selectedModel.model_name"
-        @input="fetchModel"
-        autocomplete="off"
-      />
-      <datalist id="modelListOptions">
-        <option
-          v-for="model in modelList"
-          :key="model.index"
-          :value="model.model_name"
-        ></option>
-      </datalist> 
-    </div>
-    <div class="py-3 px-2" v-if="AssetDetails.selectedModel.model_name">
-      <span class="fw-bold">Model Profile</span>
-      <div class="d-flex flex-column gap-1">
-        <span>Common Name: {{AssetDetails.selectedModel.commonName}}</span>
-        <span>Common Name: {{AssetDetails.selectedModel.UMDNSCode}}</span>
+      <div>
+        <label for="modelList" class="form-label">Model</label>
+        <input
+          class="form-control"
+          list="modelListOptions"
+          id="modelList"
+          placeholder="Select Model"
+          aria-label="Default select example"
+          v-model="AssetDetails.selectedModel.model_name"
+          @input="fetchModel"
+          autocomplete="off"
+        />
+        <datalist id="modelListOptions">
+          <option
+            v-for="model in modelList"
+            :key="model.index"
+            :value="model.model_name"
+          ></option>
+        </datalist>
       </div>
-    </div>
+      <div class="py-3 px-2" v-if="AssetDetails.selectedModel.model_name">
+        <span class="fw-bold">Model Profile</span>
+        <div class="d-flex flex-column gap-1">
+          <span>Common Name: {{ AssetDetails.selectedModel.commonName }}</span>
+          <span>UMDNS Code: {{ AssetDetails.selectedModel.UMDNSCode }}</span>
+        </div>
+      </div>
     </div>
 
     <!-- Year of Manufacture -->
@@ -251,7 +251,7 @@ const fetchModel = async (event) => {
                 _id: 1,
                 model_name: 1,
                 commonName: 1,
-                UMDNSCode: 1
+                UMDNSCode: 1,
               },
             },
           },

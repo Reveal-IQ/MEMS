@@ -93,15 +93,15 @@ export default {
       });
     }
 
-    const ModelDescription = ref({
-      modelName: null,
-      modelNumber: null,
-      selectedManufacturer: { manufacturer_name: null, _id: null },
-      vendorSiteId: null,
+    const DepartmentDescription = ref({
+      name: null,
+      shortName: null,
+      selectedFacility: { name: null, _id: null },
+      // vendorSiteId: null,
     });
 
-    const Global_Model_Information = ref({
-      manufacturerId: null,
+    const GlobalDepartmentInformation = ref({
+      facilityID: null,
     });
 
     const sendSocketReq = (request) => {
@@ -122,12 +122,12 @@ export default {
             Module: "MEMS",
             ServiceCode: "BIOMD",
             API: "CREATE_RECORD",
-            collection: "Model",
+            collection: "Department",
             record: {
-              manufacturer_id: Global_Model_Information.value.manufacturerId,
-              model_name: ModelDescription.value.modelName,
-              model_number: ModelDescription.value.modelNumber,
-              vendor_site_ID: ModelDescription.value.vendorSiteId,
+              facilityID: GlobalDepartmentInformation.value.facilityID,
+              name: DepartmentDescription.value.name,
+              shortName: DepartmentDescription.value.shortName,
+              // vendor_site_ID: DepartmentDescription.value.vendorSiteId,
             },
             Institute_Code: Institute_Code.value,
           },
@@ -154,8 +154,8 @@ export default {
       emit("updatePage", "landing");
     };
 
-    provide("ModelDescription", ModelDescription);
-    provide("Global_Model_Information", Global_Model_Information);
+    provide("DepartmentDescription", DepartmentDescription);
+    provide("GlobalDepartmentInformation", GlobalDepartmentInformation);
 
     return {
       goBack,

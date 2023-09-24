@@ -19,6 +19,7 @@ Description: < Describe the application >
             title="New Asset"
             subTitle="Create a new asset with this form"
           />
+          {{ Institute_Code }}
         </div>
         <div class="d-flex gap-2 d-md-block">
           <Btn2
@@ -201,9 +202,11 @@ export default {
               parentAssetID: GlobalAssetInformation.value.parentAssetID,
               serialNumber: AssetDetails.value.serialNumber,
               manufacturerID: GlobalAssetInformation.value.manufacturerID,
-              modelID: GlobalAssetInformation.value.modelID,
-              commonName: AssetDetails.value.selectedModel.commonName,
-              UMDNSCode: AssetDetails.value.selectedModel.UMDNSCode,
+              modelID: {
+                _id: GlobalAssetInformation.value.modelID,
+                commonName: AssetDetails.value.selectedModel.commonName,
+                UMDNSCode: AssetDetails.value.selectedModel.UMDNSCode,
+              },
               manufacturerDate: AssetDetails.value.manufacturerDate,
               status: AssetDetails.value.status,
 
