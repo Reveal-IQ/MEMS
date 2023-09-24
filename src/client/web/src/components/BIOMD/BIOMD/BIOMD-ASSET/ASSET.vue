@@ -43,7 +43,7 @@ Description: < Describe the application >
         <AssetDetails />
         <AssetLocation />
         <MaintenanceAndSupport />
-        <PurchaseDetails />
+        <!-- <PurchaseDetails /> -->
         <!--<MultipleEquipmentEntry /> -->
         <AdditionalInformation />
         <div class="d-flex justify-content-center py-3">
