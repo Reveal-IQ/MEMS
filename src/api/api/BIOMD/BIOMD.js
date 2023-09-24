@@ -86,7 +86,6 @@ module.exports.CREATE_RECORD = async function (req, dbClient) {
 
   //Decleration
   var invalidCollection = false;
-  var id = new Object();
   let collection = req.Request.collection;
 
   try {
@@ -108,6 +107,9 @@ module.exports.CREATE_RECORD = async function (req, dbClient) {
         break;
       case "Contact":
         insertID = await createOne(req.Request.record, dbClient, "Contact");
+        break;
+      case "Department":
+        insertID = await createOne(req.Request.record, dbClient, "Department");
         break;
       default:
         invalidCollection = true
