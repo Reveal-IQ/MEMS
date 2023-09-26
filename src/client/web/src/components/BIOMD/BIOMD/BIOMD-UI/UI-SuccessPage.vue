@@ -22,7 +22,7 @@
               BtnName="Dashboard"
               :icon="'arrow-left'"
               backgroundColor="none"
-              @click="goBack('landing')"
+              @click="goBack('dashboard')"
               class="text-secondary btn-sm"
             />
           </div>

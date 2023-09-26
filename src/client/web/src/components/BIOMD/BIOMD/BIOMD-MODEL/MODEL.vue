@@ -137,7 +137,7 @@ export default {
             changePage("success");
 
             console.log("Response Packet -->", res.Response);
-            getValues.value = res.Response.Site_Info[0]; //Assigning response values to getValues Object
+            // getValues.value = res.Response.Site_Info[0]; //Assigning response values to getValues Object
           } else if (res.Type === "ERROR") {
             // Error response received during fetching
             Type: "ERROR";
@@ -151,7 +151,7 @@ export default {
     }
 
     const goBack = () => {
-      emit("updatePage", "landing");
+      emit("updatePage", "dashboard");
     };
 
     provide("DepartmentDescription", DepartmentDescription);

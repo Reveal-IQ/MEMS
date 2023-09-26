@@ -4,7 +4,6 @@
     class="btn buttonBackground d-inline-flex align-items-center fs-6 rounded-pill"
     :class="class"
     :style="'--color:' + backgroundColor"
-    @click="emitClickEvent()"
   >
     <font-awesome-icon :icon="icon" size="1x" class="me-2" />
     <span class="fsXs">{{ BtnName }}</span>
@@ -36,10 +35,10 @@ const props = defineProps({
 
 let icon = props.icon;
 
-const emit = defineEmits(["onUserClick"]);
+const emit = defineEmits([""]);
 
 function emitClickEvent() {
-  emit("onUserClick");
+  emit("");
 }
 </script>
 

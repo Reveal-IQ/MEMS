@@ -9,11 +9,11 @@ Description: < Describe the application >
 -->
 
 <template>
-  <div v-if="compState === 'landing'" class="RevealContainer_dash">
+  <div v-if="compState === 'dashboard'" class="RevealContainer_dash">
     <div class="container">
       <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
       <div class="row">
-        <Landing v-if="compState === 'landing'" @update-page="updatePage" />
+        <DASHBOARD v-if="compState === 'dashboard'" @update-page="updatePage" />
       </div>
     </div>
   </div>
@@ -60,6 +60,7 @@ import FACILITY from "../BIOMD/BIOMD-FACILITY/FACILITY.vue";
 import VENDOR from "../BIOMD/BIOMD-VENDOR/VENDOR.vue";
 import MODEL from "../BIOMD/BIOMD-MODEL/MODEL.vue";
 import MANUFACTURER from "../BIOMD/BIOMD-MANUFACTURER/MANUFACTURER.vue";
+import DASHBOARD from "../BIOMD/BIOMD-DASHBOARD/DASHBOARD.vue";
 import Landing from "../BIOMD/BIOMD-UI/UI-Landing.vue";
 import SuccessPage from "../BIOMD/BIOMD-UI/UI-SuccessPage.vue";
 
@@ -70,6 +71,7 @@ export default {
     VENDOR,
     MODEL,
     MANUFACTURER,
+    DASHBOARD,
     Landing,
     SuccessPage,
   },
@@ -79,7 +81,7 @@ export default {
   // Emit value can pass within this array
   emits: [],
   setup(props, { emit }) {
-    const compState = ref("landing"); //asset, facility, model, manufacturer, vendor
+    const compState = ref("dashboard"); //asset, facility, model, manufacturer, vendor
 
     const updatePage = (page) => {
       compState.value = page;

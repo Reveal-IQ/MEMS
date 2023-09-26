@@ -244,7 +244,7 @@ export default {
     }
 
     const goBack = () => {
-      emit("updatePage", "landing");
+      emit("updatePage", "dashboard");
     };
 
     provide("AssetDetails", AssetDetails);
