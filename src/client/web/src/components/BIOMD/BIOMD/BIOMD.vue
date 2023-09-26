@@ -18,6 +18,18 @@ Description: < Describe the application >
     </div>
   </div>
 
+  <div v-if="compState === 'dashboardModel'" class="RevealContainer_dash">
+    <div class="container">
+      <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
+      <div class="row">
+        <DASHBOARDModel
+          v-if="compState === 'dashboardModel'"
+          @update-page="updatePage"
+        />
+      </div>
+    </div>
+  </div>
+
   <div v-else class="RevealContainer">
     <div class="container">
       <div class="row">
@@ -63,6 +75,7 @@ import MANUFACTURER from "../BIOMD/BIOMD-MANUFACTURER/MANUFACTURER.vue";
 import DASHBOARD from "../BIOMD/BIOMD-DASHBOARD/DASHBOARD.vue";
 import Landing from "../BIOMD/BIOMD-UI/UI-Landing.vue";
 import SuccessPage from "../BIOMD/BIOMD-UI/UI-SuccessPage.vue";
+import DASHBOARDModel from "./BIOMD-DASHBOARD/DASHBOARD-Model.vue";
 
 export default {
   components: {
@@ -74,6 +87,7 @@ export default {
     DASHBOARD,
     Landing,
     SuccessPage,
+    DASHBOARDModel,
   },
   name: "BIOMD",
   // Define Props here

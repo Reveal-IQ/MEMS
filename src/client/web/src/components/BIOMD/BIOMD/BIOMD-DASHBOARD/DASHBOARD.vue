@@ -31,6 +31,12 @@
         @click="changePage('facilityInfo')"
         >Facility</small
       >
+      <small
+        class="text-secondary"
+        style="cursor: pointer"
+        @click="changePage('dashboardModel')"
+        >Model List</small
+      >
     </nav>
 
     <!--Additional Page Navigation-->
