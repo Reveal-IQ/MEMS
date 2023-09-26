@@ -110,6 +110,38 @@
         </div>
         <div class="mb-5">
           <div>
+            <span class="card-title fw-normal fs-5">Maintenance</span>
+            <p class="card-text">
+              <small class="text-muted fsXs">Assigned support teams</small>
+            </p>
+          </div>
+          <div
+            class="g-3 mb-2 mt-2 rounded-3 container py-2 align-middle"
+            style="background-color: #f5f6f6"
+          >
+            <div class="d-flex flex-column gap-3">
+              <td>
+                <div class="d-flex flex-column">
+                  <small class="text-secondary fsXs"
+                    >Assigned Clinical Engineer</small
+                  >
+                  <small class="fw-normal">John Doe</small>
+                </div>
+              </td>
+              <td>
+                <div class="d-flex flex-column">
+                  <small class="text-secondary fsXs"
+                    >Assigned Support Team</small
+                  >
+                  <small>Life Support Team</small>
+                </div>
+              </td>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-5">
+          <div>
             <span class="card-title fw-normal fs-5">Purchase Order</span>
             <p class="card-text">
               <small class="text-muted fsXs">PO Details</small>
@@ -211,37 +243,6 @@
                 <div class="d-flex flex-column">
                   <small class="text-secondary fsXs">Date Open</small>
                   <small>{{ work.dateOpen }}</small>
-                </div>
-              </td>
-            </div>
-          </div>
-        </div>
-        <div class="mb-5">
-          <div>
-            <span class="card-title fw-normal fs-5">Maintenance</span>
-            <p class="card-text">
-              <small class="text-muted fsXs">Assigned support teams</small>
-            </p>
-          </div>
-          <div
-            class="g-3 mb-2 mt-2 rounded-3 container py-2 align-middle"
-            style="background-color: #f5f6f6"
-          >
-            <div class="d-flex flex-column gap-3">
-              <td>
-                <div class="d-flex flex-column">
-                  <small class="text-secondary fsXs"
-                    >Assigned Clinical Engineer</small
-                  >
-                  <small class="fw-normal">John Doe</small>
-                </div>
-              </td>
-              <td>
-                <div class="d-flex flex-column">
-                  <small class="text-secondary fsXs"
-                    >Assigned Support Team</small
-                  >
-                  <small>Life Support Team</small>
                 </div>
               </td>
             </div>
