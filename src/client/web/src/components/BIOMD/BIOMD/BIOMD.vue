@@ -22,7 +22,7 @@ Description: < Describe the application >
               @update-page="updatePage"
             />
             <MODEL
-              v-else-if="compState === 'modelInfo'"
+              v-else-if="compState === 'departmentInfo'"
               @update-page="updatePage"
             />
             <VENDOR
@@ -64,7 +64,7 @@ export default {
     MODEL,
     MANUFACTURER,
     Landing,
-    SuccessPage
+    SuccessPage,
   },
   name: "BIOMD",
   // Define Props here

@@ -1,206 +1,134 @@
 <template>
-  <div class="container">
-
-    <div class="row">
-      <div class="col" style="margin-bottom:100px">
-        <h1 class="title mt-5">Inventory Dashboard</h1>
-      </div>
-    </div>
-
-    <!--Medical Equipment Table-->
-    <div class="row justify-content-between">
-      <div class="col-8" style="margin-bottom:20px">
-        <h3 class="sub-title">Medical Equipment</h3>
-      </div>
-      <div class="col-4 content-left">
-        <a class="btn btn-primary" style="margin-right:20px" href="#" role="button">Export</a>
-        <a class="btn btn-primary" href="#" role="button">Add New</a>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col">
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th scope="col">Asset Code</th>
-              <th scope="col">Serial Number</th>
-              <th scope="col">Model</th>
-              <th scope="col">Manufacturer</th>
-              <th scope="col">Facility</th>
-              <th scope="col">Department</th>
-              <th scope="col">Location</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="equipment in inventoryList">
-              <td>{{ equipment.assetCode}}</td>
-              <td>{{ equipment.serialNumber}}</td>
-              <td>{{ equipment.model.model_name}}</td>
-              <td>{{ equipment.manufacturer.manufacturer_name}}</td>
-              <td>{{ equipment.facility.facility_name }}</td>
-              <td>{{ equipment.department}}</td>
-              <td>{{ equipment.roomTag}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!--Vendor Support Table-->
-    <div class="row justify-content-between" style="margin-bottom:20px; margin-top:100px">
-      <div class="col-8">
-        <h3 class="sub-title">Vendor Support</h3>
-      </div>
-      <div class="col-4 content-left">
-        <a class="btn btn-primary" style="margin-right:20px" href="#" role="button">Export</a>
-        <a class="btn btn-primary" href="#" role="button">Add New</a>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col">
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th scope="col">Vendor</th>
-              <th scope="col">Manufacturers</th>
-              <th scope="col">Contact Name</th>
-              <th scope="col">Contact Number</th>
-              <th scope="col">Email</th>
-              <th scope="col">Location</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="vendor in vendorSupport">
-              <td>{{ vendor.vendor_name}}</td>
-              <td>{{ vendor.manufacturers}}</td>
-              <td>{{ vendor.contact[0].name}}</td>
-              <td>{{ vendor.contact[0].number}}</td>
-              <td>{{ vendor.contact[0].email}}</td>
-              <td>{{ vendor.location}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+  <div class="container-fluid">
+    <nav class="d-flex gap-3 p-2">
+      <small
+        class="text-secondary"
+        style="cursor: pointer"
+        @click="changePage('landing')"
+        >Dashboard</small
+      >
+      <small
+        class="text-secondary"
+        style="cursor: pointer"
+        @click="changePage('assetInfo')"
+        >New Asset</small
+      >
+      <small
+        class="text-secondary"
+        style="cursor: pointer"
+        @click="changePage('vendorInfo')"
+        >New Model</small
+      >
+      <small
+        class="text-secondary"
+        style="cursor: pointer"
+        @click="changePage('departmentInfo')"
+        >Department</small
+      >
+      <small
+        class="text-secondary"
+        style="cursor: pointer"
+        @click="changePage('facilityInfo')"
+        >Facility</small
+      >
+    </nav>
 
     <!--Additional Page Navigation-->
-    <div class="col-8" style="margin-bottom:20px; margin-top:100px">
-      <h3 class="sub-title">Create New Records</h3>
+    <div class="d-flex flex-column p-2 mt-4">
+      <span class="title text-dark fw-normal fs-1">Dashboard</span>
+      <span class="sub-title fs-6 fw-normal"
+        >Snapshot for medical equipment inventory</span
+      >
     </div>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 my-3">
-      <Card CardTitle="Equipment Registration" CardText="Use this form to Register all new Medical Equipment."
-        @click="changePage('assetInfo')" />
 
-      <Card CardTitle="Manufacturer Data" CardText="Use this form to Register all Manufacturers."
-        @click="changePage('manufacturerInfo')" />
+    <div class="rounded mt-4" style="background-color: #e3f6f5">
+      <div class="card-body">
+        <h5 class="card-title" style="color: #298a85">Welcome John!</h5>
+        <p class="card-text">
+          <small class="text-muted"
+            >This is your dashboard of medical equipment assigned to you and
+            your team</small
+          >
+        </p>
+      </div>
+    </div>
 
-      <Card CardTitle="Model Data" CardText="Use this form to Register all Models." @click="changePage('modelInfo')" />
+    <div class="mt-4 section rounded p-4">
+      <span class="card-title fw-normal fs-4">Site Inventory</span>
+      <p class="card-text">
+        <small class="text-muted">Summary of all the asset models</small>
+      </p>
 
-      <Card CardTitle="Vendor Data" CardText="Use this form to Register all Vendors." @click="changePage('vendorInfo')" />
-
-      <Card CardTitle="Facility Data" CardText="Use this form to Register all Facilities."
-        @click="changePage('facilityInfo')" />
+      <div
+        v-for="asset in assets"
+        :key="asset"
+        class="g-3 mb-2 rounded container pt-3 align-middle"
+        style="background-color: #f5f6f6"
+      >
+        <div class="d-flex justify-content-between" style="cursor: pointer">
+          <td>
+            <div class="d-flex flex-column">
+              <small class="text-secondary">Model</small>
+              <small class="fw-normal">{{ asset.model }}</small>
+            </div>
+          </td>
+          <td>
+            <div class="d-flex flex-column">
+              <small class="text-secondary">Manufacturer</small>
+              <small>{{ asset.manufacturer }}</small>
+            </div>
+          </td>
+          <td>
+            <div class="d-flex flex-column">
+              <small class="text-secondary">Quantity</small>
+              <small>{{ asset.quantity }}</small>
+            </div>
+          </td>
+          <td>
+            <div class="d-flex flex-column">
+              <small class="text-secondary">Active</small>
+              <small>{{ asset.active }}</small>
+            </div>
+          </td>
+          <td>
+            <div class="d-flex flex-column">
+              <small class="text-secondary">In-Service</small>
+              <small>{{ asset.inService }}</small>
+            </div>
+          </td>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
-//Vue.js Composition API
-
-//Imports
-import Card from "../BIOMD-UI/UI-Card.vue";
-import { ref, onMounted } from 'vue';
-import { useStore } from "vuex";
+import { ref } from "vue";
 
 //Variables
-const vendorSupport = ref(null);
-const inventoryList = ref(null);
-const store = useStore();
+
+const assets = ref([
+  {
+    model: "MX-800",
+    manufacturer: "Philips Healthcare",
+    quantity: 20,
+    active: 16,
+    inService: 4,
+  },
+  {
+    model: "MX-900",
+    manufacturer: "General Electric",
+    quantity: 10,
+    active: 5,
+    inService: 5,
+  },
+]);
 
 //Functions
-const sendSocketReq = (request) => {
-  store.dispatch("sendSocketReq", request);
-};
 
-//Fetch Vendor Support Information
-var fetchVendor = () => {
-  var req =
-  {
-    Expiry: 20000,
-    Type: "REQUEST",
-    Request: {
-      Module: "MEMS",
-      ServiceCode: "BIOMD",
-      API: "LIST_VENDORS",
-      list: {
-        projection: {
-          "vendor_name": 1,
-          "contact": 1,
-          "manufacturers": 1,
-        }
-      }
-    }
-  }
-  
-  sendSocketReq({
-    data: req,
-    callback: (res) => {
-      let vendorList = res.Response.records
-
-      //List Manufacturers
-      vendorList = vendorList.map( (i) => {
-        i.manufacturers = i.manufacturers.map(
-          e => e.manufacturer_name
-        ).join(", ");
-
-        return i
-      }
-      )
-
-      vendorSupport.value = vendorList
-    }
-  }
-  )
-}
-
-//Fetch Assets Support Information
-var fetchAssets = () => {
-  var req =
-  {
-    Expiry: 20000,
-    Type: "REQUEST",
-    Request: {
-      Module: "MEMS",
-      ServiceCode: "BIOMD",
-      API: "LIST_ASSETS",
-      list: {
-        projection: {
-          "assetCode": 1,
-          "serialNumber": 1,
-          "department":1,
-          "roomTag":1
-        }
-      }
-    }
-  }
-  
-  sendSocketReq({
-    data: req,
-    callback: (res) => {
-      inventoryList.value = res.Response.records
-    }
-  }
-  )
-}
+//Fetch Assets Information
 
 //Lifecycle Hook
-onMounted(() => {
-  fetchVendor();
-  fetchAssets();
-});
-
 
 const emit = defineEmits(["updatePage"]);
 
