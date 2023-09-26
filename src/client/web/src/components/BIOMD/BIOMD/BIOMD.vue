@@ -9,12 +9,19 @@ Description: < Describe the application >
 -->
 
 <template>
-  <div class="RevealContainer">
+  <div v-if="compState === 'landing'" class="RevealContainer_dash">
     <div class="container">
       <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
       <div class="row">
         <Landing v-if="compState === 'landing'" @update-page="updatePage" />
-        <div v-else class="row">
+      </div>
+    </div>
+  </div>
+
+  <div v-else class="RevealContainer">
+    <div class="container">
+      <div class="row">
+        <div class="row">
           <div>
             <ASSET v-if="compState === 'assetInfo'" @update-page="updatePage" />
             <FACILITY
@@ -89,13 +96,23 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../GLOBAL/Styles/colors.scss";
+@import "./Style/BIOMD.scss";
 .RevealContainer {
   min-height: 100vh;
   max-height: 100vh;
   background-color: $InvisibleSilver;
   overflow: scroll;
 }
+.RevealContainer_dash {
+  min-height: 100vh;
+  max-height: 100vh;
+  background-color: $White;
+  overflow: scroll;
+}
 .RevealContainer::-webkit-scrollbar {
+  display: none;
+}
+.RevealContainer_dash::-webkit-scrollbar {
   display: none;
 }
 </style>

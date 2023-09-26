@@ -7,7 +7,7 @@
     @click="emitClickEvent()"
   >
     <font-awesome-icon :icon="icon" size="1x" class="me-2" />
-    <span>{{ BtnName }}</span>
+    <span class="fsXs">{{ BtnName }}</span>
 
     <slot />
   </button>
@@ -44,6 +44,7 @@ function emitClickEvent() {
 </script>
 
 <style lang="scss" scoped>
+@import "../Style/font-style.scss";
 .buttonBackground {
   background-color: var(--color);
 }

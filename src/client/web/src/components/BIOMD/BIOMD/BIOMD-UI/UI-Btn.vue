@@ -8,7 +8,7 @@
     <div
       class="col-sm-10 bodyText d-flex justify-content-center align-center mt-3"
     >
-      <p class="pe-2">{{ BtnName }}</p>
+      <p class="pe-2 fsXs">{{ BtnName }}</p>
       <div class="iconFont text-light">
         <font-awesome-icon :icon="icon" size="1x" />
       </div>

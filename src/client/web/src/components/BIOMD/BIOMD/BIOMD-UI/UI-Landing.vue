@@ -53,7 +53,7 @@
       </div>
     </div>
 
-    <div class="mt-4 section rounded p-4">
+    <div class="mt-4 rounded p-4">
       <span class="card-title fw-normal fs-4">Site Inventory</span>
       <p class="card-text">
         <small class="text-muted">Summary of all the asset models</small>
@@ -62,37 +62,37 @@
       <div
         v-for="asset in assets"
         :key="asset"
-        class="g-3 mb-2 rounded container pt-3 align-middle"
+        class="g-3 mb-2 rounded container py-2 align-middle"
         style="background-color: #f5f6f6"
       >
         <div class="d-flex justify-content-between" style="cursor: pointer">
           <td>
             <div class="d-flex flex-column">
-              <small class="text-secondary">Model</small>
+              <small class="text-secondary fsXs">Model</small>
               <small class="fw-normal">{{ asset.model }}</small>
             </div>
           </td>
           <td>
             <div class="d-flex flex-column">
-              <small class="text-secondary">Manufacturer</small>
+              <small class="text-secondary fsXs">Manufacturer</small>
               <small>{{ asset.manufacturer }}</small>
             </div>
           </td>
           <td>
             <div class="d-flex flex-column">
-              <small class="text-secondary">Quantity</small>
+              <small class="text-secondary fsXs">Quantity</small>
               <small>{{ asset.quantity }}</small>
             </div>
           </td>
           <td>
             <div class="d-flex flex-column">
-              <small class="text-secondary">Active</small>
+              <small class="text-secondary fsXs">Active</small>
               <small>{{ asset.active }}</small>
             </div>
           </td>
           <td>
             <div class="d-flex flex-column">
-              <small class="text-secondary">In-Service</small>
+              <small class="text-secondary fsXs">In-Service</small>
               <small>{{ asset.inService }}</small>
             </div>
           </td>
