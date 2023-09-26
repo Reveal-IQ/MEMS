@@ -53,7 +53,11 @@
         class="mb-2 rounded container py-2 align-middle"
         style="background-color: #f5f6f6"
       >
-        <div class="d-flex justify-content-between" style="cursor: pointer">
+        <div
+          class="d-flex justify-content-between"
+          style="cursor: pointer"
+          @click="changePage('dashboardAssetDetail')"
+        >
           <td class="d-flex position-relative">
             <span
               class="position-absolute border border-light top-50 start-0 p-2 translate-middle rounded-circle bg-success"
@@ -129,4 +133,6 @@ const changePage = async (page) => {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import "../Style/font-style.scss";
+</style>

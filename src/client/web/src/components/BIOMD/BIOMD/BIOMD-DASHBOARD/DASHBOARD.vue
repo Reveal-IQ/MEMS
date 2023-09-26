@@ -31,15 +31,8 @@
         @click="changePage('facilityInfo')"
         >Facility</small
       >
-      <small
-        class="text-secondary"
-        style="cursor: pointer"
-        @click="changePage('dashboardModel')"
-        >Model List</small
-      >
     </nav>
 
-    <!--Additional Page Navigation-->
     <div class="d-flex flex-column p-2 mt-4">
       <span class="title text-dark fw-normal fs-1">Dashboard</span>
       <span class="sub-title fs-6 fw-normal"
@@ -47,7 +40,7 @@
       >
     </div>
 
-    <div class="rounded mt-4" style="background-color: #e3f6f5">
+    <div class="rounded mt-4 p-2" style="background-color: #e3f6f5">
       <div class="card-body">
         <h5 class="card-title" style="color: #298a85">Welcome John!</h5>
         <p class="card-text">
@@ -59,49 +52,56 @@
       </div>
     </div>
 
-    <div class="mt-4 rounded p-4">
-      <span class="card-title fw-normal fs-4">Site Inventory</span>
-      <p class="card-text">
-        <small class="text-muted">Summary of all the asset models</small>
-      </p>
+    <div class="row p-2 mt-4 mb-5">
+      <div class="col-md-6">
+        <div class="mb-5">
+          <div class="">
+            <span class="card-title fw-normal fs-4">Site Inventory</span>
+            <p class="card-text">
+              <small class="text-muted">Summary of all the asset models</small>
+            </p>
+          </div>
 
-      <div
-        v-for="asset in assets"
-        :key="asset"
-        class="g-3 mb-2 rounded container py-2 align-middle"
-        style="background-color: #f5f6f6"
-      >
-        <div class="d-flex justify-content-between" style="cursor: pointer">
-          <td>
-            <div class="d-flex flex-column">
-              <small class="text-secondary fsXs">Model</small>
-              <small class="fw-normal">{{ asset.model }}</small>
+          <div
+            v-for="asset in assets"
+            :key="asset"
+            class="g-3 mb-2 mt-2 rounded container py-2 align-middle"
+            style="background-color: #f5f6f6"
+            @click="changePage('dashboardModel')"
+          >
+            <div class="d-flex justify-content-between" style="cursor: pointer">
+              <td>
+                <div class="d-flex flex-column">
+                  <small class="text-secondary fsXs">Model</small>
+                  <small class="fw-normal">{{ asset.model }}</small>
+                </div>
+              </td>
+              <td>
+                <div class="d-flex flex-column">
+                  <small class="text-secondary fsXs">Manufacturer</small>
+                  <small>{{ asset.manufacturer }}</small>
+                </div>
+              </td>
+              <td>
+                <div class="d-flex flex-column">
+                  <small class="text-secondary fsXs">Quantity</small>
+                  <small>{{ asset.quantity }}</small>
+                </div>
+              </td>
+              <td>
+                <div class="d-flex flex-column">
+                  <small class="text-secondary fsXs">Active</small>
+                  <small>{{ asset.active }}</small>
+                </div>
+              </td>
+              <td>
+                <div class="d-flex flex-column">
+                  <small class="text-secondary fsXs">In-Service</small>
+                  <small>{{ asset.inService }}</small>
+                </div>
+              </td>
             </div>
-          </td>
-          <td>
-            <div class="d-flex flex-column">
-              <small class="text-secondary fsXs">Manufacturer</small>
-              <small>{{ asset.manufacturer }}</small>
-            </div>
-          </td>
-          <td>
-            <div class="d-flex flex-column">
-              <small class="text-secondary fsXs">Quantity</small>
-              <small>{{ asset.quantity }}</small>
-            </div>
-          </td>
-          <td>
-            <div class="d-flex flex-column">
-              <small class="text-secondary fsXs">Active</small>
-              <small>{{ asset.active }}</small>
-            </div>
-          </td>
-          <td>
-            <div class="d-flex flex-column">
-              <small class="text-secondary fsXs">In-Service</small>
-              <small>{{ asset.inService }}</small>
-            </div>
-          </td>
+          </div>
         </div>
       </div>
     </div>
