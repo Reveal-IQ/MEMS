@@ -1,15 +1,5 @@
 <template>
   <Section sectionTitle="Customer Service Contact">
-    <!-- Contact Number -->
-    <div class="col-lg-6">
-      <Input
-        label="Contact Number"
-        type="number"
-        id="contactNumber"
-        placeholder="Enter Contact Number"
-        v-model="contactInfo.contactNumber"
-      />
-    </div>
     <!-- Representative Name -->
     <div class="col-lg-6">
       <Input
@@ -18,6 +8,16 @@
         id="contactName"
         placeholder="Enter Representative Name"
         v-model="contactInfo.representativeName"
+      />
+    </div>
+    <!-- Contact Number -->
+    <div class="col-lg-6">
+      <Input
+        label="Contact Number"
+        type="number"
+        id="contactNumber"
+        placeholder="Enter Contact Number"
+        v-model="contactInfo.contactNumber"
       />
     </div>
     <!-- Email  -->
