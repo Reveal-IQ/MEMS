@@ -47,12 +47,10 @@
             <tr
               v-for="model in modelList"
               :key="model.index"
-              :value="model.model_name"
+              :value="model.modelName"
               v-if="modelList.length !== 0"
             >
-              <td scope="row">{{ model.model_name }}</td>
-
-              <td>{{ model.model_number }}</td>
+              <td scope="row">{{ model.modelName }}</td>
             </tr>
             <tr v-else>
               <td scope="row" class="text-danger fs-6" v-if="!isHidden">
