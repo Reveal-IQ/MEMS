@@ -70,6 +70,7 @@ import ModelInformation from "./VENDOR-ModelInfo.vue";
 import Btn from "../BIOMD-UI/UI-Btn.vue";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 import Header from "../BIOMD-UI/UI-FormHeader.vue";
+import UIToast from "../BIOMD-UI/UI-Toast.vue";
 
 export default {
   components: {
@@ -80,6 +81,7 @@ export default {
     Btn2,
     Btn,
     Header,
+    UIToast,
   },
   name: "vendor",
   // Define Props here

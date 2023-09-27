@@ -30,6 +30,9 @@
             placeholder="Common Number"
             v-model="ModelDescription.UMDNSCode"
           />
+          <transition name="toast">
+            <UIToast v-if="showToast" message="Model successfully added " />
+          </transition>
         </div>
         <Btn2
           BtnName="Submit"
@@ -50,11 +53,14 @@ import { useStore } from "vuex";
 import Input from "../BIOMD-UI/UI-Input.vue";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 import Section from "../BIOMD-UI/UI-Section.vue";
+import UIToast from "../BIOMD-UI/UI-Toast.vue";
 
 const store = useStore();
 const Institute_Code = computed(
   () => store.state.globalStore.UserInfo.Institute_Info.Code
 );
+
+const showToast = ref(false);
 
 const GlobalVendorDefinition = inject("GlobalVendorDefinition");
 
@@ -93,6 +99,11 @@ function createRecord() {
         ModelDescription.value.modelName = null;
         ModelDescription.value.commonName = null;
         ModelDescription.value.UMDNSCode = null;
+
+        showToast.value = true;
+        setTimeout(() => {
+          showToast.value = false;
+        }, 3000);
 
         console.log("Response Packet -->", res.Response);
       } else if (res.Type === "ERROR") {
