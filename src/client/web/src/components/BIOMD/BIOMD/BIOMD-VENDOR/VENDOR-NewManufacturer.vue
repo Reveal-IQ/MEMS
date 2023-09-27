@@ -56,7 +56,7 @@ function createRecord() {
         API: "CREATE_RECORD",
         collection: "Manufacturer",
         record: {
-          manufacturer_name: manufacturerInfo.value.manufacturerName,
+          manufacturerName: manufacturerInfo.value.manufacturerName,
         },
         Institute_Code: Institute_Code.value,
       },

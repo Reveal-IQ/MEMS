@@ -126,9 +126,9 @@ export default {
       assetCode: null,
       selectedParentAsset: { _id: null },
       serialNumber: null,
-      selectedManufacturer: { manufacturer_name: null, _id: null },
+      selectedManufacturer: { manufacturerName: null, _id: null },
       selectedModel: {
-        model_name: null,
+        modelName: null,
         _id: null,
         commonName: null,
         UMDNSCode: null,

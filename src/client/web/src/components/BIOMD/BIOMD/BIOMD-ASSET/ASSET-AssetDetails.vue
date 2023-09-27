@@ -42,7 +42,7 @@
         id="manufacturerList"
         placeholder="Select Manufacturer"
         aria-label="Default select example"
-        v-model="AssetDetails.selectedManufacturer.manufacturer_name"
+        v-model="AssetDetails.selectedManufacturer.manufacturerName"
         @input="fetchManufacturer"
         autocomplete="off"
       />
@@ -50,7 +50,7 @@
         <option
           v-for="manufacturer in manufacturerList"
           :key="manufacturer.index"
-          :value="manufacturer.manufacturer_name"
+          :value="manufacturer.manufacturerName"
         ></option>
       </datalist>
     </div>
@@ -65,7 +65,7 @@
           id="modelList"
           placeholder="Select Model"
           aria-label="Default select example"
-          v-model="AssetDetails.selectedModel.model_name"
+          v-model="AssetDetails.selectedModel.modelName"
           @input="fetchModel"
           autocomplete="off"
         />
@@ -73,11 +73,11 @@
           <option
             v-for="model in modelList"
             :key="model.index"
-            :value="model.model_name"
+            :value="model.modelName"
           ></option>
         </datalist>
       </div>
-      <div class="py-3 px-2" v-if="AssetDetails.selectedModel.model_name">
+      <div class="py-3 px-2" v-if="AssetDetails.selectedModel.modelName">
         <span class="fw-bold">Model Profile</span>
         <div class="d-flex flex-column gap-1">
           <span>Common Name: {{ AssetDetails.selectedModel.commonName }}</span>
@@ -132,7 +132,6 @@ const sendSocketReq = (request) => {
 
 const manufacturerList = ref(null);
 const modelList = ref(null);
-const modelProfile = ref(null);
 
 const statusList = ref([
   { name: "Active in Storage", value: "Active in Storage" },
@@ -156,7 +155,7 @@ const fetchManufacturer = async (event) => {
     ) {
       AssetDetails.value.selectedManufacturer = manufacturerList.value.find(
         (manufacturer) => {
-          return selectedManufacturer === manufacturer.manufacturer_name;
+          return selectedManufacturer === manufacturer.manufacturerName;
         }
       );
       GlobalAssetInformation.value.manufacturerID =
@@ -179,14 +178,14 @@ const fetchManufacturer = async (event) => {
               collection: "Manufacturer",
               queries: [
                 {
-                  field: "manufacturer_name",
+                  field: "manufacturerName",
                   op: "sb",
                   value: "^",
                 },
               ],
               projection: {
                 _id: 1,
-                manufacturer_name: 1,
+                manufacturerName: 1,
               },
             },
           },
@@ -221,7 +220,7 @@ const fetchModel = async (event) => {
         event.inputType === "insertReplacementText")
     ) {
       AssetDetails.value.selectedModel = modelList.value.find((model) => {
-        return selectedModel === model.model_name;
+        return selectedModel === model.modelName;
       });
       GlobalAssetInformation.value.modelID =
         AssetDetails.value.selectedModel._id;
@@ -242,14 +241,14 @@ const fetchModel = async (event) => {
               collection: "Model",
               queries: [
                 {
-                  field: "manufacturer_id",
+                  field: "manufacturerID",
                   op: "sb",
                   value: GlobalAssetInformation.value.manufacturerID,
                 },
               ],
               projection: {
                 _id: 1,
-                model_name: 1,
+                modelName: 1,
                 commonName: 1,
                 UMDNSCode: 1,
               },

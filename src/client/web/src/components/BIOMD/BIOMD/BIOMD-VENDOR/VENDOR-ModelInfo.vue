@@ -11,7 +11,7 @@
             id="manufacturerList"
             placeholder="Select Manufacturer"
             aria-label="Default select example"
-            v-model="ModelDescription.selectedManufacturer.manufacturer_name"
+            v-model="ModelDescription.selectedManufacturer.manufacturerName"
             @input="fetchManufacturer"
             autocomplete="off"
           />
@@ -19,7 +19,7 @@
             <option
               v-for="manufacturer in manufacturerList"
               :key="manufacturer.index"
-              :value="manufacturer.manufacturer_name"
+              :value="manufacturer.manufacturerName"
             ></option>
           </datalist>
         </div>
@@ -36,11 +36,20 @@
 
         <div class="col-lg-6">
           <Input
-            label="Model Number"
+            label="Common Name"
             type="text"
-            id="modelNumber"
-            placeholder="Model Number"
-            v-model="ModelDescription.modelNumber"
+            id="commonName"
+            placeholder="Common Number"
+            v-model="ModelDescription.commonName"
+          />
+        </div>
+        <div class="col-lg-6">
+          <Input
+            label="UMDNS Code"
+            type="text"
+            id="UMDNSCode"
+            placeholder="Common Number"
+            v-model="ModelDescription.UMDNSCode"
           />
         </div>
         <Btn2
@@ -70,12 +79,13 @@ const Institute_Code = computed(
 
 const ModelDescription = ref({
   modelName: null,
-  modelNumber: null,
-  selectedManufacturer: { manufacturer_name: null, _id: null },
+  commonName: null,
+  UMDNSCode: null,
+  selectedManufacturer: { manufacturerName: null, _id: null },
 });
 
-const Global_Model_Information = ref({
-  manufacturerId: null,
+const GlobalModelInformation = ref({
+  manufacturerID: null,
 });
 
 const manufacturerList = ref([]);
@@ -94,13 +104,13 @@ const fetchManufacturer = async (event) => {
     ) {
       ModelDescription.value.selectedManufacturer = manufacturerList.value.find(
         (manufacturer) => {
-          return selectedManufacturer === manufacturer.manufacturer_name;
+          return selectedManufacturer === manufacturer.manufacturerName;
         }
       );
-      Global_Model_Information.value.manufacturerId =
+      GlobalModelInformation.value.manufacturerID =
         ModelDescription.value.selectedManufacturer._id;
     } else {
-      Global_Model_Information.value.manufacturerId = null;
+      GlobalModelInformation.value.manufacturerID = null;
 
       sendSocketReq({
         data: {
@@ -116,14 +126,14 @@ const fetchManufacturer = async (event) => {
               collection: "Manufacturer",
               queries: [
                 {
-                  field: "manufacturer_name",
+                  field: "manufacturerName",
                   op: "sb",
                   value: "^",
                 },
               ],
               projection: {
                 _id: 1,
-                manufacturer_name: 1,
+                manufacturerName: 1,
               },
             },
           },
@@ -159,18 +169,20 @@ function createRecord() {
         API: "CREATE_RECORD",
         collection: "Model",
         record: {
-          manufacturer_id: Global_Model_Information.value.manufacturerId,
-          model_name: ModelDescription.value.modelName,
-          model_number: ModelDescription.value.modelNumber,
+          manufacturerID: GlobalModelInformation.value.manufacturerID,
+          modelName: ModelDescription.value.modelName,
+          commonName: ModelDescription.value.commonName,
+          UMDNSCode: ModelDescription.value.UMDNSCode,
         },
         Institute_Code: Institute_Code.value,
       },
     },
     callback: (res) => {
       if (res.Type === "RESPONSE") {
-        ModelDescription.value.selectedManufacturer.manufacturer_name = null;
+        ModelDescription.value.selectedManufacturer.manufacturerName = null;
         ModelDescription.value.modelName = null;
-        ModelDescription.value.modelNumber = null;
+        ModelDescription.value.commonName = null;
+        ModelDescription.value.UMDNSCode = null;
 
         console.log("Response Packet -->", res.Response);
       } else if (res.Type === "ERROR") {
