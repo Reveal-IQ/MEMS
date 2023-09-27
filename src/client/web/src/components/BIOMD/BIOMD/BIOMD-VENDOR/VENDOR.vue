@@ -127,10 +127,10 @@ export default {
 
     const contactInfo = ref([
       {
-        contactNumber: null,
-        representativeName: null,
+        number: null,
+        name: null,
         email: null,
-        contactType: null,
+        type: null,
       },
     ]);
 
@@ -172,10 +172,10 @@ export default {
               areaCode: vendorInfo.value.zipCode,
               contactInfo: [
                 {
-                  contactNumber: contactInfo.value.contactNumber,
-                  representativeName: contactInfo.value.representativeName,
+                  number: contactInfo.value.number,
+                  name: contactInfo.value.name,
                   email: contactInfo.value.email,
-                  contactType: contactInfo.value.contactType,
+                  type: contactInfo.value.type,
                 },
               ],
               manufacturerList: [

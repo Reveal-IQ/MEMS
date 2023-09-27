@@ -7,7 +7,7 @@
         type="text"
         id="contactName"
         placeholder="Enter Representative Name"
-        v-model="contactInfo.representativeName"
+        v-model="contactInfo.name"
       />
     </div>
     <!-- Contact Number -->
@@ -17,7 +17,7 @@
         type="number"
         id="contactNumber"
         placeholder="Enter Contact Number"
-        v-model="contactInfo.contactNumber"
+        v-model="contactInfo.number"
       />
     </div>
     <!-- Email  -->
@@ -32,16 +32,24 @@
     </div>
     <!-- Type of Personnel -->
     <div class="col-lg-6">
-      <Input
-        label="Contact Type"
-        type="text"
-        id="contactType"
-        placeholder="Enter Contact Type"
-        v-model="contactInfo.contactType"
-      />
+      <label for="type" class="form-label">Type of Personnel</label>
+      <div class="input-group">
+        <input
+          class="form-control"
+          list="contactTypeOptions"
+          id="type"
+          placeholder="Select Contact Type"
+          autocomplete="off"
+          v-model="contactInfo.type"
+        />
+      </div>
+      <datalist id="contactTypeOptions">
+        <option />
+        Select Contact Type
+      </datalist>
     </div>
 
-    <div class="col-lg-6">
+    <div class="col-lg-6 mt-4">
       <Btn2
         BtnName="Add"
         :icon="'plus'"
