@@ -13,7 +13,7 @@
           <transition name="toast">
             <UIToast
               v-if="showToast"
-              message="Manufacturer successfully created "
+              message="Manufacturer successfully added "
             />
           </transition>
         </div>
