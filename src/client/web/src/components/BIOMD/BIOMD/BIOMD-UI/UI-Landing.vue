@@ -75,9 +75,9 @@
             <tr v-for="vendor in vendorSupport">
               <td>{{ vendor.vendor_name}}</td>
               <td>{{ vendor.manufacturers}}</td>
-              <td>{{ vendor.contact[0].name}}</td>
-              <td>{{ vendor.contact[0].number}}</td>
-              <td>{{ vendor.contact[0].email}}</td>
+              <td>{{ vendor.contact_info[0].name}}</td>
+              <td>{{ vendor.contact_info[0].number}}</td>
+              <td>{{ vendor.contact_info[0].email}}</td>
               <td>{{ vendor.location}}</td>
             </tr>
           </tbody>
@@ -137,7 +137,7 @@ var fetchVendor = () => {
       list: {
         projection: {
           "vendor_name": 1,
-          "contact": 1,
+          "contact_info": 1,
           "manufacturers": 1,
         }
       }
