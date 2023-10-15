@@ -127,9 +127,9 @@ export default {
       assetCode: null,
       selectedParentAsset: { _id: null },
       serialNumber: null,
-      selectedManufacturer: { manufacturer_name: null, _id: null },
+      selectedManufacturer: { manufacturerName: null, _id: null },
       selectedModel: {
-        model_name: null,
+        modelName: null,
         _id: null,
         commonName: null,
         UMDNSCode: null,
@@ -241,7 +241,7 @@ export default {
     }
 
     const goBack = () => {
-      emit("updatePage", "landing");
+      emit("updatePage", "dashboard");
     };
 
     provide("AssetDetails", AssetDetails);
@@ -262,9 +262,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../../../GLOBAL//Styles//colors.scss";
 .RevealContainer {
   min-height: 100vh;
   max-height: 100vh;
+  background-color: $White;
   overflow: scroll;
 }
 

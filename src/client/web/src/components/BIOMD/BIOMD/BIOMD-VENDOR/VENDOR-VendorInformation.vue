@@ -115,9 +115,11 @@ import { inject, ref, onMounted } from "vue";
 import { useStore } from "vuex";
 import Input from "../BIOMD-UI/UI-Input.vue";
 import Section from "../BIOMD-UI/UI-Section.vue";
+
 const store = useStore();
+
 const vendorInfo = inject("vendorInfo");
-const Global_Vendor_Definition = inject("Global_Vendor_Definition");
+const GlobalVendorDefinition = inject("GlobalVendorDefinition");
 const countryList = ref(null);
 const stateList = ref(null);
 const districtList = ref(null);
@@ -136,18 +138,18 @@ const fetchCountry = async (event) => {
       vendorInfo.value.selectedCountry = countryList.value.find((country) => {
         return selectedCountry === country.Loci_Name_Country;
       });
-      Global_Vendor_Definition.value.vendorAddress.Country =
+      GlobalVendorDefinition.value.vendorAddress.Country =
         vendorInfo.value.selectedCountry.Loci_Code_Country;
 
       await fetchState();
     } else {
-      Global_Vendor_Definition.value.vendorAddress.Country = null;
-      Global_Vendor_Definition.value.vendorAddress.State = null;
+      GlobalVendorDefinition.value.vendorAddress.Country = null;
+      GlobalVendorDefinition.value.vendorAddress.State = null;
       vendorInfo.value.selectedState = {
         Loci_Name_Country: null,
         Loci_Code_Country: null,
       };
-      Global_Vendor_Definition.value.vendorAddress.District = null;
+      GlobalVendorDefinition.value.vendorAddress.District = null;
       vendorInfo.value.selectedDistrict = {
         Loci_Name_Area_L1: null,
         Loci_Code_Area_L1: null,
@@ -197,13 +199,13 @@ const fetchState = async (event) => {
       vendorInfo.value.selectedState = stateList.value.find((state) => {
         return selectedState === state.Loci_Name_State;
       });
-      Global_Vendor_Definition.value.vendorAddress.State =
+      GlobalVendorDefinition.value.vendorAddress.State =
         vendorInfo.value.selectedState.Loci_Code_State;
 
       await fetchDistrict();
     } else {
-      Global_Vendor_Definition.value.vendorAddress.State = null;
-      Global_Vendor_Definition.value.vendorAddress.District = null;
+      GlobalVendorDefinition.value.vendorAddress.State = null;
+      GlobalVendorDefinition.value.vendorAddress.District = null;
       vendorInfo.value.selectedDistrict = {
         Loci_Name_Area_L1: null,
         Loci_Code_Area_L1: null,
@@ -220,7 +222,7 @@ const fetchState = async (event) => {
             Criteria: {
               Type_Code: "STATE",
               Loci_Code_Country:
-                Global_Vendor_Definition.value.vendorAddress.Country,
+                GlobalVendorDefinition.value.vendorAddress.Country,
               Loci_Name_State: "",
             },
           },

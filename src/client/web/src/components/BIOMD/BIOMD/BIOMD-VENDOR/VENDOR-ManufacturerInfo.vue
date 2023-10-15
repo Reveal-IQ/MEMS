@@ -13,7 +13,7 @@
             id="manufacturerList"
             placeholder="Search and Select Manufacturer..."
             autocomplete="off"
-            v-model="manufacturerInfo.selectedManufacturer.manufacturer_name"
+            v-model="manufacturerInfo.selectedManufacturer.manufacturerName"
             @input="fetchManufacturer"
           />
         </div>
@@ -21,7 +21,7 @@
           <option
             v-for="manufacturer in manufacturerList"
             :key="manufacturer.index"
-            :value="manufacturer.manufacturer_name"
+            :value="manufacturer.manufacturerName"
           />
         </datalist>
       </div>
@@ -124,7 +124,7 @@ const manufacturerList = ref([]);
 const modelList = ref([]);
 
 const manufacturerInfo = inject("manufacturerInfo");
-const Global_Vendor_Definition = inject("Global_Vendor_Definition");
+const GlobalVendorDefinition = inject("GlobalVendorDefinition");
 
 const fetchManufacturer = async (event) => {
   try {
@@ -136,14 +136,14 @@ const fetchManufacturer = async (event) => {
     ) {
       manufacturerInfo.value.selectedManufacturer = manufacturerList.value.find(
         (manufacturer) => {
-          return selectedManufacturer === manufacturer.manufacturer_name;
+          return selectedManufacturer === manufacturer.manufacturerName;
         }
       );
-      Global_Vendor_Definition.value.manufacturerId =
+      GlobalVendorDefinition.value.manufacturerID =
         manufacturerInfo.value.selectedManufacturer._id;
       await fetchModel();
     } else {
-      Global_Vendor_Definition.value.manufacturerId = null;
+      GlobalVendorDefinition.value.manufacturerID = null;
 
       sendSocketReq({
         data: {
@@ -159,14 +159,14 @@ const fetchManufacturer = async (event) => {
               collection: "Manufacturer",
               queries: [
                 {
-                  field: "manufacturer_name",
+                  field: "manufacturerName",
                   op: "sb",
                   value: "^",
                 },
               ],
               projection: {
                 _id: 1,
-                manufacturer_name: 1,
+                manufacturerName: 1,
               },
             },
           },
@@ -199,12 +199,12 @@ const fetchModel = async (event) => {
         event.inputType === "insertReplacementText")
     ) {
       manufacturerInfo.value.listedModels = modelList.value.find((model) => {
-        return listedModels === model.model_name;
+        return listedModels === model.modelName;
       });
-      Global_Vendor_Definition.value.modelId =
+      GlobalVendorDefinition.value.modelID =
         manufacturerInfo.value.listedModels._id;
     } else {
-      Global_Vendor_Definition.value.modelId = null;
+      GlobalVendorDefinition.value.modelID = null;
 
       sendSocketReq({
         data: {
@@ -220,15 +220,14 @@ const fetchModel = async (event) => {
               collection: "Model",
               queries: [
                 {
-                  field: "manufacturer_id",
+                  field: "manufacturerID",
                   op: "sb",
-                  value: Global_Vendor_Definition.value.manufacturerId,
+                  value: GlobalVendorDefinition.value.manufacturerID,
                 },
               ],
               projection: {
                 _id: 1,
-                model_name: 1,
-                model_number: 1,
+                modelName: 1,
               },
             },
           },

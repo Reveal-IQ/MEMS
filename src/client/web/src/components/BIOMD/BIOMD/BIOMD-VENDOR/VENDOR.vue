@@ -122,8 +122,8 @@ export default {
     });
 
     const manufacturerInfo = ref({
-      selectedManufacturer: { manufacturer_name: null, _id: null },
-      listedModels: { model_name: null, _id: null },
+      selectedManufacturer: { manufacturerName: null, _id: null },
+      listedModels: { modelName: null, _id: null },
     });
 
     const contactInfo = ref([
@@ -135,14 +135,14 @@ export default {
       },
     ]);
 
-    const Global_Vendor_Definition = ref({
+    const GlobalVendorDefinition = ref({
       vendorAddress: {
         Country: null,
         State: null,
         District: null,
       },
-      manufacturerId: null,
-      modelId: null,
+      manufacturerID: null,
+      modelID: null,
     });
 
     const changePage = async (page) => {
@@ -164,27 +164,24 @@ export default {
             API: "CREATE_RECORD",
             collection: "Vendor",
             record: new VendorRecord({
-              vendor_name: vendorInfo.value.vendorName,
-              country: Global_Vendor_Definition.value.vendorAddress.Country,
-              area: Global_Vendor_Definition.value.vendorAddress.State,
-              city: Global_Vendor_Definition.value.vendorAddress.District,
+              vendorName: vendorInfo.value.vendorName,
+              country: GlobalVendorDefinition.value.vendorAddress.Country,
+              area: GlobalVendorDefinition.value.vendorAddress.State,
+              city: GlobalVendorDefinition.value.vendorAddress.District,
               address_1: vendorInfo.value.streetAddress1,
               address_2: vendorInfo.value.streetAddress2,
               areaCode: vendorInfo.value.zipCode,
-              contact_info: [
+              contactInfo: [
                 {
-                  contact_number: contactInfo.value.contactNumber,
-                  representative_name: contactInfo.value.representativeName,
+                  contactNumber: contactInfo.value.contactNumber,
+                  representativeName: contactInfo.value.representativeName,
                   email: contactInfo.value.email,
-                  contact_type: contactInfo.value.contactType,
+                  contactType: contactInfo.value.contactType,
                 },
               ],
-              manufacturer_list: [
+              manufacturerList: [
                 {
-                  manufacturer: Global_Vendor_Definition.value.manufacturerId,
-                  model_list: [
-                    { model_id: Global_Vendor_Definition.value.modelId },
-                  ],
+                  manufacturer: GlobalVendorDefinition.value.manufacturerID,
                 },
               ],
             }).serialize(),
@@ -209,13 +206,13 @@ export default {
     }
 
     const goBack = () => {
-      emit("updatePage", "landing");
+      emit("updatePage", "dashboard");
     };
 
     provide("vendorInfo", vendorInfo);
     provide("manufacturerInfo", manufacturerInfo);
     provide("contactInfo", contactInfo);
-    provide("Global_Vendor_Definition", Global_Vendor_Definition);
+    provide("GlobalVendorDefinition", GlobalVendorDefinition);
 
     return {
       goBack,

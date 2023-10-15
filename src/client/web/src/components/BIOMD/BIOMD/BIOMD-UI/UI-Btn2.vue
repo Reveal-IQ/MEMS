@@ -4,10 +4,9 @@
     class="btn buttonBackground d-inline-flex align-items-center fs-6 rounded-pill"
     :class="class"
     :style="'--color:' + backgroundColor"
-    @click="emitClickEvent()"
   >
     <font-awesome-icon :icon="icon" size="1x" class="me-2" />
-    <span>{{ BtnName }}</span>
+    <span class="fsXs">{{ BtnName }}</span>
 
     <slot />
   </button>
@@ -36,14 +35,15 @@ const props = defineProps({
 
 let icon = props.icon;
 
-const emit = defineEmits(["onUserClick"]);
+const emit = defineEmits([""]);
 
 function emitClickEvent() {
-  emit("onUserClick");
+  emit("");
 }
 </script>
 
 <style lang="scss" scoped>
+@import "../Style/font-style.scss";
 .buttonBackground {
   background-color: var(--color);
 }
