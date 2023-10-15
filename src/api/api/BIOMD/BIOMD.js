@@ -11,6 +11,7 @@
 //Required Libs
 // const { join } = require("path");
 // const media = require(join(CONFIG.Paths.HomeDir, CONFIG.Paths.API, "GLOBAL", "media"));
+const BSON = require('bson');
 const { ObjectId } = require('mongodb');
 const instituteCode = CONFIG.Database.Site_Database.Name;
 
@@ -38,6 +39,15 @@ module.exports.App_Info = {
   Version_Schema: "022621-V0.1"
 }
 
+const SUPPORTED_COLLECTIONS = [
+  "Manufacturer",
+  "Vendor",
+  "Facility",
+  "Model",
+  "Asset",
+  "Contact",
+  "Department",
+]
 
 const ASSETS = "assets";
 const FACILITIES = "facilities";
@@ -82,53 +92,33 @@ module.exports.CREATE_RECORD = async function (req, dbClient) {
   console.log(await TIMESTAMP() + `: RCU-BIOMD-I001 : CREATE RECORD api processing request packet ID: ${req.ID}`)
 
   //Copy Requester Information
-  var res = Object.assign({}, req);
+  let res = Object.assign({}, req);
 
-  //Decleration
-  var invalidCollection = false;
-  var id = new Object();
-  let collection = req.Request.collection;
+  //Declaration
+  const collection = req.Request.collection;
 
-  try {
-    switch (collection) {
-      case "Manufacturer":
-        insertID = await createOne(req.Request.record, dbClient, "Manufacturer");
-        break;
-      case "Vendor":
-        insertID = await createOne(req.Request.record, dbClient, "Vendor");
-        break;
-      case "Facility":
-        insertID = await createOne(req.Request.record, dbClient, "Facility");
-        break;
-      case "Model":
-        insertID = await createOne(req.Request.record, dbClient, "Model");
-        break;
-      case "Asset":
-        insertID = await createOne(req.Request.record, dbClient, "Asset");
-        break;
-      case "Contact":
-        insertID = await createOne(req.Request.record, dbClient, "Contact");
-        break;
-      default:
-        invalidCollection = true
+  if (SUPPORTED_COLLECTIONS.includes(collection)) {
+    try {
+      const record = BSON.deserialize(Uint8Array.from(req.Request.record));
+      const insertID = await createOne(record, dbClient, collection);
+
+      res.Type = "RESPONSE";
+      res.Response = {
+        insertID: insertID,
+        success: true,
+        message: "Created " + collection + " Record",
+      };
+    } catch (error) {
+      // Record creation failure
+      res.Type = "ERROR";
+      res.Response = {
+        Request_ID: req.ID,
+        Error_Code: "API-BIOMD-E001",
+        Error_Msg: "CREATE_RECORD : Failed to create " + collection + " record",
+      };
     }
-  } catch (error) {
-    res.Type = "ERROR";
-    res.Response = {
-      Request_ID: req.ID,
-      Error_Code: "API-BIOMD-E001",
-      Error_Msg: "CREATE_RECORD : Failed to create " + collection + " record",
-    };
-  }
-
-  if (!invalidCollection) {
-    res.Type = "RESPONSE";
-    res.Response = {
-      insertID: insertID,
-      success: true,
-      message: "Created " + collection + " Record",
-    };
   } else {
+    // Invalid collection
     res.Type = "ERROR";
     res.Response = {
       Request_ID: req.ID,

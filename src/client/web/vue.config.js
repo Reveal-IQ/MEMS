@@ -2,7 +2,7 @@ const { defineConfig } = require('@vue/cli-service')
 const webpack = require('webpack');
 
 module.exports = defineConfig({
-  transpileDependencies: true
+  transpileDependencies: true,
 })
 
 module.exports = {
@@ -16,6 +16,10 @@ module.exports = {
         crypto: require.resolve('crypto-browserify'),
         stream: require.resolve('stream-browserify')
       }
+    },
+
+    experiments: {
+      topLevelAwait: true,
     },
 
     plugins: [

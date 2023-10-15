@@ -70,6 +70,7 @@ import ModelInformation from "./VENDOR-ModelInfo.vue";
 import Btn from "../BIOMD-UI/UI-Btn.vue";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 import Header from "../BIOMD-UI/UI-FormHeader.vue";
+import { VendorRecord } from "../../../../store/modules/recordSchema";
 
 export default {
   components: {
@@ -162,7 +163,7 @@ export default {
             ServiceCode: "BIOMD",
             API: "CREATE_RECORD",
             collection: "Vendor",
-            record: {
+            record: new VendorRecord({
               vendorName: vendorInfo.value.vendorName,
               country: GlobalVendorDefinition.value.vendorAddress.Country,
               area: GlobalVendorDefinition.value.vendorAddress.State,
@@ -183,7 +184,7 @@ export default {
                   manufacturer: GlobalVendorDefinition.value.manufacturerID,
                 },
               ],
-            },
+            }).serialize(),
             Institute_Code: Institute_Code.value,
           },
         },
