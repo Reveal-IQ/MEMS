@@ -132,7 +132,6 @@ const sendSocketReq = (request) => {
 
 const manufacturerList = ref(null);
 const modelList = ref(null);
-
 const statusList = ref([
   { name: "Active in Storage", value: "Active in Storage" },
   { name: "Active in Service", value: "Active in Service" },

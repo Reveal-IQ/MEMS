@@ -194,8 +194,9 @@ module.exports.processReq = async (req) => {
         res = await Services[req.Request.ServiceCode][req.Request.API](req, DBLink);
     } catch(err){
         console.log(await TIMESTAMP() + `: RCU-E045 : Error occurred in 'processReq' function.`);
+        console.log(err);
 
-        // Construct response from request includeds error code
+        // Construct response from request includes error code
         res = req;
         res.Response = {
             Request_ID: req.ID,

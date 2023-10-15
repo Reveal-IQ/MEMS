@@ -78,6 +78,7 @@ import PurchaseDetails from "./ASSET-PurchaseDetails.vue";
 import MaintenanceAndSupport from "./ASSET-MaintenanceAndSupport.vue";
 import MultipleEquipmentEntry from "./ASSET-MultipleEquipmentEntry.vue";
 import AdditionalInformation from "./ASSET-AdditionalInformation.vue";
+import { AssetRecord } from "../../../../store/modules/recordSchema";
 
 import Btn from "../BIOMD-UI/UI-Btn.vue";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
@@ -141,7 +142,6 @@ export default {
       selectedFacility: {
         _id: null,
         name: null,
-      },
       selectedDepartment: {
         _id: null,
         name: null,
@@ -197,7 +197,7 @@ export default {
             ServiceCode: "BIOMD",
             API: "CREATE_RECORD",
             collection: "Asset",
-            record: {
+            record: new AssetRecord({
               assetCode: AssetDetails.value.assetCode,
               parentAssetID: GlobalAssetInformation.value.parentAssetID,
               serialNumber: AssetDetails.value.serialNumber,
@@ -209,19 +209,15 @@ export default {
               },
               manufacturerDate: AssetDetails.value.manufacturerDate,
               status: AssetDetails.value.status,
-
               facilityID: GlobalAssetInformation.value.facilityID,
               departmentID: GlobalAssetInformation.value.departmentID,
               locationName: AssetLocation.value.locationName,
-
               supportTeam: MaintenanceAndSupport.value.supportTeam,
-
               purchaseOrderID: GlobalAssetInformation.value.purchaseOrderID,
               acceptanceDate: PurchaseDetails.value.acceptanceDate,
               vendorID: GlobalAssetInformation.value.vendorID,
-
               comment: AdditionalInformation.value.comment,
-            },
+            }).serialize(),
             Institute_Code: Institute_Code.value, //Dynamically changes when another institute logged in
           },
         },

@@ -52,7 +52,7 @@
         </p>
       </div>
     </div>
-
+    
     <div class="mt-4 rounded p-4">
       <span class="card-title fw-normal fs-4">Site Inventory</span>
       <p class="card-text">

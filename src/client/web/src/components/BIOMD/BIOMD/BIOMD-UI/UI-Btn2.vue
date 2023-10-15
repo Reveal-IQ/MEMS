@@ -4,8 +4,6 @@
     class="btn buttonBackground d-inline-flex align-items-center fs-6 rounded-pill"
     :class="class"
     :style="'--color:' + backgroundColor"
-    :id="id"
-  >
     <font-awesome-icon :icon="icon" size="1x" class="me-2" />
     <span class="fsXs">{{ BtnName }}</span>
 
@@ -30,9 +28,6 @@ const props = defineProps({
   backgroundColor: {
     type: String,
     default: "#586974",
-  },
-  id: {
-    type: String,
   },
   icon: null,
 });
