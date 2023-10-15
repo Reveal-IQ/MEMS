@@ -70,7 +70,7 @@ import ModelInformation from "./VENDOR-ModelInfo.vue";
 import Btn from "../BIOMD-UI/UI-Btn.vue";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 import Header from "../BIOMD-UI/UI-FormHeader.vue";
-import { VendorRecord } from "../../../../store/modules/recordSchema";
+import UIToast from "../BIOMD-UI/UI-Toast.vue";
 
 export default {
   components: {
@@ -81,6 +81,7 @@ export default {
     Btn2,
     Btn,
     Header,
+    UIToast,
   },
   name: "vendor",
   // Define Props here
@@ -128,10 +129,10 @@ export default {
 
     const contactInfo = ref([
       {
-        contactNumber: null,
-        representativeName: null,
+        number: null,
+        name: null,
         email: null,
-        contactType: null,
+        type: null,
       },
     ]);
 
@@ -163,7 +164,7 @@ export default {
             ServiceCode: "BIOMD",
             API: "CREATE_RECORD",
             collection: "Vendor",
-            record: new VendorRecord({
+            record: {
               vendorName: vendorInfo.value.vendorName,
               country: GlobalVendorDefinition.value.vendorAddress.Country,
               area: GlobalVendorDefinition.value.vendorAddress.State,
@@ -173,10 +174,10 @@ export default {
               areaCode: vendorInfo.value.zipCode,
               contactInfo: [
                 {
-                  contactNumber: contactInfo.value.contactNumber,
-                  representativeName: contactInfo.value.representativeName,
+                  number: contactInfo.value.number,
+                  name: contactInfo.value.name,
                   email: contactInfo.value.email,
-                  contactType: contactInfo.value.contactType,
+                  type: contactInfo.value.type,
                 },
               ],
               manufacturerList: [
@@ -184,7 +185,7 @@ export default {
                   manufacturer: GlobalVendorDefinition.value.manufacturerID,
                 },
               ],
-            }).serialize(),
+            },
             Institute_Code: Institute_Code.value,
           },
         },

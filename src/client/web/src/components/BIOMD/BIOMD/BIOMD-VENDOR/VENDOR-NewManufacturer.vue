@@ -10,6 +10,12 @@
             placeholder="Manufacturer Name"
             v-model="manufacturerInfo.manufacturerName"
           />
+          <transition name="toast">
+            <UIToast
+              v-if="showToast"
+              message="Manufacturer successfully added "
+            />
+          </transition>
         </div>
         <Btn2
           BtnName="Submit"
@@ -29,8 +35,8 @@ import { ref, computed } from "vue";
 import { useStore } from "vuex";
 import Input from "../BIOMD-UI/UI-Input.vue";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
+import UIToast from "../BIOMD-UI/UI-Toast.vue";
 import Section from "../BIOMD-UI/UI-Section.vue";
-import { ManufacturerRecord } from "../../../../store/modules/recordSchema";
 
 const store = useStore();
 const Institute_Code = computed(
@@ -40,6 +46,8 @@ const Institute_Code = computed(
 const manufacturerInfo = ref({
   manufacturerName: null,
 });
+
+const showToast = ref(false);
 
 const sendSocketReq = (request) => {
   store.dispatch("sendSocketReq", request);
@@ -56,15 +64,19 @@ function createRecord() {
         ServiceCode: "BIOMD",
         API: "CREATE_RECORD",
         collection: "Manufacturer",
-        record: new ManufacturerRecord({
+        record: {
           manufacturerName: manufacturerInfo.value.manufacturerName,
-        }).serialize(),
+        },
         Institute_Code: Institute_Code.value,
       },
     },
     callback: (res) => {
       if (res.Type === "RESPONSE") {
         manufacturerInfo.value.manufacturerName = null;
+        showToast.value = true;
+        setTimeout(() => {
+          showToast.value = false;
+        }, 3000);
 
         console.log("Response Packet -->", res.Response);
       } else if (res.Type === "ERROR") {
@@ -79,4 +91,6 @@ function createRecord() {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import "../Style/font-style.scss";
+</style>
