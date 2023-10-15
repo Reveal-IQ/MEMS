@@ -54,6 +54,7 @@ import Input from "../BIOMD-UI/UI-Input.vue";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 import Section from "../BIOMD-UI/UI-Section.vue";
 import UIToast from "../BIOMD-UI/UI-Toast.vue";
+import { ModelRecord } from "../../../../store/modules/recordSchema";
 
 const store = useStore();
 const Institute_Code = computed(
