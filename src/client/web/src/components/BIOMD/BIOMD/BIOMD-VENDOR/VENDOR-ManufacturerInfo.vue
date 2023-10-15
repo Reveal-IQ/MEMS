@@ -26,41 +26,35 @@
         </datalist>
       </div>
 
-      <div class="col">
-        <table class="table table-borderless fs-6">
-          <thead>
-            <tr>
-              <th scope="col" class="fs-6">Model</th>
-              <th scope="col" class="fs-6"></th>
-
-              <Btn2
-                v-if="!isHidden"
-                BtnName="Add Model"
-                :icon="'plus'"
-                backgroundColor="none"
-                class="text-primary btn-sm fs-6"
-                @click="isHidden = !isHidden"
-              />
-            </tr>
-          </thead>
-          <tbody>
-            <tr
-              v-for="model in modelList"
-              :key="model.index"
-              :value="model.model_name"
-              v-if="modelList.length !== 0"
-            >
-              <td scope="row">{{ model.model_name }}</td>
-
-              <td>{{ model.model_number }}</td>
-            </tr>
-            <tr v-else>
-              <td scope="row" class="text-danger fs-6" v-if="!isHidden">
-                Use Add to assign Model
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="col" v-if="showLabel">
+        <div class="d-flex justify-content-between px-3">
+          <span class="card-title fw-normal fs-6">Model</span>
+          <Btn2
+            v-if="!isHidden"
+            BtnName="Add Model"
+            :icon="'plus'"
+            backgroundColor="none"
+            class="text-primary btn-sm fs-6"
+            @click="isHidden = !isHidden"
+          />
+        </div>
+        <div
+          class="rounded-3 container pb-1 align-middle"
+          v-for="model in modelList"
+          :key="model.index"
+          :value="model.modelName"
+        >
+          <div class="d-flex flex-column gap-3">
+            <td>
+              <div class="d-flex flex-column">
+                <small class="text-dark fsXs"> {{ model.modelName }}</small>
+              </div>
+            </td>
+          </div>
+        </div>
+        <div class="d-flex flex-column" v-if="showMessage">
+          <td class="text-danger fs-6">Use Add to assign Model</td>
+        </div>
       </div>
     </div>
 
@@ -112,6 +106,8 @@ import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 
 const store = useStore();
 
+const showMessage = ref(false);
+
 const sendSocketReq = (request) => {
   store.dispatch("sendSocketReq", request);
 };
@@ -119,6 +115,7 @@ const sendSocketReq = (request) => {
 // Hide the buttons after model & manufacturer toggle
 const isHidden = ref(false);
 const hide = ref(false);
+const showLabel = ref(false);
 
 const manufacturerList = ref([]);
 const modelList = ref([]);
@@ -236,6 +233,15 @@ const fetchModel = async (event) => {
           if (res.Type === "RESPONSE") {
             console.log("Response Packet -->", res.Response);
             modelList.value = res.Response.records;
+
+            if (modelList.value.length < 1) {
+              showMessage.value = true;
+            }
+            if (modelList.value.length > 0) {
+              showMessage.value = false;
+            }
+
+            showLabel.value = true;
           } else if (res.Type === "ERROR") {
             Type: "ERROR";
             Response: {
@@ -258,4 +264,5 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 @import "../Style/BIOMD.scss";
+@import "../Style/font-style.scss";
 </style>
