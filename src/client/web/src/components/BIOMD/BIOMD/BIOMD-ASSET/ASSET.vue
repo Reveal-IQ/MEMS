@@ -142,7 +142,6 @@ export default {
       selectedFacility: {
         _id: null,
         name: null,
-      },
       selectedDepartment: {
         _id: null,
         name: null,

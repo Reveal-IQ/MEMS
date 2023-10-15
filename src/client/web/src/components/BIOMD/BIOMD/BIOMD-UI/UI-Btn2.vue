@@ -4,7 +4,6 @@
     class="btn buttonBackground d-inline-flex align-items-center fs-6 rounded-pill"
     :class="class"
     :style="'--color:' + backgroundColor"
-  >
     <font-awesome-icon :icon="icon" size="1x" class="me-2" />
     <span class="fsXs">{{ BtnName }}</span>
 
