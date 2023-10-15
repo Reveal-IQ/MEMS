@@ -64,9 +64,9 @@ function createRecord() {
         ServiceCode: "BIOMD",
         API: "CREATE_RECORD",
         collection: "Manufacturer",
-        record: {
+        record: new ManufacturerRecord({
           manufacturerName: manufacturerInfo.value.manufacturerName,
-        },
+        }).serialize(),
         Institute_Code: Institute_Code.value,
       },
     },

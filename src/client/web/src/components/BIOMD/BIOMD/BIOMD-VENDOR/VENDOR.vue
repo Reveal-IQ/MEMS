@@ -164,7 +164,7 @@ export default {
             ServiceCode: "BIOMD",
             API: "CREATE_RECORD",
             collection: "Vendor",
-            record: {
+            record: new VendorRecord({
               vendorName: vendorInfo.value.vendorName,
               country: GlobalVendorDefinition.value.vendorAddress.Country,
               area: GlobalVendorDefinition.value.vendorAddress.State,
@@ -185,7 +185,7 @@ export default {
                   manufacturer: GlobalVendorDefinition.value.manufacturerID,
                 },
               ],
-            },
+            }).serialize(),
             Institute_Code: Institute_Code.value,
           },
         },

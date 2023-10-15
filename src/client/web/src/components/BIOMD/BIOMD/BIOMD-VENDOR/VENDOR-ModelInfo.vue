@@ -85,12 +85,12 @@ function createRecord() {
         ServiceCode: "BIOMD",
         API: "CREATE_RECORD",
         collection: "Model",
-        record: {
+        record: new ModelRecord({
           manufacturerID: GlobalVendorDefinition.value.manufacturerID,
           modelName: ModelDescription.value.modelName,
           commonName: ModelDescription.value.commonName,
           UMDNSCode: ModelDescription.value.UMDNSCode,
-        },
+        }).serialize(),
         Institute_Code: Institute_Code.value,
       },
     },
