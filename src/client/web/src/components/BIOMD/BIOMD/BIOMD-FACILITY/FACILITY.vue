@@ -64,6 +64,7 @@ import FacilityInformation from "./FACILITY-FacilityInformation.vue"; // Based o
 import Btn from "../BIOMD-UI/UI-Btn.vue";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 import Header from "../BIOMD-UI/UI-FormHeader.vue";
+import { FacilityRecord } from "../../../../store/modules/recordSchema";
 
 export default {
   name: "manufacturer",
@@ -132,7 +133,7 @@ export default {
             ServiceCode: "BIOMD",
             API: "CREATE_RECORD",
             collection: "Facility",
-            record: {
+            record: new FacilityRecord({
               facility_name: facilityInfo.value.facilityName,
               country: Global_Facility_Definition.value.facilityAddress.Country,
               area: Global_Facility_Definition.value.facilityAddress.State,
@@ -141,7 +142,7 @@ export default {
               address_2: facilityInfo.value.streetAddress2,
               area_code: facilityInfo.value.zipCode,
               departments: facilityInfo.value.departments,
-            },
+            }).serialize(),
             Institute_Code: Institute_Code.value, //Dynamically changes when another institute logged in
           },
         },
