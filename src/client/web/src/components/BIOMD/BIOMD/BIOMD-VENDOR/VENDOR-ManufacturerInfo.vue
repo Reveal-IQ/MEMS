@@ -26,7 +26,7 @@
         </datalist>
       </div>
 
-      <div class="col">
+      <div class="col" v-if="showLabel">
         <div class="d-flex justify-content-between px-3">
           <span class="card-title fw-normal fs-6">Model</span>
           <Btn2
@@ -115,6 +115,7 @@ const sendSocketReq = (request) => {
 // Hide the buttons after model & manufacturer toggle
 const isHidden = ref(false);
 const hide = ref(false);
+const showLabel = ref(false);
 
 const manufacturerList = ref([]);
 const modelList = ref([]);
@@ -239,6 +240,8 @@ const fetchModel = async (event) => {
             if (modelList.value.length > 0) {
               showMessage.value = false;
             }
+
+            showLabel.value = true;
           } else if (res.Type === "ERROR") {
             Type: "ERROR";
             Response: {
