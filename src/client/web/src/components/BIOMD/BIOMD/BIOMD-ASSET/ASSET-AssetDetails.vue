@@ -1,73 +1,63 @@
 <template>
-  <Section sectionTitle="General Information">
-    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
-      <!-- Equipment Number -->
-      <div class="col-lg-3">
-        <Input
-          label="Equipment Number"
-          type="number"
-          id="equipmentNumber"
-          placeholder="Enter Equipment Number"
-          v-model="GeneralInformation.equipmentNumber"
-        />
-      </div>
+  <Section sectionTitle="Asset Details">
+    <!-- Equipment Number -->
+    <div class="col-lg-6 mb-3">
+      <Input
+        label="Equipment Number"
+        type="text"
+        id="assetCode"
+        placeholder="Enter Equipment Number"
+        v-model="AssetDetails.assetCode"
+      />
+    </div>
 
-      <!-- Equipment Common Name -->
-      <div class="col-lg-4 col-md-12 mb-3">
-        <label for="commonNameList" class="form-label"
-          >Equipment Common Name</label
-        >
-        <select
-          id="commonNameList"
-          class="form-select"
-          v-model="GeneralInformation.commonName"
-        >
-          <option selected disabled>Select Common Name</option>
-          <option v-for="name in commonNameList" :key="name">
-            {{ name }}
-          </option>
-        </select>
-      </div>
+    <!-- Parent Asset -->
+    <div class="col-lg-6 mb-3">
+      <label for="parentAssetList" class="form-label">Parent Asset</label>
+      <select
+        id="parentAssetList"
+        class="form-select"
+        aria-label="Default select example"
+        v-model="AssetDetails.selectedParentAsset._id"
+      >
+        <option selected>Select Parent Asset</option>
+      </select>
+    </div>
 
-      <!-- Equipment Description -->
-      <div class="col-lg-5 col-md-12 mb-3">
-        <label for="descriptionList" class="form-label"
-          >Equipment Description</label
-        >
-        <select
-          id="descriptionList"
-          class="form-select"
-          aria-label="Default select example"
-          v-model="GeneralInformation.description"
-        >
-          <option selected>Select Class</option>
-        </select>
-      </div>
+    <div class="col-lg-6 mb-3">
+      <Input
+        label="Serial Number"
+        type="text"
+        id="serialNumber"
+        placeholder="Enter Serial Number"
+        v-model="AssetDetails.serialNumber"
+      />
+    </div>
+    <!-- Manufacturer -->
+    <div class="col-lg-6 mb-3">
+      <label for="manufacturerList" class="form-label">Manufacturer</label>
+      <input
+        class="form-control"
+        list="manufacturerListOptions"
+        id="manufacturerList"
+        placeholder="Select Manufacturer"
+        aria-label="Default select example"
+        v-model="AssetDetails.selectedManufacturer.manufacturer_name"
+        @input="fetchManufacturer"
+        autocomplete="off"
+      />
+      <datalist id="manufacturerListOptions">
+        <option
+          v-for="manufacturer in manufacturerList"
+          :key="manufacturer.index"
+          :value="manufacturer.manufacturer_name"
+        ></option>
+      </datalist>
+    </div>
 
-      <!-- Manufacturer -->
-      <div class="col-lg-6 mb-3">
-        <label for="manufacturerList" class="form-label">Manufacturer</label>
-        <input
-          class="form-control"
-          list="manufacturerListOptions"
-          id="manufacturerList"
-          placeholder="Select Manufacturer"
-          aria-label="Default select example"
-          v-model="GeneralInformation.selectedManufacturer.manufacturer_name"
-          @input="fetchManufacturer"
-          autocomplete="off"
-        />
-        <datalist id="manufacturerListOptions">
-          <option
-            v-for="manufacturer in manufacturerList"
-            :key="manufacturer.index"
-            :value="manufacturer.manufacturer_name"
-          ></option>
-        </datalist>
-      </div>
-
-      <!-- Model Name -->
-      <div class="col-lg-6 mb-3">
+    <!-- Model Name -->
+    <div class="col-lg-6 mb-3">
+      <div>
         <label for="modelList" class="form-label">Model</label>
         <input
           class="form-control"
@@ -75,7 +65,7 @@
           id="modelList"
           placeholder="Select Model"
           aria-label="Default select example"
-          v-model="GeneralInformation.selectedModel.model_name"
+          v-model="AssetDetails.selectedModel.model_name"
           @input="fetchModel"
           autocomplete="off"
         />
@@ -87,37 +77,43 @@
           ></option>
         </datalist>
       </div>
-
-      <!-- Serial Number -->
-      <div class="col-lg-6 mb-3">
-        <Input
-          label="Serial Number"
-          type="text"
-          id="serialNumber"
-          placeholder="Enter Serial Number"
-          v-model="GeneralInformation.serialNumber"
-        />
-      </div>
-
-      <!-- Year of Manufacture -->
-      <div class="col-lg-6 mb-3">
-        <Input
-          label="Year of manufacture"
-          type="date"
-          id="yearOfManufacture"
-          placeholder="Enter Year of manufacture"
-          v-model="GeneralInformation.manufacturerDate"
-        />
+      <div class="py-3 px-2" v-if="AssetDetails.selectedModel.model_name">
+        <span class="fw-bold">Model Profile</span>
+        <div class="d-flex flex-column gap-1">
+          <span>Common Name: {{ AssetDetails.selectedModel.commonName }}</span>
+          <span>UMDNS Code: {{ AssetDetails.selectedModel.UMDNSCode }}</span>
+        </div>
       </div>
     </div>
 
-    <div class="col-lg-12 col-md-6">
-      <Btn2
-        BtnName="Search Parent Equipment"
-        backgroundColor="#1266F1"
-        :icon="'search'"
-        class="rounded-pill"
+    <!-- Year of Manufacture -->
+    <div class="col-lg-6 mb-3">
+      <Input
+        label="Year of manufacture"
+        type="date"
+        id="yearOfManufacture"
+        placeholder="Enter Year of manufacture"
+        v-model="AssetDetails.manufacturerDate"
       />
+    </div>
+
+    <div class="col-lg-6 mb-3">
+      <label for="statusList" class="form-label">Status</label>
+      <select
+        id="statusList"
+        class="form-select"
+        aria-label="Default select example"
+        v-model="AssetDetails.status"
+      >
+        <option selected value="Active Deployed">Active Deployed</option>
+        <option
+          v-for="list in statusList"
+          :key="list.value"
+          :value="list.value"
+        >
+          {{ list.name }}
+        </option>
+      </select>
     </div>
   </Section>
 </template>
@@ -126,7 +122,6 @@
 import { ref, inject, onMounted } from "vue";
 import { useStore } from "vuex";
 
-import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 import Input from "../BIOMD-UI/UI-Input.vue";
 import Section from "../BIOMD-UI/UI-Section.vue";
 
@@ -137,12 +132,19 @@ const sendSocketReq = (request) => {
 
 const manufacturerList = ref(null);
 const modelList = ref(null);
+const modelProfile = ref(null);
+
+const statusList = ref([
+  { name: "Active in Storage", value: "Active in Storage" },
+  { name: "Active in Service", value: "Active in Service" },
+  { name: "Storage Repairable", value: "Storage Repairable" },
+  { name: "Storage Parts", value: "Storage Parts" },
+  { name: "Disposed", value: "Disposed" },
+]);
 
 // Inject Asset Information
-const GeneralInformation = inject("GeneralInformation");
-const Global_Asset_Information = inject("Global_Asset_Information");
-
-const commonNameList = ref(["concentrator", "bp apparatus", "gun thermometer"]);
+const AssetDetails = inject("AssetDetails");
+const GlobalAssetInformation = inject("GlobalAssetInformation");
 
 const fetchManufacturer = async (event) => {
   try {
@@ -152,15 +154,16 @@ const fetchManufacturer = async (event) => {
       (!(event instanceof InputEvent) ||
         event.inputType === "insertReplacementText")
     ) {
-      GeneralInformation.value.selectedManufacturer =
-        manufacturerList.value.find((manufacturer) => {
+      AssetDetails.value.selectedManufacturer = manufacturerList.value.find(
+        (manufacturer) => {
           return selectedManufacturer === manufacturer.manufacturer_name;
-        });
-      Global_Asset_Information.value.manufacturerId =
-        GeneralInformation.value.selectedManufacturer._id;
+        }
+      );
+      GlobalAssetInformation.value.manufacturerID =
+        AssetDetails.value.selectedManufacturer._id;
       await fetchModel();
     } else {
-      Global_Asset_Information.value.manufacturerId = null;
+      GlobalAssetInformation.value.manufacturerID = null;
 
       sendSocketReq({
         data: {
@@ -217,13 +220,13 @@ const fetchModel = async (event) => {
       (!(event instanceof InputEvent) ||
         event.inputType === "insertReplacementText")
     ) {
-      GeneralInformation.value.selectedModel = modelList.value.find((model) => {
+      AssetDetails.value.selectedModel = modelList.value.find((model) => {
         return selectedModel === model.model_name;
       });
-      Global_Asset_Information.value.modelId =
-        GeneralInformation.value.selectedModel._id;
+      GlobalAssetInformation.value.modelID =
+        AssetDetails.value.selectedModel._id;
     } else {
-      Global_Asset_Information.value.modelId = null;
+      GlobalAssetInformation.value.modelID = null;
 
       sendSocketReq({
         data: {
@@ -241,13 +244,14 @@ const fetchModel = async (event) => {
                 {
                   field: "manufacturer_id",
                   op: "sb",
-                  value: Global_Asset_Information.value.manufacturerId,
+                  value: GlobalAssetInformation.value.manufacturerID,
                 },
               ],
               projection: {
                 _id: 1,
                 model_name: 1,
-                model_number: 1,
+                commonName: 1,
+                UMDNSCode: 1,
               },
             },
           },
@@ -278,6 +282,4 @@ onMounted(() => {
 });
 </script>
 
-<style lang="scss" scoped>
-@import "../../BIOMD/Style/BIOMD.scss";
-</style>
+<style lang="scss" scoped></style>
