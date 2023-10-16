@@ -150,7 +150,7 @@ export default {
                 .District,
               address_1: manufacturerInfo.value.streetAddress1,
               address_2: manufacturerInfo.value.streetAddress2,
-              area_code: manufacturerInfo.value.zipCode,
+              areaCode: manufacturerInfo.value.zipCode,
             }).serialize(),
             Institute_Code: Institute_Code.value, //Dynamically changes when another institute logged in
           },

@@ -49,7 +49,7 @@ Every Request is sent as a JSON-compliant object. The following is the standard 
             "city": "",
             "address_1": "",
             "address_2": "",
-            "area_code": ""
+            "areaCode": ""
          }
       }
    }
@@ -100,7 +100,7 @@ Every Request is sent as a JSON-compliant object. The following is the standard 
                "city": "",
                "address_1": "",
                "address_2": "",
-               "area_code": ""
+               "areaCode": ""
             }
          ]
       }

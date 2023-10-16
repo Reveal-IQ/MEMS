@@ -179,13 +179,13 @@ class FacilityRecord extends Record {
     return {
       type: BSONType.object,
       fields: {
-        //Schema Version: 0.
+        //Schema Version: 0.1
         facility_name: { type: BSONType.string },
         address_1: { type: BSONType.string },
         address_2: { type: BSONType.string },
         city: { type: BSONType.string },
         area: { type: BSONType.string },
-        area_code: { type: BSONType.string },
+        areaCode: { type: BSONType.string },
         country: { type: BSONType.string },
       },
     };
@@ -254,7 +254,15 @@ class VendorRecord extends Record {
             },
           },
         },
-        manufacturerList: {type: BSONType.array},
+        manufacturerList: {
+          type: BSONType.array,
+          items: {
+            type: BSONType.object,
+            fields: {
+              manufacturer: {type : BSONType.objectId },
+            }
+          },
+        },
       }
     };
   }

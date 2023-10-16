@@ -193,12 +193,6 @@ describe("Testing Base Record Functionality", () => {
       ],
     ])("Parsing %s", (_, { input, schema, expected }) => {
       _RECORD_BASE._validateSchema(schema);
-      console.log(
-        input,
-        schema,
-        expected,
-        _RECORD_BASE._fieldToBsonType("", input, schema)
-      );
       expect(_RECORD_BASE._fieldToBsonType("", input, schema)).toStrictEqual(
         expected == undefined ? input : expected
       );
@@ -221,29 +215,20 @@ describe("Testing Records", () => {
       "Asset",
       {
         assetCode: "assetCode",
-        commonName: "commonName",
         description: "description",
         serialNumber: "serialNumber",
-        model_id: new ObjectId("650f14d8dc843d63d8639973"),
-        manufacturer_id: new ObjectId("f088034d002843d6ff639424"),
+        modelID: new ObjectId("650f14d8dc843d63d8639973"),
+        manufacturerID: new ObjectId("f088034d002843d6ff639424"),
         manufactureDate: new Date(2022, 11, 24, 10, 33, 30, 0),
-        facility_id: new ObjectId("1d223300b663778899abcedf"),
-        area: "area",
-        city: "city",
-        department: new ObjectId("88de630123371298da201bbc"),
-        roomTag: "roomTag",
+        facilityID: new ObjectId("1d223300b663778899abcedf"),
+        departmentID: new ObjectId("88de630123371298da201bbc"),
+        locationName: "roomTag",
         supportTeam: "supportTeam",
-        vendor_id: new ObjectId("0238488de63012338da271bd"),
+        vendorID: new ObjectId("0238488de63012338da271bd"),
         status: "status",
-        user_manual: true,
-        technical_manual: true,
-        purchaseOrderNumber: "purchaseOrderNumber",
-        project: "project",
-        purchaseCost: 220.31,
-        purchaseDate: new Date(2020, 7, 14, 10, 33, 30, 0),
+        purchaseOrderID: new ObjectId("ff38488de63012338da271bd"),
         acceptanceDate: new Date(2022, 7, 14, 10, 33, 30, 0),
-        warrantyDate: new Date(2033, 1, 1, 0, 0, 0, 0),
-        generalComment: "generalComment",
+        comment: "generalComment",
       },
     ],
     [
@@ -255,69 +240,46 @@ describe("Testing Records", () => {
         city: "city",
         address_1: "Address 1",
         address_2: "Address 2",
-        area_code: "34AND82",
-        departments: [
-          new ObjectId("ff3e630123371298da201bbc"),
-          new ObjectId("650f1a8b9aea2dfe2d0d114e"),
-          new ObjectId("750f1a8b9aea2dfe2d0d1122"),
-          new ObjectId("850f1a8b9aea2dfe2d0d114d"),
-        ],
+        areaCode: "34AND82",
       },
     ],
     [
       "Manufacturer",
       {
-        manufacturer_name: "ManufacturerName",
-        country: "Canada",
-        area: "area",
-        city: "city",
-        address_1: "Address 1",
-        address_2: "Address 2",
-        area_code: "34AND82",
+        manufacturerName: "ManufacturerName",
       },
     ],
     [
       "Model",
       {
-        manufacturer_id: new ObjectId("ff0f1a8b9aea2dfe2d0d1142"),
-        model_name: "ModelName",
-        model_number: "ModelNumber",
-        vendor_site_ID: "SiteId5",
-        manufacturer_name: "ManufacturerName",
+        manufacturerID: new ObjectId("ff0f1a8b9aea2dfe2d0d1142"),
+        modelName: "ModelName",
+        commonName: "common Name",
+        contactID: new ObjectId("720f1a8b9aea2dfe2d0d11dd"),
+        UMDNSCode: "UMDNS Code",
       },
     ],
     [
       "Vendor",
       {
-        vendor_name: "VendorName",
+        vendorName: "VendorName",
         country: "Canada",
         area: "area",
         city: "city",
         address_1: "Address 1",
         address_2: "Address 2",
         areaCode: "Z4AND87",
-        contact_info: [
+        contactInfo: [
           {
-            contact_number: "233-231-1212",
-            representative_name: "RepName",
+            number: "233-231-1212",
+            name: "RepName",
             email: "rep.name@example.com",
-            contact_type: "RepType",
+            type: "RepType",
           },
         ],
-        manufacturer_list: [
+        manufacturerList: [
           {
             manufacturer: new ObjectId("bf0f1a8b9aea2dfe2d0d1142"),
-            model_list: [
-              {
-                model_id: new ObjectId("ff0f188b9aea2dfe2d0d8b23"),
-              },
-              {
-                model_id: new ObjectId("3f0f188b9aea2dfe2d0d8bff"),
-              },
-              {
-                model_id: new ObjectId("92f0f188b9aea2dfe2dd8b29"),
-              },
-            ],
           },
         ],
       },
