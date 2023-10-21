@@ -134,14 +134,13 @@ export default {
             API: "CREATE_RECORD",
             collection: "Facility",
             record: new FacilityRecord({
-              facility_name: facilityInfo.value.facilityName,
+              facilityName: facilityInfo.value.facilityName,
               country: Global_Facility_Definition.value.facilityAddress.Country,
               area: Global_Facility_Definition.value.facilityAddress.State,
               city: Global_Facility_Definition.value.facilityAddress.District,
               address_1: facilityInfo.value.streetAddress1,
               address_2: facilityInfo.value.streetAddress2,
-              area_code: facilityInfo.value.zipCode,
-              departments: facilityInfo.value.departments,
+              areaCode: facilityInfo.value.zipCode,
             }).serialize(),
             Institute_Code: Institute_Code.value, //Dynamically changes when another institute logged in
           },

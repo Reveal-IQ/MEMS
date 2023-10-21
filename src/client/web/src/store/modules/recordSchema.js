@@ -150,30 +150,22 @@ class AssetRecord extends Record {
     return {
       type: BSONType.object,
       fields: {
+        //Schema Version: 0.2
         assetCode: { type: BSONType.string },
-        commonName: { type: BSONType.string },
         description: { type: BSONType.string },
         serialNumber: { type: BSONType.string },
-        model_id: { type: BSONType.objectId },
-        manufacturer_id: { type: BSONType.objectId },
+        modelID: { type: BSONType.objectId },
+        manufacturerID: { type: BSONType.objectId },
         manufactureDate: { type: BSONType.date },
-        facility_id: { type: BSONType.objectId },
-        area: { type: BSONType.string },
-        city: { type: BSONType.string },
-        department: { type: BSONType.objectId },
-        roomTag: { type: BSONType.string },
+        facilityID: { type: BSONType.objectId },
+        departmentID: { type: BSONType.objectId },
+        locationName: { type: BSONType.string },
         supportTeam: { type: BSONType.string },
-        vendor_id: { type: BSONType.objectId },
+        vendorID: { type: BSONType.objectId },
         status: { type: BSONType.string },
-        user_manual: { type: BSONType.bool },
-        technical_manual: { type: BSONType.bool },
-        purchaseOrderNumber: { type: BSONType.string },
-        project: { type: BSONType.string },
-        purchaseCost: { type: BSONType.double },
-        purchaseDate: { type: BSONType.date },
+        purchaseOrderID: { type: BSONType.objectId},
         acceptanceDate: { type: BSONType.date },
-        warrantyDate: { type: BSONType.date },
-        generalComment: { type: BSONType.string },
+        comment: { type: BSONType.string },
       },
     };
   }
@@ -187,17 +179,14 @@ class FacilityRecord extends Record {
     return {
       type: BSONType.object,
       fields: {
+        //Schema Version: 0.1
         facility_name: { type: BSONType.string },
         address_1: { type: BSONType.string },
         address_2: { type: BSONType.string },
         city: { type: BSONType.string },
         area: { type: BSONType.string },
-        area_code: { type: BSONType.string },
+        areaCode: { type: BSONType.string },
         country: { type: BSONType.string },
-        departments: {
-          type: BSONType.array,
-          items: { type: BSONType.objectId },
-        },
       },
     };
   }
@@ -211,13 +200,8 @@ class ManufacturerRecord extends Record {
     return {
       type: BSONType.object,
       fields: {
-        manufacturer_name: { type: BSONType.string },
-        country: { type: BSONType.string },
-        area: { type: BSONType.string },
-        city: { type: BSONType.string },
-        address_1: { type: BSONType.string },
-        address_2: { type: BSONType.string },
-        area_code: { type: BSONType.string },
+        //Schema Version: 0.1
+        manufacturerName: { type: BSONType.string },
       },
     };
   }
@@ -231,11 +215,12 @@ class ModelRecord extends Record {
     return {
       type: BSONType.object,
       fields: {
-        manufacturer_id: { type: BSONType.objectId },
-        model_name: { type: BSONType.string },
-        model_number: { type: BSONType.string },
-        vendor_site_ID: { type: BSONType.string }, // TODO: Is this ObjectID?
-        manufacturer_name: { type: BSONType.string },
+        //Schema Version: v0.1
+        manufacturerID: { type: BSONType.objectId },
+        contactID: { type: BSONType.objectId },
+        modelName: { type: BSONType.string },
+        commonName: { type: BSONType.string },
+        UMDNSCode: { type: BSONType.string },
       },
     };
   }
@@ -249,44 +234,36 @@ class VendorRecord extends Record {
     return {
       type: BSONType.object,
       fields: {
-        vendor_name: { type: BSONType.string },
+        //Schema Version: v0.1
+        vendorName: { type: BSONType.string },
         country: { type: BSONType.string },
         area: { type: BSONType.string },
         city: { type: BSONType.string },
         address_1: { type: BSONType.string },
         address_2: { type: BSONType.string },
         areaCode: { type: BSONType.string },
-        contact_info: {
+        contactInfo: {
           type: BSONType.array,
           items: {
             type: BSONType.object,
             fields: {
-              contact_number: { type: BSONType.string },
-              representative_name: { type: BSONType.string },
+              number: { type: BSONType.string },
+              name: { type: BSONType.string },
               email: { type: BSONType.string },
-              contact_type: { type: BSONType.string },
+              type: { type: BSONType.string },
             },
           },
         },
-        manufacturer_list: {
+        manufacturerList: {
           type: BSONType.array,
           items: {
             type: BSONType.object,
             fields: {
-              manufacturer: { type: BSONType.objectId },
-              model_list: {
-                type: BSONType.array,
-                items: {
-                  type: BSONType.object,
-                  fields: {
-                    model_id: { type: BSONType.objectId },
-                  },
-                },
-              },
-            },
+              manufacturer: {type : BSONType.objectId },
+            }
           },
         },
-      },
+      }
     };
   }
 }
