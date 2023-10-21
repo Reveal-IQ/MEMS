@@ -207,7 +207,7 @@ module.exports.FIND_RECORD = async function (req, dbClient) {
       if (isValidOperator(qry.op)) {
         switch (qry.op) {
           case "eq_id":
-            createdFindQuery["_id"] = ObjectId(qry.value);
+            createdFindQuery[qry.field] = ObjectId(qry.value);
             break;
           case "eq":
             createdFindQuery[qry.field] = qry.value;
