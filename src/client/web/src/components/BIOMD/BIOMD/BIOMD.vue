@@ -25,6 +25,8 @@ Description: < Describe the application >
         <DASHBOARDModel
           v-if="compState === 'dashboardModel'"
           @update-page="updatePage"
+          :modelName= pageProps.modelName
+          :modelID=pageProps.modelID
         />
       </div>
     </div>
@@ -110,15 +112,18 @@ export default {
   emits: [],
   setup(props, { emit }) {
     const compState = ref("dashboard"); //asset, facility, model, manufacturer, vendor
+    const pageProps = ref("Init"); // Defines props when navigating to a new page
 
-    const updatePage = (page) => {
+    const updatePage = (page,props) => {
       compState.value = page;
+      pageProps.value = props;
     };
 
     return {
       // Return variables/Display Variables in HTML DOM
       compState,
       updatePage,
+      pageProps
     };
   },
 };

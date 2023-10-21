@@ -67,7 +67,7 @@
             :key="asset"
             class="g-3 mb-2 mt-2 rounded container py-2 align-middle"
             style="background-color: #f5f6f6"
-            @click="changePage('dashboardModel')"
+            @click="changePage('dashboardModel',{modelName:asset.model,modelID:asset.modelID})"
           >
             <div class="d-flex justify-content-between" style="cursor: pointer">
               <td>
@@ -116,6 +116,7 @@ import { ref } from "vue";
 const assets = ref([
   {
     model: "MX-800",
+    modelID: '652c2300c7185600122a1bd2',
     manufacturer: "Philips Healthcare",
     quantity: 20,
     active: 16,
@@ -123,6 +124,7 @@ const assets = ref([
   },
   {
     model: "MX-900",
+    modelID: '652c2300c7185600122a1bd2',
     manufacturer: "General Electric",
     quantity: 10,
     active: 5,
@@ -139,8 +141,8 @@ const assets = ref([
 const emit = defineEmits(["updatePage"]);
 
 // Navigate to selected page to edit
-const changePage = async (page) => {
-  emit("updatePage", page);
+const changePage = async (page,props) => {
+  emit("updatePage", page,props);
 };
 </script>
 

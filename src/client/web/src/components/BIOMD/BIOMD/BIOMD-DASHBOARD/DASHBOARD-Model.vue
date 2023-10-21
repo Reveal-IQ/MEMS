@@ -10,7 +10,7 @@
     </nav>
 
     <div class="d-flex flex-column p-2 mt-4">
-      <span class="title text-dark fw-normal fs-1">MX800</span>
+      <span class="title text-dark fw-normal fs-1">{{ props.modelName }}</span>
       <span class="sub-title fs-6 fw-normal"
         >Philips Healthcare | Monitor, Vital Monitor</span
       >
@@ -100,8 +100,10 @@
 <script setup>
 import { ref } from "vue";
 
-//Variables
+//Define Props
+const props = defineProps(['modelName','modelID']);
 
+//Variables
 const assets = ref([
   {
     equipmentNumber: 12838,
