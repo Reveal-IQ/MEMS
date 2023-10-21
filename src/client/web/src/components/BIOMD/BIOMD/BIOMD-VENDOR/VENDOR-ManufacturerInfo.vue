@@ -218,7 +218,7 @@ const fetchModel = async (event) => {
               queries: [
                 {
                   field: "manufacturerID",
-                  op: "sb",
+                  op: "eq_id",
                   value: GlobalVendorDefinition.value.manufacturerID,
                 },
               ],
