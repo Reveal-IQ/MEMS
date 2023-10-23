@@ -60,6 +60,11 @@ const OPERATORS = ["eq", "in", "gt", "lt", "sb", "eq_id"];
 const DEFAULT_LIMIT_COUNT = 1000;
 const DEFAULT_SKIP_COUNT = 0;
 
+
+const SUPPORTED_METRIC_TYPES = {
+  FIELD_COUNTS: "FIELD_COUNTS",
+}
+
 //Common Create Function
 const createOne = async function (doc, dbClient, collection) {
   const result = await dbClient.db(instituteCode).collection(collection).insertOne(doc);
@@ -414,5 +419,90 @@ module.exports.LIST_VENDORS = async function (req, dbClient) {
     };
   }
 
+  return res;
+};
+
+/**
+ * API for retrieving record metrics.
+ *
+ * @param {*} req Request data.
+ * @param {*} dbClient Database connection handle.
+ * @returns  Response data.
+ */
+module.exports.GET_RECORD_METRICS = async function (req, dbClient) {
+  // Copy requester information
+  let res = Object.assign({}, req);
+
+  try {
+    //Confirm Packet Received
+    console.log(
+      (await TIMESTAMP()) +
+      `: RCU-BIOMD-I001 : GET_RECORD_METRICS processing request packet ID: ${req.ID}`
+    );
+
+    const metricsRequest = req.Request.metrics;
+
+    switch(metricsRequest.type) {
+      case SUPPORTED_METRIC_TYPES.FIELD_COUNTS:
+        if (!SUPPORTED_COLLECTIONS.includes(metricsRequest.collection)) {
+          res.Type = "ERROR";
+          res.Response = {
+            Request_ID: req.ID,
+            Error_Code: "API-GET_RECORD_METRICS-E001",
+            Error_Msg: "GET_RECORD_METRICS: Invalid collection provided",
+          };
+          return res;
+        }
+        const matchQuery = metricsRequest.matchQueries.reduce(( obj, {field, op, value}) => {
+          if (op === "eq_id") {
+            obj[field] = ObjectId(value);
+          } else if (op === "eq") {
+            obj[field] = value;
+          }
+          return obj;
+        }, {});
+        const collection = await dbClient.db(instituteCode).collection(metricsRequest.collection);
+        const fieldCountsList = await collection.aggregate([
+          {
+            $match: matchQuery,
+          }, {
+            $group: {
+                _id: "$" + metricsRequest.field,
+                count: { $sum: 1 },
+              },
+          },
+        ]).toArray();
+
+        const fieldCountMap = fieldCountsList.reduce((obj, {_id, count}) => {
+          obj[_id] = count;
+          return obj;
+        }, {});
+
+        res.Type = "RESPONSE";
+        res.Response = {
+          metrics: fieldCountMap,
+          success: true,
+          message: fieldCountsList.length + " field counts listed from " + metricsRequest.collection,
+        };
+        break;
+      default:
+        res.Type = "ERROR";
+        res.Response = {
+          Request_ID: req.ID,
+          Error_Code: "API-GET_RECORD_METRICS-E001",
+          Error_Msg: "GET_RECORD_METRICS: Invalid metrics type provided",
+        };
+        break;
+    }
+  } catch (error) {
+    console.log((await TIMESTAMP()) + `: API-GET_RECORD_METRICS-E003 : ${error}`);
+
+    res.Type = "ERROR";
+    res.Response = {
+      Request_ID: req.ID,
+      Error_Code: "API-GET_RECORD_METRICS-E003",
+      Error_Msg: "GET_RECORD_METRICS: Failed to execute db query",
+    };
+  }
   return res;
 };
