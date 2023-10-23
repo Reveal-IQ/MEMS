@@ -179,8 +179,8 @@ class FacilityRecord extends Record {
     return {
       type: BSONType.object,
       fields: {
-        //Schema Version: 0.1
-        facility_name: { type: BSONType.string },
+        //Schema Version: 0.1.1
+        facilityName: { type: BSONType.string },
         address_1: { type: BSONType.string },
         address_2: { type: BSONType.string },
         city: { type: BSONType.string },

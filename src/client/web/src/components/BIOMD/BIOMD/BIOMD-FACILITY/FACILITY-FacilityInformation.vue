@@ -106,16 +106,6 @@
             v-model="facilityInfo.zipCode"
           />
         </div>
-        <!-- Department List -->
-        <div class="col-12">
-          <UITagInput
-            v-model="facilityInfo.departments"
-            label="Department"
-            customDelimiter=","
-            placeholder="Enter Department Tag"
-            showCount="true"
-          />
-        </div>
       </div>
     </Section>
   </main>

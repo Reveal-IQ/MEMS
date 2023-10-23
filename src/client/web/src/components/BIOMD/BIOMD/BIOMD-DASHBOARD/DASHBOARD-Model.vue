@@ -10,9 +10,9 @@
     </nav>
 
     <div class="d-flex flex-column p-2 mt-4">
-      <span class="title text-dark fw-normal fs-1">MX800</span>
+      <span class="title text-dark fw-normal fs-1">{{ props.modelName }}</span>
       <span class="sub-title fs-6 fw-normal"
-        >Philips Healthcare | Monitor, Vital Monitor</span
+        >{{ props.manufacturerName }} | {{ props.commonName }}</span
       >
     </div>
 
@@ -47,8 +47,13 @@
         </div>
       </div>
 
+      <div v-if="assetList < 1">
+        <h2>No asset has been assigned to model {{ props.modelName }}</h2>
+      </div>
+
       <div
-        v-for="asset in assets"
+        v-else
+        v-for="asset in assetList"
         :key="asset"
         class="mb-2 rounded container py-2 align-middle"
         style="background-color: #f5f6f6"
@@ -56,7 +61,11 @@
         <div
           class="d-flex justify-content-between"
           style="cursor: pointer"
-          @click="changePage('dashboardAssetDetail')"
+          @click="
+            changePage('dashboardAssetDetail', {
+              assetCode: asset.assetCode,
+            })
+          "
         >
           <td class="d-flex position-relative">
             <span
@@ -64,31 +73,31 @@
             ></span>
             <div class="d-flex flex-column ms-4">
               <small class="text-secondary fsXs">Equipment Number</small>
-              <small class="fw-normal">{{ asset.equipmentNumber }}</small>
+              <small class="fw-normal">{{ asset.assetCode }}</small>
             </div>
           </td>
           <td>
             <div class="d-flex flex-column">
               <small class="text-secondary fsXs">Model</small>
-              <small class="fw-normal">{{ asset.model }}</small>
+              <small class="fw-normal">{{ asset.modelName }}</small>
             </div>
           </td>
           <td>
             <div class="d-flex flex-column">
               <small class="text-secondary fsXs">Manufacturer</small>
-              <small>{{ asset.manufacturer }}</small>
+              <small>{{ asset.manufacturerName }}</small>
             </div>
           </td>
           <td>
             <div class="d-flex flex-column">
-              <small class="text-secondary fsXs">Acceptance Date</small>
-              <small>{{ asset.acceptanceDate }}</small>
+              <small class="text-secondary fsXs">Status</small>
+              <small>{{ asset.status }}</small>
             </div>
           </td>
           <td>
             <div class="d-flex flex-column">
               <small class="text-secondary fsXs">Vendor</small>
-              <small>{{ asset.vendor }}</small>
+              <small>{{ asset.vendorID }}</small>
             </div>
           </td>
         </div>
@@ -98,39 +107,102 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
+import { useStore } from "vuex";
+
+const store = useStore();
+
+const sendSocketReq = (request) => {
+  store.dispatch("sendSocketReq", request);
+};
 
 //Variables
+const assetList = ref([]);
 
-const assets = ref([
-  {
-    equipmentNumber: 12838,
-    model: "MX-800",
-    manufacturer: "Philips Healthcare",
-    quantity: 20,
-    active: 16,
-    inService: 4,
-    acceptanceDate: "11-Jun-23",
-    vendor: "Ghana Medical Help",
-  },
-  {
-    equipmentNumber: 12839,
-    model: "MX-900",
-    manufacturer: "General Electric",
-    quantity: 10,
-    active: 5,
-    inService: 5,
-    acceptanceDate: "12-Jun-23",
-    vendor: "Ghana Medical Help",
-  },
+const props = defineProps([
+  "modelName",
+  "modelID",
+  "manufacturerID",
+  "commonName",
+  "manufacturerName",
 ]);
+
+const fetchAsset = async () => {
+  try {
+    sendSocketReq({
+      data: {
+        Expiry: 20000,
+        Type: "REQUEST",
+        Request: {
+          Module: "MEMS",
+          ServiceCode: "BIOMD",
+          API: "FIND_RECORD",
+          return_array: true,
+          max_list: 100,
+          find: {
+            collection: "Asset",
+            queries: [
+              {
+                field: "modelID",
+                op: "eq_id",
+                value: props.modelID,
+              },
+            ],
+            lookups: [
+              {
+                localField: "manufacturerID",
+                collection: "Manufacturer",
+                foreignField: "_id",
+                as: "Manufacturer",
+              },
+              {
+                localField: "modelID",
+                collection: "Model",
+                foreignField: "_id",
+                as: "Model",
+              },
+            ],
+            projection: {
+              _id: 1,
+              assetCode: 1,
+              modelID: 1,
+              manufacturerID: 1,
+              status: 1,
+              manufacturerName: "$Manufacturer.manufacturerName",
+              modelName: "$Model.modelName",
+            },
+          },
+        },
+      },
+
+      callback: (res) => {
+        if (res.Type === "RESPONSE") {
+          console.log("Response Packet -->", res.Response);
+          assetList.value = res.Response.records;
+        } else if (res.Type === "ERROR") {
+          Type: "ERROR";
+          Response: {
+            Error_Code: "API-CREATE_RECORD-E001";
+            Error_Msg: "CREATE_RECORD_API: Failed to execute query";
+          }
+        }
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 const emit = defineEmits(["updatePage"]);
 
 // Navigate to selected page to edit
-const changePage = async (page) => {
-  emit("updatePage", page);
+const changePage = async (page, props) => {
+  emit("updatePage", page, props);
 };
+
+onMounted(() => {
+  fetchAsset();
+});
 </script>
 
 <style lang="scss" scoped>

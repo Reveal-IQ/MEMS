@@ -4,23 +4,25 @@
       <small
         class="text-secondary"
         style="cursor: pointer"
-        @click="changePage('dashboardModel')"
+        @click="changePage('dashboard')"
         >Back</small
       >
     </nav>
 
     <div class="d-flex flex-column p-2 mt-4">
       <div>
-        <span class="title text-dark fw-normal fs-1">12839</span>
+        <span class="title text-dark fw-normal fs-1">{{
+          props.assetCode
+        }}</span>
       </div>
-      <div>
+      <div v-if="asset">
         <span class="badge rounded-pill bg-success fsXs text-uppercase"
           >active</span
         >
       </div>
     </div>
 
-    <div class="row p-2 mt-4 mb-5">
+    <div class="row p-2 mt-4 mb-5" v-for="asset in asset" :key="asset">
       <div class="col-md-5">
         <div class="mb-5">
           <div class="">
@@ -39,7 +41,7 @@
               <td>
                 <div class="d-flex flex-column">
                   <small class="text-secondary fsXs">Equipment Number</small>
-                  <small class="fw-normal">12839</small>
+                  <small class="fw-normal">{{ asset.assetCode }}</small>
                 </div>
               </td>
               <td>
@@ -51,25 +53,25 @@
               <td>
                 <div class="d-flex flex-column">
                   <small class="text-secondary fsXs">Serial Number</small>
-                  <small>1234568448-3</small>
+                  <small>{{ asset.serialNumber }}-3</small>
                 </div>
               </td>
               <td>
                 <div class="d-flex flex-column">
                   <small class="text-secondary fsXs">Manufacturer</small>
-                  <small>General Electric</small>
+                  <small>{{ asset.manufacturerName }}</small>
                 </div>
               </td>
               <td>
                 <div class="d-flex flex-column">
                   <small class="text-secondary fsXs">Model</small>
-                  <small>MX 900</small>
+                  <small>{{ asset.modelName }}</small>
                 </div>
               </td>
               <td>
                 <div class="d-flex flex-column">
                   <small class="text-secondary fsXs">Year of Manufacture</small>
-                  <small>12-Jun-20</small>
+                  <small>{{ asset.manufacturerDate }}</small>
                 </div>
               </td>
             </div>
@@ -254,7 +256,18 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
+import { useStore } from "vuex";
+
+const store = useStore();
+
+const sendSocketReq = (request) => {
+  store.dispatch("sendSocketReq", request);
+};
+
+const props = defineProps(["assetCode"]);
+
+const asset = ref({});
 
 const workOrders = ref([
   {
@@ -270,12 +283,85 @@ const workOrders = ref([
     dateOpen: "23-Aug-23",
   },
 ]);
+
+const fetchAsset = async () => {
+  try {
+    sendSocketReq({
+      data: {
+        Expiry: 20000,
+        Type: "REQUEST",
+        Request: {
+          Module: "MEMS",
+          ServiceCode: "BIOMD",
+          API: "FIND_RECORD",
+          return_array: true,
+          max_list: 100,
+          find: {
+            collection: "Asset",
+            queries: [
+              {
+                field: "assetCode",
+                op: "sb",
+                value: props.assetCode,
+              },
+            ],
+            lookups: [
+              {
+                localField: "modelID",
+                collection: "Model",
+                foreignField: "_id",
+                as: "Model",
+              },
+              {
+                localField: "manufacturerID",
+                collection: "Manufacturer",
+                foreignField: "_id",
+                as: "Manufacturer",
+              },
+            ],
+            projection: {
+              _id: 1,
+              assetCode: 1,
+              modelID: 1,
+              manufacturerID: 1,
+              manufacturerName: "$Manufacturer.manufacturerName",
+              modelName: "$Model.modelName",
+              status: 1,
+              manufacturerDate: 1,
+              serialNumber: 1,
+            },
+          },
+        },
+      },
+
+      callback: (res) => {
+        if (res.Type === "RESPONSE") {
+          console.log("Response Packet -->", res.Response);
+          asset.value = res.Response.records;
+        } else if (res.Type === "ERROR") {
+          Type: "ERROR";
+          Response: {
+            Error_Code: "API-CREATE_RECORD-E001";
+            Error_Msg: "CREATE_RECORD_API: Failed to execute query";
+          }
+        }
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const emit = defineEmits(["updatePage"]);
 
 // Navigate to selected page to edit
 const changePage = async (page) => {
   emit("updatePage", page);
 };
+
+onMounted(() => {
+  fetchAsset();
+});
 </script>
 
 <style lang="scss" scoped>
