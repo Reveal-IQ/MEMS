@@ -211,9 +211,6 @@ module.exports.FIND_RECORD = async function (req, dbClient) {
       projection: {},
     }, req.Request.find);
 
-    // Projection query
-    const projection_query = find.projection;
-
     // Check query
     const filter_query = find.queries.reduce((query_obj, {field, op, value}) => {
       if (isValidOperator(op)) {
@@ -235,6 +232,7 @@ module.exports.FIND_RECORD = async function (req, dbClient) {
     }, {});
 
     // Lookup queries
+    let lookup_projection = {...find.projection};
     const lookup_queries = find.lookups.reduce((lookup_arr, {collection, localField, foreignField, as}) => {
       if (SUPPORTED_COLLECTIONS.includes(collection)) {
         lookup_arr.push({
@@ -244,11 +242,8 @@ module.exports.FIND_RECORD = async function (req, dbClient) {
             foreignField,
             as,
           }
-        },
-        { $project: {
-          [as]: { $arrayElemAt: [ "$" + as , 0] },
-          ...projection_query,
-          }});
+        });
+        lookup_projection[as] = { $arrayElemAt: [ "$" + as , 0] }
       } else {
         throw new Error("Invalid Lookup Syntax: collection not supported: " + collection);
       }
@@ -262,7 +257,8 @@ module.exports.FIND_RECORD = async function (req, dbClient) {
       { $match: filter_query },
       { $limit: limit },
       ...lookup_queries,
-      { $project: projection_query },
+      { $project: lookup_projection },
+      { $project: find.projection },
     ]).toArray();
 
     // Response Packet
