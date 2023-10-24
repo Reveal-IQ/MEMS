@@ -53,7 +53,7 @@
               <td>
                 <div class="d-flex flex-column">
                   <small class="text-secondary fsXs">Serial Number</small>
-                  <small>{{ asset.serialNumber }}-3</small>
+                  <small>{{ asset.serialNumber }}</small>
                 </div>
               </td>
               <td>
@@ -262,7 +262,7 @@ const sendSocketReq = (request) => {
   store.dispatch("sendSocketReq", request);
 };
 
-const props = defineProps(["assetCode", "status"]);
+const props = defineProps(["assetCode", "status", "modelName"]);
 
 const assetProfile = ref({});
 
@@ -326,11 +326,11 @@ const fetchAsset = async () => {
               _id: 1,
               assetCode: 1,
               modelID: 1,
-              manufacturerID: 1,
+
               manufacturerName: "$Manufacturer.manufacturerName",
               modelName: "$Model.modelName",
               facilityName: "$Facility.facilityName",
-              facilityID: 1,
+
               status: 1,
               manufactureDate: 1,
               serialNumber: 1,
@@ -362,8 +362,8 @@ const fetchAsset = async () => {
 const emit = defineEmits(["updatePage"]);
 
 // Navigate to selected page to edit
-const changePage = async (page) => {
-  emit("updatePage", page);
+const changePage = async (page, props) => {
+  emit("updatePage", page, props);
 };
 
 onMounted(() => {

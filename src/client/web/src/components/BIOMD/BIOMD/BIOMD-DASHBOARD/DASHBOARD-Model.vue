@@ -47,8 +47,12 @@
         </div>
       </div>
 
+      <div v-if="assetList == 0">
+        <UIToast message="There are no assets assigned to this model" />
+      </div>
+
       <div
-        v-if="assetList"
+        v-else
         v-for="asset in assetList"
         :key="asset"
         class="mb-2 rounded container py-2 align-middle"
@@ -94,14 +98,10 @@
           <td>
             <div class="d-flex flex-column">
               <small class="text-secondary fsXs">Vendor</small>
-              <small>{{ asset.vendorID }}</small>
+              <small>- - -</small>
             </div>
           </td>
         </div>
-      </div>
-
-      <div v-else>
-        <UIToast message="There are no assets assigned to this model" />
       </div>
     </div>
   </div>
@@ -167,8 +167,6 @@ const fetchAsset = async () => {
             projection: {
               _id: 1,
               assetCode: 1,
-              modelID: 1,
-              manufacturerID: 1,
               status: 1,
               manufacturerName: "$Manufacturer.manufacturerName",
               modelName: "$Model.modelName",

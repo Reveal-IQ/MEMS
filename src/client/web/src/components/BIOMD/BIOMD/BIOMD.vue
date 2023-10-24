@@ -42,6 +42,7 @@ Description: < Describe the application >
           @update-page="updatePage"
           :assetCode="pageProps.assetCode"
           :status="pageProps.status"
+          :modelName="pageProps.modelName"
         />
       </div>
     </div>

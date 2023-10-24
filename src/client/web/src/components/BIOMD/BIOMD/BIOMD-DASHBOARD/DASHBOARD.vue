@@ -62,8 +62,12 @@
             </p>
           </div>
 
+          <div class="mb-2 mt-2" v-if="modelList == 0">
+            <UIToast message="There are no assets in your database yet." />
+          </div>
+
           <div
-            v-if="modelList"
+            v-else
             v-for="model in modelList"
             :key="model.index"
             class="g-3 mb-2 mt-2 rounded container py-2 align-middle"
@@ -110,10 +114,6 @@
                 </div>
               </td> -->
             </div>
-          </div>
-
-          <div class="mb-2 mt-2" v-else>
-            <UIToast message="There are no assets in your database yet." />
           </div>
         </div>
       </div>
@@ -163,7 +163,6 @@ const fetchModel = async () => {
             projection: {
               _id: 1,
               manufacturerName: "$Manufacturer.manufacturerName",
-              manufacturerID: 1,
               modelName: 1,
               commonName: 1,
             },
