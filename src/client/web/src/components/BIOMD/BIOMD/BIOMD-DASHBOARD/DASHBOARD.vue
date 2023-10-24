@@ -17,7 +17,7 @@
         class="text-secondary"
         style="cursor: pointer"
         @click="changePage('vendorInfo')"
-        >New Model</small
+        >New Vendor</small
       >
       <small
         class="text-secondary"
@@ -63,6 +63,7 @@
           </div>
 
           <div
+            v-if="modelList"
             v-for="model in modelList"
             :key="model.index"
             class="g-3 mb-2 mt-2 rounded container py-2 align-middle"
@@ -110,6 +111,10 @@
               </td> -->
             </div>
           </div>
+
+          <div class="mb-2 mt-2" v-else>
+            <UIToast message="There are no assets in your database yet." />
+          </div>
         </div>
       </div>
     </div>
@@ -119,6 +124,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useStore } from "vuex";
+import UIToast from "../BIOMD-UI/UI-Toast.vue";
 
 const store = useStore();
 
@@ -128,84 +134,8 @@ const sendSocketReq = (request) => {
 
 //Variables
 const modelList = ref([]);
-const manufacturerList = ref([]);
-
-const modelInfo = ref({
-  listedModels: { modelName: null, _id: null },
-  selectedManufacturer: { manufacturerName: null, _id: null },
-});
-
-const GlobalModelDefinition = ref({
-  modelID: null,
-  manufacturerID: null,
-});
 
 //Functions
-const fetchManufacturer = async (event) => {
-  try {
-    const selectedManufacturer = event ? event.target.value : "";
-    if (
-      event &&
-      (!(event instanceof InputEvent) ||
-        event.inputType === "insertReplacementText")
-    ) {
-      modelInfo.value.selectedManufacturer = manufacturerList.value.find(
-        (manufacturer) => {
-          return selectedManufacturer === manufacturer.manufacturerName;
-        }
-      );
-      GlobalModelDefinition.value.manufacturerID =
-        modelInfo.value.selectedManufacturer._id;
-      // await fetchModel();
-    } else {
-      GlobalModelDefinition.value.manufacturerID = null;
-
-      sendSocketReq({
-        data: {
-          Expiry: 20000,
-          Type: "REQUEST",
-          Request: {
-            Module: "MEMS",
-            ServiceCode: "BIOMD",
-            API: "FIND_RECORD",
-            return_array: true,
-            max_list: 100,
-            find: {
-              collection: "Manufacturer",
-              queries: [
-                {
-                  field: "manufacturerName",
-                  op: "sb",
-                  value: "^",
-                },
-              ],
-              projection: {
-                _id: 1,
-                manufacturerName: 1,
-              },
-            },
-          },
-        },
-        callback: (res) => {
-          if (res.Type === "RESPONSE") {
-            // Console the Response Packet
-            console.log("Response Packet -->", res.Response);
-            manufacturerList.value = res.Response.records;
-          } else if (res.Type === "ERROR") {
-            // Error response received during fetching
-            Type: "ERROR";
-            Response: {
-              Error_Code: "API-CREATE_RECORD-E001";
-              Error_Msg: "CREATE_RECORD_API: Failed to execute query";
-            }
-          }
-        },
-      });
-    }
-  } catch (error) {
-    console.log(error);
-  }
-};
 
 //Fetch Model Information
 const fetchModel = async () => {
@@ -222,13 +152,6 @@ const fetchModel = async () => {
           max_list: 100,
           find: {
             collection: "Model",
-            // queries: [
-            //   {
-            //     field: "manufacturerID",
-            //     op: "eq_id",
-            //     value: "65345154d006d7001269c2a9",
-            //   },
-            // ],
             lookups: [
               {
                 localField: "manufacturerID",
@@ -276,7 +199,6 @@ const changePage = async (page, props) => {
 
 onMounted(() => {
   fetchModel();
-  // fetchManufacturer();
 });
 </script>
 

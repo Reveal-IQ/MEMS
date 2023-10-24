@@ -47,12 +47,8 @@
         </div>
       </div>
 
-      <div v-if="assetList < 1">
-        <h2>No asset has been assigned to model {{ props.modelName }}</h2>
-      </div>
-
       <div
-        v-else
+        v-if="assetList"
         v-for="asset in assetList"
         :key="asset"
         class="mb-2 rounded container py-2 align-middle"
@@ -64,6 +60,7 @@
           @click="
             changePage('dashboardAssetDetail', {
               assetCode: asset.assetCode,
+              status: asset.status,
             })
           "
         >
@@ -102,6 +99,10 @@
           </td>
         </div>
       </div>
+
+      <div v-else>
+        <UIToast message="There are no assets assigned to this model" />
+      </div>
     </div>
   </div>
 </template>
@@ -109,6 +110,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useStore } from "vuex";
+import UIToast from "../BIOMD-UI/UI-Toast.vue";
 
 const store = useStore();
 

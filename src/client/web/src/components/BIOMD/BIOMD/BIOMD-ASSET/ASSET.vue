@@ -134,7 +134,7 @@ export default {
         commonName: null,
         UMDNSCode: null,
       },
-      manufacturerDate: null,
+      manufactureDate: null,
       status: "Active Deployed",
     });
 
@@ -204,7 +204,7 @@ export default {
               serialNumber: AssetDetails.value.serialNumber,
               manufacturerID: GlobalAssetInformation.value.manufacturerID,
               modelID: GlobalAssetInformation.value.modelID,
-              manufacturerDate: AssetDetails.value.manufacturerDate,
+              manufactureDate: AssetDetails.value.manufactureDate,
               status: AssetDetails.value.status,
               facilityID: GlobalAssetInformation.value.facilityID,
               departmentID: GlobalAssetInformation.value.departmentID,

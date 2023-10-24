@@ -93,7 +93,7 @@
         type="date"
         id="yearOfManufacture"
         placeholder="Enter Year of manufacture"
-        v-model="AssetDetails.manufacturerDate"
+        v-model="AssetDetails.manufactureDate"
       />
     </div>
 

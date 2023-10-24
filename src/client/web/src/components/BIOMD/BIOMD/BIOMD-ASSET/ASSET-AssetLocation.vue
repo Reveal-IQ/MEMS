@@ -9,7 +9,7 @@
         id="facilityList"
         placeholder="Select facility"
         aria-label="Default select example"
-        v-model="AssetLocation.selectedFacility.name"
+        v-model="AssetLocation.selectedFacility.facilityName"
         @input="fetchFacility"
         autocomplete="off"
       />
@@ -17,7 +17,7 @@
         <option
           v-for="facility in facilityList"
           :key="facility.index"
-          :value="facility.name"
+          :value="facility.facilityName"
         ></option>
       </datalist>
     </div>
@@ -87,7 +87,7 @@ const fetchFacility = async (event) => {
     ) {
       AssetLocation.value.selectedFacility = facilityList.value.find(
         (facility) => {
-          return selectedFacility === facility.name;
+          return selectedFacility === facility.facilityName;
         }
       );
       GlobalAssetInformation.value.facilityID =
@@ -110,14 +110,14 @@ const fetchFacility = async (event) => {
               collection: "Facility",
               queries: [
                 {
-                  field: "name",
+                  field: "facilityName",
                   op: "sb",
                   value: "^",
                 },
               ],
               projection: {
                 _id: 1,
-                name: 1,
+                facilityName: 1,
               },
             },
           },

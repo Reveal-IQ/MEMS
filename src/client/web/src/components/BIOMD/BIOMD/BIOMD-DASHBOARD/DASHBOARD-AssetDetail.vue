@@ -15,14 +15,14 @@
           props.assetCode
         }}</span>
       </div>
-      <div v-if="asset">
-        <span class="badge rounded-pill bg-success fsXs text-uppercase"
-          >active</span
-        >
+      <div>
+        <span class="badge rounded-pill bg-success fsXs text-uppercase">{{
+          props.status
+        }}</span>
       </div>
     </div>
 
-    <div class="row p-2 mt-4 mb-5" v-for="asset in asset" :key="asset">
+    <div class="row p-2 mt-4 mb-5" v-for="asset in assetProfile" :key="asset">
       <div class="col-md-5">
         <div class="mb-5">
           <div class="">
@@ -71,7 +71,7 @@
               <td>
                 <div class="d-flex flex-column">
                   <small class="text-secondary fsXs">Year of Manufacture</small>
-                  <small>{{ asset.manufacturerDate }}</small>
+                  <small>{{ asset.manufactureDate }}</small>
                 </div>
               </td>
             </div>
@@ -92,7 +92,7 @@
               <td>
                 <div class="d-flex flex-column">
                   <small class="text-secondary fsXs">Facility</small>
-                  <small class="fw-normal">Bolgatanga Regional Hospital</small>
+                  <small class="fw-normal">{{ asset.facilityName }}</small>
                 </div>
               </td>
               <td>
@@ -104,7 +104,7 @@
               <td>
                 <div class="d-flex flex-column">
                   <small class="text-secondary fsXs">Location</small>
-                  <small>Ward 14 Room 2</small>
+                  <small>{{ asset.locationName }}</small>
                 </div>
               </td>
             </div>
@@ -180,9 +180,6 @@
             <span class="card-title fw-normal fs-5"
               >Additional Information</span
             >
-            <!-- <p class="card-text">
-              <small class="text-muted fsXs">PO Details</small>
-            </p> -->
           </div>
           <div
             class="g-3 mb-2 mt-2 rounded-3 container py-2 align-middle"
@@ -191,11 +188,11 @@
             <div class="d-flex flex-column gap-3">
               <td>
                 <div class="d-flex flex-column">
-                  <small class="fw-normal"
-                    >Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Possimus ad eveniet, beatae sapiente veniam at dolores quod
-                    unde error numquam? Similique, placeat porro! Est neque
-                    maxime consequatur debitis odit quisquam?</small
+                  <small class="fw-normal" v-if="asset.comment">{{
+                    asset.comment
+                  }}</small>
+                  <small class="fw-normal text-secondary" v-else
+                    >No comments added</small
                   >
                 </div>
               </td>
@@ -265,9 +262,9 @@ const sendSocketReq = (request) => {
   store.dispatch("sendSocketReq", request);
 };
 
-const props = defineProps(["assetCode"]);
+const props = defineProps(["assetCode", "status"]);
 
-const asset = ref({});
+const assetProfile = ref({});
 
 const workOrders = ref([
   {
@@ -318,6 +315,12 @@ const fetchAsset = async () => {
                 foreignField: "_id",
                 as: "Manufacturer",
               },
+              {
+                localField: "facilityID",
+                collection: "Facility",
+                foreignField: "_id",
+                as: "Facility",
+              },
             ],
             projection: {
               _id: 1,
@@ -326,9 +329,13 @@ const fetchAsset = async () => {
               manufacturerID: 1,
               manufacturerName: "$Manufacturer.manufacturerName",
               modelName: "$Model.modelName",
+              facilityName: "$Facility.facilityName",
+              facilityID: 1,
               status: 1,
-              manufacturerDate: 1,
+              manufactureDate: 1,
               serialNumber: 1,
+              locationName: 1,
+              comment: 1,
             },
           },
         },
@@ -337,7 +344,7 @@ const fetchAsset = async () => {
       callback: (res) => {
         if (res.Type === "RESPONSE") {
           console.log("Response Packet -->", res.Response);
-          asset.value = res.Response.records;
+          assetProfile.value = res.Response.records;
         } else if (res.Type === "ERROR") {
           Type: "ERROR";
           Response: {

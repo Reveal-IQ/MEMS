@@ -8,7 +8,7 @@
           type="text"
           id="departmentName"
           placeholder="Department Name"
-          v-model="DepartmentDescription.name"
+          v-model="DepartmentDescription.facilityName"
         />
       </div>
 
@@ -97,14 +97,14 @@ const fetchFacility = async (event) => {
               collection: "Facility",
               queries: [
                 {
-                  field: "name",
+                  field: "facilityName",
                   op: "sb",
                   value: "^",
                 },
               ],
               projection: {
                 _id: 1,
-                name: 1,
+                facilityName: 1,
               },
             },
           },

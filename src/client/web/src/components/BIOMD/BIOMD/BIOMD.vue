@@ -41,6 +41,7 @@ Description: < Describe the application >
         <DASHBOARDAssetDetail
           @update-page="updatePage"
           :assetCode="pageProps.assetCode"
+          :status="pageProps.status"
         />
       </div>
     </div>
