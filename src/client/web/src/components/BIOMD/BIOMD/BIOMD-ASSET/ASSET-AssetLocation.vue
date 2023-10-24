@@ -31,7 +31,7 @@
         id="departmentList"
         placeholder="Select department"
         aria-label="Default select example"
-        v-model="AssetLocation.selectedDepartment.name"
+        v-model="AssetLocation.selectedDepartment.departmentName"
         @input="fetchDepartment"
         autocomplete="off"
       />
@@ -39,7 +39,7 @@
         <option
           v-for="department in departmentList"
           :key="department.index"
-          :value="department.name"
+          :value="department.departmentName"
         ></option>
       </datalist>
     </div>
@@ -153,7 +153,7 @@ const fetchDepartment = async (event) => {
     ) {
       AssetLocation.value.selectedDepartment = departmentList.value.find(
         (department) => {
-          return selectedDepartment === department.name;
+          return selectedDepartment === department.departmentName;
         }
       );
       GlobalAssetInformation.value.departmentID =
@@ -183,7 +183,7 @@ const fetchDepartment = async (event) => {
               projection: {
                 _id: 1,
                 facilityID: 1,
-                name: 1,
+                departmentName: 1,
                 shortName: 1,
               },
             },

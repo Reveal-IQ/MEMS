@@ -66,7 +66,7 @@ import Btn from "../BIOMD-UI/UI-Btn.vue";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 import Header from "../BIOMD-UI/UI-FormHeader.vue";
 import ModelDescription from "../BIOMD-MODEL/MODEL-ModelDescription.vue";
-import { ModelRecord } from "../../../../store/modules/recordSchema";
+// import { DepartmentRecord } from "../../../../store/modules/recordSchema";
 
 export default {
   components: { ModelDescription, Btn2, Btn, Header },
@@ -95,10 +95,9 @@ export default {
     }
 
     const DepartmentDescription = ref({
-      name: null,
+      departmentName: null,
       shortName: null,
-      selectedFacility: { name: null, _id: null },
-      // vendorSiteId: null,
+      selectedFacility: { facilityName: null, _id: null },
     });
 
     const GlobalDepartmentInformation = ref({
@@ -124,12 +123,11 @@ export default {
             ServiceCode: "BIOMD",
             API: "CREATE_RECORD",
             collection: "Department",
-            record: {
+            record: new DepartmentRecord({
               facilityID: GlobalDepartmentInformation.value.facilityID,
-              name: DepartmentDescription.value.name,
+              departmentName: DepartmentDescription.value.departmentName,
               shortName: DepartmentDescription.value.shortName,
-              // vendor_site_ID: DepartmentDescription.value.vendorSiteId,
-            },
+            }).serialize(),
             Institute_Code: Institute_Code.value,
           },
         },
