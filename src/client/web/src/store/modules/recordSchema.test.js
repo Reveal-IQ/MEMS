@@ -5,6 +5,7 @@ const {
   VendorRecord,
   ManufacturerRecord,
   ModelRecord,
+  DepartmentRecord,
   _RECORD_LIST,
 } = require("./recordSchema");
 const { BSONType, ObjectId, Int32, Long, BSON } = require("bson");
@@ -284,6 +285,14 @@ describe("Testing Records", () => {
         ],
       },
     ],
+    [
+      "Department",
+      {
+        departmentName: "Department Name",
+        shortName: "Short Name",
+        facilityID: new ObjectId("990f1a8b9aea2d4e2d0d11dd"),
+      },
+    ],
   ])("Populated %s Record", (type, data) => {
     let asset;
     switch (type) {
@@ -301,6 +310,9 @@ describe("Testing Records", () => {
         break;
       case "Vendor":
         asset = new VendorRecord(data);
+        break;
+      case "Department":
+        asset = new DepartmentRecord(data);
         break;
       default:
         throw new Error("Unsupported Record Type for Test");

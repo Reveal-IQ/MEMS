@@ -268,6 +268,24 @@ class VendorRecord extends Record {
   }
 }
 
+
+class DepartmentRecord extends Record {
+  constructor(data) {
+    super("Department", data);
+  }
+  getSchema() {
+    return {
+      type: BSONType.object,
+      fields: {
+        // Schema Version: v0.1
+        facilityID: { type: BSONType.objectId },
+        departmentName: { type: BSONType.string },
+        shortName: { type: BSONType.string },
+      }
+    };
+  }
+}
+
 const _RECORD_BASE = Record;
 
 const _RECORD_LIST = [
@@ -276,6 +294,7 @@ const _RECORD_LIST = [
   ManufacturerRecord,
   ModelRecord,
   VendorRecord,
+  DepartmentRecord,
 ];
 
 export {
@@ -286,4 +305,5 @@ export {
   ManufacturerRecord,
   ModelRecord,
   VendorRecord,
+  DepartmentRecord,
 };
