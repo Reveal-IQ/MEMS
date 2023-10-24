@@ -8,6 +8,7 @@ jest.setTimeout(60000);
 const COLLECTIONS = [
   "Asset",
   "Model",
+  "Manufacturer",
 ];
 
 class InMemoryMongoDb {

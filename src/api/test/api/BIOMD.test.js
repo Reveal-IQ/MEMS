@@ -178,8 +178,8 @@ describe("Testing FIND_RECORD", () => {
    */
   it("Find records with string field", async () => {
     const recordCount = 6;
-    await TEST_DB.db.collection("Model").insertMany(
-      [...Array(recordCount).keys()].map(e => ({ modelName: "Model_" + e, status: (e % 2 == 0) ? "Active" : "In Storage" }) )
+    await TEST_DB.db.collection("Asset").insertMany(
+      [...Array(recordCount).keys()].map(e => ({ assetCode: "Asset_" + e, status: (e % 2 == 0) ? "Active" : "In Storage" }) )
     );
 
     const request = {
@@ -188,13 +188,13 @@ describe("Testing FIND_RECORD", () => {
         return_array: true,
         max_list: recordCount,
         find : {
-          collection: "Model",
+          collection: "Asset",
           queries: [
             { field: "status", op: "eq", value: "Active" },
           ],
           projection: {
             _id: 0,
-            modelName: 1
+            assetCode: 1
           },
         }
       },
@@ -206,15 +206,15 @@ describe("Testing FIND_RECORD", () => {
     expect(response.Type).toStrictEqual("RESPONSE");
     expect(response.Response.success).toStrictEqual(true);
     expect(response.Response.records).toStrictEqual([
-      { modelName: "Model_0"},
-      { modelName: "Model_2"},
-      { modelName: "Model_4"}]);
+      { assetCode: "Asset_0"},
+      { assetCode: "Asset_2"},
+      { assetCode: "Asset_4"}]);
   });
 
   /**
    * Finding filtered records based on objectId field.
    */
-  it("Find records with string field", async () => {
+  it("Find records with objectID field", async () => {
     const recordCount = 6;
     const testObjectIDs = [
       new ObjectId(),
@@ -255,17 +255,17 @@ describe("Testing FIND_RECORD", () => {
 
 
   /**
-   * Finding filtered records with lookup.
+   * Finding filtered records with single lookup.
    */
-  it("Find records with field lookup", async () => {
+  it("Find records with one field lookup", async () => {
     const testLookupName = "Test Manufacturer";
     const { insertedId: testLookupID } = await TEST_DB.db.collection("Manufacturer").insertOne({
       manufacturerName: testLookupName
     });
     const recordCount = 6;
-    await TEST_DB.db.collection("Model").insertMany(
+    await TEST_DB.db.collection("Asset").insertMany(
       [...Array(recordCount).keys()].map(e => ({
-        modelName: "Model_" + e,
+        modelName: "Asset_" + e,
         manufacturerID: (e % 2 == 0) ? testLookupID : new ObjectId(),
         status: (e % 2 == 0) ? "Active" : "In Storage"
       }))
@@ -277,14 +277,14 @@ describe("Testing FIND_RECORD", () => {
         return_array: true,
         max_list: recordCount,
         find : {
-          collection: "Model",
+          collection: "Asset",
           queries: [
             { field: "status", op: "eq", value: "Active" },
           ],
           lookups: [
-             { "localField": "manufacturerID", "collection": "Manufacturer", "foreignField": "_id", "as": "Manu" }
+             { "localField": "manufacturerID", "collection": "Manufacturer", "foreignField": "_id", "as": "Manufacturer" }
           ],
-          projection: { _id: 0, modelName: 1, manufacturerName: "$Manu.manufacturerName" },
+          projection: { _id: 0, modelName: 1, manufacturerName: "$Manufacturer.manufacturerName" },
         }
       },
     };
@@ -295,9 +295,61 @@ describe("Testing FIND_RECORD", () => {
     expect(response.Type).toStrictEqual("RESPONSE");
     expect(response.Response.success).toStrictEqual(true);
     expect(response.Response.records).toStrictEqual([
-      { modelName: "Model_0", manufacturerName: testLookupName},
-      { modelName: "Model_2", manufacturerName: testLookupName},
-      { modelName: "Model_4", manufacturerName: testLookupName}]);
+      { modelName: "Asset_0", manufacturerName: testLookupName},
+      { modelName: "Asset_2", manufacturerName: testLookupName},
+      { modelName: "Asset_4", manufacturerName: testLookupName}]);
+  });
+
+  /**
+   * Finding filtered records with multiple lookups.
+   */
+  it("Find records with multiple field lookup", async () => {
+    const testManufacturerName = "Test Manufacturer";
+    const testModelName = "Test Model";
+    const { insertedId: testManufacturerID } = await TEST_DB.db.collection("Manufacturer").insertOne({
+      manufacturerName: testManufacturerName
+    });
+    const { insertedId: testModelID } = await TEST_DB.db.collection("Model").insertOne({
+      modelName: testModelName
+    });
+    const recordCount = 6;
+    await TEST_DB.db.collection("Asset").insertMany(
+      [...Array(recordCount).keys()].map(e => ({
+        assetCode: "Asset_" + e,
+        manufacturerID: (e % 2 == 0) ? testManufacturerID : new ObjectId(),
+        modelID: (e % 2 == 0) ? testModelID : new ObjectId(),
+        status: (e % 2 == 0) ? "Active" : "In Storage"
+      }))
+    );
+
+    const request = {
+      ID: "",
+      Request: {
+        return_array: true,
+        max_list: recordCount,
+        find : {
+          collection: "Asset",
+          queries: [
+            { field: "status", op: "eq", value: "Active" },
+          ],
+          lookups: [
+             { "localField": "manufacturerID", "collection": "Manufacturer", "foreignField": "_id", "as": "Manufacturer" },
+             { "localField": "modelID", "collection": "Model", "foreignField": "_id", "as": "Model" }
+          ],
+          projection: { _id: 0, assetCode: 1, modelName: "$Model.modelName", manufacturerName: "$Manufacturer.manufacturerName" },
+        }
+      },
+    };
+    const response = await FIND_RECORD(
+      request,
+      TEST_DB.connection
+    );
+    expect(response.Type).toStrictEqual("RESPONSE");
+    expect(response.Response.success).toStrictEqual(true);
+    expect(response.Response.records).toStrictEqual([
+      { assetCode: "Asset_0", modelName: testModelName, manufacturerName: testManufacturerName},
+      { assetCode: "Asset_2", modelName: testModelName, manufacturerName: testManufacturerName},
+      { assetCode: "Asset_4", modelName: testModelName, manufacturerName: testManufacturerName}]);
   });
 });
 
