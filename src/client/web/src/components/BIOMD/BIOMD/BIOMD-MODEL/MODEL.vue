@@ -16,8 +16,8 @@ Description: < Describe the application >
       >
         <div class="mt-3">
           <Header
-            title="Equipment Model"
-            subTitle="Create a new equipment model with this form"
+            title="Department"
+            subTitle="Create a new department with this form"
           />
         </div>
         <div class="d-flex gap-2 d-md-block">
@@ -44,7 +44,7 @@ Description: < Describe the application >
         <div class="d-flex justify-content-center py-3">
           <div class="">
             <Btn
-              BtnName="Create Model"
+              BtnName="Create Department"
               backgroundColor="#27AE60"
               class="mb-3"
               @click="createRecord"
@@ -66,7 +66,7 @@ import Btn from "../BIOMD-UI/UI-Btn.vue";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 import Header from "../BIOMD-UI/UI-FormHeader.vue";
 import ModelDescription from "../BIOMD-MODEL/MODEL-ModelDescription.vue";
-// import { DepartmentRecord } from "../../../../store/modules/recordSchema";
+import { DepartmentRecord } from "../../../../store/modules/recordSchema";
 
 export default {
   components: { ModelDescription, Btn2, Btn, Header },
