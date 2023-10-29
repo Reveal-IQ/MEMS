@@ -53,7 +53,7 @@
     </div>
 
     <div class="row p-2 mt-4 mb-5">
-      <div class="col-md-6">
+      <div class="col-md-8">
         <div class="mb-5">
           <div class="">
             <span class="card-title fw-normal fs-4">Site Inventory</span>
@@ -62,15 +62,17 @@
             </p>
           </div>
 
-          <div class="mb-2 mt-2" v-if="modelList == 0">
-            <UIToast message="There are no assets in your database yet." />
+          <div class="mb-2 mt-2 d-flex gap-2" v-if="modelList == 0">
+            <span class="text-muted fs-6"
+              >There are no assets in your Inventory
+            </span>
           </div>
 
           <div
             v-else
             v-for="model in modelList"
             :key="model.index"
-            class="g-3 mb-2 mt-2 rounded container py-2 align-middle"
+            class="g-3 mb-2 mt-2 rounded py-2 align-middle container"
             style="background-color: #f5f6f6"
             @click="
               changePage('dashboardModel', {
@@ -82,37 +84,40 @@
               })
             "
           >
-            <div class="d-flex justify-content-between" style="cursor: pointer">
-              <td>
+            <div
+              class="d-flex justify-content-between row"
+              style="cursor: pointer"
+            >
+              <td class="col-sm-3 col">
                 <div class="d-flex flex-column">
                   <small class="text-secondary fsXs">Model</small>
                   <small class="fw-normal">{{ model.modelName }}</small>
                 </div>
               </td>
-              <td>
+              <td class="col-sm-4 col">
                 <div class="d-flex flex-column">
                   <small class="text-secondary fsXs">Manufacturer</small>
                   <small>{{ model.manufacturerName }}</small>
                 </div>
               </td>
-              <!-- <td>
+              <td class="col-sm">
                 <div class="d-flex flex-column">
                   <small class="text-secondary fsXs">Quantity</small>
                   <small>10</small>
                 </div>
-              </td> -->
-              <!-- <td>
+              </td>
+              <td class="col-sm col">
                 <div class="d-flex flex-column">
                   <small class="text-secondary fsXs">Active</small>
                   <small>6</small>
                 </div>
-              </td> -->
-              <!-- <td>
+              </td>
+              <td class="col-sm col">
                 <div class="d-flex flex-column">
                   <small class="text-secondary fsXs">In-Service</small>
                   <small>4</small>
                 </div>
-              </td> -->
+              </td>
             </div>
           </div>
         </div>

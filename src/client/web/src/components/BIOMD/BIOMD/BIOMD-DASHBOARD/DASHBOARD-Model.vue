@@ -47,8 +47,18 @@
         </div>
       </div>
 
-      <div v-if="assetList == 0">
-        <UIToast message="There are no assets assigned to this model" />
+      <div v-if="assetList == 0" class="d-flex gap-2 mt-2 align-middle">
+        <span class="text-muted fs-6"
+          >There are no assets assigned to {{ props.manufacturerName }} model
+          {{ props.modelName }} |</span
+        >
+
+        <span
+          class="text-primary"
+          style="cursor: pointer"
+          @click="changePage('assetInfo')"
+          >Create New Asset</span
+        >
       </div>
 
       <div
@@ -59,7 +69,7 @@
         style="background-color: #f5f6f6"
       >
         <div
-          class="d-flex justify-content-between"
+          class="d-flex justify-content-between row"
           style="cursor: pointer"
           @click="
             changePage('dashboardAssetDetail', {
@@ -68,7 +78,7 @@
             })
           "
         >
-          <td class="d-flex position-relative">
+          <td class="d-flex position-relative col-sm col">
             <span
               class="position-absolute border border-light top-50 start-0 p-2 translate-middle rounded-circle bg-success"
             ></span>
@@ -77,25 +87,25 @@
               <small class="fw-normal">{{ asset.assetCode }}</small>
             </div>
           </td>
-          <td>
+          <td class="col-sm col">
             <div class="d-flex flex-column">
               <small class="text-secondary fsXs">Model</small>
               <small class="fw-normal">{{ asset.modelName }}</small>
             </div>
           </td>
-          <td>
+          <td class="col-sm col">
             <div class="d-flex flex-column">
               <small class="text-secondary fsXs">Manufacturer</small>
               <small>{{ asset.manufacturerName }}</small>
             </div>
           </td>
-          <td>
+          <td class="col-sm col">
             <div class="d-flex flex-column">
               <small class="text-secondary fsXs">Status</small>
               <small>{{ asset.status }}</small>
             </div>
           </td>
-          <td>
+          <td class="col-sm col">
             <div class="d-flex flex-column">
               <small class="text-secondary fsXs">Vendor</small>
               <small>- - -</small>
@@ -110,7 +120,6 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useStore } from "vuex";
-import UIToast from "../BIOMD-UI/UI-Toast.vue";
 
 const store = useStore();
 
