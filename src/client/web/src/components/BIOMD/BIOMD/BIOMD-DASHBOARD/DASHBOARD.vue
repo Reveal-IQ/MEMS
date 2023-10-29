@@ -53,7 +53,7 @@
     </div>
 
     <div class="row p-2 mt-4 mb-5">
-      <div class="col-md-6">
+      <div class="col-sm-12 col-lg-6 col-12">
         <div class="mb-5">
           <div class="">
             <span class="card-title fw-normal fs-4">Site Inventory</span>
@@ -94,37 +94,39 @@
               })
             "
           >
-            <div class="d-flex justify-content-between" style="cursor: pointer">
-              <td>
-                <div class="d-flex flex-column">
-                  <small class="text-secondary fsXs">Model</small>
-                  <small class="fw-normal">{{ model.modelName }}</small>
-                </div>
-              </td>
-              <td>
-                <div class="d-flex flex-column">
-                  <small class="text-secondary fsXs">Manufacturer</small>
-                  <small>{{ model.manufacturerName }}</small>
-                </div>
-              </td>
-              <!-- <td>
-                <div class="d-flex flex-column">
-                  <small class="text-secondary fsXs">Quantity</small>
-                  <small>10</small>
-                </div>
-              </td> -->
-              <!-- <td>
-                <div class="d-flex flex-column">
-                  <small class="text-secondary fsXs">Active</small>
-                  <small>6</small>
-                </div>
-              </td> -->
-              <!-- <td>
-                <div class="d-flex flex-column">
-                  <small class="text-secondary fsXs">In-Service</small>
-                  <small>4</small>
-                </div>
-              </td> -->
+            <div class="" style="cursor: pointer">
+              <div class="row">
+                <td class="col-4">
+                  <div class="d-flex flex-column">
+                    <small class="text-secondary fsXs">Model</small>
+                    <small class="fw-normal">{{ model.modelName }}</small>
+                  </div>
+                </td>
+                <td class="col-4">
+                  <div class="d-flex flex-column">
+                    <small class="text-secondary fsXs">Manufacturer</small>
+                    <small>{{ model.manufacturerName }}</small>
+                  </div>
+                </td>
+                <td class="col-2">
+                  <div class="d-flex flex-column justify-content-center">
+                    <small class="text-secondary fsXs">Quantity</small>
+                    <small>10</small>
+                  </div>
+                </td>
+                <td class="col-2">
+                  <div class="d-flex flex-column justify-content-center">
+                    <small class="text-secondary fsXs">Active</small>
+                    <small>6</small>
+                  </div>
+                </td>
+                <!-- <td class="col-2">
+                  <div class="d-flex flex-column justify-content-end">
+                    <small class="text-secondary fsXs">In-Service</small>
+                    <small>4</small>
+                  </div>
+                </td> -->
+              </div>
             </div>
           </div>
         </div>
