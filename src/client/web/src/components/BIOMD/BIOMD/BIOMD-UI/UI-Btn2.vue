@@ -1,7 +1,7 @@
 <template>
   <button
     type="button"
-    class="btn buttonBackground d-inline-flex align-items-center fs-6 rounded-pill"
+    class="btn buttonBackground d-inline-flex align-items-center fs-6 rounded"
     :class="class"
     :style="'--color:' + backgroundColor"
   >
