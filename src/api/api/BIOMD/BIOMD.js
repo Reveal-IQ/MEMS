@@ -184,66 +184,96 @@ module.exports.CREATE_RECORDS = async function (req, dbClient) {
   return res;
 }
 
-//API Create New Vendor
+/**
+ * Find Records API
+ *
+ * @param {*} req Request Object.
+ * @param {*} dbClient Database connection handle.
+ * @returns Response Object.
+ */
 module.exports.FIND_RECORD = async function (req, dbClient) {
+
+  // Copy Requester Information
+  let res = Object.assign({}, req);
+
   try {
-    //Confirm Packet Received
+    // Confirm Packet Received
     console.log(
       (await TIMESTAMP()) +
       `: RCU-BIOMD-I001 : FIND_RECORDS processing request packet ID: ${req.ID}`
     );
 
-    //Copy Requester Information
-    var res = Object.assign({}, req);
 
-    //req object defintion
-    var find = Object.assign({}, req.Request.find);
+    // Request object defaults
+    const find = Object.assign({
+      queries: [],
+      lookups: [],
+      projection: {},
+    }, req.Request.find);
 
     // Check query
-    var queries = find.queries;
-    var createdFindQuery = {};
-    for (let i = 0; i < queries.length; i++) {
-      let qry = queries[i]
-      if (isValidOperator(qry.op)) {
-        switch (qry.op) {
+    const filter_query = find.queries.reduce((query_obj, {field, op, value}) => {
+      if (isValidOperator(op)) {
+        switch (op) {
           case "eq_id":
-            createdFindQuery[qry.field] = ObjectId(qry.value);
+            query_obj[field] = ObjectId(value);
             break;
           case "eq":
-            createdFindQuery[qry.field] = qry.value;
+            query_obj[field] = value;
             break;
           case "sb":
-            createdFindQuery[qry.field] = { $regex: String(qry.value) };
+            query_obj[field] = { $regex: String(value) };
             break;
         }
       } else {
         throw new Error("Invalid Query Syntax: selected operator is not valid");
       }
-    }
+      return query_obj;
+    }, {});
 
+    // Lookup queries
+    let lookup_projection = {...find.projection};
+    const lookup_queries = find.lookups.reduce((lookup_arr, {collection, localField, foreignField, as}) => {
+      if (SUPPORTED_COLLECTIONS.includes(collection)) {
+        lookup_arr.push({
+          $lookup: {
+            from: collection,
+            localField,
+            foreignField,
+            as,
+          }
+        });
+        lookup_projection[as] = { $arrayElemAt: [ "$" + as , 0] }
+      } else {
+        throw new Error("Invalid Lookup Syntax: collection not supported: " + collection);
+      }
+      return lookup_arr;
+    }, []);
 
     // Perform Find
     const collection = await dbClient.db(instituteCode).collection(find.collection);
-    let limit = req.Request.return_array ? req.Request.max_list : 1;
-    let result = await collection
-      .find(createdFindQuery)
-      .project(find.projection ? find.projection : {})
-      .limit(limit)
-      .toArray();
+    const limit = req.Request.return_array ? req.Request.max_list : 1;
+    const records = await collection.aggregate([
+      { $match: filter_query },
+      { $limit: limit },
+      ...lookup_queries,
+      { $project: lookup_projection },
+      { $project: find.projection },
+    ]).toArray();
 
-    //Response Packet
+    // Response Packet
     res.Type = "RESPONSE";
     res.Response = {
-      records: result,
+      records,
       success: true,
-      message: result.length + " records found in " + find.collection,
+      message: records.length + " record(s) found in " + find.collection,
     };
 
   } catch (error) {
-    //Log Error
+    // Log Error
     console.log((await TIMESTAMP()) + `: API-<FIND>-E001 : ${error}`);
 
-    //Error Request Packet
+    // Error Response Packet
     res.Type = "ERROR";
     res.Response = {
       Request_ID: req.ID,
