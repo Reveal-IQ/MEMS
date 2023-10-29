@@ -9,7 +9,7 @@
         id="facilityList"
         placeholder="Select facility"
         aria-label="Default select example"
-        v-model="AssetLocation.selectedFacility.name"
+        v-model="AssetLocation.selectedFacility.facilityName"
         @input="fetchFacility"
         autocomplete="off"
       />
@@ -17,7 +17,7 @@
         <option
           v-for="facility in facilityList"
           :key="facility.index"
-          :value="facility.name"
+          :value="facility.facilityName"
         ></option>
       </datalist>
     </div>
@@ -31,7 +31,7 @@
         id="departmentList"
         placeholder="Select department"
         aria-label="Default select example"
-        v-model="AssetLocation.selectedDepartment.name"
+        v-model="AssetLocation.selectedDepartment.departmentName"
         @input="fetchDepartment"
         autocomplete="off"
       />
@@ -39,7 +39,7 @@
         <option
           v-for="department in departmentList"
           :key="department.index"
-          :value="department.name"
+          :value="department.departmentName"
         ></option>
       </datalist>
     </div>
@@ -87,7 +87,7 @@ const fetchFacility = async (event) => {
     ) {
       AssetLocation.value.selectedFacility = facilityList.value.find(
         (facility) => {
-          return selectedFacility === facility.name;
+          return selectedFacility === facility.facilityName;
         }
       );
       GlobalAssetInformation.value.facilityID =
@@ -110,14 +110,14 @@ const fetchFacility = async (event) => {
               collection: "Facility",
               queries: [
                 {
-                  field: "name",
+                  field: "facilityName",
                   op: "sb",
                   value: "^",
                 },
               ],
               projection: {
                 _id: 1,
-                name: 1,
+                facilityName: 1,
               },
             },
           },
@@ -153,7 +153,7 @@ const fetchDepartment = async (event) => {
     ) {
       AssetLocation.value.selectedDepartment = departmentList.value.find(
         (department) => {
-          return selectedDepartment === department.name;
+          return selectedDepartment === department.departmentName;
         }
       );
       GlobalAssetInformation.value.departmentID =
@@ -183,7 +183,7 @@ const fetchDepartment = async (event) => {
               projection: {
                 _id: 1,
                 facilityID: 1,
-                name: 1,
+                departmentName: 1,
                 shortName: 1,
               },
             },

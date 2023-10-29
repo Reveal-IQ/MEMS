@@ -8,7 +8,7 @@
           type="text"
           id="departmentName"
           placeholder="Department Name"
-          v-model="DepartmentDescription.name"
+          v-model="DepartmentDescription.departmentName"
         />
       </div>
 
@@ -32,7 +32,7 @@
           id="manufacturerList"
           placeholder="Select Manufacturer"
           aria-label="Default select example"
-          v-model="DepartmentDescription.selectedFacility.name"
+          v-model="DepartmentDescription.selectedFacility.facilityName"
           @input="fetchFacility"
           autocomplete="off"
         />
@@ -40,7 +40,7 @@
           <option
             v-for="facility in facilityList"
             :key="facility.index"
-            :value="facility.name"
+            :value="facility.facilityName"
           ></option>
         </datalist>
       </div>
@@ -74,7 +74,7 @@ const fetchFacility = async (event) => {
     ) {
       DepartmentDescription.value.selectedFacility = facilityList.value.find(
         (facility) => {
-          return selectedFacility === facility.name;
+          return selectedFacility === facility.facilityName;
         }
       );
       GlobalDepartmentInformation.value.facilityID =
@@ -97,14 +97,14 @@ const fetchFacility = async (event) => {
               collection: "Facility",
               queries: [
                 {
-                  field: "name",
+                  field: "facilityName",
                   op: "sb",
                   value: "^",
                 },
               ],
               projection: {
                 _id: 1,
-                name: 1,
+                facilityName: 1,
               },
             },
           },

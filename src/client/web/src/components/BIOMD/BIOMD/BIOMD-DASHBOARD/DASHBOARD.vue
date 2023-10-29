@@ -17,7 +17,7 @@
         class="text-secondary"
         style="cursor: pointer"
         @click="changePage('vendorInfo')"
-        >New Model</small
+        >New Vendor</small
       >
       <small
         class="text-secondary"
@@ -62,44 +62,57 @@
             </p>
           </div>
 
+          <div class="mb-2 mt-2" v-if="modelList == 0">
+            <UIToast message="There are no assets in your database yet." />
+          </div>
+
           <div
-            v-for="asset in assets"
-            :key="asset"
+            v-else
+            v-for="model in modelList"
+            :key="model.index"
             class="g-3 mb-2 mt-2 rounded container py-2 align-middle"
             style="background-color: #f5f6f6"
-            @click="changePage('dashboardModel')"
+            @click="
+              changePage('dashboardModel', {
+                modelName: model.modelName,
+                manufacturerID: model.manufacturerID,
+                commonName: model.commonName,
+                manufacturerName: model.manufacturerName,
+                modelID: model._id,
+              })
+            "
           >
             <div class="d-flex justify-content-between" style="cursor: pointer">
               <td>
                 <div class="d-flex flex-column">
                   <small class="text-secondary fsXs">Model</small>
-                  <small class="fw-normal">{{ asset.model }}</small>
+                  <small class="fw-normal">{{ model.modelName }}</small>
                 </div>
               </td>
               <td>
                 <div class="d-flex flex-column">
                   <small class="text-secondary fsXs">Manufacturer</small>
-                  <small>{{ asset.manufacturer }}</small>
+                  <small>{{ model.manufacturerName }}</small>
                 </div>
               </td>
-              <td>
+              <!-- <td>
                 <div class="d-flex flex-column">
                   <small class="text-secondary fsXs">Quantity</small>
-                  <small>{{ asset.quantity }}</small>
+                  <small>10</small>
                 </div>
-              </td>
-              <td>
+              </td> -->
+              <!-- <td>
                 <div class="d-flex flex-column">
                   <small class="text-secondary fsXs">Active</small>
-                  <small>{{ asset.active }}</small>
+                  <small>6</small>
                 </div>
-              </td>
-              <td>
+              </td> -->
+              <!-- <td>
                 <div class="d-flex flex-column">
                   <small class="text-secondary fsXs">In-Service</small>
-                  <small>{{ asset.inService }}</small>
+                  <small>4</small>
                 </div>
-              </td>
+              </td> -->
             </div>
           </div>
         </div>
@@ -109,39 +122,83 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
+import { useStore } from "vuex";
+import UIToast from "../BIOMD-UI/UI-Toast.vue";
+
+const store = useStore();
+
+const sendSocketReq = (request) => {
+  store.dispatch("sendSocketReq", request);
+};
 
 //Variables
-
-const assets = ref([
-  {
-    model: "MX-800",
-    manufacturer: "Philips Healthcare",
-    quantity: 20,
-    active: 16,
-    inService: 4,
-  },
-  {
-    model: "MX-900",
-    manufacturer: "General Electric",
-    quantity: 10,
-    active: 5,
-    inService: 5,
-  },
-]);
+const modelList = ref([]);
 
 //Functions
 
-//Fetch Assets Information
+//Fetch Model Information
+const fetchModel = async () => {
+  try {
+    sendSocketReq({
+      data: {
+        Expiry: 20000,
+        Type: "REQUEST",
+        Request: {
+          Module: "MEMS",
+          ServiceCode: "BIOMD",
+          API: "FIND_RECORD",
+          return_array: true,
+          max_list: 100,
+          find: {
+            collection: "Model",
+            lookups: [
+              {
+                localField: "manufacturerID",
+                collection: "Manufacturer",
+                foreignField: "_id",
+                as: "Manufacturer",
+              },
+            ],
+            projection: {
+              _id: 1,
+              manufacturerName: "$Manufacturer.manufacturerName",
+              modelName: 1,
+              commonName: 1,
+            },
+          },
+        },
+      },
+      callback: (res) => {
+        if (res.Type === "RESPONSE") {
+          console.log("Response Packet -->", res.Response);
+          modelList.value = res.Response.records;
+        } else if (res.Type === "ERROR") {
+          Type: "ERROR";
+          Response: {
+            Error_Code: "API-CREATE_RECORD-E001";
+            Error_Msg: "CREATE_RECORD_API: Failed to execute query";
+          }
+        }
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 //Lifecycle Hook
 
 const emit = defineEmits(["updatePage"]);
 
 // Navigate to selected page to edit
-const changePage = async (page) => {
-  emit("updatePage", page);
+const changePage = async (page, props) => {
+  emit("updatePage", page, props);
 };
+
+onMounted(() => {
+  fetchModel();
+});
 </script>
 
 <style lang="scss" scoped>

@@ -107,7 +107,7 @@ export default {
       departments: [],
     });
 
-    const Global_Facility_Definition = ref({
+    const GlobalFacilityDefinition = ref({
       facilityAddress: {
         Country: null,
         State: null,
@@ -135,9 +135,9 @@ export default {
             collection: "Facility",
             record: new FacilityRecord({
               facilityName: facilityInfo.value.facilityName,
-              country: Global_Facility_Definition.value.facilityAddress.Country,
-              area: Global_Facility_Definition.value.facilityAddress.State,
-              city: Global_Facility_Definition.value.facilityAddress.District,
+              country: GlobalFacilityDefinition.value.facilityAddress.Country,
+              area: GlobalFacilityDefinition.value.facilityAddress.State,
+              city: GlobalFacilityDefinition.value.facilityAddress.District,
               address_1: facilityInfo.value.streetAddress1,
               address_2: facilityInfo.value.streetAddress2,
               areaCode: facilityInfo.value.zipCode,
@@ -168,7 +168,7 @@ export default {
     };
 
     provide("facilityInfo", facilityInfo);
-    provide("Global_Facility_Definition", Global_Facility_Definition);
+    provide("GlobalFacilityDefinition", GlobalFacilityDefinition);
 
     return {
       goBack,

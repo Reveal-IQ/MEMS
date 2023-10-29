@@ -13,7 +13,7 @@ Description: < Describe the application >
     <div class="container">
       <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
       <div class="row">
-        <DASHBOARD v-if="compState === 'dashboard'" @update-page="updatePage" />
+        <DASHBOARD @update-page="updatePage" />
       </div>
     </div>
   </div>
@@ -23,8 +23,12 @@ Description: < Describe the application >
       <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
       <div class="row">
         <DASHBOARDModel
-          v-if="compState === 'dashboardModel'"
           @update-page="updatePage"
+          :modelName="pageProps.modelName"
+          :manufacturerID="pageProps.manufacturerID"
+          :commonName="pageProps.commonName"
+          :modelID="pageProps.modelID"
+          :manufacturerName="pageProps.manufacturerName"
         />
       </div>
     </div>
@@ -35,8 +39,10 @@ Description: < Describe the application >
       <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
       <div class="row">
         <DASHBOARDAssetDetail
-          v-if="compState === 'dashboardAssetDetail'"
           @update-page="updatePage"
+          :assetCode="pageProps.assetCode"
+          :status="pageProps.status"
+          :modelName="pageProps.modelName"
         />
       </div>
     </div>
@@ -110,15 +116,18 @@ export default {
   emits: [],
   setup(props, { emit }) {
     const compState = ref("dashboard"); //asset, facility, model, manufacturer, vendor
+    const pageProps = ref("init");
 
-    const updatePage = (page) => {
+    const updatePage = (page, props) => {
       compState.value = page;
+      pageProps.value = props;
     };
 
     return {
       // Return variables/Display Variables in HTML DOM
       compState,
       updatePage,
+      pageProps,
     };
   },
 };

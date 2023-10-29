@@ -4,23 +4,25 @@
       <small
         class="text-secondary"
         style="cursor: pointer"
-        @click="changePage('dashboardModel')"
+        @click="changePage('dashboard')"
         >Back</small
       >
     </nav>
 
     <div class="d-flex flex-column p-2 mt-4">
       <div>
-        <span class="title text-dark fw-normal fs-1">12839</span>
+        <span class="title text-dark fw-normal fs-1">{{
+          props.assetCode
+        }}</span>
       </div>
       <div>
-        <span class="badge rounded-pill bg-success fsXs text-uppercase"
-          >active</span
-        >
+        <span class="badge rounded-pill bg-success fsXs text-uppercase">{{
+          props.status
+        }}</span>
       </div>
     </div>
 
-    <div class="row p-2 mt-4 mb-5">
+    <div class="row p-2 mt-4 mb-5" v-for="asset in assetProfile" :key="asset">
       <div class="col-md-5">
         <div class="mb-5">
           <div class="">
@@ -39,7 +41,7 @@
               <td>
                 <div class="d-flex flex-column">
                   <small class="text-secondary fsXs">Equipment Number</small>
-                  <small class="fw-normal">12839</small>
+                  <small class="fw-normal">{{ asset.assetCode }}</small>
                 </div>
               </td>
               <td>
@@ -51,25 +53,25 @@
               <td>
                 <div class="d-flex flex-column">
                   <small class="text-secondary fsXs">Serial Number</small>
-                  <small>1234568448-3</small>
+                  <small>{{ asset.serialNumber }}</small>
                 </div>
               </td>
               <td>
                 <div class="d-flex flex-column">
                   <small class="text-secondary fsXs">Manufacturer</small>
-                  <small>General Electric</small>
+                  <small>{{ asset.manufacturerName }}</small>
                 </div>
               </td>
               <td>
                 <div class="d-flex flex-column">
                   <small class="text-secondary fsXs">Model</small>
-                  <small>MX 900</small>
+                  <small>{{ asset.modelName }}</small>
                 </div>
               </td>
               <td>
                 <div class="d-flex flex-column">
                   <small class="text-secondary fsXs">Year of Manufacture</small>
-                  <small>12-Jun-20</small>
+                  <small>{{ asset.manufactureDate }}</small>
                 </div>
               </td>
             </div>
@@ -90,7 +92,7 @@
               <td>
                 <div class="d-flex flex-column">
                   <small class="text-secondary fsXs">Facility</small>
-                  <small class="fw-normal">Bolgatanga Regional Hospital</small>
+                  <small class="fw-normal">{{ asset.facilityName }}</small>
                 </div>
               </td>
               <td>
@@ -102,7 +104,7 @@
               <td>
                 <div class="d-flex flex-column">
                   <small class="text-secondary fsXs">Location</small>
-                  <small>Ward 14 Room 2</small>
+                  <small>{{ asset.locationName }}</small>
                 </div>
               </td>
             </div>
@@ -178,9 +180,6 @@
             <span class="card-title fw-normal fs-5"
               >Additional Information</span
             >
-            <!-- <p class="card-text">
-              <small class="text-muted fsXs">PO Details</small>
-            </p> -->
           </div>
           <div
             class="g-3 mb-2 mt-2 rounded-3 container py-2 align-middle"
@@ -189,11 +188,11 @@
             <div class="d-flex flex-column gap-3">
               <td>
                 <div class="d-flex flex-column">
-                  <small class="fw-normal"
-                    >Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Possimus ad eveniet, beatae sapiente veniam at dolores quod
-                    unde error numquam? Similique, placeat porro! Est neque
-                    maxime consequatur debitis odit quisquam?</small
+                  <small class="fw-normal" v-if="asset.comment">{{
+                    asset.comment
+                  }}</small>
+                  <small class="fw-normal text-secondary" v-else
+                    >No comments added</small
                   >
                 </div>
               </td>
@@ -254,7 +253,18 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
+import { useStore } from "vuex";
+
+const store = useStore();
+
+const sendSocketReq = (request) => {
+  store.dispatch("sendSocketReq", request);
+};
+
+const props = defineProps(["assetCode", "status", "modelName"]);
+
+const assetProfile = ref({});
 
 const workOrders = ref([
   {
@@ -270,12 +280,95 @@ const workOrders = ref([
     dateOpen: "23-Aug-23",
   },
 ]);
+
+const fetchAsset = async () => {
+  try {
+    sendSocketReq({
+      data: {
+        Expiry: 20000,
+        Type: "REQUEST",
+        Request: {
+          Module: "MEMS",
+          ServiceCode: "BIOMD",
+          API: "FIND_RECORD",
+          return_array: true,
+          max_list: 100,
+          find: {
+            collection: "Asset",
+            queries: [
+              {
+                field: "assetCode",
+                op: "sb",
+                value: props.assetCode,
+              },
+            ],
+            lookups: [
+              {
+                localField: "modelID",
+                collection: "Model",
+                foreignField: "_id",
+                as: "Model",
+              },
+              {
+                localField: "manufacturerID",
+                collection: "Manufacturer",
+                foreignField: "_id",
+                as: "Manufacturer",
+              },
+              {
+                localField: "facilityID",
+                collection: "Facility",
+                foreignField: "_id",
+                as: "Facility",
+              },
+            ],
+            projection: {
+              _id: 1,
+              assetCode: 1,
+              modelID: 1,
+
+              manufacturerName: "$Manufacturer.manufacturerName",
+              modelName: "$Model.modelName",
+              facilityName: "$Facility.facilityName",
+
+              status: 1,
+              manufactureDate: 1,
+              serialNumber: 1,
+              locationName: 1,
+              comment: 1,
+            },
+          },
+        },
+      },
+
+      callback: (res) => {
+        if (res.Type === "RESPONSE") {
+          console.log("Response Packet -->", res.Response);
+          assetProfile.value = res.Response.records;
+        } else if (res.Type === "ERROR") {
+          Type: "ERROR";
+          Response: {
+            Error_Code: "API-CREATE_RECORD-E001";
+            Error_Msg: "CREATE_RECORD_API: Failed to execute query";
+          }
+        }
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const emit = defineEmits(["updatePage"]);
 
 // Navigate to selected page to edit
-const changePage = async (page) => {
-  emit("updatePage", page);
+const changePage = async (page, props) => {
+  emit("updatePage", page, props);
 };
+
+onMounted(() => {
+  fetchAsset();
+});
 </script>
 
 <style lang="scss" scoped>
