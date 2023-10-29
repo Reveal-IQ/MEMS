@@ -135,7 +135,7 @@ export default {
         UMDNSCode: null,
       },
       manufactureDate: null,
-      status: "Active Deployed",
+      status: "Active in Service",
     });
 
     const AssetLocation = ref({
