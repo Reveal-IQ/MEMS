@@ -35,5 +35,15 @@
   "bugs": {
     "url": "https://github.com/Reveal-IQ/Reveal-Core-Unit/issues"
   },
-  "homepage": "https://github.com/Reveal-IQ/Reveal-Core-Unit#readme"
+  "homepage": "https://github.com/Reveal-IQ/Reveal-Core-Unit#readme",
+  "jest": {
+    "verbose": true,
+    "modulePaths": [
+      "api/",
+      "lib/",
+      "services/",
+      "test/",
+      "node_modules/"
+    ]
+  }
 }

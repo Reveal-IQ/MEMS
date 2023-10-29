@@ -11,15 +11,15 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '16.x'
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
       - name: Run Backend tests
         working-directory: ./src/api
         run: |
           npm ci
-          ls -la node_modules/bson
           npm test
       - name: Run Frontend tests
         working-directory: ./src/client/web
         run: |
           npm ci
-          ls -la node_modules/bson
           npm test
