@@ -63,7 +63,19 @@
           </div>
 
           <div class="mb-2 mt-2" v-if="modelList == 0">
-            <UIToast message="There are no assets in your database yet." />
+            <UIToastGlobal
+              message="Assets have not been assigned"
+              message2="Use New Asset to create and assign a record to this Model."
+              :icon="'exclamation-triangle'"
+              backgroundColor="#FFF0DA"
+            >
+              <UIBtn2
+                BtnName="New Asset"
+                backgroundColor="#FFFFFF"
+                class="text-success btn-sm"
+                @click="changePage('assetInfo')"
+              />
+            </UIToastGlobal>
           </div>
 
           <div
@@ -124,7 +136,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useStore } from "vuex";
-import UIToast from "../BIOMD-UI/UI-Toast.vue";
+import UIToastGlobal from "../BIOMD-UI/UI-ToastGlobal.vue";
 
 const store = useStore();
 
