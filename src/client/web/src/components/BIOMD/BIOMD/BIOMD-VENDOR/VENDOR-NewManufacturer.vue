@@ -31,7 +31,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, inject } from "vue";
 import { useStore } from "vuex";
 import Input from "../BIOMD-UI/UI-Input.vue";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
@@ -50,11 +50,13 @@ const manufacturerInfo = ref({
 
 const showToast = ref(false);
 
+const fetchManufacturer = inject("fetchManufacturer");
+
 const sendSocketReq = (request) => {
   store.dispatch("sendSocketReq", request);
 };
 
-function createRecord() {
+async function createRecord() {
   // send Request as below .
   sendSocketReq({
     data: {
@@ -89,6 +91,8 @@ function createRecord() {
       }
     },
   });
+
+  await fetchManufacturer();
 }
 </script>
 

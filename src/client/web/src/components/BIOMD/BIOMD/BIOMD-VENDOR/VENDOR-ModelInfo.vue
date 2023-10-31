@@ -64,6 +64,7 @@ const Institute_Code = computed(
 const showToast = ref(false);
 
 const GlobalVendorDefinition = inject("GlobalVendorDefinition");
+const fetchModel = inject("fetchModel");
 
 const ModelDescription = ref({
   modelName: null,
@@ -75,7 +76,7 @@ const sendSocketReq = (request) => {
   store.dispatch("sendSocketReq", request);
 };
 
-function createRecord() {
+async function createRecord() {
   // send Request as below .
   sendSocketReq({
     data: {
@@ -116,6 +117,7 @@ function createRecord() {
       }
     },
   });
+  await fetchModel();
 }
 </script>
 

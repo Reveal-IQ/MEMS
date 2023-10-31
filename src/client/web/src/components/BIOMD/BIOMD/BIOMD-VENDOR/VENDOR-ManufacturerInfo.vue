@@ -95,7 +95,7 @@
 </template>
 
 <script setup>
-import { ref, inject, onMounted, computed } from "vue";
+import { ref, inject, onMounted, provide } from "vue";
 import { useStore } from "vuex";
 
 import NewManufacturer from "./VENDOR-NewManufacturer.vue";
@@ -256,6 +256,9 @@ const fetchModel = async (event) => {
     console.log(error);
   }
 };
+
+provide("fetchManufacturer", fetchManufacturer);
+provide("fetchModel", fetchModel);
 
 onMounted(() => {
   fetchManufacturer();
