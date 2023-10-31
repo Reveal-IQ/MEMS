@@ -13,15 +13,42 @@
 
     <!-- Parent Asset -->
     <div class="col-lg-6 mb-3">
-      <label for="parentAssetList" class="form-label">Parent Asset</label>
-      <select
-        id="parentAssetList"
-        class="form-select"
-        aria-label="Default select example"
-        v-model="AssetDetails.selectedParentAsset._id"
-      >
-        <option selected>Select Parent Asset</option>
-      </select>
+      <div>
+        <label for="assetList" class="form-label">Parent Equipment</label>
+        <input
+          class="form-control"
+          list="assetListOptions"
+          id="assetList"
+          placeholder="Select Parent Equipment"
+          aria-label="Default select example"
+          v-model="AssetDetails.selectedParentAsset.assetCode"
+          @input="fetchParentAsset"
+          autocomplete="off"
+        />
+        <datalist id="assetListOptions">
+          <option
+            v-for="asset in assetList"
+            :key="asset.index"
+            :value="asset.assetCode"
+          ></option>
+        </datalist>
+      </div>
+      <div class="py-3 px-2" v-if="AssetDetails.selectedParentAsset.assetCode">
+        <span class="fw-bold">Model Profile</span>
+        <div class="d-flex flex-column gap-1">
+          <span
+            >Equipment Model:
+            {{ AssetDetails.selectedParentAsset.modelName }}</span
+          >
+          <span
+            >Common Name:
+            {{ AssetDetails.selectedParentAsset.commonName }}</span
+          >
+          <span
+            >UMDNS Code: {{ AssetDetails.selectedParentAsset.UMDNSCode }}</span
+          >
+        </div>
+      </div>
     </div>
 
     <div class="col-lg-6 mb-3">
@@ -132,6 +159,8 @@ const sendSocketReq = (request) => {
 
 const manufacturerList = ref(null);
 const modelList = ref(null);
+const assetList = ref(null);
+
 const statusList = ref([
   { name: "Active in Storage", value: "Active in Storage" },
   { name: "Active in Service", value: "Active in Service" },
@@ -275,8 +304,84 @@ const fetchModel = async (event) => {
   }
 };
 
+const fetchParentAsset = async (event) => {
+  try {
+    const selectedParentAsset = event ? event.target.value : "";
+    if (
+      event &&
+      (!(event instanceof InputEvent) ||
+        event.inputType === "insertReplacementText")
+    ) {
+      AssetDetails.value.selectedParentAsset = assetList.value.find((asset) => {
+        return selectedParentAsset === asset.assetCode;
+      });
+      GlobalAssetInformation.value.parentAssetID =
+        AssetDetails.value.selectedParentAsset._id;
+    } else {
+      GlobalAssetInformation.value.parentAssetID = null;
+
+      sendSocketReq({
+        data: {
+          Expiry: 20000,
+          Type: "REQUEST",
+          Request: {
+            Module: "MEMS",
+            ServiceCode: "BIOMD",
+            API: "FIND_RECORD",
+            return_array: true,
+            max_list: 100,
+            find: {
+              collection: "Asset",
+              queries: [
+                {
+                  field: "assetCode",
+                  op: "sb",
+                  value: "^",
+                },
+              ],
+              lookups: [
+                {
+                  localField: "modelID",
+                  collection: "Model",
+                  foreignField: "_id",
+                  as: "Model",
+                },
+              ],
+              projection: {
+                _id: 1,
+                assetCode: 1,
+                status: 1,
+                modelID: 1,
+                modelName: "$Model.modelName",
+                commonName: "$Model.commonName",
+                UMDNSCode: "$Model.UMDNSCode",
+              },
+            },
+          },
+        },
+
+        callback: (res) => {
+          if (res.Type === "RESPONSE") {
+            console.log("Response Packet -->", res.Response);
+            assetList.value = res.Response.records;
+          } else if (res.Type === "ERROR") {
+            Type: "ERROR";
+            Response: {
+              Error_Code: "API-CREATE_RECORD-E001";
+              Error_Msg: "CREATE_RECORD_API: Failed to execute query";
+            }
+          }
+        },
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 onMounted(() => {
   fetchManufacturer();
+  fetchParentAsset();
 });
 </script>
 
