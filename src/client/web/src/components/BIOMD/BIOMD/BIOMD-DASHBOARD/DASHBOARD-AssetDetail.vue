@@ -44,7 +44,15 @@
                   <small class="fw-normal">{{ asset.assetCode }}</small>
                 </div>
               </td>
-              <td>
+              <td v-if="parentAssetProfile == 0">
+                <div class="d-flex flex-column">
+                  <small class="text-secondary fsXs">Parent Name</small>
+                  <small class="text-muted">
+                    No Parent Equipment Assigned
+                  </small>
+                </div>
+              </td>
+              <td v-else>
                 <div
                   class="d-flex flex-column"
                   v-for="parent in parentAssetProfile"
