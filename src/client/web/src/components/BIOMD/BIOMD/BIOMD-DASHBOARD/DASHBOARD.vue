@@ -65,15 +65,15 @@
           <div class="mb-2 mt-2" v-if="modelList == 0">
             <UIToastGlobal
               message="Assets have not been assigned"
-              message2="Use New Asset to create and assign a record to this Model."
+              message2="Use New Vendor to create new Models and Manufacturers."
               :icon="'exclamation-triangle'"
               backgroundColor="#FFF0DA"
             >
               <UIBtn2
-                BtnName="New Asset"
+                BtnName="New Model"
                 backgroundColor="#FFFFFF"
                 class="text-success btn-sm"
-                @click="changePage('assetInfo')"
+                @click="changePage('vendorInfo')"
               />
             </UIToastGlobal>
           </div>
@@ -96,36 +96,42 @@
           >
             <div class="" style="cursor: pointer">
               <div class="row">
-                <td class="col-4">
+                <td class="col-3">
                   <div class="d-flex flex-column">
                     <small class="text-secondary fsXs">Model</small>
                     <small class="fw-normal">{{ model.modelName }}</small>
                   </div>
                 </td>
-                <td class="col-4">
+                <td class="col-3">
                   <div class="d-flex flex-column">
                     <small class="text-secondary fsXs">Manufacturer</small>
                     <small>{{ model.manufacturerName }}</small>
                   </div>
                 </td>
                 <td class="col-2">
-                  <div class="d-flex flex-column justify-content-center">
+                  <div
+                    class="d-flex flex-column justify-content-center text-center"
+                  >
                     <small class="text-secondary fsXs">Quantity</small>
                     <small>10</small>
                   </div>
                 </td>
                 <td class="col-2">
-                  <div class="d-flex flex-column justify-content-center">
+                  <div
+                    class="d-flex flex-column justify-content-center text-center"
+                  >
                     <small class="text-secondary fsXs">Active</small>
                     <small>6</small>
                   </div>
                 </td>
-                <!-- <td class="col-2">
-                  <div class="d-flex flex-column justify-content-end">
+                <td class="col-2">
+                  <div
+                    class="d-flex flex-column justify-content-end text-center"
+                  >
                     <small class="text-secondary fsXs">In-Service</small>
                     <small>4</small>
                   </div>
-                </td> -->
+                </td>
               </div>
             </div>
           </div>
@@ -139,6 +145,7 @@
 import { ref, onMounted } from "vue";
 import { useStore } from "vuex";
 import UIToastGlobal from "../BIOMD-UI/UI-ToastGlobal.vue";
+import UIBtn2 from "../BIOMD-UI/UI-Btn2.vue";
 
 const store = useStore();
 
