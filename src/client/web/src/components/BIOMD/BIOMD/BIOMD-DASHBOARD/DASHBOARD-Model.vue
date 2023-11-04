@@ -77,6 +77,7 @@
             changePage('dashboardAssetDetail', {
               assetCode: asset.assetCode,
               status: asset.status,
+              parentAssetID: asset.parentAssetID,
             })
           "
         >
@@ -176,13 +177,22 @@ const fetchAsset = async () => {
                 foreignField: "_id",
                 as: "Model",
               },
+              {
+                localField: "parentAssetID",
+                collection: "Asset",
+                foreignField: "_id",
+                as: "ParentAsset",
+              },
             ],
             projection: {
               _id: 1,
               assetCode: 1,
               status: 1,
+              parentAssetID: 1,
               manufacturerName: "$Manufacturer.manufacturerName",
               modelName: "$Model.modelName",
+              parentAsset: "$ParentAsset.assetCode",
+              parentAssetName: "$ParentAsset.modelName",
             },
           },
         },

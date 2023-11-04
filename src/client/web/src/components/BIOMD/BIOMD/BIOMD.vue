@@ -43,6 +43,7 @@ Description: < Describe the application >
           :assetCode="pageProps.assetCode"
           :status="pageProps.status"
           :modelName="pageProps.modelName"
+          :parentAssetID="pageProps.parentAssetID"
         />
       </div>
     </div>

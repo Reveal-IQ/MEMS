@@ -45,9 +45,16 @@
                 </div>
               </td>
               <td>
-                <div class="d-flex flex-column">
+                <div
+                  class="d-flex flex-column"
+                  v-for="parent in parentAssetProfile"
+                >
                   <small class="text-secondary fsXs">Parent Name</small>
-                  <small>12345 | NewLife | General Electric</small>
+                  <small
+                    >{{ parent.parentAssetCode }} |
+                    {{ parent.parentModelName }} |
+                    {{ parent.parentManufaturerName }}
+                  </small>
                 </div>
               </td>
               <td>
@@ -142,7 +149,7 @@
           </div>
         </div>
 
-        <div class="mb-5">
+        <!-- <div class="mb-5">
           <div>
             <span class="card-title fw-normal fs-5">Purchase Order</span>
             <p class="card-text">
@@ -174,7 +181,7 @@
               </td>
             </div>
           </div>
-        </div>
+        </div> -->
         <div class="mb-5">
           <div>
             <span class="card-title fw-normal fs-5"
@@ -262,9 +269,16 @@ const sendSocketReq = (request) => {
   store.dispatch("sendSocketReq", request);
 };
 
-const props = defineProps(["assetCode", "status", "modelName"]);
+const props = defineProps([
+  "assetCode",
+  "status",
+  "modelName",
+  "parentAssetID",
+  "manufacturerName",
+]);
 
 const assetProfile = ref({});
+const parentAssetProfile = ref({});
 
 const workOrders = ref([
   {
@@ -321,11 +335,18 @@ const fetchAsset = async () => {
                 foreignField: "_id",
                 as: "Facility",
               },
+              {
+                localField: "parentAssetID",
+                collection: "Asset",
+                foreignField: "_id",
+                as: "ParentAsset",
+              },
             ],
             projection: {
               _id: 1,
               assetCode: 1,
               modelID: 1,
+              parentAssetID: 1,
 
               manufacturerName: "$Manufacturer.manufacturerName",
               modelName: "$Model.modelName",
@@ -336,6 +357,10 @@ const fetchAsset = async () => {
               serialNumber: 1,
               locationName: 1,
               comment: 1,
+
+              parentAssetCode: "$ParentAsset.assetCode",
+              parentModel: "$ParentAsset.modelID",
+              parentManufacturer: "$ParentAsset.manufacturerID",
             },
           },
         },
@@ -359,6 +384,75 @@ const fetchAsset = async () => {
   }
 };
 
+const fetchParentAsset = async () => {
+  try {
+    sendSocketReq({
+      data: {
+        Expiry: 20000,
+        Type: "REQUEST",
+        Request: {
+          Module: "MEMS",
+          ServiceCode: "BIOMD",
+          API: "FIND_RECORD",
+          return_array: true,
+          max_list: 100,
+          find: {
+            collection: "Asset",
+            queries: [
+              {
+                field: "_id",
+                op: "eq_id",
+                value: props.parentAssetID,
+              },
+            ],
+            lookups: [
+              {
+                localField: "_id",
+                collection: "Asset",
+                foreignField: "_id",
+                as: "ParentAsset",
+              },
+              {
+                localField: "modelID",
+                collection: "Model",
+                foreignField: "_id",
+                as: "ParentModel",
+              },
+              {
+                localField: "manufacturerID",
+                collection: "Manufacturer",
+                foreignField: "_id",
+                as: "ParentManufacturer",
+              },
+            ],
+            projection: {
+              _id: 1,
+              parentAssetCode: "$ParentAsset.assetCode",
+              parentModelName: "$ParentModel.modelName",
+              parentManufaturerName: "$ParentManufacturer.manufacturerName",
+            },
+          },
+        },
+      },
+
+      callback: (res) => {
+        if (res.Type === "RESPONSE") {
+          console.log("Response Packet -->", res.Response);
+          parentAssetProfile.value = res.Response.records;
+        } else if (res.Type === "ERROR") {
+          Type: "ERROR";
+          Response: {
+            Error_Code: "API-CREATE_RECORD-E001";
+            Error_Msg: "CREATE_RECORD_API: Failed to execute query";
+          }
+        }
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const emit = defineEmits(["updatePage"]);
 
 // Navigate to selected page to edit
@@ -368,6 +462,7 @@ const changePage = async (page, props) => {
 
 onMounted(() => {
   fetchAsset();
+  fetchParentAsset();
 });
 </script>
 
