@@ -34,19 +34,31 @@
         </datalist>
       </div>
       <div class="py-3 px-2" v-if="AssetDetails.selectedParentAsset.assetCode">
-        <span class="fw-bold">Model Profile</span>
+        <span class="fw-bold">Asset Profile</span>
         <div class="d-flex flex-column gap-1">
-          <span
-            >Equipment Model:
-            {{ AssetDetails.selectedParentAsset.modelName }}</span
-          >
-          <span
-            >Common Name:
-            {{ AssetDetails.selectedParentAsset.commonName }}</span
-          >
-          <span
-            >UMDNS Code: {{ AssetDetails.selectedParentAsset.UMDNSCode }}</span
-          >
+          <div>
+            <span
+              >Manufacturer:
+              {{ AssetDetails.selectedParentAsset.manufacturerName }}</span
+            >
+          </div>
+          <div>
+            <span>Model: {{ AssetDetails.selectedParentAsset.modelName }}</span>
+          </div>
+
+          <div>
+            <span
+              >Serial Number:
+              {{ AssetDetails.selectedParentAsset.serialNumber }}</span
+            >
+          </div>
+          <div class="d-flex gap-3 align-items-center">
+            <span>Status: </span>
+            <span
+              class="rounded-pill bg-success fsXs text-uppercase align-items-center text-center p-1 text-light fw-bold"
+              >{{ AssetDetails.selectedParentAsset.status }}</span
+            >
+          </div>
         </div>
       </div>
     </div>
@@ -346,15 +358,20 @@ const fetchParentAsset = async (event) => {
                   foreignField: "_id",
                   as: "Model",
                 },
+                {
+                  localField: "manufacturerID",
+                  collection: "Manufacturer",
+                  foreignField: "_id",
+                  as: "Manufacturer",
+                },
               ],
               projection: {
                 _id: 1,
                 assetCode: 1,
                 status: 1,
-                modelID: 1,
+                serialNumber: 1,
                 modelName: "$Model.modelName",
-                commonName: "$Model.commonName",
-                UMDNSCode: "$Model.UMDNSCode",
+                manufacturerName: "$Manufacturer.manufacturerName",
               },
             },
           },
@@ -385,4 +402,6 @@ onMounted(() => {
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import "../../../BIOMD/BIOMD/Style/font-style.scss";
+</style>
