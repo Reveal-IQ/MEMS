@@ -95,7 +95,7 @@
 </template>
 
 <script setup>
-import { ref, inject, onMounted, computed } from "vue";
+import { ref, inject, onMounted, provide } from "vue";
 import { useStore } from "vuex";
 
 import NewManufacturer from "./VENDOR-NewManufacturer.vue";
@@ -187,75 +187,63 @@ const fetchManufacturer = async (event) => {
   }
 };
 
-const fetchModel = async (event) => {
+const fetchModel = async () => {
   try {
-    const listedModels = event ? event.target.value : "";
-    if (
-      event &&
-      (!(event instanceof InputEvent) ||
-        event.inputType === "insertReplacementText")
-    ) {
-      manufacturerInfo.value.listedModels = modelList.value.find((model) => {
-        return listedModels === model.modelName;
-      });
-      GlobalVendorDefinition.value.modelID =
-        manufacturerInfo.value.listedModels._id;
-    } else {
-      GlobalVendorDefinition.value.modelID = null;
-
-      sendSocketReq({
-        data: {
-          Expiry: 20000,
-          Type: "REQUEST",
-          Request: {
-            Module: "MEMS",
-            ServiceCode: "BIOMD",
-            API: "FIND_RECORD",
-            return_array: true,
-            max_list: 100,
-            find: {
-              collection: "Model",
-              queries: [
-                {
-                  field: "manufacturerID",
-                  op: "eq_id",
-                  value: GlobalVendorDefinition.value.manufacturerID,
-                },
-              ],
-              projection: {
-                _id: 1,
-                modelName: 1,
+    sendSocketReq({
+      data: {
+        Expiry: 20000,
+        Type: "REQUEST",
+        Request: {
+          Module: "MEMS",
+          ServiceCode: "BIOMD",
+          API: "FIND_RECORD",
+          return_array: true,
+          max_list: 100,
+          find: {
+            collection: "Model",
+            queries: [
+              {
+                field: "manufacturerID",
+                op: "eq_id",
+                value: GlobalVendorDefinition.value.manufacturerID,
               },
+            ],
+            projection: {
+              _id: 1,
+              modelName: 1,
             },
           },
         },
-        callback: (res) => {
-          if (res.Type === "RESPONSE") {
-            console.log("Response Packet -->", res.Response);
-            modelList.value = res.Response.records;
+      },
+      callback: (res) => {
+        if (res.Type === "RESPONSE") {
+          console.log("Response Packet -->", res.Response);
+          modelList.value = res.Response.records;
 
-            if (modelList.value.length < 1) {
-              showMessage.value = true;
-            }
-            if (modelList.value.length > 0) {
-              showMessage.value = false;
-            }
-
-            showLabel.value = true;
-          } else if (res.Type === "ERROR") {
-            Type: "ERROR";
-            Response: {
-              Error_Code: "API-CREATE_RECORD-E001";
-              Error_Msg: "CREATE_RECORD_API: Failed to execute query";
-            }
+          if (modelList.value.length < 1) {
+            showMessage.value = true;
           }
-        },
-      });
-    }
+          if (modelList.value.length > 0) {
+            showMessage.value = false;
+          }
+
+          showLabel.value = true;
+        } else if (res.Type === "ERROR") {
+          Type: "ERROR";
+          Response: {
+            Error_Code: "API-CREATE_RECORD-E001";
+            Error_Msg: "CREATE_RECORD_API: Failed to execute query";
+          }
+        }
+      },
+    });
   } catch (error) {
     console.log(error);
   }
 };
+
+provide("fetchManufacturer", fetchManufacturer);
+provide("fetchModel", fetchModel);
 
 onMounted(() => {
   fetchManufacturer();
