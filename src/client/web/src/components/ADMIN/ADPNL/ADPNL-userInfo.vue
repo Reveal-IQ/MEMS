@@ -11,7 +11,7 @@
     <!-- Progress Bar Row  -->
     <div class="row d-flex justify-content-evenly mx-0 px-0">
       <div class="col-sm-12 reveal-container my-auto">
-        <div class="d-none d-lg-block">
+        <div class="d-none d-md-block">
           <div class="row justify-content-center appNavigation">
             <div class="col-sm-10 progressLine">
               <div class="progress" style="height: 5px">
@@ -676,5 +676,11 @@ export default {
 .previewPhoto{
   width: 110px;
   height: 110px;
+}
+@media only screen and (max-width: 768px) {
+	.reveal-container {
+		width: 680px !important;
+		max-height: 100%;
+	}
 }
 </style>
