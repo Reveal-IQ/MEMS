@@ -289,6 +289,7 @@ export default {
 
     function navigDashoard(val) {
       currentPage.value = val;
+      getuserList();//Get User table updated.
     }
 
     function navigUserList(payload){   
@@ -300,6 +301,7 @@ export default {
 
     function toggleUserAccount(){
       currentPage.value = 'userAccounts'
+      getuserList();//Functiona called for updating the User table
     }
 
     // On click on User in Table take to Edit User Page
@@ -371,15 +373,6 @@ export default {
     }
      getuserList();
 
-    function defaultSearch() {
-      getuserList();
-    }
-
-    created: {
-      setTimeout(() => {
-        defaultSearch();
-      }, 500);
-    }
 
     return {
       // Local Variables
@@ -406,7 +399,6 @@ export default {
       searchTimeOut,
       getuserList,
       setdata,
-      defaultSearch,
       navigateAddUser,
       navigDashoard,
       navigUserList,

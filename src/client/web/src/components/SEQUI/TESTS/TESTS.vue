@@ -34,7 +34,7 @@
                   <b>Name:</b> {{ test.TESTNAME }} 
                 </div>
                 <div class="testDescription py-2"> 
-                  <b>Description:</b> {{ test.DESCRIPTION }} 
+                  <b>Description:</b> {{ test.Description }} 
                 </div>
                 <div v-if="test.RESPONSE">
                   <div class="duration py-2"> 
@@ -311,6 +311,7 @@ export default {
   tfoot { display: table-row-group; }
   tr { page-break-inside: avoid; }
 }
+
 .container-fluid::-webkit-scrollbar {
   display: none;
 }
@@ -323,4 +324,5 @@ pre {
   white-space: -o-pre-wrap;
   word-wrap: break-word;
 }
+
 </style>
