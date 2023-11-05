@@ -13,15 +13,54 @@
 
     <!-- Parent Asset -->
     <div class="col-lg-6 mb-3">
-      <label for="parentAssetList" class="form-label">Parent Asset</label>
-      <select
-        id="parentAssetList"
-        class="form-select"
-        aria-label="Default select example"
-        v-model="AssetDetails.selectedParentAsset._id"
-      >
-        <option selected>Select Parent Asset</option>
-      </select>
+      <div>
+        <label for="assetList" class="form-label">Parent Equipment</label>
+        <input
+          class="form-control"
+          list="assetListOptions"
+          id="assetList"
+          placeholder="Select Parent Equipment"
+          aria-label="Default select example"
+          v-model="AssetDetails.selectedParentAsset.assetCode"
+          @input="fetchParentAsset"
+          autocomplete="off"
+        />
+        <datalist id="assetListOptions">
+          <option
+            v-for="asset in assetList"
+            :key="asset.index"
+            :value="asset.assetCode"
+          ></option>
+        </datalist>
+      </div>
+      <div class="py-3 px-2" v-if="AssetDetails.selectedParentAsset.assetCode">
+        <span class="fw-bold">Asset Profile</span>
+        <div class="d-flex flex-column gap-1">
+          <div>
+            <span
+              >Manufacturer:
+              {{ AssetDetails.selectedParentAsset.manufacturerName }}</span
+            >
+          </div>
+          <div>
+            <span>Model: {{ AssetDetails.selectedParentAsset.modelName }}</span>
+          </div>
+
+          <div>
+            <span
+              >Serial Number:
+              {{ AssetDetails.selectedParentAsset.serialNumber }}</span
+            >
+          </div>
+          <div class="d-flex gap-3 align-items-center">
+            <span>Status: </span>
+            <span
+              class="rounded-pill bg-success fsXs text-uppercase align-items-center text-center p-1 text-light fw-bold"
+              >{{ AssetDetails.selectedParentAsset.status }}</span
+            >
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="col-lg-6 mb-3">
@@ -132,6 +171,8 @@ const sendSocketReq = (request) => {
 
 const manufacturerList = ref(null);
 const modelList = ref(null);
+const assetList = ref(null);
+
 const statusList = ref([
   { name: "Active in Storage", value: "Active in Storage" },
   { name: "Storage Repairable", value: "Storage Repairable" },
@@ -274,9 +315,92 @@ const fetchModel = async (event) => {
   }
 };
 
+const fetchParentAsset = async (event) => {
+  try {
+    const selectedParentAsset = event ? event.target.value : "";
+    if (
+      event &&
+      (!(event instanceof InputEvent) ||
+        event.inputType === "insertReplacementText")
+    ) {
+      AssetDetails.value.selectedParentAsset = assetList.value.find((asset) => {
+        return selectedParentAsset === asset.assetCode;
+      });
+      GlobalAssetInformation.value.parentAssetID =
+        AssetDetails.value.selectedParentAsset._id;
+    } else {
+      GlobalAssetInformation.value.parentAssetID = null;
+
+      sendSocketReq({
+        data: {
+          Expiry: 20000,
+          Type: "REQUEST",
+          Request: {
+            Module: "MEMS",
+            ServiceCode: "BIOMD",
+            API: "FIND_RECORD",
+            return_array: true,
+            max_list: 100,
+            find: {
+              collection: "Asset",
+              queries: [
+                {
+                  field: "assetCode",
+                  op: "sb",
+                  value: "^",
+                },
+              ],
+              lookups: [
+                {
+                  localField: "modelID",
+                  collection: "Model",
+                  foreignField: "_id",
+                  as: "Model",
+                },
+                {
+                  localField: "manufacturerID",
+                  collection: "Manufacturer",
+                  foreignField: "_id",
+                  as: "Manufacturer",
+                },
+              ],
+              projection: {
+                _id: 1,
+                assetCode: 1,
+                status: 1,
+                serialNumber: 1,
+                modelName: "$Model.modelName",
+                manufacturerName: "$Manufacturer.manufacturerName",
+              },
+            },
+          },
+        },
+
+        callback: (res) => {
+          if (res.Type === "RESPONSE") {
+            console.log("Response Packet -->", res.Response);
+            assetList.value = res.Response.records;
+          } else if (res.Type === "ERROR") {
+            Type: "ERROR";
+            Response: {
+              Error_Code: "API-CREATE_RECORD-E001";
+              Error_Msg: "CREATE_RECORD_API: Failed to execute query";
+            }
+          }
+        },
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 onMounted(() => {
   fetchManufacturer();
+  fetchParentAsset();
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import "../../../BIOMD/BIOMD/Style/font-style.scss";
+</style>

@@ -150,10 +150,11 @@ class AssetRecord extends Record {
     return {
       type: BSONType.object,
       fields: {
-        //Schema Version: 0.2
+        //Schema Version: 0.3
         assetCode: { type: BSONType.string },
         description: { type: BSONType.string },
         serialNumber: { type: BSONType.string },
+        parentAssetID: { type: BSONType.objectId },
         modelID: { type: BSONType.objectId },
         manufacturerID: { type: BSONType.objectId },
         manufactureDate: { type: BSONType.date },
