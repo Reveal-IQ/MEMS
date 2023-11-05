@@ -105,7 +105,7 @@
         aria-label="Default select example"
         v-model="AssetDetails.status"
       >
-        <option selected value="Active Deployed">Active Deployed</option>
+        <option selected value="Active in Service">Active in Service</option>
         <option
           v-for="list in statusList"
           :key="list.value"
@@ -134,7 +134,6 @@ const manufacturerList = ref(null);
 const modelList = ref(null);
 const statusList = ref([
   { name: "Active in Storage", value: "Active in Storage" },
-  { name: "Active in Service", value: "Active in Service" },
   { name: "Storage Repairable", value: "Storage Repairable" },
   { name: "Storage Parts", value: "Storage Parts" },
   { name: "Disposed", value: "Disposed" },
