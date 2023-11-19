@@ -1,0 +1,25 @@
+name: Unit tests
+
+on: [push]
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
+      - name: Run Backend tests
+        working-directory: ./src/api
+        run: |
+          npm ci
+          npm test
+      - name: Run Frontend tests
+        working-directory: ./src/client/web
+        run: |
+          npm ci
+          npm test

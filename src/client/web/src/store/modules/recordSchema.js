@@ -3,7 +3,7 @@
  *
  */
 
-import { BSON, BSONType, ObjectId, Double, Timestamp, Long, Int32 } from "bson";
+const { BSON, BSONType, ObjectId, Double, Timestamp, Long, Int32 } = require("bson");
 
 class Record {
   /**
@@ -298,13 +298,11 @@ const _RECORD_LIST = [
   DepartmentRecord,
 ];
 
-export {
-  _RECORD_BASE,
-  _RECORD_LIST,
-  AssetRecord,
-  FacilityRecord,
-  ManufacturerRecord,
-  ModelRecord,
-  VendorRecord,
-  DepartmentRecord,
-};
+exports._RECORD_BASE = _RECORD_BASE;
+exports._RECORD_LIST = _RECORD_LIST;
+exports.AssetRecord = AssetRecord;
+exports.FacilityRecord = FacilityRecord;
+exports.ManufacturerRecord = ManufacturerRecord;
+exports.ModelRecord = ModelRecord;
+exports.VendorRecord = VendorRecord;
+exports.DepartmentRecord = DepartmentRecord;
