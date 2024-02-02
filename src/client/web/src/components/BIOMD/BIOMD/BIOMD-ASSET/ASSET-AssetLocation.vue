@@ -48,8 +48,8 @@
     <div class="col-lg-6 mb-3">
       <Input
         class="form-control"
-        id="Location"
-        label="locationName"
+        id="locationName"
+        label="Location"
         placeholder="Enter Location"
         aria-label="Default select example"
         v-model="AssetLocation.locationName"
