@@ -31,22 +31,24 @@
       />
     </div>
     <!-- Type of Personnel -->
-    <div class="col-lg-6">
-      <label for="type" class="form-label">Type of Personnel</label>
-      <div class="input-group">
-        <input
-          class="form-control"
-          list="contactTypeOptions"
-          id="type"
-          placeholder="Select Contact Type"
-          autocomplete="off"
-          v-model="contactInfo.type"
-        />
-      </div>
-      <datalist id="contactTypeOptions">
-        <option />
-        Select Contact Type
-      </datalist>
+    <div class="col-lg-6 mb-3">
+      <label for="typeList" class="form-label">Type of Personnel</label>
+      <select
+        id="typeList"
+        class="form-select"
+        aria-label="Default select example"
+        v-model="contactInfo.type"
+        placeholder="Enter Contact Number"
+      >
+        <option
+          v-for="list in typeList"
+          :key="list.value"
+          :value="list.value"
+          :selected="list.selected"
+        >
+          {{ list.name }}
+        </option>
+      </select>
     </div>
 
     <div class="col-lg-6 mt-4">
@@ -62,10 +64,17 @@
 </template>
 
 <script setup>
-import { inject } from "vue";
+import { ref, inject } from "vue";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 import Input from "../BIOMD-UI/UI-Input.vue";
 import Section from "../BIOMD-UI/UI-Section.vue";
+
+const typeList = ref([
+  { name: "Biomedical Service", value: "Biomedical Service", selected: true },
+  { name: "Clinical Specialist", value: "Clinical Specialist" },
+  { name: "Service Call", value: "Service Call" },
+  { name: "General Contact", value: "General Contact" },
+]);
 
 const contactInfo = inject("contactInfo");
 </script>
