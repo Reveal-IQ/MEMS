@@ -48,7 +48,7 @@
     <div class="col-lg-6 mb-3">
       <Input
         class="form-control"
-        id="locationName"
+        id="Location"
         label="locationName"
         placeholder="Enter Location"
         aria-label="Default select example"
