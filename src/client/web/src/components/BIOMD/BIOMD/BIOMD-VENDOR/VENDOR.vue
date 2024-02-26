@@ -133,7 +133,7 @@ export default {
         number: null,
         name: null,
         email: null,
-        type: null,
+        type: "Biomedical Service",
       },
     ]);
 

@@ -49,7 +49,7 @@
       <Input
         class="form-control"
         id="locationName"
-        label="locationName"
+        label="Location"
         placeholder="Enter Location"
         aria-label="Default select example"
         v-model="AssetLocation.locationName"

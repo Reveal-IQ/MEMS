@@ -54,10 +54,9 @@
           </div>
           <div class="d-flex gap-3 align-items-center">
             <span>Status: </span>
-            <span
-              class="badge rounded-pill bg-success"
-              >{{ AssetDetails.selectedParentAsset.status }}</span
-            >
+            <span class="badge rounded-pill bg-success">{{
+              AssetDetails.selectedParentAsset.status
+            }}</span>
           </div>
         </div>
       </div>
@@ -144,11 +143,11 @@
         aria-label="Default select example"
         v-model="AssetDetails.status"
       >
-        <option selected value="Active Deployed">Active Deployed</option>
         <option
           v-for="list in statusList"
           :key="list.value"
           :value="list.value"
+          :selected="list.selected"
         >
           {{ list.name }}
         </option>
@@ -174,6 +173,7 @@ const modelList = ref(null);
 const assetList = ref(null);
 
 const statusList = ref([
+  { name: "Active Deployed", value: "Active Deployed", selected: true },
   { name: "Active in Storage", value: "Active in Storage" },
   { name: "Active in Service", value: "Active in Service" },
   { name: "Storage Repairable", value: "Storage Repairable" },
