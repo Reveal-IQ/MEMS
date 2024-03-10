@@ -1,25 +1,25 @@
 /*
-**********************************************
-*  Comapny              : Reveal IQ          *
-*  Last Edit Author     : Akshay Puli        *
-*  App Name             : TEMPLATE APP       *
-*  Last Edit			      : 05/17/2022		     *  
-*  Version              : 0.1.2 		         *
-**********************************************
+******************************************************
+*  Comapny              : Reveal IQ                  *
+*  Last Edit Author     : Akshay Puli                *
+*  App Name             : TEMPLATE API TEST APP      *
+*  Last Edit			: 04/02/2023    		     *  
+*  Version              : 0.2.0 		             *
+******************************************************
 */
 
 //Required Libs
 //const { join } = require("path");
 //const media = require(join(CONFIG.Paths.HomeDir, CONFIG.Paths.API, "GLOBAL", "media"));
-//const instituteCode = CONFIG.Database.Site_Database.Name;
+const instituteCode = "DMO"; //CONFIG.Database.Site_Database.Name;
 
 //*****DELETE DECLERATION */
 // To generate current timestamp
-var TIMESTAMP = async function(){
-    
+var TIMESTAMP = async function () {
+
   // Current date
   let newDate = new Date();
-  
+
   let date = newDate.getUTCDate() < 10 ? `0${newDate.getUTCDate()}` : newDate.getUTCDate();
   let month = parseInt(newDate.getUTCMonth() + 1) < 10 ? `0${parseInt(newDate.getUTCMonth() + 1)}` : parseInt(newDate.getUTCMonth() + 1);
   let year = newDate.getUTCFullYear();
@@ -68,24 +68,27 @@ module.exports.App_Info = {
 module.exports.Temp_API1 = async function (req, dbClient) {
 
   try {
-    
+
     //Confirm Packet Received 
     console.log(await TIMESTAMP() + `: RCU-<TEMP>-I001 : ADPNL processing request packet ID: ${req.ID}`)
     //req object defintion
     var res = Object.assign({}, req);
 
     //Add API Functionality Here
-    
+
 
     //Response Packet
     res.Type = "RESPONSE";
     res.Response = {
       Request_ID: req.ID,
-      API_Version: "1.1"
+      API_Version: "1.1",
+      Status: "Success",
+      Message: "Response Message",
+      Code: "I??"
     }
 
   } catch (error) {
-    
+
     //Log Error
     console.log(await TIMESTAMP() + `: API-<TEMP>-E001 : ${error}`)
 

@@ -32,13 +32,10 @@
   </p>
 </div>
 
-## 🎯 Goals
+## Alpha Release
+Updates:
 
-## 🏆 The Team
-
-### PR Approval Committee
-
-### Sprint Planning Committee
+  - Synced with reveal foundation version 0.3
 
 
 

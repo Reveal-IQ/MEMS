@@ -11,7 +11,7 @@
   <!-- Progress Bar Row  -->
   <div class="row d-flex justify-content-evenly mx-0 px-0">
     <div class="col-sm-12 reveal-container my-auto">
-      <div class="d-none d-md-block">
+      <div class="d-none d-lg-block">
         <div class="row justify-content-center appNavigation">
           <div class="col-sm-10 progressLine">
             <div class="progress" style="height: 5px">
@@ -121,7 +121,7 @@
             :disable="false"
             :min-char-limit="3"
             :not-found-error="true"
-            not-found-error-message="A state  was not found"
+            not-found-error-message="A state in [Country Selected (SRS-REGIT-042)] was not found"
             not-found-error-code="UI-REGIT-017"
             :null-error="true"
             null-error-message="Please select a State"
@@ -142,7 +142,7 @@
             null-error-message="Please select a District"
             null-error-code="UI-GBSLT-E001"
             :not-found-error="true"
-            not-found-error-message="A district  was not found"
+            not-found-error-message="A district in [State Selected (SRS-REGIT-048)] was not found"
             not-found-error-code="UI-REGIT-017"
             @receiveData="assignDistrict"
             @fetchOptions="assignDistrictList"
@@ -162,7 +162,7 @@
             null-error-message="Please select a Mandal"
             null-error-code="UI-GBSLT-E001"
             :not-found-error="true"
-            not-found-error-message="A city  was not found"
+            not-found-error-message="A city in [District Selected (SRS-REGIT-054)] was not found"
             not-found-error-code="UI-REGIT-018"
             @receiveData="assignMandal"
             @fetchOptions="assignMandalList"

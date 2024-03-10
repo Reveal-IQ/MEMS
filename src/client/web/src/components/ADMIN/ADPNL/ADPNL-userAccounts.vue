@@ -14,10 +14,10 @@
         v-if="currentPage == 'userAccounts'"
         class="row first_row d-flex align-self-end justify-content-center"
       >
-        <div class="col-sm-12 col-md-11">
+        <div class="col-sm-10">
           <div class="row">
             <div
-              class="col-sm-6 col-md-6 col-lg-8 d-flex flex-column align-self-center justify-content-center"
+              class="col-sm-8 d-flex flex-column align-self-center justify-content-center"
             >
               <div class="ADPNL-headerText userAccountsTitleText">
                 User Accounts
@@ -28,7 +28,7 @@
             </div>
             <!-- Add User Option -->
             <div
-              class="col-sm-2 col-md-3 col-lg-2 d-flex flex-row align-self-center justify-content-end"
+              class="col-sm-2 d-flex flex-row align-self-center justify-content-end"
             >
               <font-awesome-icon
                 icon="user-circle"
@@ -46,7 +46,7 @@
             </div>
 
             <!-- Dashboard -->
-            <div class="col-sm-3 col-md-3 col-lg-2 d-flex align-self-center justify-content-end">
+            <div class="col-sm-2 d-flex align-self-center justify-content-end">
               <div
                 class="row dashboardButton d-flex align-items-center justify-content-center text-light"
                 style="max-height: 25px"
@@ -71,9 +71,9 @@
         </div>
 
         <!-- Search Filtere-->
-        <div class="col-sm-12 col-md-11">
+        <div class="col-sm-10">
           <div
-            class="row mx-0 second_row d-flex align-self-center justify-content-start"
+            class="row second_row d-flex align-self-center justify-content-start"
           >
             <div
               class="col-sm-6 d-flex align-self-center justify-content-start userActFilters"
@@ -109,7 +109,7 @@
         </div>
 
         <!-- User List Display Table -->
-        <div class="col-sm-12 col-md-11">
+        <div class="col-sm-10">
           <div class="row">
             <div
               class="row third_row d-flex align-self-center justify-content-center"
@@ -289,8 +289,9 @@ export default {
 
     function navigDashoard(val) {
       currentPage.value = val;
+      getuserList();//Get User table updated.
     }
-    
+
     function navigUserList(payload){   
       let temp = [];
       temp.value=payload;    
@@ -300,6 +301,7 @@ export default {
 
     function toggleUserAccount(){
       currentPage.value = 'userAccounts'
+      getuserList();//Functiona called for updating the User table
     }
 
     // On click on User in Table take to Edit User Page
@@ -371,15 +373,6 @@ export default {
     }
      getuserList();
 
-    function defaultSearch() {
-      getuserList();
-    }
-
-    created: {
-      setTimeout(() => {
-        defaultSearch();
-      }, 500);
-    }
 
     return {
       // Local Variables
@@ -406,7 +399,6 @@ export default {
       searchTimeOut,
       getuserList,
       setdata,
-      defaultSearch,
       navigateAddUser,
       navigDashoard,
       navigUserList,
