@@ -2,9 +2,9 @@
 ******************************************************
 *  Comapny              : Reveal IQ                  *
 *  Last Edit Author     : Akshay Puli                *
-*  App Name             : TEMPLATE APITEST APP       *
-*  Last Edit			: 05/18/2022    		     *  
-*  Version              : 0.1.3 		             *
+*  App Name             : TEMPLATE API TEST APP      *
+*  Last Edit			: 04/02/2023    		     *  
+*  Version              : 0.2.0 		             *
 ******************************************************
 */
 
@@ -16,6 +16,9 @@ const { MongoClient } = require("mongodb");
 //Create Request Packet
 var req = {
     ID: "001",
+    ServiceCode: "TEST",
+    API: "TEST_API_NAME",
+    Institute_Code: "DMO"
 
 }
 
@@ -26,29 +29,18 @@ var db = new MongoClient(uri);
 
 //Establish DB Connection
 try {
-    let dbClient = DBconnect(db);
-    console.log("DB Connection established")
+    //Establish DB Connection
+    let dbclient = db.connect()
+        .then( //Test API
+            (dbClient) => {
+                console.log("DB Connection established.")
+                console.log("Test Request Packet: %j", req);
 
-    //Test API
-    console.log("Test Request Packet: %j", req);
-
-    //Select API to Test
-    ATU.Temp_API1(req,dbClient)
-    .then((res) => { console.log("Test Response Packet: %j", res)})
-
+                //Select API to Test
+                ATU.Temp_API1(req, dbClient)
+                    .then((res) => { console.log("Test Response Packet: %j", res) })
+            }
+        )
 } catch (error) {
     console.log("Error with API" + error)
 }
-
-
-async function DBconnect(db) {
-    try {
-        let dbClient = await db.connect();
-        console.log("DB Connection established")
-        return dbClient
-    }catch(error){
-        console.log("Error with DB connection" + error)
-    }
-    
-    
-  }

@@ -242,7 +242,7 @@ export default {
     // Generating UserName
     let firstName=(modalProp.value.UserInfo.firstName).slice(0,1);
     let lastName =(modalProp.value.UserInfo.lastName);    
-    const username = ref(firstName+lastName);
+    const username = ref(firstName.toLowerCase()+lastName.toLowerCase());
     emit("userName",username.value);
   
     //Extract Some column of active services based on the Create_Visit Request packet columns.

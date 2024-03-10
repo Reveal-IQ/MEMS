@@ -1,0 +1,20 @@
+{
+    auto_https off
+}
+
+http://localhost, localhost:80, :80 {
+    handle { 
+        root * /srv
+        file_server
+    }
+
+    handle /api/* {
+        reverse_proxy api:4000
+    }
+
+    rewrite /ws /ws/
+    handle_path /ws/* {
+        rewrite * /socket.io{path}
+        reverse_proxy api:4000
+    }
+}

@@ -7,63 +7,64 @@
 ************************************
 -->
 <template>
-	<div class="container-fluid">
-		<div class="row" style="height: 100vh;">
-			<div class="col d-flex justify-content-center align-items-center">
-				<section
-					class="d-flex justify-content-center"
-					style="width: 541px; height: 888px;"
-				>
-					<!-- siteLogo & siteHeading -->
-					<div class="row">
-						<div class="col-sm-12">
-							<div class="row d-flex justify-content-center">
-								<div class="col-sm-12 d-flex justify-content-center site_logo">
-									SITE LOGO
-								</div>
-								<div class="col-sm-12 d-flex justify-content-center my-4">
-									<div
-										class="row d-flex justify-content-center align-items-center"
-									>
-										<div class="col-sm-12" style="font-size: 28px;">
-											Digital Health |
-											<span class="bodyText fw-bold">{{ institute }}</span>
-										</div>
+	
+	<div class="row uslgnStyle d-flex justify-content-center">
+		<div class="col-sm-8 col-md-6 col-lg-6 d-flex align-items-center justify-content-center">
+			<section
+				class="d-flex justify-content-center"
+				
+			>
+				<!-- siteLogo & siteHeading -->
+				<div class="row gx-0">
+					<div class="col-sm-12">
+						<div class="row d-flex justify-content-center">
+							<div class="col-sm-12 d-flex align-items-center justify-content-center site_logo">
+								SITE LOGO
+							</div>
+							<div class="col-sm-12 d-flex justify-content-center mt-3">
+								<div
+									class="row d-flex justify-content-center align-items-center"
+								>
+									<div class="col-sm-12  d-flex justify-content-center" style="font-size: 30px;">
+										Digital Health 
+										
 									</div>
-								</div>
-								<div class="col-sm-12" style="margin-top: 120px;">
-									<!-- isitNewUser == false -->
-									<Login
-										v-if="isitNewUser == false"
-										@passwordResetRequired="assignReceivedRspVar"
-									/>
-									<!-- isitNewUser == true -->
-									<ChangePassword
-										v-if="isitNewUser == true"
-										:username="username"
-										:status="status"
-									/>
+									<div class="col-sm-12 mt-1 d-flex justify-content-center"><span class="bodyText fw-bold" style="font-size:20px">{{ institute }}</span></div>
 								</div>
 							</div>
-						</div>
-						<div class="col-sm-12 fixed-bottom" style="margin-bottom: 36px;">
-							<div class="row">
-								<div class="col-sm-12 d-flex justify-content-center">
-									<img
-										src="./../../../assets/media/Reveal_Grey_Logo.svg"
-										alt=""
-									/>
-								</div>
-								<div class="col-sm-12 d-flex justify-content-center versionSub">
-									{{ version }}
-								</div>
+							<div class="col-sm-12" style="margin-top: 80px;">
+								<!-- Not a New user will navigate to Login and main component -->
+								<Login
+									v-if="isitNewUser == false"
+									@passwordResetRequired="assignReceivedRspVar"
+								/>
+								<!-- New User navigate to change password -->
+								<ChangePassword
+									v-if="isitNewUser == true"
+									:username="username"
+									:status="status"
+								/>
 							</div>
 						</div>
 					</div>
-				</section>
-			</div>
+					<div class="col-sm-12 mt-3 d-flex justify-content-center" >
+						<div class="row gx-0">
+							<div class="col-sm-10 d-flex justify-content-center">
+								<img
+									src="./../../../assets/media/Reveal_Grey_Logo.svg"
+									alt=""
+								/>
+							</div>
+							<div class="col-sm-10 d-flex justify-content-end versionSub">
+								Version {{ version }}
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 		</div>
 	</div>
+	
 </template>
 
 <script>
@@ -178,8 +179,26 @@ export default {
 @import "../../GLOBAL/Styles/font-style.scss";
 
 .site_logo {
-	width: 500px;
+	margin-top: 100px;
+	width: 400px;
 	height: 150px;
+	color: #000;
+	font-size: 24px;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: 400;
 	background: rgba(196, 196, 196, 0.1);
 }
+
+::-webkit-scrollbar{ 
+    display: none;
+}
+
+@media (min-width: 992px) { 
+	.uslgnStyle{	
+	  height: 98vh;
+	  width: 100vw;
+	  overflow-y: scroll;
+	}
+ }
 </style>

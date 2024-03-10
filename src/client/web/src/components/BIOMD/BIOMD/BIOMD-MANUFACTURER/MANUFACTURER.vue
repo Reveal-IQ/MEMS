@@ -13,32 +13,29 @@ Description: Describe the application
     <div class="container p-4 m-4">
       <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
       <div
-        class="d-lg-flex align-items-center flex-lg-row flex-md-row flex-sm-column justify-content-between"
+        class="d-lg-flex d-md-flex d-sm-flex gap-lg-0 gap-sm-5 align-items-center justify-content-lg-between justify-content-md-between justify-content-sm-center"
       >
-        <div class="d-flex mt-3">
+        <div class="mt-3">
           <Header
             title="New Manufacturer"
             subTitle="Create new manufacturer with this form"
           />
         </div>
-        <div class="d-flex">
-          <span class="d-sm-block">
-            <Btn2
-              BtnName="Return"
-              :icon="'arrow-left'"
-              backgroundColor="none"
-              @click="goBack"
-              class="text-secondary"
-            />
-          </span>
-          <span class="ms-4 d-sm-block">
-            <Btn2
-              BtnName="Dashboard"
-              backgroundColor="#2A94B6"
-              @click="goBack"
-              class="text-light"
-            />
-          </span>
+        <div class="d-flex gap-2 d-md-block">
+          <Btn2
+            BtnName="Return"
+            :icon="'arrow-left'"
+            backgroundColor="none"
+            @click="goBack"
+            class="text-secondary btn-sm"
+          />
+
+          <Btn2
+            BtnName="Dashboard"
+            backgroundColor="#2A94B6"
+            @click="goBack"
+            class="text-light btn-sm"
+          />
         </div>
       </div>
 
@@ -71,6 +68,7 @@ import ManufacturerInformation from "./MANUFACTURER-ManufacturerInformation.vue"
 import Btn from "../BIOMD-UI/UI-Btn.vue";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 import Header from "../BIOMD-UI/UI-FormHeader.vue";
+import { ManufacturerRecord } from "../../../../store/modules/recordSchema";
 
 export default {
   name: "manufacturer",
@@ -120,6 +118,10 @@ export default {
         status: "<Navigate_To_This_Page>",
       });
     }
+
+    const changePage = (page) => {
+      emit("updatePage", page);
+    };
     // send Socket Request use to send rrequest packet for an API
     const sendSocketReq = (request) => {
       store.dispatch("sendSocketReq", request);
@@ -137,7 +139,7 @@ export default {
             ServiceCode: "BIOMD",
             API: "CREATE_RECORD",
             collection: "Manufacturer",
-            record: {
+            record: new ManufacturerRecord({
               manufacturer_name: manufacturerInfo.value.manufacturerName,
               country:
                 Global_Manufacturer_Definition.value.manufacturerAddress
@@ -148,21 +150,14 @@ export default {
                 .District,
               address_1: manufacturerInfo.value.streetAddress1,
               address_2: manufacturerInfo.value.streetAddress2,
-              area_code: manufacturerInfo.value.zipCode,
-            },
+              areaCode: manufacturerInfo.value.zipCode,
+            }).serialize(),
             Institute_Code: Institute_Code.value, //Dynamically changes when another institute logged in
           },
         },
         callback: (res) => {
           if (res.Type === "RESPONSE") {
-            // Console the Response Packet
-            Type: "RESPONSE";
-            Response: {
-              // ID:
-              Success: TRUE;
-              Collection: "manufacturers";
-              Message: "Created Record";
-            }
+            changePage("success");
 
             console.log("Response Packet -->", res.Response);
             getValues.value = res.Response.Site_Info[0]; //Assigning response values to getValues Object
@@ -179,7 +174,7 @@ export default {
     }
 
     const goBack = () => {
-      emit("updatePage", "landing");
+      emit("updatePage", "dashboard");
     };
 
     provide("manufacturerInfo", manufacturerInfo);
@@ -189,6 +184,7 @@ export default {
       goBack,
       redirectToPage,
       createRecord,
+      changePage,
     };
   },
   components: { ManufacturerInformation, Btn2, Btn, Header },

@@ -1,10 +1,10 @@
 /*
 **********************************************
-*  Comapny              : Reveal IQ               *
+*  Comapny              : Reveal Foundation       *
 *  Last Edit Author     : Akshay Puli             *
 *  App Name             : Administrator Dashboard *
-*  Last Edit		       	: 05/19/2022		          * 
-*  Version              : 0.15.17  		            *
+*  Last Edit		       	: 1/14/2023              *   
+*  Version              : 0.1.1  		             *
 **********************************************
 */
 
@@ -31,7 +31,6 @@ module.exports.App_Info = {
       { resource: { db: "Site_DB", collection: "User" }, actions: ["find", "update"] },
       { resource: { db: "Site_DB", collection: "App_Info" }, actions: ["find"] },
       { resource: { db: "Site_DB", collection: "App_Access" }, actions: ["find", "insert", "update"] },
-      { resource: { db: "Site_DB", collection: "Availability" }, actions: ["find", "insert", "update"] },
       { resource: { db: "Site_DB", collection: "Global_Definition" }, actions: ["find"] },
       { resource: { db: "Terminology", collection: "User_Group" }, actions: ["find"] },
       { resource: { db: "Terminology", collection: "Geography" }, actions: ["find"] },
@@ -141,23 +140,19 @@ module.exports.User_Create = async function (req, dbClient) {
     let ID_UUID = uuidv4();
     let ID = instituteCode + '-' + ID_UUID;
 
-    //Step 2: Add ID_User to User, Availability and App Access records
+    //Step 2: Add ID_User to User,and App Access records
 
     //User Profile
     req.Request.User_Profile.ID_User = ID;
     req.Request.User_Profile.User_Status = "ACTIVE";
+    let username = req.Request.User_Profile.User_Name;
+    req.Request.User_Profile.User_Name =  username.toLowerCase();
     await dbClient.db(instituteCode).collection('User').insert(req.Request.User_Profile);
 
     //App Access
     for (let key in req.Request.App_Access) {
       let Access_Record = Object.assign({ Access_Status: "ACTIVE", ID_User: ID }, req.Request.App_Access[key])
       await dbClient.db(instituteCode).collection('App_Access').insert(Access_Record);
-    }
-
-    //Availibility
-    for (let key in req.Request.Availability) {
-      let Availability_Record = Object.assign({ User_Status: "ACTIVE", ID_User: ID }, req.Request.Availability[key])
-      await dbClient.db(instituteCode).collection('Availability').insert(Availability_Record);
     }
 
     //Response Packet
@@ -204,7 +199,6 @@ module.exports.User_Search = async function (req, dbClient) {
       let query = { ID_User: req.Request.ID_User };
       let User_Profile = await dbClient.db(instituteCode).collection('User').findOne(query, { _id: 0 });
       let App_Access = await dbClient.db(instituteCode).collection('App_Access').find(query, { _id: 0 }).toArray();
-      let Availability = await dbClient.db(instituteCode).collection('Availability').find(query, { _id: 0 }).toArray();
 
       //Response Packet
       res.Type = "RESPONSE"
@@ -213,7 +207,6 @@ module.exports.User_Search = async function (req, dbClient) {
         API_Version: "0.1",
         User_Profile,
         App_Access,
-        Availability
       }
     } else if (req.Request.User_List) {
 
@@ -312,7 +305,6 @@ module.exports.User_Delete = async function (req, dbClient) {
     //Add API Functionality Here
     await dbClient.db(instituteCode).collection('User').update({ ID_User: req.Request.ID_User }, { $set: { User_Status: "INACTIVE" } })
     await dbClient.db(instituteCode).collection('App_Access').updateMany({ ID_User: req.Request.ID_User }, { $set: { Access_Status: "INACTIVE" } })
-    await dbClient.db(instituteCode).collection('Availability').updateMany({ ID_User: req.Request.ID_User }, { $set: { User_Status: "INACTIVE" } })
 
     //Response Packet
     res.Type = "RESPONSE";

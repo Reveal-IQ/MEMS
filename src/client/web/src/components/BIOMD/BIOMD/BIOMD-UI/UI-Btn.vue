@@ -3,12 +3,11 @@
   <div
     class="row d-flex align-items-center justify-content-center button fw-bold buttonBackground"
     :style="'--color:' + backgroundColor"
-    @click="emitClickEvent()"
   >
     <div
       class="col-sm-10 bodyText d-flex justify-content-center align-center mt-3"
     >
-      <p class="pe-2">{{ BtnName }}</p>
+      <p class="pe-2 fsXs">{{ BtnName }}</p>
       <div class="iconFont text-light">
         <font-awesome-icon :icon="icon" size="1x" />
       </div>
@@ -42,11 +41,11 @@ const props = defineProps({
 
 let icon = props.icon;
 
-const emit = defineEmits(["onUserClick"]);
+// const emit = defineEmits(["onUserClick"]);
 
-function emitClickEvent() {
-  emit("onUserClick");
-}
+// function emitClickEvent() {
+//   emit("onUserClick");
+// }
 </script>
 
 <style lang="scss" scoped>

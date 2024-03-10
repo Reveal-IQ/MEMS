@@ -1,31 +1,32 @@
-# Version: 0.1
+# Version: 0.2
 # Created: 5/1/2022
-# Last Edit: 5/1/2022
+# Last Edit: 3/4/2023
 # R E V E A L FOUNDATION
 
 version: "3.9"  # optional since v1.27.0
 services:
 
 
-  # #Web Client
-  # WEB:
-  #   build: ../client/Web
-  #   image: "reveal/web:0.2.0"
-  #   deploy:
-  #     restart_policy:
-  #       delay: 5s
-  #       condition: on-failure
-  #       max_attempts: 5
-  #   networks:
-  #     REVEALNET:
-  #       aliases:
-  #         - dev.client.local
+  # Web Client
+  WEB:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ../client/web/Caddyfile:/etc/caddy/Caddyfile
+      - ../client/web/dist:/srv
+      - WEB-DATA:/data
+      - WEB-CONFIG:/config
+    networks:
+      REVEALNET:
 
-
-  #Reveal Core Unit 
+  #Backend API
   API:
     build: ../api
-    image: "mems/api:0.1.0"
+    image: "reveal/api:0.2.2"
     deploy:
       restart_policy:
         delay: 5s
@@ -35,7 +36,7 @@ services:
     volumes:
       - type: volume
         source: API-DataStore
-        target: /datastore
+        target: /datastorage
 
       - type: volume
         source: API-Config
@@ -51,26 +52,26 @@ services:
           - dev.api.local
 
   #Reverse Proxy        
-  PROXY:
-    build: ./proxy
-    image: "mems/proxy:0.1.0"
-    ports:
-      - "80:80"
-      - "443:443"
-    networks:
-      REVEALNET:
-        aliases:
-          - dev.proxy.local
-    deploy:
-      restart_policy:
-        delay: 5s
-        condition: on-failure
-        max_attempts: 5
+  # PROXY:
+  #   build: ./proxy
+  #   image: "reveal/proxy:0.2.2"
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   networks:
+  #     REVEALNET:
+  #       aliases:
+  #         - dev.proxy.local
+  #   deploy:
+  #     restart_policy:
+  #       delay: 5s
+  #       condition: on-failure
+  #       max_attempts: 5
 
   #DMODB01 Mongo DB Database
   DMODB01:
     build: ./database/DMODB01
-    image: "mems/dmodb01:0.1.0"
+    image: "reveal/dmodb01:0.2.2"
     deploy:
       restart_policy:
         delay: 5s
@@ -106,3 +107,5 @@ volumes:
   API-Certs:
   DMODB01-Config:
   DMODB01-Data:
+  WEB-DATA:
+  WEB-CONFIG:

@@ -2,7 +2,7 @@ const { defineConfig } = require('@vue/cli-service')
 const webpack = require('webpack');
 
 module.exports = defineConfig({
-  transpileDependencies: true
+  transpileDependencies: true,
 })
 
 module.exports = {
@@ -18,6 +18,10 @@ module.exports = {
       }
     },
 
+    experiments: {
+      topLevelAwait: true,
+    },
+
     plugins: [
       new webpack.ProvidePlugin({
         Buffer: ['buffer', 'Buffer'],
@@ -25,7 +29,8 @@ module.exports = {
     ],
 
     devServer: {
-      allowedHosts: ['dev.reveal.health', 'reveal.health'],
+      //allowedHosts: ['mems.revealfoundation.com', 'revealfoundation.com'],
+      allowedHosts: "all",
     }
 
   }
