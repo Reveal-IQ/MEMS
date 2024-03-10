@@ -11,7 +11,7 @@
     <!-- Progress Bar Row  -->
     <div class="row d-flex justify-content-evenly mx-0 px-0">
       <div class="col-sm-12 reveal-container my-auto">
-        <div class="d-none d-md-block">
+        <div class="d-none d-lg-block">
           <div class="row justify-content-center appNavigation">
             <div class="col-sm-10 progressLine">
               <div class="progress" style="height: 5px">
@@ -164,26 +164,28 @@
           </div>
         </div>
         <!-- *********** Application Access **********-->
-        <div class="row d-flex personalInfoBox">
-          <div class="col-12 confirmSecHeading d-flex align-items-center">
+        <div class="d-flex flex-column personalInfoBox">
+          <div class="confirmSecHeading d-flex align-items-center">
             <span class="ADPNL-titleText confirmSecTitle"
               >Application Access</span
             >
           </div>
-          <div class="col-xl-8 col-md-10 col-lg-8 d-flex justify-content-center  containerSpace">
-            <div class="row  gx-0 d-flex">
-             <!-- ***** User Accesseble Services/Licenced Application *****-->
+          <div class="row AppContainer containerSpace">
+            <!-- ***** User Accesseble Services/Licenced Application *****-->
+            <div
+              v-for="service in modalProp.AppAccess.activeServices"
+              :key="service.id"
+              class="col-sm-6"
+            >
               <div
-                v-for="service in modalProp.AppAccess.activeServices"
-                :key="service.id"
-                class="col-5 px-2 d-flex align-items-center justify-content-center appStyle "
+                class="d-flex align-items-center justify-content-center appStyle"
               >
-                  <span class="text-uppercase"> {{ service.App_Module.toLowerCase() }} </span> |
-                  <span class="text-capitalize"> {{ service.App_Name }} </span>           
-                  Module               
+                {{ service.App_Name }}
+                |
+                {{ service.App_Module.toLowerCase() }}
+                Module
               </div>
-              </div>
-
+            </div>
           </div>
         </div>
 
@@ -511,11 +513,13 @@ export default {
   font-weight: 500;
   padding: 20px 0 5px 0;
 }
-
+.AppContainer {
+  width: 50%;
+}
 .appStyle {
+  width: 200px;
   height: 40px;
   margin-bottom: 10px;
-  margin-right: 20px;
   background: #ace7e7;
   border-radius: 20px;
 }
