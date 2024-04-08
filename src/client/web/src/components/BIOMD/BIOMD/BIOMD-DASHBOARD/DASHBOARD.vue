@@ -52,7 +52,7 @@
       </div>
     </div>
 
-    <div class="row p-2 mt-4 mb-5">
+    <div class="row p-2 mt-4">
       <div class="col-sm-12 col-lg-6 col-12">
         <div class="mb-5">
           <div class="">
@@ -138,6 +138,92 @@
         </div>
       </div>
     </div>
+    <div class="row p-2 mb-5">
+      <div class="col-sm-12 col-lg-6 col-12">
+        <div class="">
+          <span class="card-title fw-normal fs-4">Manufacturer</span>
+          <p class="card-text">
+            <small class="text-muted">Profile of Manufacturer and Models</small>
+          </p>
+        </div>
+
+        <div class="mb-5 mt-2" v-if="manufacturerList == 0">
+          <UIToastGlobal
+            message="Manufacturer has not been added"
+            message2="Use New Vendor to create new Models and Manufacturers."
+            :icon="'exclamation-triangle'"
+            backgroundColor="#FFF0DA"
+          >
+            <UIBtn2
+              BtnName="New Model"
+              backgroundColor="#FFFFFF"
+              class="text-success btn-sm"
+              @click="changePage('vendorInfo')"
+            />
+          </UIToastGlobal>
+        </div>
+
+        <div
+          v-else
+          v-for="manufacturer in manufacturerList"
+          :key="manufacturer.index"
+          class="g-3 mb-2 mt-2 rounded container py-2 align-middle"
+          style="background-color: #f5f6f6"
+          @click="
+            changePage('dashboardModel', {
+              modelName: model.modelName,
+              manufacturerID: model.manufacturerID,
+              commonName: model.commonName,
+              manufacturerName: model.manufacturerName,
+              modelID: model._id,
+            })
+          "
+        >
+          <div class="" style="cursor: pointer">
+            <div class="row">
+              <td class="col-4">
+                <div class="d-flex flex-column">
+                  <small class="text-secondary fsXs">Manufacturer Name</small>
+                  <small class="fw-normal"
+                    >{{ manufacturer.manufacturerName }}
+                  </small>
+                </div>
+              </td>
+              <td class="col-4">
+                <div class="d-flex flex-column">
+                  <small class="text-secondary fsXs">Model</small>
+                  <span v-for="model in modelList" :key="model.index">
+                    <small
+                      class=""
+                      v-if="
+                        model.manufacturerName === manufacturer.manufacturerName
+                      "
+                    >
+                      {{ model.modelName }}
+                    </small>
+                  </span>
+                </div>
+              </td>
+              <td class="col">
+                <div class="d-flex flex-column">
+                  <small class="text-secondary fsXs">Vendor</small>
+                  <span v-for="vendor in vendorList" :key="vendor.index">
+                    <small
+                      v-if="
+                        vendor.manufacturerName ===
+                        manufacturer.manufacturerName
+                      "
+                      >{{ vendor.vendorName }}</small
+                    >
+                    <small v-else class="text-muted">No Vendor Assigned</small>
+                  </span>
+                </div>
+              </td>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -155,6 +241,8 @@ const sendSocketReq = (request) => {
 
 //Variables
 const modelList = ref([]);
+const manufacturerList = ref([]);
+const vendorList = ref([]);
 
 //Functions
 
@@ -207,6 +295,93 @@ const fetchModel = async () => {
     console.log(error);
   }
 };
+//Fetch Manufacturer Information
+const fetchManufacturer = async () => {
+  try {
+    sendSocketReq({
+      data: {
+        Expiry: 20000,
+        Type: "REQUEST",
+        Request: {
+          Module: "MEMS",
+          ServiceCode: "BIOMD",
+          API: "FIND_RECORD",
+          return_array: true,
+          max_list: 100,
+          find: {
+            collection: "Manufacturer",
+            projection: {
+              _id: 1,
+              manufacturerName: 1,
+            },
+          },
+        },
+      },
+      callback: (res) => {
+        if (res.Type === "RESPONSE") {
+          console.log("Response Packet -->", res.Response);
+          manufacturerList.value = res.Response.records;
+        } else if (res.Type === "ERROR") {
+          Type: "ERROR";
+          Response: {
+            Error_Code: "API-CREATE_RECORD-E001";
+            Error_Msg: "CREATE_RECORD_API: Failed to execute query";
+          }
+        }
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+// Fetch Vendor Information
+const fetchVendor = async () => {
+  try {
+    sendSocketReq({
+      data: {
+        Expiry: 20000,
+        Type: "REQUEST",
+        Request: {
+          Module: "MEMS",
+          ServiceCode: "BIOMD",
+          API: "FIND_RECORD",
+          return_array: true,
+          max_list: 100,
+          find: {
+            collection: "Vendor",
+            lookups: [
+              {
+                localField: "manufacturerList.manufacturer",
+                collection: "Manufacturer",
+                foreignField: "_id",
+                as: "Manufacturer",
+              },
+            ],
+            projection: {
+              _id: 1,
+              manufacturerName: "$Manufacturer.manufacturerName",
+              vendorName: 1,
+            },
+          },
+        },
+      },
+      callback: (res) => {
+        if (res.Type === "RESPONSE") {
+          console.log("Response Packet -->", res.Response);
+          vendorList.value = res.Response.records;
+        } else if (res.Type === "ERROR") {
+          Type: "ERROR";
+          Response: {
+            Error_Code: "API-CREATE_RECORD-E001";
+            Error_Msg: "CREATE_RECORD_API: Failed to execute query";
+          }
+        }
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 //Lifecycle Hook
 
@@ -219,6 +394,8 @@ const changePage = async (page, props) => {
 
 onMounted(() => {
   fetchModel();
+  fetchManufacturer();
+  fetchVendor();
 });
 </script>
 
