@@ -169,15 +169,6 @@
           :key="manufacturer.index"
           class="g-3 mb-2 mt-2 rounded container py-2 align-middle"
           style="background-color: #f5f6f6"
-          @click="
-            changePage('dashboardModel', {
-              modelName: model.modelName,
-              manufacturerID: model.manufacturerID,
-              commonName: model.commonName,
-              manufacturerName: model.manufacturerName,
-              modelID: model._id,
-            })
-          "
         >
           <div class="" style="cursor: pointer">
             <div class="row">
