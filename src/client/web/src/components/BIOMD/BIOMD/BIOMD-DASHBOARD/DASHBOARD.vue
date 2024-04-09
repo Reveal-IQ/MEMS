@@ -77,7 +77,6 @@
               />
             </UIToastGlobal>
           </div>
-
           <div
             v-else
             v-for="model in modelList"
@@ -162,54 +161,70 @@
             />
           </UIToastGlobal>
         </div>
-
-        <div
-          v-else
-          v-for="manufacturer in manufacturerList"
-          :key="manufacturer.index"
-          class="g-3 mb-2 mt-2 rounded container py-2 align-middle"
-          style="background-color: #f5f6f6"
-        >
-          <div class="" style="cursor: pointer">
-            <div class="row">
-              <td class="col-4">
-                <div class="d-flex flex-column">
-                  <small class="text-secondary fsXs">Manufacturer Name</small>
-                  <small class="fw-normal"
-                    >{{ manufacturer.manufacturerName }}
-                  </small>
-                </div>
-              </td>
-              <td class="col-4">
-                <div class="d-flex flex-column">
-                  <small class="text-secondary fsXs">Model</small>
-                  <span v-for="model in modelList" :key="model.index">
-                    <small
-                      class=""
-                      v-if="
-                        model.manufacturerName === manufacturer.manufacturerName
-                      "
-                    >
-                      {{ model.modelName }}
+        <div v-else>
+          <div
+            v-for="manufacturer in manufacturerList"
+            :key="manufacturer.index"
+            class="g-3 mb-2 mt-2 rounded container py-2 align-middle"
+            style="background-color: #f5f6f6"
+            @click="
+              changePage('dashboardManufacturerProfile', {
+                manufacturerName: manufacturer.manufacturerName,
+              })
+            "
+          >
+            <div class="" style="cursor: pointer">
+              <div class="row">
+                <td class="col-4">
+                  <div class="d-flex flex-column">
+                    <small class="text-secondary fsXs">Manufacturer Name</small>
+                    <small class="fw-normal"
+                      >{{ manufacturer.manufacturerName }}
                     </small>
-                  </span>
-                </div>
-              </td>
-              <td class="col">
-                <div class="d-flex flex-column">
-                  <small class="text-secondary fsXs">Vendor</small>
-                  <span v-for="vendor in vendorList" :key="vendor.index">
-                    <small
-                      v-if="
-                        vendor.manufacturerName ===
-                        manufacturer.manufacturerName
+                  </div>
+                </td>
+                <td class="col-4">
+                  <div class="d-flex flex-column">
+                    <small class="text-secondary fsXs">Model</small>
+                    <span v-for="model in modelList" :key="model.index">
+                      <small
+                        class=""
+                        v-if="
+                          model.manufacturerName ===
+                          manufacturer.manufacturerName
+                        "
+                      >
+                        {{ model.modelName }}
+                      </small>
+                    </span>
+                  </div>
+                </td>
+                <td class="col">
+                  <div class="d-flex flex-column">
+                    <small class="text-secondary fsXs">Vendor</small>
+                    <span
+                      v-for="vendor in vendorList"
+                      :key="vendor.index"
+                      @click="
+                        changePage('dashboardManufacturerProfile', {
+                          vendor: vendor.manufacturerName,
+                        })
                       "
-                      >{{ vendor.vendorName }}</small
                     >
-                    <small v-else class="text-muted">No Vendor Assigned</small>
-                  </span>
-                </div>
-              </td>
+                      <small
+                        v-if="
+                          vendor.manufacturerName ===
+                          manufacturer.manufacturerName
+                        "
+                        >{{ vendor.vendorName }}</small
+                      >
+                      <small v-else class="text-muted"
+                        >No Vendor Assigned</small
+                      >
+                    </span>
+                  </div>
+                </td>
+              </div>
             </div>
           </div>
         </div>
