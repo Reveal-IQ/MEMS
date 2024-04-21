@@ -30,8 +30,12 @@
         <div class="d-flex flex-column">
           <UIReportList
             title="Global Inventory Summary by Medical Device Description"
+            @click="changePage('reportsSummary1')"
           />
-          <UIReportList title="Global Inventory Summary by Department" />
+          <UIReportList
+            title="Global Inventory Summary by Department"
+            @click="changePage('reportsSummary2')"
+          />
           <UIReportList title="Functionality Index" />
           <UIReportList title="Annual Medical Device Inflow" />
         </div>
