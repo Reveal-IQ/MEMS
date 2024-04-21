@@ -66,6 +66,26 @@ Description: < Describe the application >
       </div>
     </div>
   </div>
+  <div v-if="compState === 'reportsPage'" class="RevealContainer_dash">
+    <div class="container">
+      <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
+      <div class="row">
+        <REPORTS @update-page="updatePage" />
+      </div>
+    </div>
+  </div>
+  <div v-if="compState === 'reportsList'" class="RevealContainer_dash">
+    <div class="container">
+      <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
+      <div class="row">
+        <REPORTSList
+          @update-page="updatePage"
+          :facilityName="facilityName"
+          :facilityID="facilityID"
+        />
+      </div>
+    </div>
+  </div>
 
   <div v-else class="RevealContainer">
     <div class="container">
@@ -110,6 +130,8 @@ import VENDOR from "../BIOMD/BIOMD-VENDOR/VENDOR.vue";
 import MODEL from "../BIOMD/BIOMD-MODEL/MODEL.vue";
 import MANUFACTURER from "../BIOMD/BIOMD-MANUFACTURER/MANUFACTURER.vue";
 import DASHBOARD from "../BIOMD/BIOMD-DASHBOARD/DASHBOARD.vue";
+import REPORTS from "../BIOMD/BIOMD-REPORTS/REPORTS.vue";
+import REPORTSList from "../BIOMD/BIOMD-REPORTS/REPORTS-List.vue";
 import Landing from "../BIOMD/BIOMD-UI/UI-Landing.vue";
 import SuccessPage from "../BIOMD/BIOMD-UI/UI-SuccessPage.vue";
 import DASHBOARDModel from "./BIOMD-DASHBOARD/DASHBOARD-Model.vue";
@@ -124,6 +146,8 @@ export default {
     MODEL,
     MANUFACTURER,
     DASHBOARD,
+    REPORTS,
+    REPORTSList,
     Landing,
     SuccessPage,
     DASHBOARDModel,
