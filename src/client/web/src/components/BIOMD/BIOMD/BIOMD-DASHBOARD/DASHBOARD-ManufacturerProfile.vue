@@ -57,13 +57,10 @@
 
                   <span v-for="vendor in vendorList" :key="vendor.index">
                     <small
-                      v-if="
-                        vendor.manufacturerName &&
-                        vendor.manufacturerName === props.manufacturerName
-                      "
+                      v-if="vendor.manufacturerName === props.manufacturerName"
                       >{{ vendor.vendorName }}</small
                     >
-                    <small v-else class="text-muted">No Vendor Assigned</small>
+                    <!-- <small v-else class="text-muted">No Vendor Assigned</small> -->
                   </span>
                 </div>
               </td>
@@ -99,14 +96,14 @@
                     <small>{{ model.UMDNSCode }} </small>
                   </div>
                 </td>
-                <td>
+                <!-- <td>
                   <div class="d-flex flex-column">
                     <small class="text-secondary fsXs"
                       >Device Description</small
                     >
                     <small>All Vendors</small>
                   </div>
-                </td>
+                </td> -->
                 <td>
                   <div class="d-flex flex-column">
                     <small class="text-secondary fsXs">Common Name</small>
@@ -128,57 +125,61 @@
               >
             </p> -->
           </div>
-          <div v-for="vendor in vendorList" :key="vendor.index">
-            <div
-              v-if="vendor.manufacturerName === props.manufacturerName"
-              class="g-3 mb-2 mt-2 rounded-3 container py-2 align-middle"
-              style="background-color: #f5f6f6"
-            >
-              <div class="d-flex flex-column gap-3">
-                <td>
-                  <div class="d-flex flex-column">
-                    <small class="text-secondary fsXs">ID</small>
-                    <small class="fw-normal">{{ props.manufacturerID }}</small>
-                  </div>
-                </td>
+          <div>
+            <div v-for="vendor in vendorList" :key="vendor.index">
+              <div
+                v-if="vendor.manufacturerName === props.manufacturerName"
+                class="g-3 mb-2 mt-2 rounded-3 container py-2 align-middle"
+                style="background-color: #f5f6f6"
+              >
+                <div class="d-flex flex-column gap-3">
+                  <!-- <td>
+                    <div class="d-flex flex-column">
+                      <small class="text-secondary fsXs">ID</small>
+                      <small class="fw-normal">{{ props.vendorID }}</small>
+                    </div>
+                  </td> -->
 
-                <td>
-                  <div class="d-flex flex-column">
-                    <small class="text-secondary fsXs">Name</small>
-                    <small>{{ vendor.vendorName }} </small>
-                  </div>
-                </td>
-                <td>
-                  <div class="d-flex flex-column">
-                    <small class="text-secondary fsXs">Manufacturer List</small>
-                    <span>
-                      <small v-if="vendor.manufacturerName">{{
-                        vendor.manufacturerName
-                      }}</small>
-                      <small v-else class="text-muted"
-                        >No Manufacturer Assigned</small
+                  <td>
+                    <div class="d-flex flex-column">
+                      <small class="text-secondary fsXs">Name</small>
+                      <small>{{ vendor.vendorName }} </small>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="d-flex flex-column">
+                      <small class="text-secondary fsXs"
+                        >Manufacturer List</small
                       >
-                    </span>
+                      <span>
+                        <small v-if="vendor.manufacturerName">{{
+                          vendor.manufacturerName
+                        }}</small>
+                        <small v-else class="text-muted"
+                          >No Manufacturer Assigned</small
+                        >
+                      </span>
+                    </div>
+                  </td>
+                  <div class="d-flex gap-2 d-md-block">
+                    <Btn2
+                      BtnName="EDIT"
+                      backgroundColor="gray"
+                      @click="editPage"
+                      class="text-light btn-sm rounded-pill"
+                    />
                   </div>
-                </td>
-                <div class="d-flex gap-2 d-md-block">
-                  <Btn2
-                    BtnName="EDIT"
-                    backgroundColor="gray"
-                    @click="editPage"
-                    class="text-light btn-sm rounded-pill"
-                  />
                 </div>
               </div>
-            </div>
-            <div
-              v-else
-              class="g-3 mb-2 mt-2 rounded-3 container py-2 align-middle"
-              style="background-color: #f5f6f6"
-            >
-              <small class="text-secondary"
-                >Vendor Description Unavailable</small
+              <!-- <div
+                v-if="vendorList.manufacturerName !== props.manufacturerName"
+                class="g-3 mb-2 mt-2 rounded-3 container py-2 align-middle"
+                style="background-color: #f5f6f6"
               >
+                <small class="text-secondary"
+                  >Vendor Description Unavailable</small
+                >
+              </div> -->
             </div>
           </div>
         </div>
@@ -321,6 +322,7 @@ const fetchVendor = async () => {
               _id: 1,
               manufacturerName: "$Manufacturer.manufacturerName",
               vendorName: 1,
+              manufacturer: "$Manufacturer.manufacturerName",
             },
           },
         },
@@ -343,7 +345,13 @@ const fetchVendor = async () => {
   }
 };
 
-const props = defineProps(["manufacturerName", "manufacturerID"]);
+const props = defineProps([
+  "manufacturerName",
+  "manufacturerID",
+  "vendorName",
+  "manufacturer",
+  "vendorID",
+]);
 
 const emit = defineEmits(["updatePage"]);
 

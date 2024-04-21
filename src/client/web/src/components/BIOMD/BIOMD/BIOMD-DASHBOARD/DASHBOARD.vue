@@ -53,7 +53,7 @@
     </div>
 
     <div class="row p-2 mt-4">
-      <div class="col-sm-12 col-lg-6 col-12">
+      <div class="col-sm-12 col-lg-9 col-12">
         <div class="mb-5">
           <div class="">
             <span class="card-title fw-normal fs-4">Site Inventory</span>
@@ -112,7 +112,7 @@
                     class="d-flex flex-column justify-content-center text-center"
                   >
                     <small class="text-secondary fsXs">Quantity</small>
-                    <small>10</small>
+                    <!-- <small>---</small> -->
                   </div>
                 </td>
                 <td class="col-2">
@@ -120,7 +120,7 @@
                     class="d-flex flex-column justify-content-center text-center"
                   >
                     <small class="text-secondary fsXs">Active</small>
-                    <small>6</small>
+                    <!-- <small>6</small> -->
                   </div>
                 </td>
                 <td class="col-2">
@@ -128,7 +128,7 @@
                     class="d-flex flex-column justify-content-end text-center"
                   >
                     <small class="text-secondary fsXs">In-Service</small>
-                    <small>4</small>
+                    <!-- <small>4</small> -->
                   </div>
                 </td>
               </div>
@@ -138,7 +138,7 @@
       </div>
     </div>
     <div class="row p-2 mb-5">
-      <div class="col-sm-12 col-lg-6 col-12">
+      <div class="col-sm-12 col-lg-9 col-12">
         <div class="">
           <span class="card-title fw-normal fs-4">Manufacturer</span>
           <p class="card-text">
@@ -170,23 +170,28 @@
             @click="
               changePage('dashboardManufacturerProfile', {
                 manufacturerName: manufacturer.manufacturerName,
+                manufacturerID: manufacturer._id,
               })
             "
           >
             <div class="" style="cursor: pointer">
               <div class="row">
                 <td class="col-4">
-                  <div class="d-flex flex-column">
-                    <small class="text-secondary fsXs">Manufacturer Name</small>
+                  <small class="text-secondary fsXs">Manufacturer Name</small>
+                  <div class="">
                     <small class="fw-normal"
                       >{{ manufacturer.manufacturerName }}
                     </small>
                   </div>
                 </td>
                 <td class="col-4">
-                  <div class="d-flex flex-column">
-                    <small class="text-secondary fsXs">Model</small>
-                    <span v-for="model in modelList" :key="model.index">
+                  <small class="text-secondary fsXs">Model</small>
+                  <div class="">
+                    <span
+                      v-for="model in modelList"
+                      :key="model.index"
+                      class=""
+                    >
                       <small
                         class=""
                         v-if="
@@ -194,33 +199,24 @@
                           manufacturer.manufacturerName
                         "
                       >
-                        {{ model.modelName }}
+                        | {{ model.modelName }}
                       </small>
                     </span>
                   </div>
                 </td>
                 <td class="col">
-                  <div class="d-flex flex-column">
-                    <small class="text-secondary fsXs">Vendor</small>
-                    <span
-                      v-for="vendor in vendorList"
-                      :key="vendor.index"
-                      @click="
-                        changePage('dashboardManufacturerProfile', {
-                          vendor: vendor.manufacturerName,
-                        })
-                      "
-                    >
+                  <small class="text-secondary fsXs">Vendor</small>
+                  <div class="">
+                    <span v-for="vendor in vendorList" :key="vendor.index">
                       <small
                         v-if="
-                          vendor.manufacturerName ===
-                          manufacturer.manufacturerName
+                          vendor.manufacturer === manufacturer.manufacturerName
                         "
-                        >{{ vendor.vendorName }}</small
-                      >
-                      <small v-else class="text-muted"
+                        >{{ vendor.vendorName }} |
+                      </small>
+                      <!-- <small v-else class="text-muted"
                         >No Vendor Assigned</small
-                      >
+                      > -->
                     </span>
                   </div>
                 </td>
@@ -366,6 +362,7 @@ const fetchVendor = async () => {
             projection: {
               _id: 1,
               manufacturerName: "$Manufacturer.manufacturerName",
+              manufacturer: "$Manufacturer.manufacturerName",
               vendorName: 1,
             },
           },

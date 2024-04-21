@@ -58,8 +58,10 @@ Description: < Describe the application >
         <DASHBOARDManufacturerProfile
           @update-page="updatePage"
           :manufacturerName="pageProps.manufacturerName"
-          :manufacturerID="pageProps._id"
-          :vendor="pageProps.vendor"
+          :manufacturer="pageProps.manufacturer"
+          :manufacturerID="pageProps.manufacturerID"
+          :vendorName="pageProps.vendorName"
+          :vendorID="pageProps.vendorID"
         />
       </div>
     </div>
