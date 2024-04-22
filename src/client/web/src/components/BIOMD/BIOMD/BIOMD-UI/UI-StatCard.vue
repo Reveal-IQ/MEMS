@@ -7,7 +7,7 @@
         </div>
         <div class="row align-items-center d-flex">
           <div class="col-8">
-            <h2 class="d-flex align-items-center mb-0 fs-4">
+            <h2 class="d-flex align-items-center mb-0" :class="class">
               {{ props.statisticsValue }}
             </h2>
           </div>
@@ -27,6 +27,7 @@ const props = defineProps({
     type: String,
     default: "15,000",
   },
+  class: String,
 });
 </script>
 

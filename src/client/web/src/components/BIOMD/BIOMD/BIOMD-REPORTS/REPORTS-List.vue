@@ -36,8 +36,14 @@
             title="Global Inventory Summary by Department"
             @click="changePage('reportsSummary2')"
           />
-          <UIReportList title="Functionality Index" />
-          <UIReportList title="Annual Medical Device Inflow" />
+          <UIReportList
+            title="Functionality Index"
+            @click="changePage('functionalityIndex')"
+          />
+          <UIReportList
+            title="Annual Medical Device Inflow"
+            @click="changePage('annualInflow')"
+          />
         </div>
       </div>
     </div>

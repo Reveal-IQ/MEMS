@@ -31,10 +31,26 @@
     </div>
 
     <div class="row">
-      <UIStatCard cardTitle="Overall Device Description" statisticsValue="50" />
-      <UIStatCard cardTitle="Overall Active Devices" statisticsValue="40" />
-      <UIStatCard cardTitle="Overall Value" statisticsValue="$20,000" />
-      <UIStatCard cardTitle="Overall Inactive Devices" statisticsValue="10" />
+      <UIStatCard
+        cardTitle="Overall Device Description"
+        statisticsValue="50"
+        class="fs-4 fw-normal"
+      />
+      <UIStatCard
+        cardTitle="Overall Active Devices"
+        statisticsValue="40"
+        class="fs-4 fw-normal"
+      />
+      <UIStatCard
+        cardTitle="Overall Value"
+        statisticsValue="$20,000"
+        class="fs-4 fw-normal"
+      />
+      <UIStatCard
+        cardTitle="Overall Inactive Devices"
+        statisticsValue="10"
+        class="fs-4 fw-normal"
+      />
     </div>
     <div class="mt-4 table-responsive">
       <table class="table table-responsive table-borderless mb-2">

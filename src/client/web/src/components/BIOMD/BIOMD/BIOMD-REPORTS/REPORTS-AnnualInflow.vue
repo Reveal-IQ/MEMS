@@ -11,7 +11,7 @@
 
     <div class="d-flex flex-column p-2 mt-4">
       <span class="title text-dark fw-normal fs-3"
-        >Global Inventory Summary by Department</span
+        >Annual Medical Devices Inflow</span
       >
       <nav class="d-flex gap-3 p-1">
         <small class="text-secondary" style="cursor: pointer">Print</small>
@@ -22,22 +22,41 @@
 
     <div class="p-2 mt-4">
       <small class="text-secondary"
-        >List of active and inactive medical devices grouped by their
-        departments and the total value of active devices.
+        >Type and count of devices added to inventory for the selected year.
       </small>
     </div>
+
+    <div class="row mt-4">
+      <div class="col-lg-4">
+        <div class="form-floating">
+          <select
+            name="year"
+            id="yearId"
+            v-model="selectedYear"
+            class="form-select"
+          >
+            <option v-for="(year, y) in yearsList" :key="y" :value="year">
+              {{ year }}
+            </option>
+          </select>
+          <label for="yearId">Select Year</label>
+        </div>
+      </div>
+      <div class="mt-2 px-3" v-if="selectedYear">
+        <small
+          >Report generated for accepted assets from {{ selectedYear }} to
+          {{ currentYear }}</small
+        >
+      </div>
+    </div>
+
     <div class="mt-4 p-2">
       <span class="fw-bold fs-4">Navrongo Hospital</span>
     </div>
 
     <div class="row">
       <UIStatCard
-        cardTitle="Overall Departments"
-        statisticsValue="12"
-        class="fs-4 fw-normal"
-      />
-      <UIStatCard
-        cardTitle="Overall Active Devices"
+        cardTitle="Overall Accepted Devices"
         statisticsValue="40"
         class="fs-4 fw-normal"
       />
@@ -46,36 +65,33 @@
         statisticsValue="$10,000"
         class="fs-4 fw-normal"
       />
-      <UIStatCard
-        cardTitle="Overall Inactive Devices"
-        statisticsValue="10"
-        class="fs-4 fw-normal"
-      />
     </div>
     <div class="mt-4 table-responsive">
       <table class="table table-responsive table-borderless mb-2">
         <thead>
           <tr style="background-color: #f5f6f6">
             <th scope="col">
-              <small class="text-secondary fw-normal">Department</small>
+              <small class="text-secondary fw-normal">Device Code</small>
             </th>
             <th scope="col">
-              <small class="text-secondary fw-normal">Active Devices</small>
+              <small class="text-secondary fw-normal">Device Description</small>
+            </th>
+            <th scope="col">
+              <small class="text-secondary fw-normal">Accepted Devices</small>
             </th>
             <th scope="col">
               <small class="text-secondary fw-normal">Total Value</small>
-            </th>
-            <th scope="col">
-              <small class="text-secondary fw-normal">Inactive Devices</small>
             </th>
           </tr>
         </thead>
         <tbody>
           <tr style="background-color: #f5f6f6">
-            <td><small>Central Sterile Services Department (CSSD)</small></td>
-            <td><small>15</small></td>
-            <td><small>$15,000</small></td>
+            <td><small>10846</small></td>
+            <td>
+              <small>Circulatory Assist Units, Intra-Aortic Balloon</small>
+            </td>
             <td><small>12</small></td>
+            <td><small>$15,000</small></td>
           </tr>
         </tbody>
       </table>
@@ -84,14 +100,30 @@
 </template>
 
 <script setup>
-import UIBtn2 from "../BIOMD-UI/UI-Btn2.vue";
+import { ref, onMounted } from "vue";
+
+const yearsList = ref([]);
+const selectedYear = ref(null);
+const currentYear = ref(new Date().toLocaleDateString());
+
+const getYearsList = () => {
+  const startYear = 1990;
+  const endYear = new Date().getFullYear();
+  for (let i = endYear; i >= startYear; i--) {
+    yearsList.value = [...yearsList.value, i];
+  }
+};
+
 import UIStatCard from "../BIOMD-UI/UI-StatCard";
-import UIToastGlobal from "../BIOMD-UI/UI-ToastGlobal.vue";
 const emit = defineEmits(["updatePage"]);
 
 const changePage = async (page, props) => {
   emit("updatePage", page, props);
 };
+
+onMounted(() => {
+  getYearsList();
+});
 </script>
 
 <style lang="scss" scoped></style>

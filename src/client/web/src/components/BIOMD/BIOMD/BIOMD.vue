@@ -102,6 +102,22 @@ Description: < Describe the application >
       </div>
     </div>
   </div>
+  <div v-if="compState === 'functionalityIndex'" class="RevealContainer_dash">
+    <div class="container">
+      <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
+      <div class="row">
+        <REPORTSFunctionality @update-page="updatePage" />
+      </div>
+    </div>
+  </div>
+  <div v-if="compState === 'annualInflow'" class="RevealContainer_dash">
+    <div class="container">
+      <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
+      <div class="row">
+        <REPORTSAnnualInflow @update-page="updatePage" />
+      </div>
+    </div>
+  </div>
 
   <div v-else class="RevealContainer">
     <div class="container">
@@ -150,6 +166,8 @@ import REPORTS from "../BIOMD/BIOMD-REPORTS/REPORTS.vue";
 import REPORTSList from "../BIOMD/BIOMD-REPORTS/REPORTS-List.vue";
 import REPORTSSummary1 from "../BIOMD/BIOMD-REPORTS/REPORTS-Summary1.vue";
 import REPORTSSummary2 from "../BIOMD/BIOMD-REPORTS/REPORTS-Summary2.vue";
+import REPORTSFunctionality from "../BIOMD/BIOMD-REPORTS/REPORTS-Functionality.vue";
+import REPORTSAnnualInflow from "../BIOMD/BIOMD-REPORTS/REPORTS-AnnualInflow.vue";
 import Landing from "../BIOMD/BIOMD-UI/UI-Landing.vue";
 import SuccessPage from "../BIOMD/BIOMD-UI/UI-SuccessPage.vue";
 import DASHBOARDModel from "./BIOMD-DASHBOARD/DASHBOARD-Model.vue";
@@ -168,6 +186,8 @@ export default {
     REPORTSList,
     REPORTSSummary1,
     REPORTSSummary2,
+    REPORTSFunctionality,
+    REPORTSAnnualInflow,
     Landing,
     SuccessPage,
     DASHBOARDModel,
