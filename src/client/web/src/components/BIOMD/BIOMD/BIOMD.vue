@@ -9,142 +9,166 @@ Description: < Describe the application >
 -->
 
 <template>
-  <div v-if="compState === 'dashboard'" class="RevealContainer_dash">
-    <div class="container">
-      <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
-      <div class="row">
-        <DASHBOARD @update-page="updatePage" />
-      </div>
-    </div>
-  </div>
-
-  <div v-if="compState === 'dashboardModel'" class="RevealContainer_dash">
-    <div class="container">
-      <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
-      <div class="row">
-        <DASHBOARDModel
-          @update-page="updatePage"
-          :modelName="pageProps.modelName"
-          :manufacturerID="pageProps.manufacturerID"
-          :commonName="pageProps.commonName"
-          :modelID="pageProps.modelID"
-          :manufacturerName="pageProps.manufacturerName"
-        />
-      </div>
-    </div>
-  </div>
-
-  <div v-if="compState === 'dashboardAssetDetail'" class="RevealContainer_dash">
-    <div class="container">
-      <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
-      <div class="row">
-        <DASHBOARDAssetDetail
-          @update-page="updatePage"
-          :assetCode="pageProps.assetCode"
-          :status="pageProps.status"
-          :modelName="pageProps.modelName"
-          :parentAssetID="pageProps.parentAssetID"
-        />
-      </div>
-    </div>
-  </div>
-  <div
-    v-if="compState === 'dashboardManufacturerProfile'"
-    class="RevealContainer_dash"
-  >
-    <div class="container">
-      <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
-      <div class="row">
-        <DASHBOARDManufacturerProfile
-          @update-page="updatePage"
-          :manufacturerName="pageProps.manufacturerName"
-          :manufacturer="pageProps.manufacturer"
-          :manufacturerID="pageProps.manufacturerID"
-          :vendorName="pageProps.vendorName"
-          :vendorID="pageProps.vendorID"
-        />
-      </div>
-    </div>
-  </div>
-  <div v-if="compState === 'reportsPage'" class="RevealContainer_dash">
-    <div class="container">
-      <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
-      <div class="row">
-        <REPORTS @update-page="updatePage" />
-      </div>
-    </div>
-  </div>
-  <div v-if="compState === 'reportsList'" class="RevealContainer_dash">
-    <div class="container">
-      <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
-      <div class="row">
-        <REPORTSList
-          @update-page="updatePage"
-          :facilityName="facilityName"
-          :facilityID="facilityID"
-        />
-      </div>
-    </div>
-  </div>
-  <div v-if="compState === 'reportsSummary1'" class="RevealContainer_dash">
-    <div class="container">
-      <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
-      <div class="row">
-        <REPORTSSummary1 @update-page="updatePage" />
-      </div>
-    </div>
-  </div>
-  <div v-if="compState === 'reportsSummary2'" class="RevealContainer_dash">
-    <div class="container">
-      <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
-      <div class="row">
-        <REPORTSSummary2 @update-page="updatePage" />
-      </div>
-    </div>
-  </div>
-  <div v-if="compState === 'functionalityIndex'" class="RevealContainer_dash">
-    <div class="container">
-      <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
-      <div class="row">
-        <REPORTSFunctionality @update-page="updatePage" />
-      </div>
-    </div>
-  </div>
-  <div v-if="compState === 'annualInflow'" class="RevealContainer_dash">
-    <div class="container">
-      <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
-      <div class="row">
-        <REPORTSAnnualInflow @update-page="updatePage" />
-      </div>
-    </div>
-  </div>
-
-  <div v-else class="RevealContainer">
-    <div class="container">
-      <div class="row">
+  <div>
+    <div v-if="compState === 'dashboard'" class="RevealContainer_dash">
+      <div class="container">
+        <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
         <div class="row">
-          <div>
-            <ASSET v-if="compState === 'assetInfo'" @update-page="updatePage" />
-            <FACILITY
-              v-else-if="compState === 'facilityInfo'"
-              @update-page="updatePage"
-            />
-            <MODEL
-              v-else-if="compState === 'departmentInfo'"
-              @update-page="updatePage"
-            />
-            <VENDOR
-              v-else-if="compState === 'vendorInfo'"
-              @update-page="updatePage"
-            />
-            <MANUFACTURER
-              v-else-if="compState === 'manufacturerInfo'"
-              @update-page="updatePage"
-            />
-            <SuccessPage
-              v-else="compState === 'success'"
-              @update-page="updatePage"
-            />
+          <DASHBOARD @update-page="updatePage" />
+        </div>
+      </div>
+    </div>
+
+    <div v-if="compState === 'dashboardModel'" class="RevealContainer_dash">
+      <div class="container">
+        <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
+        <div class="row">
+          <DASHBOARDModel
+            @update-page="updatePage"
+            :modelName="pageProps.modelName"
+            :manufacturerID="pageProps.manufacturerID"
+            :commonName="pageProps.commonName"
+            :modelID="pageProps.modelID"
+            :manufacturerName="pageProps.manufacturerName"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div
+      v-if="compState === 'dashboardAssetDetail'"
+      class="RevealContainer_dash"
+    >
+      <div class="container">
+        <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
+        <div class="row">
+          <DASHBOARDAssetDetail
+            @update-page="updatePage"
+            :assetCode="pageProps.assetCode"
+            :status="pageProps.status"
+            :modelName="pageProps.modelName"
+            :parentAssetID="pageProps.parentAssetID"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      v-if="compState === 'dashboardManufacturerProfile'"
+      class="RevealContainer_dash"
+    >
+      <div class="container">
+        <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
+        <div class="row">
+          <DASHBOARDManufacturerProfile
+            @update-page="updatePage"
+            :manufacturerName="pageProps.manufacturerName"
+            :manufacturer="pageProps.manufacturer"
+            :manufacturerID="pageProps.manufacturerID"
+            :vendorName="pageProps.vendorName"
+            :vendorID="pageProps.vendorID"
+          />
+        </div>
+      </div>
+    </div>
+    <div v-if="compState === 'reportsPage'" class="RevealContainer_dash">
+      <div class="container">
+        <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
+        <div class="row">
+          <REPORTS @update-page="updatePage" />
+        </div>
+      </div>
+    </div>
+    <div v-if="compState === 'reportsList'" class="RevealContainer_dash">
+      <div class="container">
+        <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
+        <div class="row">
+          <REPORTSList
+            @update-page="updatePage"
+            :facilityName="pageProps.facilityName"
+            :facilityID="pageProps.facilityID"
+          />
+        </div>
+      </div>
+    </div>
+    <div v-if="compState === 'reportsSummary1'" class="RevealContainer_dash">
+      <div class="container">
+        <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
+        <div class="row">
+          <REPORTSSummary1
+            @update-page="updatePage"
+            :facilityName="pageProps.facilityName"
+            :facilityID="pageProps.facilityID"
+          />
+        </div>
+      </div>
+    </div>
+    <div v-if="compState === 'reportsSummary2'" class="RevealContainer_dash">
+      <div class="container">
+        <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
+        <div class="row">
+          <REPORTSSummary2
+            @update-page="updatePage"
+            :facilityName="pageProps.facilityName"
+            :facilityID="pageProps.facilityID"
+          />
+        </div>
+      </div>
+    </div>
+    <div v-if="compState === 'functionalityIndex'" class="RevealContainer_dash">
+      <div class="container">
+        <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
+        <div class="row">
+          <REPORTSFunctionality
+            @update-page="updatePage"
+            :facilityName="pageProps.facilityName"
+            :facilityID="pageProps.facilityID"
+          />
+        </div>
+      </div>
+    </div>
+    <div v-if="compState === 'annualInflow'" class="RevealContainer_dash">
+      <div class="container">
+        <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
+        <div class="row">
+          <REPORTSAnnualInflow
+            @update-page="updatePage"
+            :facilityName="pageProps.facilityName"
+            :facilityID="pageProps.facilityID"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div v-else class="RevealContainer">
+      <div class="container">
+        <div class="row">
+          <div class="row">
+            <div>
+              <ASSET
+                v-if="compState === 'assetInfo'"
+                @update-page="updatePage"
+              />
+              <FACILITY
+                v-else-if="compState === 'facilityInfo'"
+                @update-page="updatePage"
+              />
+              <MODEL
+                v-else-if="compState === 'departmentInfo'"
+                @update-page="updatePage"
+              />
+              <VENDOR
+                v-else-if="compState === 'vendorInfo'"
+                @update-page="updatePage"
+              />
+              <MANUFACTURER
+                v-else-if="compState === 'manufacturerInfo'"
+                @update-page="updatePage"
+              />
+              <SuccessPage
+                v-else="compState === 'success'"
+                @update-page="updatePage"
+              />
+            </div>
           </div>
         </div>
       </div>

@@ -4,7 +4,11 @@
       <small
         class="text-secondary"
         style="cursor: pointer"
-        @click="changePage('dashboard')"
+        @click="
+          changePage('reportsList', {
+            facilityName: props.facilityName,
+          })
+        "
         >Back</small
       >
     </nav>
@@ -25,7 +29,7 @@
       </small>
     </div>
     <div class="mt-4 p-2">
-      <span class="fw-bold fs-4">Navrongo Hospital</span>
+      <span class="fw-bold fs-4">{{ props.facilityName }}</span>
     </div>
 
     <div class="row">
@@ -59,6 +63,7 @@ const emit = defineEmits(["updatePage"]);
 const changePage = async (page, props) => {
   emit("updatePage", page, props);
 };
+const props = defineProps(["facilityName", "facilityID"]);
 </script>
 
 <style lang="scss" scoped></style>

@@ -4,7 +4,11 @@
       <small
         class="text-secondary"
         style="cursor: pointer"
-        @click="changePage('dashboard')"
+        @click="
+          changePage('reportsList', {
+            facilityName: props.facilityName,
+          })
+        "
         >Back</small
       >
     </nav>
@@ -44,14 +48,14 @@
       </div>
       <div class="mt-2 px-3" v-if="selectedYear">
         <small
-          >Report generated for accepted assets from {{ selectedYear }} to
+          >Report generated for accepted assets from 1/1/{{ selectedYear }} to
           {{ currentYear }}</small
         >
       </div>
     </div>
 
     <div class="mt-4 p-2">
-      <span class="fw-bold fs-4">Navrongo Hospital</span>
+      <span class="fw-bold fs-4">{{ props.facilityName }}</span>
     </div>
 
     <div class="row">
@@ -120,6 +124,7 @@ const emit = defineEmits(["updatePage"]);
 const changePage = async (page, props) => {
   emit("updatePage", page, props);
 };
+const props = defineProps(["facilityName", "facilityID"]);
 
 onMounted(() => {
   getYearsList();

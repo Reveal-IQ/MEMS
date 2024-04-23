@@ -30,19 +30,35 @@
         <div class="d-flex flex-column">
           <UIReportList
             title="Global Inventory Summary by Medical Device Description"
-            @click="changePage('reportsSummary1')"
+            @click="
+              changePage('reportsSummary1', {
+                facilityName: props.facilityName,
+              })
+            "
           />
           <UIReportList
             title="Global Inventory Summary by Department"
-            @click="changePage('reportsSummary2')"
+            @click="
+              changePage('reportsSummary2', {
+                facilityName: props.facilityName,
+              })
+            "
           />
           <UIReportList
             title="Functionality Index"
-            @click="changePage('functionalityIndex')"
+            @click="
+              changePage('functionalityIndex', {
+                facilityName: props.facilityName,
+              })
+            "
           />
           <UIReportList
             title="Annual Medical Device Inflow"
-            @click="changePage('annualInflow')"
+            @click="
+              changePage('annualInflow', {
+                facilityName: props.facilityName,
+              })
+            "
           />
         </div>
       </div>
@@ -52,13 +68,13 @@
 
 <script setup>
 import UIReportList from "../BIOMD-UI/UI-ReportList.vue";
-const props = defineProps(["facilityName", "facilityID"]);
 const emit = defineEmits(["updatePage"]);
 
 // Navigate to selected page to edit
 const changePage = async (page, props) => {
   emit("updatePage", page, props);
 };
+const props = defineProps(["facilityName", "facilityID"]);
 </script>
 
 <style lang="scss" scoped></style>

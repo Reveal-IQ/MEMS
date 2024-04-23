@@ -15,35 +15,37 @@
         >Select Facility to generate reports</span
       >
     </div>
-
-    <div class="d-flex gap-2">
-      <div
-        v-for="facility in facilityList"
-        :key="facility.index"
-        class="col-lg-4 col-md-8 col-12 p-2 mb-3 mt-4"
-      >
-        <label for="facilityList" class="form-label">Select Facility</label>
-        <input
-          class="form-control"
-          list="facilityListOptions"
-          id="facilityList"
-          placeholder="Select facility"
-          aria-label="Default select example"
-          @input="fetchFacility"
-          @change="
-            changePage('reportsList', {
-              facilityName: facility.facilityName,
-            })
-          "
-          autocomplete="off"
-        />
-        <datalist id="facilityListOptions">
-          <option
-            v-for="facility in facilityList"
-            :key="facility.index"
-            :value="facility.facilityName"
-          ></option>
-        </datalist>
+    <div>
+      <div>
+        <div
+          v-for="facility in facilityList"
+          :key="facility.index"
+          class="col-lg-4 col-md-8 col-12 p-2 mb-3 mt-4"
+        >
+          <label for="facilityList" class="form-label">Select Facility</label>
+          <input
+            class="form-control"
+            list="facilityListOptions"
+            id="facilityList"
+            placeholder="Select facility"
+            aria-label="Default select example"
+            @input="fetchFacility"
+            @change="
+              changePage('reportsList', {
+                facilityName: facility.facilityName,
+                facilityID: facility._id,
+              })
+            "
+            autocomplete="off"
+          />
+          <datalist id="facilityListOptions">
+            <option
+              v-for="facility in facilityList"
+              :key="facility.index"
+              :value="facility.facilityName"
+            ></option>
+          </datalist>
+        </div>
       </div>
     </div>
   </div>
@@ -58,14 +60,7 @@ const sendSocketReq = (request) => {
   store.dispatch("sendSocketReq", request);
 };
 
-const facilityList = ref(null);
-
-const emit = defineEmits(["updatePage"]);
-
-// Navigate to selected page to edit
-const changePage = async (page, props) => {
-  emit("updatePage", page, props);
-};
+const facilityList = ref([]);
 
 const fetchFacility = async () => {
   try {
@@ -105,6 +100,13 @@ const fetchFacility = async () => {
   } catch (error) {
     console.log(error);
   }
+};
+
+const emit = defineEmits(["updatePage"]);
+
+// Navigate to selected page to edit
+const changePage = async (page, props) => {
+  emit("updatePage", page, props);
 };
 
 onMounted(() => {
