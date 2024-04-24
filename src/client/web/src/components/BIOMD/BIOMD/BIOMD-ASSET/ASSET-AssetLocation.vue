@@ -176,7 +176,7 @@ const fetchDepartment = async (event) => {
               queries: [
                 {
                   field: "facilityID",
-                  op: "sb",
+                  op: "eq_id",
                   value: GlobalAssetInformation.value.facilityID,
                 },
               ],
