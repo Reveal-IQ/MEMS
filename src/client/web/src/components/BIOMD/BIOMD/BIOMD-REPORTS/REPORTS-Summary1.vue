@@ -57,7 +57,10 @@
       />
     </div>
     <div class="mt-4 table-responsive">
-      <table class="table table-responsive table-borderless mb-2">
+      <table
+        class="table table-responsive table-borderless mb-2"
+        v-for="asset in assetList"
+      >
         <thead>
           <tr style="background-color: #f5f6f6">
             <th scope="col">
@@ -79,9 +82,11 @@
         </thead>
         <tbody>
           <tr style="background-color: #f5f6f6">
-            <td><small>10846</small></td>
             <td>
-              <small>Circulatory Assist Units, Intra-Aortic Balloon</small>
+              <small>{{ asset.assetCode }}</small>
+            </td>
+            <td>
+              <small>{{ asset.commonName }}</small>
             </td>
             <td><small>15</small></td>
             <td><small>$15,000</small></td>
@@ -94,7 +99,73 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from "vue";
 import UIStatCard from "../BIOMD-UI/UI-StatCard";
+import { useStore } from "vuex";
+
+const store = useStore();
+const sendSocketReq = (request) => {
+  store.dispatch("sendSocketReq", request);
+};
+
+const assetList = ref([]);
+
+const fetchAsset = async () => {
+  try {
+    sendSocketReq({
+      data: {
+        Expiry: 20000,
+        Type: "REQUEST",
+        Request: {
+          Module: "MEMS",
+          ServiceCode: "BIOMD",
+          API: "FIND_RECORD",
+          return_array: true,
+          max_list: 100,
+          find: {
+            collection: "Asset",
+            lookups: [
+              {
+                localField: "modelID",
+                collection: "Model",
+                foreignField: "_id",
+                as: "Model",
+              },
+              {
+                localField: "manufacturerID",
+                collection: "Manufacturer",
+                foreignField: "_id",
+                as: "Manufacturer",
+              },
+            ],
+            projection: {
+              _id: 1,
+              assetCode: 1,
+              modelName: "$Model.modelName",
+              commonName: "$Model.commonName",
+              UMDNSCode: "$Model.UMDNSCode",
+              manufacturerName: "$Manufacturer.manufacturerName",
+            },
+          },
+        },
+      },
+      callback: (res) => {
+        if (res.Type === "RESPONSE") {
+          console.log("Response Packet -->", res.Response);
+          assetList.value = res.Response.records;
+        } else if (res.Type === "ERROR") {
+          Type: "ERROR";
+          Response: {
+            Error_Code: "API-CREATE_RECORD-E001";
+            Error_Msg: "CREATE_RECORD_API: Failed to execute query";
+          }
+        }
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 const emit = defineEmits(["updatePage"]);
 
@@ -103,6 +174,10 @@ const changePage = async (page, props) => {
 };
 
 const props = defineProps(["facilityName", "facilityID"]);
+
+onMounted(() => {
+  fetchAsset();
+});
 </script>
 
 <style lang="scss" scoped></style>
