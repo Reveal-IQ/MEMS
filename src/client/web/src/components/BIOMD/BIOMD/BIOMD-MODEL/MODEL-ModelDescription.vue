@@ -25,18 +25,18 @@
 
       <!-- Facility -->
       <div class="col-lg-6 mb-3">
-        <label for="manufacturerList" class="form-label">Facility</label>
+        <label for="facilityList" class="form-label">Facility</label>
         <input
           class="form-control"
-          list="manufacturerListOptions"
-          id="manufacturerList"
-          placeholder="Select Manufacturer"
+          list="facilityListOptions"
+          id="facilityList"
+          placeholder="Select Facility"
           aria-label="Default select example"
           v-model="DepartmentDescription.selectedFacility.facilityName"
           @input="fetchFacility"
           autocomplete="off"
         />
-        <datalist id="manufacturerListOptions">
+        <datalist id="facilityListOptions">
           <option
             v-for="facility in facilityList"
             :key="facility.index"

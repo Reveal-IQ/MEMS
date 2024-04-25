@@ -63,10 +63,10 @@
       >
         <thead>
           <tr style="background-color: #f5f6f6">
-            <th scope="col">
+            <th scope="col" width="20%">
               <small class="text-secondary fw-normal">Device Code</small>
             </th>
-            <th scope="col">
+            <th scope="col" width="50%">
               <small class="text-secondary fw-normal">Device Description</small>
             </th>
             <th scope="col">

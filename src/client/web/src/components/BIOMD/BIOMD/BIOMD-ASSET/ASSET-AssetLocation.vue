@@ -23,7 +23,7 @@
     </div>
 
     <!-- Department -->
-    <div class="col-lg-6 mb-3">
+    <!-- <div class="col-lg-6 mb-3">
       <label for="departmentList" class="form-label">Department</label>
       <input
         class="form-control"
@@ -42,7 +42,7 @@
           :value="department.departmentName"
         ></option>
       </datalist>
-    </div>
+    </div> -->
 
     <!-- Location -->
     <div class="col-lg-6 mb-3">
@@ -176,7 +176,7 @@ const fetchDepartment = async (event) => {
               queries: [
                 {
                   field: "facilityID",
-                  op: "sb",
+                  op: "eq_id",
                   value: GlobalAssetInformation.value.facilityID,
                 },
               ],

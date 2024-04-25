@@ -258,7 +258,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../../GLOBAL//Styles//colors.scss";
+@import "../../../GLOBAL/Styles/colors.scss";
 .RevealContainer {
   min-height: 100vh;
   max-height: 100vh;
