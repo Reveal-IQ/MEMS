@@ -16,7 +16,7 @@ class Record {
     this._record = {};
     const schema = this.getSchema();
     Record._validateSchema(schema);
-    this._record = Record._fieldToBsonType(this.getName(),data, schema);
+    this._record = Record._fieldToBsonType(this.getName(), data, schema);
   }
 
   getName() {
@@ -97,7 +97,7 @@ class Record {
       case BSONType.objectId:
         return new ObjectId(data);
       case BSONType.date:
-          return new Date(data);
+        return new Date(data);
       case BSONType.timestamp:
         return new Timestamp(data);
       case BSONType.bool:
@@ -164,7 +164,7 @@ class AssetRecord extends Record {
         supportTeam: { type: BSONType.string },
         vendorID: { type: BSONType.objectId },
         status: { type: BSONType.string },
-        purchaseOrderID: { type: BSONType.objectId},
+        purchaseOrderID: { type: BSONType.objectId },
         acceptanceDate: { type: BSONType.date },
         comment: { type: BSONType.string },
       },
@@ -216,12 +216,13 @@ class ModelRecord extends Record {
     return {
       type: BSONType.object,
       fields: {
-        //Schema Version: v0.1
+        //Schema Version: v0.1.1
         manufacturerID: { type: BSONType.objectId },
         contactID: { type: BSONType.objectId },
         modelName: { type: BSONType.string },
         commonName: { type: BSONType.string },
         UMDNSCode: { type: BSONType.string },
+        deviceDescription: { type: BSONType.string },
       },
     };
   }
@@ -260,15 +261,14 @@ class VendorRecord extends Record {
           items: {
             type: BSONType.object,
             fields: {
-              manufacturer: {type : BSONType.objectId },
-            }
+              manufacturer: { type: BSONType.objectId },
+            },
           },
         },
-      }
+      },
     };
   }
 }
-
 
 class DepartmentRecord extends Record {
   constructor(data) {
@@ -282,7 +282,7 @@ class DepartmentRecord extends Record {
         facilityID: { type: BSONType.objectId },
         departmentName: { type: BSONType.string },
         shortName: { type: BSONType.string },
-      }
+      },
     };
   }
 }

@@ -56,10 +56,10 @@
         class="fs-4 fw-normal"
       />
     </div>
-    <div class="mt-4 table-responsive">
+    <div class="mt-2 table-responsive" v-for="asset in assetList">
       <table
         class="table table-responsive table-borderless mb-2"
-        v-for="asset in assetList"
+        v-if="props.facilityName == asset.facilityName"
       >
         <thead>
           <tr style="background-color: #f5f6f6">
@@ -83,10 +83,10 @@
         <tbody>
           <tr style="background-color: #f5f6f6">
             <td>
-              <small>{{ asset.assetCode }}</small>
+              <small>{{ asset.UMDNSCode }}</small>
             </td>
             <td>
-              <small>{{ asset.commonName }}</small>
+              <small>{{ asset.deviceDescription }}</small>
             </td>
             <td><small>15</small></td>
             <td><small>$15,000</small></td>
@@ -137,6 +137,12 @@ const fetchAsset = async () => {
                 foreignField: "_id",
                 as: "Manufacturer",
               },
+              {
+                localField: "facilityID",
+                collection: "Facility",
+                foreignField: "_id",
+                as: "Facility",
+              },
             ],
             projection: {
               _id: 1,
@@ -144,7 +150,9 @@ const fetchAsset = async () => {
               modelName: "$Model.modelName",
               commonName: "$Model.commonName",
               UMDNSCode: "$Model.UMDNSCode",
+              deviceDescription: "$Model.deviceDescription",
               manufacturerName: "$Manufacturer.manufacturerName",
+              facilityName: "$Facility.facilityName",
             },
           },
         },

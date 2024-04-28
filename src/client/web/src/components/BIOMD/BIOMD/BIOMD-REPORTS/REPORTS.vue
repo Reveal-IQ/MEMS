@@ -17,7 +17,7 @@
     </div>
     <div>
       <div>
-        <div
+        <!-- <div
           v-for="facility in facilityList"
           :key="facility.index"
           class="col-lg-4 col-md-8 col-12 p-2 mb-3 mt-4"
@@ -45,6 +45,21 @@
               :value="facility.facilityName"
             ></option>
           </datalist>
+        </div> -->
+        <div class="list-group col-lg-4 col-md-8 col-12 mb-3">
+          <span
+            v-for="facility in facilityList"
+            :key="facility.index"
+            @click="
+              changePage('reportsList', {
+                facilityName: facility.facilityName,
+                facilityID: facility._id,
+              })
+            "
+            class="list-group-item list-group-item-action list-group-item-light"
+            style="cursor: pointer"
+            >{{ facility.facilityName }}</span
+          >
         </div>
       </div>
     </div>

@@ -96,14 +96,14 @@
                     <small>{{ model.UMDNSCode }} </small>
                   </div>
                 </td>
-                <!-- <td>
+                <td>
                   <div class="d-flex flex-column">
                     <small class="text-secondary fsXs"
                       >Device Description</small
                     >
-                    <small>All Vendors</small>
+                    <small>{{ model.deviceDescription }}</small>
                   </div>
-                </td> -->
+                </td>
                 <td>
                   <div class="d-flex flex-column">
                     <small class="text-secondary fsXs">Common Name</small>
@@ -235,6 +235,7 @@ const fetchModel = async () => {
               modelName: 1,
               commonName: 1,
               UMDNSCode: 1,
+              deviceDescription: 1,
             },
           },
         },

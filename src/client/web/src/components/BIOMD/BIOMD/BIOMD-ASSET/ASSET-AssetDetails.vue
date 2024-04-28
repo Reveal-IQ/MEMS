@@ -119,7 +119,10 @@
         <span class="fw-bold">Model Profile</span>
         <div class="d-flex flex-column gap-1">
           <span>Common Name: {{ AssetDetails.selectedModel.commonName }}</span>
-          <span>UMDNS Code: {{ AssetDetails.selectedModel.UMDNSCode }}</span>
+          <span
+            >UMDNS Code: {{ AssetDetails.selectedModel.UMDNSCode }} -
+            {{ AssetDetails.selectedModel.deviceDescription }}</span
+          >
         </div>
       </div>
     </div>
@@ -291,6 +294,7 @@ const fetchModel = async (event) => {
                 modelName: 1,
                 commonName: 1,
                 UMDNSCode: 1,
+                deviceDescription: 1,
               },
             },
           },

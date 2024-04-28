@@ -18,7 +18,7 @@
             label="Common Name"
             type="text"
             id="commonName"
-            placeholder="Common Number"
+            placeholder="Common Name"
             v-model="ModelDescription.commonName"
           />
         </div>
@@ -27,8 +27,17 @@
             label="UMDNS Code"
             type="text"
             id="UMDNSCode"
-            placeholder="Common Number"
+            placeholder="UMDNS Code"
             v-model="ModelDescription.UMDNSCode"
+          />
+        </div>
+        <div class="col-lg-6">
+          <Input
+            label="Device Description"
+            type="text"
+            id="UMDNSCode"
+            placeholder="Device Description"
+            v-model="ModelDescription.deviceDescription"
           />
           <transition name="toast">
             <UIToast v-if="showToast" message="Model successfully added " />
@@ -70,6 +79,7 @@ const ModelDescription = ref({
   modelName: null,
   commonName: null,
   UMDNSCode: null,
+  deviceDescription: null,
 });
 
 const sendSocketReq = (request) => {
@@ -92,6 +102,7 @@ async function createRecord() {
           modelName: ModelDescription.value.modelName,
           commonName: ModelDescription.value.commonName,
           UMDNSCode: ModelDescription.value.UMDNSCode,
+          deviceDescription: ModelDescription.value.deviceDescription,
         }).serialize(),
         Institute_Code: Institute_Code.value,
       },
@@ -101,6 +112,7 @@ async function createRecord() {
         ModelDescription.value.modelName = null;
         ModelDescription.value.commonName = null;
         ModelDescription.value.UMDNSCode = null;
+        ModelDescription.value.deviceDescription = null;
 
         showToast.value = true;
         setTimeout(() => {

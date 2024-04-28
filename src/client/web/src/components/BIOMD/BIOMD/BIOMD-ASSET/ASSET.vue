@@ -133,6 +133,7 @@ export default {
         _id: null,
         commonName: null,
         UMDNSCode: null,
+        deviceDescription: null,
       },
       manufactureDate: null,
       status: "Active Deployed",
