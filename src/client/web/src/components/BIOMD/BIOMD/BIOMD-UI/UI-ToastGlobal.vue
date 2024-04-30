@@ -1,6 +1,6 @@
 <template>
   <section
-    class="col-lg-6 col-md-12 col-sm-12 col-12 border-1 toastBackground rounded-3 border border-warning"
+    class="col-lg-12 col-md-12 col-sm-12 col-12 border-1 toastBackground rounded-3 border border-warning"
     :class="props.class"
     :style="'--color:' + props.backgroundColor"
   >

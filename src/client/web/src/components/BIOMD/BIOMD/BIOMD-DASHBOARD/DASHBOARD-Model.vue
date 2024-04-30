@@ -29,19 +29,19 @@
           <td>
             <div class="d-flex flex-column">
               <small class="text-secondary fsXs">Quantity</small>
-              <small class="fw-normal">20</small>
+              <!-- <small class="fw-normal">20</small> -->
             </div>
           </td>
           <td>
             <div class="d-flex flex-column">
               <small class="text-secondary fsXs">Active</small>
-              <small class="fw-normal">18</small>
+              <!-- <small class="fw-normal">18</small> -->
             </div>
           </td>
           <td>
             <div class="d-flex flex-column">
               <small class="text-secondary fsXs">In-Service</small>
-              <small>4</small>
+              <!-- <small>4</small> -->
             </div>
           </td>
         </div>

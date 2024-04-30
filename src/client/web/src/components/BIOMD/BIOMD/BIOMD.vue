@@ -48,6 +48,24 @@ Description: < Describe the application >
       </div>
     </div>
   </div>
+  <div
+    v-if="compState === 'dashboardManufacturerProfile'"
+    class="RevealContainer_dash"
+  >
+    <div class="container">
+      <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
+      <div class="row">
+        <DASHBOARDManufacturerProfile
+          @update-page="updatePage"
+          :manufacturerName="pageProps.manufacturerName"
+          :manufacturer="pageProps.manufacturer"
+          :manufacturerID="pageProps.manufacturerID"
+          :vendorName="pageProps.vendorName"
+          :vendorID="pageProps.vendorID"
+        />
+      </div>
+    </div>
+  </div>
 
   <div v-else class="RevealContainer">
     <div class="container">
@@ -96,6 +114,7 @@ import Landing from "../BIOMD/BIOMD-UI/UI-Landing.vue";
 import SuccessPage from "../BIOMD/BIOMD-UI/UI-SuccessPage.vue";
 import DASHBOARDModel from "./BIOMD-DASHBOARD/DASHBOARD-Model.vue";
 import DASHBOARDAssetDetail from "./BIOMD-DASHBOARD/DASHBOARD-AssetDetail.vue";
+import DASHBOARDManufacturerProfile from "./BIOMD-DASHBOARD/DASHBOARD-ManufacturerProfile.vue";
 
 export default {
   components: {
@@ -109,6 +128,7 @@ export default {
     SuccessPage,
     DASHBOARDModel,
     DASHBOARDAssetDetail,
+    DASHBOARDManufacturerProfile,
   },
   name: "BIOMD",
   // Define Props here
