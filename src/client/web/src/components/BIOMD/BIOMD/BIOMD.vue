@@ -70,6 +70,14 @@ Description: < Describe the application >
         </div>
       </div>
     </div>
+    <div v-if="compState === 'facilityDetail'" class="RevealContainer_dash">
+      <div class="container">
+        <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
+        <div class="row">
+          <FACILITYDetail @update-page="updatePage" />
+        </div>
+      </div>
+    </div>
     <div v-if="compState === 'reportsPage'" class="RevealContainer_dash">
       <div class="container">
         <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
@@ -182,6 +190,7 @@ import { ref } from "vue"; // Based on the requirement import keywords
 
 import ASSET from "../BIOMD/BIOMD-ASSET/ASSET.vue";
 import FACILITY from "../BIOMD/BIOMD-FACILITY/FACILITY.vue";
+import FACILITYDetail from "../BIOMD/BIOMD-FACILITY/FACILITY-Detail.vue";
 import VENDOR from "../BIOMD/BIOMD-VENDOR/VENDOR.vue";
 import MODEL from "../BIOMD/BIOMD-MODEL/MODEL.vue";
 import MANUFACTURER from "../BIOMD/BIOMD-MANUFACTURER/MANUFACTURER.vue";
@@ -202,6 +211,7 @@ export default {
   components: {
     ASSET,
     FACILITY,
+    FACILITYDetail,
     VENDOR,
     MODEL,
     MANUFACTURER,

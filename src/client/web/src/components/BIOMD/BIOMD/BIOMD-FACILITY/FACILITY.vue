@@ -25,7 +25,7 @@ Description: < Describe the application >
             BtnName="Return"
             :icon="'arrow-left'"
             backgroundColor="none"
-            @click="goBack"
+            @click="changePage('facilityDetail')"
             class="text-secondary btn-sm"
           />
 
