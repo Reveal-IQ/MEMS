@@ -189,9 +189,10 @@ module.exports.validateReq = async (req) => {
 module.exports.processReq = async (req) => {
     try{
         var res;
-        
+
         // Call the API and pass the request along with Database connection as parameters
         res = await Services[req.Request.ServiceCode][req.Request.API](req, DBLink);
+
     } catch(err){
         console.log(await TIMESTAMP() + `: RCU-E045 : Error occurred in 'processReq' function.`);
         console.log(err);
@@ -213,14 +214,13 @@ module.exports.processReq = async (req) => {
 
         // Create signature for response
         res.Signature = await this.createSignature(res, 'sha256');
- 
         return res;
     }
 };
 
 // Create hash for the given data
 module.exports.createSignature = async function (data, algorithm){
-    try{        
+    try{      
         // Convert the data to buffer
         const buffer = Buffer.from(JSON.stringify(data));
 
