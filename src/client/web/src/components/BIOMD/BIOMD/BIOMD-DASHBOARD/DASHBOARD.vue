@@ -42,7 +42,9 @@
 
     <div class="rounded mt-4 p-2" style="background-color: #e3f6f5">
       <div class="card-body">
-        <h5 class="card-title" style="color: #298a85">Welcome John!</h5>
+        <h5 class="card-title" style="color: #298a85">
+          Welcome {{ userName.User_First_Name }}!
+        </h5>
         <p class="card-text">
           <small class="text-muted"
             >This is your dashboard of medical equipment assigned to you and
@@ -230,12 +232,14 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 import { useStore } from "vuex";
 import UIToastGlobal from "../BIOMD-UI/UI-ToastGlobal.vue";
 import UIBtn2 from "../BIOMD-UI/UI-Btn2.vue";
 
 const store = useStore();
+
+const userName = computed(() => store.state.globalStore.UserInfo);
 
 const sendSocketReq = (request) => {
   store.dispatch("sendSocketReq", request);
