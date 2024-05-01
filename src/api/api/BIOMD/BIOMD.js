@@ -416,3 +416,186 @@ module.exports.LIST_VENDORS = async function (req, dbClient) {
 
   return res;
 };
+
+module.exports.GET_REPORTS = async function (req, dbClient) {
+  const DESCRIPTION = "description";
+  const INFLOW = "inflow";
+  const DEPARTMENT = "department";
+  const FUNCTIONALITY = "functionality";
+
+  const REPORT_TYPES = [DESCRIPTION, INFLOW, DEPARTMENT, FUNCTIONALITY];
+  const ACTIVE_STRING = "Active Deployed";
+  
+  try {
+    //Confirm Packet Received
+    console.log(
+      (await TIMESTAMP()) +
+      `: RCU-BIOMD-I001 : RECORDS processing request packet ID: ${req.ID}`
+    );
+
+    //Copy Requester Information
+    var res = Object.assign({}, req);
+    const reportType = res.Request.reportType;
+    const year = res.Request.reportSpecs.year || null;
+
+    // Check report type (This should be included in the request inside find)
+    if (REPORT_TYPES.includes(reportType)) {
+      
+      const collection = await dbClient.db(instituteCode).collection("Asset");
+      var result;
+
+      switch(reportType) {
+        case DESCRIPTION: {
+          result = await collection.aggregate([
+            {
+              $project: {
+                assetCode: 1,
+                modelID: 1,
+                purchaseCost: 1,
+                activeCount: {
+                  $cond: [{$eq: ["$status", ACTIVE_STRING]}, 1, 0]
+                },
+                inactiveCount: {
+                  $cond: [{$ne: ["$status", ACTIVE_STRING]}, 1, 0]
+                }
+              }
+            },
+            {
+              $lookup: {from: "Model", localField: "modelID", foreignField: "_id", as: "model"}
+            },
+            {
+              $group: {
+                _id: "$modelID",
+                description: {$first: "$model.UMDNSCode"},
+                assetCode: {$first:"$assetCode"},
+                active: {$sum: "$activeCount"},
+                inactive: {$sum: "$inactiveCount"},
+                totalCost: {$sum: "$purchaseCost"}
+              }
+            }
+          ]).toArray();
+          break;
+        }
+        case DEPARTMENT: {
+          result = await collection.aggregate([
+            {
+              $project: {
+                departmentID: 1,
+                purchaseCost: 1,
+                activeCount: {
+                  $cond: [{$eq: ["$status", ACTIVE_STRING]}, 1, 0]
+                },
+                inactiveCount: {
+                  $cond: [{$ne: ["$status", ACTIVE_STRING]}, 1, 0]
+                }
+              }
+            },
+            {
+              $lookup: {from: "Department", localField: "departmentID", foreignField: "_id", as: "dep"}
+            },
+            {
+              $group: {
+                _id: "$departmentID",
+                department: {$first: "$dep.departmentName"},
+                active: {$sum: "$activeCount"},
+                inactive: {$sum: "$inactiveCount"},
+                totalCost: {$sum: "$purchaseCost"}
+              }
+            }
+          ]).toArray();
+          break;
+        }
+        case FUNCTIONALITY: {
+          result = await collection.aggregate([
+            {
+              $project: {
+                activeCount: {
+                  $cond: [{$eq: ["$status", ACTIVE_STRING]}, 1, 0]
+                },
+                inactiveCount: {
+                  $cond: [{$ne: ["$status", ACTIVE_STRING]}, 1, 0]
+                }
+              }
+            },
+            {
+              $group: {
+                _id: "null",
+                active: {$sum: "$activeCount"},
+                inactive: {$sum: "$inactiveCount"},
+                totalDevices: {$sum: 1}
+              }
+            }
+          ]).toArray();
+          break;
+        }
+        case INFLOW: {
+          //The year value should also be included in the request object in find
+          if (!year) throw new Error("Invalid Query Syntax: no year provided");
+
+          result = await collection.aggregate([
+            {
+              $match: {
+                acceptanceDate: {
+                  $gte: new Date(`${Number(year)}-01-01T00:00:00.000Z`),
+                  $lt: new Date(`${Number(year)+1}-01-01T00:00:00.000Z`)
+                }
+              }
+            },
+            {
+              $project: {
+                assetCode: 1, 
+                modelID: 1,
+                purchaseCost: 1,
+                activeCount: {
+                  $cond: [{$eq: ["$status", ACTIVE_STRING]}, 1, 0]
+                },
+                inactiveCount: {
+                  $cond: [{$ne: ["$status", ACTIVE_STRING]}, 1, 0]
+                }
+              }
+            },
+            {
+              $lookup: {from: "Model", localField: "modelID", foreignField: "_id", as: "model"}
+            },
+            {
+              $group: {
+                _id: "$modelID",
+                description: {$first: "$model.UMDNSCode"},
+                assetCode: {$first:"$assetCode"},
+                active: {$sum: "$activeCount"},
+                inactive: {$sum: "$inactiveCount"},
+                totalCost: {$sum: "$purchaseCost"}
+              }
+            }
+          ]).toArray();
+          break;
+        }
+      }
+
+    } else {
+      throw new Error("Invalid Report Type: Selected report type is not valid.");
+    };
+
+    //Response Packet
+    res.Type = "RESPONSE";
+    res.Response = {
+      records: result,
+      success: true,
+      message: result.length + " records found in " + ASSETS,
+    };
+  
+  } catch (error) {
+    //Log Error
+    console.log((await TIMESTAMP()) + `: API-<RECORDS>-E001 : ${error}`);
+
+    //Error Request Packet
+    res.Type = "ERROR";
+    res.Response = {
+      Request_ID: req.ID,
+      Error_Code: "API-FIND-E001",
+      Error_Msg: "FIND_API: Failed to execute db query",
+    };
+  }
+
+  return res;
+};
