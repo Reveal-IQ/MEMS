@@ -43,7 +43,7 @@ Description: < Describe the application >
         <AssetDetails />
         <AssetLocation />
         <MaintenanceAndSupport />
-        <!-- <PurchaseDetails /> -->
+        <PurchaseDetails />
         <!--<MultipleEquipmentEntry /> -->
         <AdditionalInformation />
         <div class="d-flex justify-content-center py-3">
@@ -157,6 +157,7 @@ export default {
         purchaseOrderNumber: null,
       },
       acceptanceDate: null,
+      purchaseCost: null,
     });
 
     const MaintenanceAndSupport = ref({
@@ -212,6 +213,7 @@ export default {
               supportTeam: MaintenanceAndSupport.value.supportTeam,
               purchaseOrderID: GlobalAssetInformation.value.purchaseOrderID,
               acceptanceDate: PurchaseDetails.value.acceptanceDate,
+              purchaseCost: PurchaseDetails.value.purchaseCost,
               vendorID: GlobalAssetInformation.value.vendorID,
               comment: AdditionalInformation.value.comment,
             }).serialize(),

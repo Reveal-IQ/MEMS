@@ -1,7 +1,17 @@
 <template>
   <Section sectionTitle="Equipment Acquisition">
-    <!-- Purchase Order Number -->
     <div class="col-lg-6 mb-3">
+      <Input
+        label="Purchase Cost"
+        type="number"
+        id="purchaseCost"
+        placeholder="Enter Purchase Cost"
+        v-model="PurchaseDetails.purchaseCost"
+      />
+    </div>
+
+    <!-- Purchase Order Number -->
+    <!-- <div class="col-lg-6 mb-3">
       <label for="purchaseOrder" class="form-label"
         >Purchase Order Number</label
       >
@@ -12,10 +22,10 @@
       >
         <option selected>Select PO</option>
       </select>
-    </div>
+    </div> -->
 
     <!-- Acceptance Date -->
-    <div class="col-lg-6">
+    <!-- <div class="col-lg-6">
       <Input
         label="Acceptance Date"
         type="date"
@@ -23,9 +33,9 @@
         placeholder="Select Acceptance Date"
         v-model="PurchaseDetails.acceptanceDate"
       />
-    </div>
+    </div> -->
 
-    <div class="col-lg-12">
+    <!-- <div class="col-lg-12">
       <div class="py-3 px-2">
         <span class="fw-bold">PO Details</span>
         <div class="d-flex flex-column gap-1">
@@ -70,7 +80,7 @@
           </tbody>
         </table>
       </div>
-    </div>
+    </div> -->
   </Section>
 </template>
 
