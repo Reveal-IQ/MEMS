@@ -16,8 +16,8 @@ Description: < Describe the application >
       >
         <div class="mt-3">
           <Header
-            title="Equipment Model"
-            subTitle="Create a new equipment model with this form"
+            title="Facility Department"
+            subTitle="Create a new department with this form"
           />
         </div>
         <div class="d-flex gap-2 d-md-block">
@@ -25,7 +25,7 @@ Description: < Describe the application >
             BtnName="Return"
             :icon="'arrow-left'"
             backgroundColor="none"
-            @click="goBack"
+            @click="changePage('siteDescription')"
             class="text-secondary btn-sm"
           />
 
