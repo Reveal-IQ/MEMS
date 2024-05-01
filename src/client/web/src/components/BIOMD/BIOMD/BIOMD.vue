@@ -66,6 +66,74 @@ Description: < Describe the application >
       </div>
     </div>
   </div>
+  <div v-if="compState === 'reportsPage'" class="RevealContainer_dash">
+    <div class="container">
+      <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
+      <div class="row">
+        <REPORTS @update-page="updatePage" />
+      </div>
+    </div>
+  </div>
+  <div v-if="compState === 'reportsList'" class="RevealContainer_dash">
+    <div class="container">
+      <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
+      <div class="row">
+        <REPORTSList
+          @update-page="updatePage"
+          :facilityName="pageProps.facilityName"
+          :facilityID="pageProps.facilityID"
+        />
+      </div>
+    </div>
+  </div>
+  <div v-if="compState === 'reportsSummary1'" class="RevealContainer_dash">
+    <div class="container">
+      <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
+      <div class="row">
+        <REPORTSSummary1
+          @update-page="updatePage"
+          :facilityName="pageProps.facilityName"
+          :facilityID="pageProps.facilityID"
+        />
+      </div>
+    </div>
+  </div>
+  <div v-if="compState === 'reportsSummary2'" class="RevealContainer_dash">
+    <div class="container">
+      <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
+      <div class="row">
+        <REPORTSSummary2
+          @update-page="updatePage"
+          :facilityName="pageProps.facilityName"
+          :facilityID="pageProps.facilityID"
+        />
+      </div>
+    </div>
+  </div>
+  <div v-if="compState === 'functionalityIndex'" class="RevealContainer_dash">
+    <div class="container">
+      <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
+      <div class="row">
+        <REPORTSFunctionality
+          @update-page="updatePage"
+          :facilityName="pageProps.facilityName"
+          :facilityID="pageProps.facilityID"
+        />
+      </div>
+    </div>
+  </div>
+  <div v-if="compState === 'annualInflow'" class="RevealContainer_dash">
+    <div class="container">
+      <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
+      <div class="row">
+        <REPORTSAnnualInflow
+          @update-page="updatePage"
+          :facilityName="pageProps.facilityName"
+          :facilityID="pageProps.facilityID"
+        />
+      </div>
+    </div>
+  </div>
 
   <div v-if="compState === 'siteDescription'" class="RevealContainer_dash">
     <div class="container">
@@ -120,6 +188,12 @@ import VENDOR from "../BIOMD/BIOMD-VENDOR/VENDOR.vue";
 import MODEL from "../BIOMD/BIOMD-MODEL/MODEL.vue";
 import MANUFACTURER from "../BIOMD/BIOMD-MANUFACTURER/MANUFACTURER.vue";
 import DASHBOARD from "../BIOMD/BIOMD-DASHBOARD/DASHBOARD.vue";
+import REPORTS from "../BIOMD/BIOMD-REPORTS/REPORTS.vue";
+import REPORTSList from "../BIOMD/BIOMD-REPORTS/REPORTS-List.vue";
+import REPORTSSummary1 from "../BIOMD/BIOMD-REPORTS/REPORTS-Summary1.vue";
+import REPORTSSummary2 from "../BIOMD/BIOMD-REPORTS/REPORTS-Summary2.vue";
+import REPORTSFunctionality from "../BIOMD/BIOMD-REPORTS/REPORTS-Functionality.vue";
+import REPORTSAnnualInflow from "../BIOMD/BIOMD-REPORTS/REPORTS-AnnualInflow.vue";
 import Landing from "../BIOMD/BIOMD-UI/UI-Landing.vue";
 import SuccessPage from "../BIOMD/BIOMD-UI/UI-SuccessPage.vue";
 import DASHBOARDModel from "./BIOMD-DASHBOARD/DASHBOARD-Model.vue";
@@ -135,6 +209,12 @@ export default {
     MODEL,
     MANUFACTURER,
     DASHBOARD,
+    REPORTS,
+    REPORTSList,
+    REPORTSSummary1,
+    REPORTSSummary2,
+    REPORTSFunctionality,
+    REPORTSAnnualInflow,
     Landing,
     SuccessPage,
     DASHBOARDModel,

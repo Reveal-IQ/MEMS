@@ -31,6 +31,12 @@
         @click="changePage('siteDescription')"
         >Facility</small
       >
+      <small
+        class="text-secondary"
+        style="cursor: pointer"
+        @click="changePage('reportsPage')"
+        >Reports</small
+      >
     </nav>
 
     <div class="d-flex flex-column p-2 mt-4">
