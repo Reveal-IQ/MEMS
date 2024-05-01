@@ -28,7 +28,7 @@
       <small
         class="text-secondary"
         style="cursor: pointer"
-        @click="changePage('facilityInfo')"
+        @click="changePage('siteDescription')"
         >Facility</small
       >
     </nav>
