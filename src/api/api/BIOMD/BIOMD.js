@@ -60,13 +60,6 @@ const OPERATORS = ["eq", "in", "gt", "lt", "sb", "eq_id"];
 const DEFAULT_LIMIT_COUNT = 1000;
 const DEFAULT_SKIP_COUNT = 0;
 
-const DESCRIPTION = "description";
-const INFLOW = "inflow";
-const DEPARTMENT = "department";
-const FUNCTIONALITY = "functionality";
-
-const REPORT_TYPES = [DESCRIPTION, INFLOW, DEPARTMENT, FUNCTIONALITY];
-
 //Common Create Function
 const createOne = async function (doc, dbClient, collection) {
   const result = await dbClient.db(instituteCode).collection(collection).insertOne(doc);
@@ -424,8 +417,15 @@ module.exports.LIST_VENDORS = async function (req, dbClient) {
   return res;
 };
 
-module.exports.RECORDS = async function (req, dbClient) {
+module.exports.GET_REPORTS = async function (req, dbClient) {
+  const DESCRIPTION = "description";
+  const INFLOW = "inflow";
+  const DEPARTMENT = "department";
+  const FUNCTIONALITY = "functionality";
 
+  const REPORT_TYPES = [DESCRIPTION, INFLOW, DEPARTMENT, FUNCTIONALITY];
+  const ACTIVE_STRING = "Active Deployed";
+  
   try {
     //Confirm Packet Received
     console.log(
@@ -435,15 +435,12 @@ module.exports.RECORDS = async function (req, dbClient) {
 
     //Copy Requester Information
     var res = Object.assign({}, req);
-
-    //req object defintion
-    var find = Object.assign({}, req.Request.find);
-
-    var reportType = find.report;
+    const reportType = res.Request.reportType;
+    const year = res.Request.reportSpecs.year || null;
 
     // Check report type (This should be included in the request inside find)
     if (REPORT_TYPES.includes(reportType)) {
-      const ACTIVE_STRING = "Active Deployed";
+      
       const collection = await dbClient.db(instituteCode).collection("Asset");
       var result;
 
@@ -452,8 +449,8 @@ module.exports.RECORDS = async function (req, dbClient) {
           result = await collection.aggregate([
             {
               $project: {
-                assetCode: 1, 
-                description: 1,
+                assetCode: 1,
+                modelID: 1,
                 purchaseCost: 1,
                 activeCount: {
                   $cond: [{$eq: ["$status", ACTIVE_STRING]}, 1, 0]
@@ -464,9 +461,13 @@ module.exports.RECORDS = async function (req, dbClient) {
               }
             },
             {
+              $lookup: {from: "Model", localField: "modelID", foreignField: "_id", as: "model"}
+            },
+            {
               $group: {
-                _id: "$description",
-                assetCode: {"$first":"$assetCode"},
+                _id: "$modelID",
+                description: {$first: "$model.UMDNSCode"},
+                assetCode: {$first:"$assetCode"},
                 active: {$sum: "$activeCount"},
                 inactive: {$sum: "$inactiveCount"},
                 totalCost: {$sum: "$purchaseCost"}
@@ -490,8 +491,12 @@ module.exports.RECORDS = async function (req, dbClient) {
               }
             },
             {
+              $lookup: {from: "Department", localField: "departmentID", foreignField: "_id", as: "dep"}
+            },
+            {
               $group: {
                 _id: "$departmentID",
+                department: {$first: "$dep.departmentName"},
                 active: {$sum: "$activeCount"},
                 inactive: {$sum: "$inactiveCount"},
                 totalCost: {$sum: "$purchaseCost"}
@@ -525,7 +530,6 @@ module.exports.RECORDS = async function (req, dbClient) {
         }
         case INFLOW: {
           //The year value should also be included in the request object in find
-          var year = find.year || null;
           if (!year) throw new Error("Invalid Query Syntax: no year provided");
 
           result = await collection.aggregate([
@@ -540,7 +544,7 @@ module.exports.RECORDS = async function (req, dbClient) {
             {
               $project: {
                 assetCode: 1, 
-                description: 1,
+                modelID: 1,
                 purchaseCost: 1,
                 activeCount: {
                   $cond: [{$eq: ["$status", ACTIVE_STRING]}, 1, 0]
@@ -551,9 +555,13 @@ module.exports.RECORDS = async function (req, dbClient) {
               }
             },
             {
+              $lookup: {from: "Model", localField: "modelID", foreignField: "_id", as: "model"}
+            },
+            {
               $group: {
-                _id: "$description",
-                assetCode: {"$first":"$assetCode"},
+                _id: "$modelID",
+                description: {$first: "$model.UMDNSCode"},
+                assetCode: {$first:"$assetCode"},
                 active: {$sum: "$activeCount"},
                 inactive: {$sum: "$inactiveCount"},
                 totalCost: {$sum: "$purchaseCost"}
