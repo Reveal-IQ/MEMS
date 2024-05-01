@@ -1,6 +1,6 @@
 {
   "name": "mems-client",
-  "version": "dev",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve --skip-plugins @vue/cli-plugin-eslint --port 8080",
