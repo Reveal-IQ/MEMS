@@ -56,11 +56,8 @@
         class="fs-4 fw-normal"
       />
     </div>
-    <div class="mt-2 table-responsive" v-for="asset in assetList">
-      <table
-        class="table table-responsive table-borderless mb-2"
-        v-if="props.facilityName == asset.facilityName"
-      >
+    <div class="mt-2 table-responsive" v-for="asset in reportList">
+      <table class="table table-responsive table-borderless mb-2">
         <thead>
           <tr style="background-color: #f5f6f6">
             <th scope="col" width="20%">
@@ -86,7 +83,7 @@
               <small>{{ asset.UMDNSCode }}</small>
             </td>
             <td>
-              <small>{{ asset.deviceDescription }}</small>
+              <small></small>
             </td>
             <td><small>15</small></td>
             <td><small>$15,000</small></td>
@@ -107,6 +104,41 @@ const sendSocketReq = (request) => {
   store.dispatch("sendSocketReq", request);
 };
 const assetList = ref([]);
+const reportList = ref([]);
+
+const fetchReport = async () => {
+  console.log("calling function");
+  try {
+    sendSocketReq({
+      data: {
+        Expiry: 20000,
+        Type: "REQUEST",
+        Request: {
+          Module: "MEMS",
+          ServiceCode: "BIOMD",
+          API: "GET_REPORTS",
+          reportType: "description",
+          reportSpecs: { year: 2024 },
+        },
+      },
+      callback: (res) => {
+        if (res.Type === "RESPONSE") {
+          console.log("Response Packet -->", res.Response);
+          reportList.value = res.Response.records;
+        } else if (res.Type === "ERROR") {
+          Type: "ERROR";
+          Response: {
+            Error_Code: "API-CREATE_RECORD-E001";
+            Error_Msg: "CREATE_RECORD_API: Failed to execute query";
+          }
+        }
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const fetchAsset = async () => {
   try {
     sendSocketReq({
@@ -177,6 +209,7 @@ const changePage = async (page, props) => {
 };
 const props = defineProps(["facilityName", "facilityID"]);
 onMounted(() => {
+  fetchReport();
   fetchAsset();
 });
 </script>
