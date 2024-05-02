@@ -37,22 +37,22 @@
     <div class="row">
       <UIStatCard
         cardTitle="Overall Departments"
-        statisticsValue="12"
+        :statisticsValue="reportList.length"
         class="fs-4 fw-normal"
       />
       <UIStatCard
         cardTitle="Overall Active Devices"
-        statisticsValue="40"
+        :statisticsValue="overallActive"
         class="fs-4 fw-normal"
       />
       <UIStatCard
         cardTitle="Overall Value"
-        statisticsValue="$10,000"
+        :statisticsValue="'$' + overallValue"
         class="fs-4 fw-normal"
       />
       <UIStatCard
         cardTitle="Overall Inactive Devices"
-        statisticsValue="10"
+        :statisticsValue="overallInactive"
         class="fs-4 fw-normal"
       />
     </div>
@@ -87,7 +87,7 @@
               <small>{{ record.active }}</small>
             </td>
             <td>
-              <small>{{ record.totalCost }}</small>
+              <small>{{"$" + record.totalCost }}</small>
             </td>
             <td>
               <small>{{ record.inactive }}</small>
@@ -111,6 +111,9 @@ const sendSocketReq = (request) => {
 };
 
 const reportList = ref([]);
+const overallValue = ref(0);
+const overallActive = ref(0);
+const overallInactive = ref(0);
 
 const fetchReport = async () => {
   console.log("calling function");
@@ -130,7 +133,17 @@ const fetchReport = async () => {
         if (res.Type === "RESPONSE") {
           console.log("Response Packet -->", res.Response);
           reportList.value = res.Response.records;
-          console.log(reportList.value);
+          
+           //calculate overall metrics (should probably be pulled out into a seperate services just to be clean)
+          overallActive.value = 0;
+          overallInactive.value = 0;
+          overallValue.value = 0;
+          var assetList = reportList.value;
+          assetList.forEach((asset) => {
+            overallValue.value += asset.totalCost;
+            overallActive.value += asset.active;
+            overallInactive.value += asset.inactive;
+          });
         } else if (res.Type === "ERROR") {
           Type: "ERROR";
           Response: {

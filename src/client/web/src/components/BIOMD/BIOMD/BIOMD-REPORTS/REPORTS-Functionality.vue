@@ -94,7 +94,6 @@ const fetchReport = async () => {
           console.log("Response Packet -->", res.Response);
           reportList.value = res.Response.records;
           let asset = reportList.value[0];
-          console.log(asset)
           percentage.value = (asset.active/(asset.active + asset.inactive))*100;
         } else if (res.Type === "ERROR") {
           Type: "ERROR";

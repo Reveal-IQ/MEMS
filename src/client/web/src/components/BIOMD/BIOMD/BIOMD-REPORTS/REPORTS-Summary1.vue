@@ -37,22 +37,22 @@
     <div class="row">
       <UIStatCard
         cardTitle="Overall Device Description"
-        statisticsValue="50"
+        :statisticsValue="reportList.length"
         class="fs-4 fw-normal"
       />
       <UIStatCard
         cardTitle="Overall Active Devices"
-        statisticsValue="40"
+        :statisticsValue="overallActive"
         class="fs-4 fw-normal"
       />
       <UIStatCard
         cardTitle="Overall Value"
-        statisticsValue="$20,000"
+        :statisticsValue="'$' + overallValue"
         class="fs-4 fw-normal"
       />
       <UIStatCard
         cardTitle="Overall Inactive Devices"
-        statisticsValue="10"
+        :statisticsValue="overallInactive"
         class="fs-4 fw-normal"
       />
     </div>
@@ -86,7 +86,7 @@
               <small>{{ asset.description }}</small>
             </td>
             <td><small>{{ asset.active }}</small></td>
-            <td><small>{{ asset.totalCost }}</small></td>
+            <td><small>{{"$" + asset.totalCost }}</small></td>
             <td><small>{{ asset.inactive }}</small></td>
           </tr>
         </tbody>
@@ -105,6 +105,9 @@ const sendSocketReq = (request) => {
 };
 const assetList = ref([]);
 const reportList = ref([]);
+const overallValue = ref(0);
+const overallActive = ref(0);
+const overallInactive = ref(0);
 
 const fetchReport = async () => {
   console.log("calling function");
@@ -124,6 +127,17 @@ const fetchReport = async () => {
         if (res.Type === "RESPONSE") {
           console.log("Response Packet -->", res.Response);
           reportList.value = res.Response.records;
+
+          //calculate overall metrics (should probably be pulled out into a seperate services just to be clean)
+          overallActive.value = 0;
+          overallInactive.value = 0;
+          overallValue.value = 0;
+          var assetList = reportList.value;
+          assetList.forEach((asset) => {
+            overallValue.value += asset.totalCost;
+            overallActive.value += asset.active;
+            overallInactive.value += asset.inactive;
+          });
         } else if (res.Type === "ERROR") {
           Type: "ERROR";
           Response: {

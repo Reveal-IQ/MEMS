@@ -579,14 +579,16 @@ module.exports.GET_REPORTS = async function (req, dbClient) {
                 UMDNSCode: {$first: "$model.UMDNSCode"},
                 acceptedDevices: {$sum: 1},
                 totalCost: {$sum: "$purchaseCost"}
-              },
+              }
             },
             {
               $project: {
                 description: {$arrayElemAt: ["$description", 0]},
                 UMDNSCode: {$arrayElemAt: ["$UMDNSCode", 0]},
                 acceptedDevices: 1,
-                totalCost: 1
+                totalCost: 1,
+                overallValue: 1,
+                overallDevices: 1
               }
             }
           ]).toArray();

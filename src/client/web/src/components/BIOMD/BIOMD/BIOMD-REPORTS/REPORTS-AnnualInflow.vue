@@ -62,12 +62,12 @@
     <div class="row">
       <UIStatCard
         cardTitle="Overall Accepted Devices"
-        statisticsValue="40"
+        :statisticsValue="overallDevices"
         class="fs-4 fw-normal"
       />
       <UIStatCard
         cardTitle="Overall Value"
-        statisticsValue="$10,000"
+        :statisticsValue="'$'+overallValue"
         class="fs-4 fw-normal"
       />
     </div>
@@ -98,7 +98,7 @@
               <small>{{ asset.description }}</small>
             </td>
             <td><small>{{ asset.acceptedDevices }}</small></td>
-            <td><small>{{ asset.totalCost }}</small></td>
+            <td><small>{{ "$" + asset.totalCost }}</small></td>
           </tr>
         </tbody>
       </table>
@@ -127,6 +127,8 @@ const getYearsList = () => {
 };
 
 const reportList = ref([]);
+const overallDevices = ref(0);
+const overallValue = ref(0);
 
 const fetchReport = async () => {
   console.log("calling function");
@@ -149,6 +151,14 @@ const fetchReport = async () => {
         if (res.Type === "RESPONSE") {
           console.log("Response Packet -->", res.Response);
           reportList.value = res.Response.records;
+          //calculate overall devices and value (should probably be pulled out into a seperate services just to be clean)
+          overallDevices.value = 0;
+          overallValue.value = 0;
+          var assetList = reportList.value;
+          assetList.forEach((asset) => {
+            overallValue.value += asset.totalCost;
+            overallDevices.value += asset.acceptedDevices;
+          });
         } else if (res.Type === "ERROR") {
           Type: "ERROR";
           Response: {
