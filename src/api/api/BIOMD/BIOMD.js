@@ -436,7 +436,7 @@ module.exports.GET_REPORTS = async function (req, dbClient) {
     //Copy Requester Information
     var res = Object.assign({}, req);
     const reportType = res.Request.reportType;
-    const year = res.Request.reportSpecs.year || null;
+    const year = res.Request.reportSpecs ? res.Request.reportSpecs.year : null;
 
     // Check report type (This should be included in the request inside find)
     if (REPORT_TYPES.includes(reportType)) {
@@ -449,7 +449,6 @@ module.exports.GET_REPORTS = async function (req, dbClient) {
           result = await collection.aggregate([
             {
               $project: {
-                assetCode: 1,
                 modelID: 1,
                 purchaseCost: 1,
                 activeCount: {
@@ -464,10 +463,13 @@ module.exports.GET_REPORTS = async function (req, dbClient) {
               $lookup: {from: "Model", localField: "modelID", foreignField: "_id", as: "model"}
             },
             {
+              $lookup: {from: "UMDNS", localField: "model.UMDNSCode", foreignField: "code", as: "umdns"}
+            },
+            {
               $group: {
                 _id: "$modelID",
-                description: {$first: "$model.UMDNSCode"},
-                assetCode: {$first:"$assetCode"},
+                description: {$first: "$umdns.description"},
+                UMDNSCode: {$first: "$model.UMDNSCode"},
                 active: {$sum: "$activeCount"},
                 inactive: {$sum: "$inactiveCount"},
                 totalCost: {$sum: "$purchaseCost"}
@@ -543,7 +545,6 @@ module.exports.GET_REPORTS = async function (req, dbClient) {
             },
             {
               $project: {
-                assetCode: 1, 
                 modelID: 1,
                 purchaseCost: 1,
                 activeCount: {
@@ -558,10 +559,13 @@ module.exports.GET_REPORTS = async function (req, dbClient) {
               $lookup: {from: "Model", localField: "modelID", foreignField: "_id", as: "model"}
             },
             {
+              $lookup: {from: "UMDNS", localField: "model.UMDNSCode", foreignField: "code", as: "umdns"}
+            },
+            {
               $group: {
                 _id: "$modelID",
-                description: {$first: "$model.UMDNSCode"},
-                assetCode: {$first:"$assetCode"},
+                description: {$first: "$umdns.description"},
+                UMDNSCode: {$first: "$model.UMDNSCode"},
                 active: {$sum: "$activeCount"},
                 inactive: {$sum: "$inactiveCount"},
                 totalCost: {$sum: "$purchaseCost"}
