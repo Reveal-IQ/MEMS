@@ -474,6 +474,15 @@ module.exports.GET_REPORTS = async function (req, dbClient) {
                 inactive: {$sum: "$inactiveCount"},
                 totalCost: {$sum: "$purchaseCost"}
               }
+            },
+            {
+              $project: {
+                description: {$arrayElemAt: ["$description", 0]},
+                UMDNSCode: {$arrayElemAt: ["$UMDNSCode", 0]},
+                active: 1,
+                inactive: 1,
+                totalCost: 1
+              }
             }
           ]).toArray();
           break;
@@ -502,6 +511,14 @@ module.exports.GET_REPORTS = async function (req, dbClient) {
                 active: {$sum: "$activeCount"},
                 inactive: {$sum: "$inactiveCount"},
                 totalCost: {$sum: "$purchaseCost"}
+              }
+            },
+            {
+              $project: {
+                department: {$arrayElemAt: ["$department", 0]},
+                active: 1,
+                inactive: 1,
+                totalCost: 1
               }
             }
           ]).toArray();
@@ -539,20 +556,14 @@ module.exports.GET_REPORTS = async function (req, dbClient) {
               $match: {
                 acceptanceDate: {
                   $gte: new Date(`${Number(year)}-01-01T00:00:00.000Z`),
-                  $lt: new Date(`${Number(year)+1}-01-01T00:00:00.000Z`)
+                  $lte: new Date()
                 }
               }
             },
             {
               $project: {
                 modelID: 1,
-                purchaseCost: 1,
-                activeCount: {
-                  $cond: [{$eq: ["$status", ACTIVE_STRING]}, 1, 0]
-                },
-                inactiveCount: {
-                  $cond: [{$ne: ["$status", ACTIVE_STRING]}, 1, 0]
-                }
+                purchaseCost: 1
               }
             },
             {
@@ -569,6 +580,16 @@ module.exports.GET_REPORTS = async function (req, dbClient) {
                 active: {$sum: "$activeCount"},
                 inactive: {$sum: "$inactiveCount"},
                 totalCost: {$sum: "$purchaseCost"}
+              }
+            },
+            {
+              $project: {
+                description: {$arrayElemAt: ["$description", 0]},
+                UMDNSCode: {$arrayElemAt: ["$UMDNSCode", 0]},
+                acceptedDevices: 1,
+                totalCost: 1,
+                overallValue: 1,
+                overallDevices: 1
               }
             }
           ]).toArray();

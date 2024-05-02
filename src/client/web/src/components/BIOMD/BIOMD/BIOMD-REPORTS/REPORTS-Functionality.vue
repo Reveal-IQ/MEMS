@@ -33,35 +33,92 @@
     </div>
 
     <div class="row">
-      <UIStatCard cardTitle="Functionality Index" statisticsValue="40%" />
+      <UIStatCard cardTitle="Functionality Index" :statisticsValue="percentage + '%'" />
     </div>
-    <div class="row mt-4">
-      <UIStatCard
-        cardTitle="Active Devices"
-        statisticsValue="60"
-        class="fs-5 fw-normal"
-      />
-      <UIStatCard
-        cardTitle="Inactive Devices"
-        statisticsValue="90"
-        class="fs-5 fw-normal"
-      />
-      <UIStatCard
-        cardTitle="Total Devices"
-        statisticsValue="150"
-        class="fs-5 fw-normal"
-      />
+    <div class="mt-2 table-responsive" v-for="asset in reportList">
+      <table class="table table-responsive table-borderless mb-2">
+        <thead>
+          <tr style="background-color: #f5f6f6">
+            <th scope="col">
+              <small class="text-secondary fw-normal">Active Devices</small>
+            </th>
+            <th scope="col">
+              <small class="text-secondary fw-normal">Total Devices</small>
+            </th>
+            <th scope="col">
+              <small class="text-secondary fw-normal">Inactive Devices</small>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background-color: #f5f6f6">
+            <td><small>{{ asset.active }}</small></td>
+            <td><small>{{ asset.active + asset.inactive }}</small></td>
+            <td><small>{{ asset.inactive }}</small></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </template>
 
 <script setup>
+import { ref, onMounted } from "vue";
 import UIStatCard from "../BIOMD-UI/UI-StatCard";
+import { useStore } from "vuex";
+const store = useStore();
+
+const sendSocketReq = (request) => {
+  store.dispatch("sendSocketReq", request);
+};
+
+const reportList = ref([]);
+const percentage = ref();
+
+const fetchReport = async () => {
+  console.log("calling function");
+  try {
+    sendSocketReq({
+      data: {
+        Expiry: 20000,
+        Type: "REQUEST",
+        Request: {
+          Module: "MEMS",
+          ServiceCode: "BIOMD",
+          API: "GET_REPORTS",
+          reportType: "functionality",
+        },
+      },
+      callback: (res) => {
+        if (res.Type === "RESPONSE") {
+          console.log("Response Packet -->", res.Response);
+          reportList.value = res.Response.records;
+          let asset = reportList.value[0];
+          percentage.value = (asset.active/(asset.active + asset.inactive))*100;
+        } else if (res.Type === "ERROR") {
+          Type: "ERROR";
+          Response: {
+            Error_Code: "API-CREATE_RECORD-E001";
+            Error_Msg: "CREATE_RECORD_API: Failed to execute query";
+          }
+        }
+      },
+    });
+    
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const emit = defineEmits(["updatePage"]);
 const changePage = async (page, props) => {
   emit("updatePage", page, props);
 };
+
 const props = defineProps(["facilityName", "facilityID"]);
+onMounted(() => {
+  fetchReport();
+});
 </script>
 
 <style lang="scss" scoped></style>

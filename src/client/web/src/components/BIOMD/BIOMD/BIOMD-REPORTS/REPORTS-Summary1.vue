@@ -37,30 +37,27 @@
     <div class="row">
       <UIStatCard
         cardTitle="Overall Device Description"
-        statisticsValue="50"
+        :statisticsValue="reportList.length"
         class="fs-4 fw-normal"
       />
       <UIStatCard
         cardTitle="Overall Active Devices"
-        statisticsValue="40"
+        :statisticsValue="overallActive"
         class="fs-4 fw-normal"
       />
       <UIStatCard
         cardTitle="Overall Value"
-        statisticsValue="$20,000"
+        :statisticsValue="'$' + overallValue"
         class="fs-4 fw-normal"
       />
       <UIStatCard
         cardTitle="Overall Inactive Devices"
-        statisticsValue="10"
+        :statisticsValue="overallInactive"
         class="fs-4 fw-normal"
       />
     </div>
-    <div class="mt-2 table-responsive" v-for="asset in assetList">
-      <table
-        class="table table-responsive table-borderless mb-2"
-        v-if="props.facilityName == asset.facilityName"
-      >
+    <div class="mt-2 table-responsive" v-for="asset in reportList">
+      <table class="table table-responsive table-borderless mb-2">
         <thead>
           <tr style="background-color: #f5f6f6">
             <th scope="col" width="20%">
@@ -86,11 +83,11 @@
               <small>{{ asset.UMDNSCode }}</small>
             </td>
             <td>
-              <small>{{ asset.deviceDescription }}</small>
+              <small>{{ asset.description }}</small>
             </td>
-            <td><small>15</small></td>
-            <td><small>$15,000</small></td>
-            <td><small>12</small></td>
+            <td><small>{{ asset.active }}</small></td>
+            <td><small>{{"$" + asset.totalCost }}</small></td>
+            <td><small>{{ asset.inactive }}</small></td>
           </tr>
         </tbody>
       </table>
@@ -107,6 +104,54 @@ const sendSocketReq = (request) => {
   store.dispatch("sendSocketReq", request);
 };
 const assetList = ref([]);
+const reportList = ref([]);
+const overallValue = ref(0);
+const overallActive = ref(0);
+const overallInactive = ref(0);
+
+const fetchReport = async () => {
+  console.log("calling function");
+  try {
+    sendSocketReq({
+      data: {
+        Expiry: 20000,
+        Type: "REQUEST",
+        Request: {
+          Module: "MEMS",
+          ServiceCode: "BIOMD",
+          API: "GET_REPORTS",
+          reportType: "description",
+        },
+      },
+      callback: (res) => {
+        if (res.Type === "RESPONSE") {
+          console.log("Response Packet -->", res.Response);
+          reportList.value = res.Response.records;
+
+          //calculate overall metrics (should probably be pulled out into a seperate services just to be clean)
+          overallActive.value = 0;
+          overallInactive.value = 0;
+          overallValue.value = 0;
+          var assetList = reportList.value;
+          assetList.forEach((asset) => {
+            overallValue.value += asset.totalCost;
+            overallActive.value += asset.active;
+            overallInactive.value += asset.inactive;
+          });
+        } else if (res.Type === "ERROR") {
+          Type: "ERROR";
+          Response: {
+            Error_Code: "API-CREATE_RECORD-E001";
+            Error_Msg: "CREATE_RECORD_API: Failed to execute query";
+          }
+        }
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const fetchAsset = async () => {
   try {
     sendSocketReq({
@@ -177,6 +222,7 @@ const changePage = async (page, props) => {
 };
 const props = defineProps(["facilityName", "facilityID"]);
 onMounted(() => {
+  fetchReport();
   fetchAsset();
 });
 </script>
