@@ -16,10 +16,16 @@ This guide will have you up and running quickly. Use the following instruction t
 git clone git@github.com:Reveal-IQ/MEMS.git
 ```
 2. Navigate to root folder containg docker compose file. Launch docker containers
-```
-Mac/Windows: docker-compose --project-name MEMS up 
-Linux: docker compose --project-name MEMS up 
-```
+
+  Mac/Windows:
+  ```
+  docker-compose --project-name mems-dev up --build 
+  ```
+  
+  Linux:
+  ```
+  Linux: docker compose --project-name MEMS up 
+  ```
 3. Verify the following containers have launched successfully
  - **reveal/api** : Backend web application
  - **reveal/dmodb01**: MongoDB Database 
