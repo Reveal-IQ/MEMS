@@ -11,7 +11,7 @@
             id="commentSection"
             aria-describedby="basic-addon3"
             placeholder="Enter Comments"
-            v-model="comment"
+            v-model="AdditionalInformation.comment"
           ></textarea>
         </div>
       </div>
@@ -23,7 +23,7 @@
 import { inject } from "vue";
 import Section from "../BIOMD-UI/UI-Section.vue";
 
-const comment = inject("comment");
+const AdditionalInformation = inject("AdditionalInformation");
 </script>
 
 <style lang="scss" scoped>

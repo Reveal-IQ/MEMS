@@ -1,5 +1,5 @@
 <template>
-  <section class="section p-4 rounded">
+  <section class="section p-4 rounded shadow-sm">
     <h5 class="pb-3 fsXl section-title">{{ sectionTitle }}</h5>
     <slot />
   </section>

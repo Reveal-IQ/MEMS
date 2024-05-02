@@ -8,6 +8,9 @@
 */
 
 @import "../../../GLOBAL/Styles/colors.scss";
+::-webkit-scrollbar{ 
+    display: none;
+}
 
 .USLGN-Container{
 	.center {

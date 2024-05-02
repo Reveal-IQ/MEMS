@@ -12,41 +12,39 @@ Description: < Describe the application >
   <div class="RevealContainer">
     <div class="container p-4 m-4">
       <div
-        class="d-lg-flex align-items-center flex-lg-row flex-md-row flex-sm-column justify-content-between"
+        class="d-lg-flex d-md-flex d-sm-flex gap-lg-0 gap-sm-5 align-items-center justify-content-lg-between justify-content-md-between justify-content-sm-center"
       >
-        <div class="d-flex mt-3">
+        <div class="mt-3">
           <Header
             title="New Asset"
             subTitle="Create a new asset with this form"
           />
+          {{ Institute_Code }}
         </div>
-        <div class="d-flex">
-          <span class="d-sm-block">
-            <Btn2
-              BtnName="Return"
-              :icon="'arrow-left'"
-              backgroundColor="none"
-              @click="goBack"
-              class="text-secondary"
-            />
-          </span>
-          <span class="ms-4 d-sm-block">
-            <Btn2
-              BtnName="Dashboard"
-              backgroundColor="#2A94B6"
-              @click="goBack"
-              class="text-light"
-            />
-          </span>
+        <div class="d-flex gap-2 d-md-block">
+          <Btn2
+            BtnName="Return"
+            :icon="'arrow-left'"
+            backgroundColor="none"
+            @click="goBack"
+            class="text-secondary btn-sm"
+          />
+
+          <Btn2
+            BtnName="Dashboard"
+            backgroundColor="#2A94B6"
+            @click="goBack"
+            class="text-light btn-sm"
+          />
         </div>
       </div>
 
       <main>
-        <GeneralInformation />
-        <EquipmentLocation />
+        <AssetDetails />
+        <AssetLocation />
         <MaintenanceAndSupport />
-        <EquipmentAcquisition />
-        <MultipleEquipmentEntry />
+        <PurchaseDetails />
+        <!--<MultipleEquipmentEntry /> -->
         <AdditionalInformation />
         <div class="d-flex justify-content-center py-3">
           <div class="">
@@ -74,12 +72,13 @@ Description: < Describe the application >
 import { useStore } from "vuex"; // Access Vuew Store Variables and Methods
 import { ref, toRefs, provide, computed } from "vue";
 
-import GeneralInformation from "./ASSET-GeneralInformation.vue";
-import EquipmentLocation from "./ASSET-EquipmentLocation.vue";
-import EquipmentAcquisition from "./ASSET-EquipmentAcquisition.vue";
+import AssetDetails from "./ASSET-AssetDetails.vue";
+import AssetLocation from "./ASSET-AssetLocation.vue";
+import PurchaseDetails from "./ASSET-PurchaseDetails.vue";
 import MaintenanceAndSupport from "./ASSET-MaintenanceAndSupport.vue";
 import MultipleEquipmentEntry from "./ASSET-MultipleEquipmentEntry.vue";
 import AdditionalInformation from "./ASSET-AdditionalInformation.vue";
+import { AssetRecord } from "../../../../store/modules/recordSchema";
 
 import Btn from "../BIOMD-UI/UI-Btn.vue";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
@@ -87,12 +86,12 @@ import Header from "../BIOMD-UI/UI-FormHeader.vue";
 
 export default {
   components: {
-    GeneralInformation,
-    EquipmentLocation,
+    AssetDetails,
+    AssetLocation,
     MaintenanceAndSupport,
     AdditionalInformation,
     MultipleEquipmentEntry,
-    EquipmentAcquisition,
+    PurchaseDetails,
     Btn2,
     Btn,
     Header,
@@ -124,33 +123,64 @@ export default {
       });
     }
 
-    const equipmentNumber = ref(null);
-    const commonName = ref(null);
-    const description = ref(null);
-    const serialNumber = ref(null);
-    const modelId = ref(null);
-    const manufacturerId = ref(null);
-    const manufacturerDate = ref(null);
+    const AssetDetails = ref({
+      assetCode: null,
+      selectedParentAsset: { _id: null },
+      serialNumber: null,
+      selectedManufacturer: { manufacturerName: null, _id: null },
+      selectedModel: {
+        modelName: null,
+        _id: null,
+        commonName: null,
+        UMDNSCode: null,
+      },
+      manufactureDate: null,
+      status: "Active Deployed",
+    });
 
-    const facilityId = ref(null);
-    const departmentId = ref(null);
-    const region = ref(null);
-    const district = ref(null);
-    const location = ref(null);
+    const AssetLocation = ref({
+      selectedFacility: {
+        _id: null,
+        name: null,
+      },
+      selectedDepartment: {
+        _id: null,
+        name: null,
+        shortName: null,
+      },
+      locationName: null,
+    });
 
-    const supportTeam = ref(null);
-    const vendorId = ref(null);
-    const status = ref(null);
-    const userManual = ref(false);
-    const technicalManual = ref(false);
+    const PurchaseDetails = ref({
+      selectedPurchaseOrder: {
+        _id: null,
+        purchaseOrderNumber: null,
+      },
+      acceptanceDate: null,
+      purchaseCost: null,
+    });
 
-    const purchaseOrder = ref(null);
-    const project = ref(null);
-    const purchaseCost = ref(null);
-    const purchaseDate = ref(null);
-    const acceptanceDate = ref(null);
-    const warrantyDate = ref(null);
-    const comment = ref(null);
+    const MaintenanceAndSupport = ref({
+      supportTeam: null,
+    });
+
+    const AdditionalInformation = ref({
+      comment: null,
+    });
+
+    const GlobalAssetInformation = ref({
+      parentAssetID: null,
+      manufacturerID: null,
+      modelID: null,
+      facilityID: null,
+      departmentID: null,
+      purchaseOrderID: null,
+      vendorID: null,
+    });
+
+    const changePage = (page) => {
+      emit("updatePage", page);
+    };
 
     // send Socket Request use to send rrequest packet for an API
     const sendSocketReq = (request) => {
@@ -169,41 +199,30 @@ export default {
             ServiceCode: "BIOMD",
             API: "CREATE_RECORD",
             collection: "Asset",
-            record: {
-              assetCode: equipmentNumber.value,
-              commonName: commonName.value,
-              description: description.value,
-              serialNumber: serialNumber.value,
-              model_id: modelId.value,
-              manufacturer_id: manufacturerId.value,
-              manufactureDate: manufacturerDate.value,
-              facility_id: facilityId.value,
-              department: departmentId.value,
-              roomTag: location.value,
-              supportTeam: supportTeam.value,
-              vendor_id: vendorId.value,
-              status: status.value,
-              user_manual: userManual.value,
-              technical_manual: technicalManual.value,
-              purchaseOrderNumber: purchaseOrder.value,
-              project: project.value,
-              purchaseCost: purchaseCost.value,
-              purchaseDate: purchaseDate.value,
-              acceptanceDate: acceptanceDate.value,
-              warrantyDate: warrantyDate.value,
-              generalComment: comment.value,
-            },
+            record: new AssetRecord({
+              assetCode: AssetDetails.value.assetCode,
+              parentAssetID: GlobalAssetInformation.value.parentAssetID,
+              serialNumber: AssetDetails.value.serialNumber,
+              manufacturerID: GlobalAssetInformation.value.manufacturerID,
+              modelID: GlobalAssetInformation.value.modelID,
+              manufactureDate: AssetDetails.value.manufactureDate,
+              status: AssetDetails.value.status,
+              facilityID: GlobalAssetInformation.value.facilityID,
+              departmentID: GlobalAssetInformation.value.departmentID,
+              locationName: AssetLocation.value.locationName,
+              supportTeam: MaintenanceAndSupport.value.supportTeam,
+              purchaseOrderID: GlobalAssetInformation.value.purchaseOrderID,
+              acceptanceDate: PurchaseDetails.value.acceptanceDate,
+              purchaseCost: PurchaseDetails.value.purchaseCost,
+              vendorID: GlobalAssetInformation.value.vendorID,
+              comment: AdditionalInformation.value.comment,
+            }).serialize(),
             Institute_Code: Institute_Code.value, //Dynamically changes when another institute logged in
           },
         },
         callback: (res) => {
           if (res.Type === "RESPONSE") {
-            // Console the Response Packet
-            Response: {
-              Success: TRUE;
-              Collection: "assets";
-              Message: "Created Record";
-            }
+            changePage("success");
 
             console.log("Response Packet -->", res.Response);
             getValues.value = res.Response.Site_Info[0]; //Assigning response values to getValues Object
@@ -220,50 +239,32 @@ export default {
     }
 
     const goBack = () => {
-      emit("updatePage", "landing");
+      emit("updatePage", "dashboard");
     };
 
-    provide("equipmentNumber", equipmentNumber);
-    provide("commonName", commonName);
-    provide("description", description);
-    provide("serialNumber", serialNumber);
-    provide("modelId", modelId);
-    provide("manufacturerId", manufacturerId);
-    provide("manufacturerDate", manufacturerDate);
-
-    provide("facilityId", facilityId);
-    provide("departmentId", departmentId);
-    provide("region", region);
-    provide("district", district);
-    provide("location", location);
-
-    provide("supportTeam", supportTeam);
-    provide("vendorId", vendorId);
-    provide("status", status);
-    provide("userManual", userManual);
-    provide("technicalManual", technicalManual);
-
-    provide("purchaseOrder", purchaseOrder);
-    provide("project", project);
-    provide("purchaseCost", purchaseCost);
-    provide("purchaseDate", purchaseDate);
-    provide("acceptanceDate", acceptanceDate);
-    provide("warrantyDate", warrantyDate);
-    provide("comment", comment);
+    provide("AssetDetails", AssetDetails);
+    provide("AssetLocation", AssetLocation);
+    provide("MaintenanceAndSupport", MaintenanceAndSupport);
+    provide("PurchaseDetails", PurchaseDetails);
+    provide("AdditionalInformation", AdditionalInformation);
+    provide("GlobalAssetInformation", GlobalAssetInformation);
 
     return {
       goBack,
       redirectToPage,
       createRecord,
+      changePage,
     };
   },
 };
 </script>
 
 <style lang="scss" scoped>
+@import "../../../GLOBAL//Styles//colors.scss";
 .RevealContainer {
   min-height: 100vh;
   max-height: 100vh;
+  background-color: $White;
   overflow: scroll;
 }
 

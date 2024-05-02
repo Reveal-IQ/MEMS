@@ -11,6 +11,8 @@
 //Required Libs
 // const { join } = require("path");
 // const media = require(join(CONFIG.Paths.HomeDir, CONFIG.Paths.API, "GLOBAL", "media"));
+const BSON = require('bson');
+const { ObjectId } = require('mongodb');
 const instituteCode = CONFIG.Database.Site_Database.Name;
 
 //Application Info
@@ -37,6 +39,15 @@ module.exports.App_Info = {
   Version_Schema: "022621-V0.1"
 }
 
+const SUPPORTED_COLLECTIONS = [
+  "Manufacturer",
+  "Vendor",
+  "Facility",
+  "Model",
+  "Asset",
+  "Contact",
+  "Department",
+]
 
 const ASSETS = "assets";
 const FACILITIES = "facilities";
@@ -44,7 +55,10 @@ const MANUFACTURERS = "manufacturers";
 const EQUIPMENT_MODELS = "equipment_models";
 const VENDORS = "vendors";
 
-const OPERATORS = ["eq", "in", "gt", "lt", "sb"];
+const OPERATORS = ["eq", "in", "gt", "lt", "sb", "eq_id"];
+
+const DEFAULT_LIMIT_COUNT = 1000;
+const DEFAULT_SKIP_COUNT = 0;
 
 //Common Create Function
 const createOne = async function (doc, dbClient, collection) {
@@ -74,57 +88,37 @@ const isValidOperator = async function (operator) {
 //Create a single BIOMD record
 module.exports.CREATE_RECORD = async function (req, dbClient) {
 
-  //Confirm Packet Received 
+  //Confirm Packet Received
   console.log(await TIMESTAMP() + `: RCU-BIOMD-I001 : CREATE RECORD api processing request packet ID: ${req.ID}`)
 
   //Copy Requester Information
-  var res = Object.assign({}, req);
+  let res = Object.assign({}, req);
 
-  //Decleration
-  var invalidCollection = false;
-  var id = new Object();
-  let collection = req.Request.collection;
+  //Declaration
+  const collection = req.Request.collection;
 
-  try {
-    switch (collection) {
-      case "Manufacturer":
-        insertID = await createOne(req.Request.record, dbClient, "Manufacturer");
-        break;
-      case "Vendor":
-        insertID = await createOne(req.Request.record, dbClient, "Vendor");
-        break;
-      case "Facility":
-        insertID = await createOne(req.Request.record, dbClient, "Facility");
-        break;
-      case "Model":
-        insertID = await createOne(req.Request.record, dbClient, "Model");
-        break;
-      case "Asset":
-        insertID = await createOne(req.Request.record, dbClient, "Asset");
-        break;
-      case "Contact":
-        insertID = await createOne(req.Request.record, dbClient, "Contact");
-        break;
-      default:
-        invalidCollection = true
+  if (SUPPORTED_COLLECTIONS.includes(collection)) {
+    try {
+      const record = BSON.deserialize(Uint8Array.from(req.Request.record));
+      const insertID = await createOne(record, dbClient, collection);
+
+      res.Type = "RESPONSE";
+      res.Response = {
+        insertID: insertID,
+        success: true,
+        message: "Created " + collection + " Record",
+      };
+    } catch (error) {
+      // Record creation failure
+      res.Type = "ERROR";
+      res.Response = {
+        Request_ID: req.ID,
+        Error_Code: "API-BIOMD-E001",
+        Error_Msg: "CREATE_RECORD : Failed to create " + collection + " record",
+      };
     }
-  } catch (error) {
-    res.Type = "ERROR";
-    res.Response = {
-      Request_ID: req.ID,
-      Error_Code: "API-BIOMD-E001",
-      Error_Msg: "CREATE_RECORD : Failed to create " + collection + " record",
-    };
-  }
-
-  if (!invalidCollection) {
-    res.Type = "RESPONSE";
-    res.Response = {
-      insertID: insertID,
-      success: true,
-      message: "Created " + collection + " Record",
-    };
   } else {
+    // Invalid collection
     res.Type = "ERROR";
     res.Response = {
       Request_ID: req.ID,
@@ -190,61 +184,434 @@ module.exports.CREATE_RECORDS = async function (req, dbClient) {
   return res;
 }
 
-//API Create New Vendor
+/**
+ * Find Records API
+ *
+ * @param {*} req Request Object.
+ * @param {*} dbClient Database connection handle.
+ * @returns Response Object.
+ */
 module.exports.FIND_RECORD = async function (req, dbClient) {
+
+  // Copy Requester Information
+  let res = Object.assign({}, req);
+
   try {
-    //Confirm Packet Received
+    // Confirm Packet Received
     console.log(
       (await TIMESTAMP()) +
       `: RCU-BIOMD-I001 : FIND_RECORDS processing request packet ID: ${req.ID}`
     );
 
-    //Copy Requester Information
-    var res = Object.assign({}, req);
 
-    //req object defintion
-    var find = Object.assign({}, req.Request.find);
+    // Request object defaults
+    const find = Object.assign({
+      queries: [],
+      lookups: [],
+      projection: {},
+    }, req.Request.find);
 
     // Check query
-    var queries = find.queries;
-    var createdFindQuery = {};
-    for (let i = 0; i < queries.length; i++) {
-      let qry = queries[i]
-      if (isValidOperator(qry.op)) {
-        switch (qry.op) {
+    const filter_query = find.queries.reduce((query_obj, {field, op, value}) => {
+      if (isValidOperator(op)) {
+        switch (op) {
+          case "eq_id":
+            query_obj[field] = ObjectId(value);
+            break;
           case "eq":
-            createdFindQuery[qry.field] = qry.value;
+            query_obj[field] = value;
             break;
           case "sb":
-            createdFindQuery[qry.field] = { $regex: String(qry.value) };
+            query_obj[field] = { $regex: String(value) };
             break;
         }
       } else {
         throw new Error("Invalid Query Syntax: selected operator is not valid");
       }
-    }
+      return query_obj;
+    }, {});
 
+    // Lookup queries
+    let lookup_projection = {...find.projection};
+    const lookup_queries = find.lookups.reduce((lookup_arr, {collection, localField, foreignField, as}) => {
+      if (SUPPORTED_COLLECTIONS.includes(collection)) {
+        lookup_arr.push({
+          $lookup: {
+            from: collection,
+            localField,
+            foreignField,
+            as,
+          }
+        });
+        lookup_projection[as] = { $arrayElemAt: [ "$" + as , 0] }
+      } else {
+        throw new Error("Invalid Lookup Syntax: collection not supported: " + collection);
+      }
+      return lookup_arr;
+    }, []);
 
     // Perform Find
     const collection = await dbClient.db(instituteCode).collection(find.collection);
-    let limit = req.Request.return_array ? req.Request.max_list : 1;
-    let result = await collection
-      .find(createdFindQuery)
-      .project(find.projection ? find.projection : {})
-      .limit(limit)
-      .toArray();
+    const limit = req.Request.return_array ? req.Request.max_list : 1;
+    const records = await collection.aggregate([
+      { $match: filter_query },
+      { $limit: limit },
+      ...lookup_queries,
+      { $project: lookup_projection },
+      { $project: find.projection },
+    ]).toArray();
+
+    // Response Packet
+    res.Type = "RESPONSE";
+    res.Response = {
+      records,
+      success: true,
+      message: records.length + " record(s) found in " + find.collection,
+    };
+
+  } catch (error) {
+    // Log Error
+    console.log((await TIMESTAMP()) + `: API-<FIND>-E001 : ${error}`);
+
+    // Error Response Packet
+    res.Type = "ERROR";
+    res.Response = {
+      Request_ID: req.ID,
+      Error_Code: "API-FIND-E001",
+      Error_Msg: "FIND_API: Failed to execute db query",
+    };
+  }
+
+  return res;
+};
+
+// List Assets API
+module.exports.LIST_ASSETS = async function (req, dbClient) {
+  try {
+    //Confirm Packet Received
+    console.log(
+      (await TIMESTAMP()) +
+      `: RCU-BIOMD-I001 : LIST_ASSETS processing request packet ID: ${req.ID}`
+    );
+
+    //Copy Requester Information
+    var res = Object.assign({}, req);
+
+    // Perform List query
+    const collection = await dbClient.db(instituteCode).collection("Asset");
+    const projection = (req && req.Request && req.Request.list && req.Request.list.projection) || { "_id": 1 };
+    const limit = (req && req.Request && req.Request.list && req.Request.list.limit) || DEFAULT_LIMIT_COUNT;
+    const skip = (req && req.Request && req.Request.list && req.Request.list.skip) || DEFAULT_SKIP_COUNT;
+    const records = await collection.aggregate([
+      { $skip: skip },
+      { $limit: limit },
+      {
+        $project: {
+          manufacturer_id: { $toObjectId: "$manufacturer_id" },
+          model_id: { $toObjectId: "$model_id" },
+          facility_id: { $toObjectId: "$facility_id" },
+          ...projection
+        },
+      },
+      { $lookup: { from: "Facility", localField: "facility_id", foreignField: "_id", as: "facility" } },
+      { $lookup: { from: "Manufacturer", localField: "manufacturer_id", foreignField: "_id", as: "manufacturer" } },
+      { $lookup: { from: "Model", localField: "model_id", foreignField: "_id", as: "model" } },
+      {
+        $project: {
+          facility: { $arrayElemAt: ["$facility", 0] },
+          manufacturer: { $arrayElemAt: ["$manufacturer", 0] },
+          model: { $arrayElemAt: ["$model", 0] },
+          ...projection
+        }
+      }]).toArray();
+
+    //Response Packet
+    res.Type = "RESPONSE";
+    res.Response = {
+      records,
+      success: true,
+      message: records.length + " records listed from Asset",
+    };
+
+  } catch (error) {
+    //Log Error
+    console.log((await TIMESTAMP()) + `: API-<LIST_ASSETS>-E001 : ${error}`);
+
+    //Error Request Packet
+    res.Type = "ERROR";
+    res.Response = {
+      Request_ID: req.ID,
+      Error_Code: "API-BIOMD-E003",
+      Error_Msg: "LIST_ASSETS: Failed to execute db query",
+    };
+  }
+
+  return res;
+};
+
+// List Vendors API
+module.exports.LIST_VENDORS = async function (req, dbClient) {
+  try {
+    //Confirm Packet Received
+    console.log(
+      (await TIMESTAMP()) +
+      `: RCU-BIOMD-I001 : LIST_VENDORS processing request packet ID: ${req.ID}`
+    );
+
+    //Copy Requester Information
+    var res = Object.assign({}, req);
+
+    // Perform List query
+    const collection = await dbClient.db(instituteCode).collection("Vendor");
+    const projection = (req && req.Request && req.Request.list && req.Request.list.projection) || { "_id": 1 };
+    const limit = (req && req.Request && req.Request.list && req.Request.list.limit) || DEFAULT_LIMIT_COUNT;
+    const skip = (req && req.Request && req.Request.list && req.Request.list.skip) || DEFAULT_SKIP_COUNT;
+    const records = await collection.aggregate([
+      { $skip: skip },
+      { $limit: limit },
+      {
+        $project: {
+          manufacturer_id: {
+            $map: {
+              input: "$manufacturer_id",
+              as: "manufacturer_id",
+              in: {
+                $convert: {
+                  input: "$$manufacturer_id",
+                  to: "objectId"
+                }
+              }
+            }
+          },
+          ...projection
+        }
+      },
+      { $lookup: { from: "Manufacturer", localField: "manufacturer_id", foreignField: "_id", as: "manufacturers" } },
+      {
+        $project: {
+          ...projection
+        }
+      }]).toArray();
+
+    //Response Packet
+    res.Type = "RESPONSE";
+    res.Response = {
+      records,
+      success: true,
+      message: records.length + " records listed from Vendor",
+    };
+
+  } catch (error) {
+    //Log Error
+    console.log((await TIMESTAMP()) + `: API-<LIST_VENDORS>-E001 : ${error}`);
+
+    //Error Request Packet
+    res.Type = "ERROR";
+    res.Response = {
+      Request_ID: req.ID,
+      Error_Code: "API-BIOMD-E004",
+      Error_Msg: "LIST_VENDORS: Failed to execute db query",
+    };
+  }
+
+  return res;
+};
+
+module.exports.GET_REPORTS = async function (req, dbClient) {
+  const DESCRIPTION = "description";
+  const INFLOW = "inflow";
+  const DEPARTMENT = "department";
+  const FUNCTIONALITY = "functionality";
+
+  const REPORT_TYPES = [DESCRIPTION, INFLOW, DEPARTMENT, FUNCTIONALITY];
+  const ACTIVE_STRING = "Active Deployed";
+  
+  try {
+    //Confirm Packet Received
+    console.log(
+      (await TIMESTAMP()) +
+      `: RCU-BIOMD-I001 : RECORDS processing request packet ID: ${req.ID}`
+    );
+
+    //Copy Requester Information
+    var res = Object.assign({}, req);
+    const reportType = res.Request.reportType;
+    const year = res.Request.reportSpecs ? res.Request.reportSpecs.year : null;
+
+    // Check report type (This should be included in the request inside find)
+    if (REPORT_TYPES.includes(reportType)) {
+      
+      const collection = await dbClient.db(instituteCode).collection("Asset");
+      var result;
+
+      switch(reportType) {
+        case DESCRIPTION: {
+          result = await collection.aggregate([
+            {
+              $project: {
+                modelID: 1,
+                purchaseCost: 1,
+                activeCount: {
+                  $cond: [{$eq: ["$status", ACTIVE_STRING]}, 1, 0]
+                },
+                inactiveCount: {
+                  $cond: [{$ne: ["$status", ACTIVE_STRING]}, 1, 0]
+                }
+              }
+            },
+            {
+              $lookup: {from: "Model", localField: "modelID", foreignField: "_id", as: "model"}
+            },
+            {
+              $lookup: {from: "UMDNS", localField: "model.UMDNSCode", foreignField: "code", as: "umdns"}
+            },
+            {
+              $group: {
+                _id: "$modelID",
+                description: {$first: "$umdns.description"},
+                UMDNSCode: {$first: "$model.UMDNSCode"},
+                active: {$sum: "$activeCount"},
+                inactive: {$sum: "$inactiveCount"},
+                totalCost: {$sum: "$purchaseCost"}
+              }
+            },
+            {
+              $project: {
+                description: {$arrayElemAt: ["$description", 0]},
+                UMDNSCode: {$arrayElemAt: ["$UMDNSCode", 0]},
+                active: 1,
+                inactive: 1,
+                totalCost: 1
+              }
+            }
+          ]).toArray();
+          break;
+        }
+        case DEPARTMENT: {
+          result = await collection.aggregate([
+            {
+              $project: {
+                departmentID: 1,
+                purchaseCost: 1,
+                activeCount: {
+                  $cond: [{$eq: ["$status", ACTIVE_STRING]}, 1, 0]
+                },
+                inactiveCount: {
+                  $cond: [{$ne: ["$status", ACTIVE_STRING]}, 1, 0]
+                }
+              }
+            },
+            {
+              $lookup: {from: "Department", localField: "departmentID", foreignField: "_id", as: "dep"}
+            },
+            {
+              $group: {
+                _id: "$departmentID",
+                department: {$first: "$dep.departmentName"},
+                active: {$sum: "$activeCount"},
+                inactive: {$sum: "$inactiveCount"},
+                totalCost: {$sum: "$purchaseCost"}
+              }
+            },
+            {
+              $project: {
+                department: {$arrayElemAt: ["$department", 0]},
+                active: 1,
+                inactive: 1,
+                totalCost: 1
+              }
+            }
+          ]).toArray();
+          break;
+        }
+        case FUNCTIONALITY: {
+          result = await collection.aggregate([
+            {
+              $project: {
+                activeCount: {
+                  $cond: [{$eq: ["$status", ACTIVE_STRING]}, 1, 0]
+                },
+                inactiveCount: {
+                  $cond: [{$ne: ["$status", ACTIVE_STRING]}, 1, 0]
+                }
+              }
+            },
+            {
+              $group: {
+                _id: "null",
+                active: {$sum: "$activeCount"},
+                inactive: {$sum: "$inactiveCount"},
+                totalDevices: {$sum: 1}
+              }
+            }
+          ]).toArray();
+          break;
+        }
+        case INFLOW: {
+          //The year value should also be included in the request object in find
+          if (!year) throw new Error("Invalid Query Syntax: no year provided");
+
+          result = await collection.aggregate([
+            {
+              $match: {
+                acceptanceDate: {
+                  $gte: new Date(`${Number(year)}-01-01T00:00:00.000Z`),
+                  $lte: new Date()
+                }
+              }
+            },
+            {
+              $project: {
+                modelID: 1,
+                purchaseCost: 1
+              }
+            },
+            {
+              $lookup: {from: "Model", localField: "modelID", foreignField: "_id", as: "model"}
+            },
+            {
+              $lookup: {from: "UMDNS", localField: "model.UMDNSCode", foreignField: "code", as: "umdns"}
+            },
+            {
+              $group: {
+                _id: "$modelID",
+                description: {$first: "$umdns.description"},
+                UMDNSCode: {$first: "$model.UMDNSCode"},
+                active: {$sum: "$activeCount"},
+                inactive: {$sum: "$inactiveCount"},
+                totalCost: {$sum: "$purchaseCost"}
+              }
+            },
+            {
+              $project: {
+                description: {$arrayElemAt: ["$description", 0]},
+                UMDNSCode: {$arrayElemAt: ["$UMDNSCode", 0]},
+                acceptedDevices: 1,
+                totalCost: 1,
+                overallValue: 1,
+                overallDevices: 1
+              }
+            }
+          ]).toArray();
+          break;
+        }
+      }
+
+    } else {
+      throw new Error("Invalid Report Type: Selected report type is not valid.");
+    };
 
     //Response Packet
     res.Type = "RESPONSE";
     res.Response = {
       records: result,
       success: true,
-      message: result.length + " records found in " + find.collection,
+      message: result.length + " records found in " + ASSETS,
     };
   
   } catch (error) {
     //Log Error
-    console.log((await TIMESTAMP()) + `: API-<FIND>-E001 : ${error}`);
+    console.log((await TIMESTAMP()) + `: API-<RECORDS>-E001 : ${error}`);
 
     //Error Request Packet
     res.Type = "ERROR";

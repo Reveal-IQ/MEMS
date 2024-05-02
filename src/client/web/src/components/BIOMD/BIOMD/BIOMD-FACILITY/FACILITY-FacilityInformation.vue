@@ -97,42 +97,13 @@
           />
         </div>
         <!-- Zip / Postal Code -->
-        <div class="col-lg-3">
+        <div class="col-lg-6">
           <Input
             label="Zip/Postal Code"
             type="number"
             id="zip"
             placeholder="Enter Zip/Postal Code"
             v-model="facilityInfo.zipCode"
-          />
-        </div>
-
-        <!-- GPS Coordinates -->
-        <div class="col-lg-6">
-          <Input
-            label="GPS Coordinates"
-            type="text"
-            id="gps"
-            placeholder="Select GPS Coordinates"
-          />
-        </div>
-
-        <div class="col-lg-3 align-self-center g-3">
-          <Btn2
-            BtnName="Generate GPS Coordinates"
-            :icon="'globe'"
-            class="rounded-pill"
-          />
-        </div>
-
-        <!-- Department List -->
-        <div class="col-12">
-          <Input
-            label="Department"
-            type="text"
-            id="departmentTag"
-            placeholder="Add Department Tag"
-            v-model="facilityInfo.departments"
           />
         </div>
       </div>
@@ -143,15 +114,17 @@
 <script setup>
 import { ref, inject, onMounted } from "vue";
 import { useStore } from "vuex";
-import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 import Input from "../BIOMD-UI/UI-Input.vue";
 import Section from "../BIOMD-UI/UI-Section.vue";
+import UITagInput from "../BIOMD-UI/UI-TagInput.vue";
+
 const store = useStore();
 const facilityInfo = inject("facilityInfo");
-const Global_Facility_Definition = inject("Global_Facility_Definition");
+const GlobalFacilityDefinition = inject("GlobalFacilityDefinition");
 const countryList = ref(null);
 const stateList = ref(null);
 const districtList = ref(null);
+
 const sendSocketReq = (request) => {
   store.dispatch("sendSocketReq", request);
 };
@@ -167,19 +140,19 @@ const fetchCountry = async (event) => {
       facilityInfo.value.selectedCountry = countryList.value.find((country) => {
         return selectedCountry === country.Loci_Name_Country;
       });
-      Global_Facility_Definition.value.facilityAddress.Country =
+      GlobalFacilityDefinition.value.facilityAddress.Country =
         facilityInfo.value.selectedCountry.Loci_Code_Country;
       // validateInput("Country");
       await fetchState();
     } else {
       // Clear Country, State, District, Mandal, Postal Code
-      Global_Facility_Definition.value.facilityAddress.Country = null;
-      Global_Facility_Definition.value.facilityAddress.State = null;
+      GlobalFacilityDefinition.value.facilityAddress.Country = null;
+      GlobalFacilityDefinition.value.facilityAddress.State = null;
       facilityInfo.value.selectedState = {
         Loci_Name_Country: null,
         Loci_Code_Country: null,
       };
-      Global_Facility_Definition.value.facilityAddress.District = null;
+      GlobalFacilityDefinition.value.facilityAddress.District = null;
       facilityInfo.value.selectedDistrict = {
         Loci_Name_Area_L1: null,
         Loci_Code_Area_L1: null,
@@ -230,14 +203,14 @@ const fetchState = async (event) => {
       facilityInfo.value.selectedState = stateList.value.find((state) => {
         return selectedState === state.Loci_Name_State;
       });
-      Global_Facility_Definition.value.facilityAddress.State =
+      GlobalFacilityDefinition.value.facilityAddress.State =
         facilityInfo.value.selectedState.Loci_Code_State;
       // validateInput("Country");
       await fetchDistrict();
     } else {
       // Clear Country, State, District, Mandal, Postal Code
-      Global_Facility_Definition.value.facilityAddress.State = null;
-      Global_Facility_Definition.value.facilityAddress.District = null;
+      GlobalFacilityDefinition.value.facilityAddress.State = null;
+      GlobalFacilityDefinition.value.facilityAddress.District = null;
       facilityInfo.value.selectedDistrict = {
         Loci_Name_Area_L1: null,
         Loci_Code_Area_L1: null,
@@ -254,7 +227,7 @@ const fetchState = async (event) => {
             Criteria: {
               Type_Code: "STATE",
               Loci_Code_Country:
-                Global_Facility_Definition.value.facilityAddress.Country,
+                GlobalFacilityDefinition.value.facilityAddress.Country,
               Loci_Name_State: "",
             },
           },
@@ -291,13 +264,13 @@ const fetchDistrict = async (event) => {
       facilityInfo.value.selectedDistrict = districtList.value.find((state) => {
         return selectedDistrict === state.Loci_Name_Area_L1;
       });
-      Global_Facility_Definition.value.facilityAddress.District =
+      GlobalFacilityDefinition.value.facilityAddress.District =
         facilityInfo.value.selectedDistrict.Loci_Code_Area_L1;
       // validateInput("Country");
       // await fetchState();
     } else {
       // Clear Country, State, District, Mandal, Postal Code
-      Global_Facility_Definition.value.facilityAddress.District = null;
+      GlobalFacilityDefinition.value.facilityAddress.District = null;
       sendSocketReq({
         data: {
           Expiry: 20000,
@@ -310,9 +283,9 @@ const fetchDistrict = async (event) => {
             Criteria: {
               Type_Code: "ARL1",
               Loci_Code_Country:
-                Global_Facility_Definition.value.facilityAddress.Country,
+                GlobalFacilityDefinition.value.facilityAddress.Country,
               Loci_Code_State:
-                Global_Facility_Definition.value.facilityAddress.State,
+                GlobalFacilityDefinition.value.facilityAddress.State,
               Loci_Name_District: "",
             },
           },

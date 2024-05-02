@@ -9,8 +9,8 @@
 <template>
 	<div class="row d-flex justify-content-center">
 		<div
-			class="col-sm-12 d-flex justify-content-center headerText mb-3 p-0"
-			style="width: 300px;"
+			class="col-sm-12 d-flex justify-content-start p-0"
+			style="width: 300px;font-size:14px;margin-bottom:30px;"
 			v-if="component_state != 'successfulLogin'"
 		>
 			Log into your digital health dashboard
@@ -24,10 +24,10 @@
 		</div>
 		<!-- Username Block -->
 		<div
-			class="col-sm-12 d-flex justify-content-center"
+			class="col-sm-12 d-flex  align-items-center justify-content-center"
 			v-if="component_state != 'successfulLogin'"
 		>
-			<div class="row username gx-0 gy-0">
+			<div class="row username gx-0 gy-0 ">
 				<div class="col-sm-2 d-flex align-items-center justify-content-center">
 					<font-awesome-icon icon="user" class="userIcon" />
 				</div>
@@ -66,12 +66,7 @@
 				<div class="col-sm-2"></div>
 			</div>
 		</div>
-		<div
-			class="col-sm-12 d-flex justify-content-end smallText forgotPassword"
-			v-if="component_state != 'successfulLogin'"
-		>
-			Forgot Password?
-		</div>
+
 		<div class="col-sm-12 d-flex justify-content-center">
 			<div class="row d-flex align-items-end">
 				<!-- Verify Button -->
@@ -105,6 +100,13 @@
 				/>
 			</div>
 		</div>
+		<div
+			class="col-sm-12 d-flex justify-content-end smallText forgotPassword"
+			v-if="component_state != 'successfulLogin'"
+		>
+			Forgot Password?
+		</div>
+
 	</div>
 </template>
 
@@ -315,7 +317,7 @@ export default {
 @import "../../GLOBAL/Styles/font-style.scss";
 
 .username {
-	margin-top: 50px !important;
+	margin-bottom: 30px !important;
 	max-width: 300px !important;
 	min-width: 300px !important;
 	max-height: 50px !important;
@@ -325,7 +327,7 @@ export default {
 }
 
 .password {
-	margin-top: 30px !important;
+	margin-bottom: 30px !important;
 	max-width: 300px !important;
 	min-width: 300px !important;
 	max-height: 50px !important;

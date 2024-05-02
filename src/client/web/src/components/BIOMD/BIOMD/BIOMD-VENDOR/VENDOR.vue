@@ -12,58 +12,37 @@ Description: < Describe the application >
   <div class="RevealContainer mb-5">
     <div class="container p-4 m-4">
       <div
-        class="d-lg-flex align-items-center flex-lg-row flex-md-row flex-sm-column justify-content-between"
+        class="d-lg-flex d-md-flex d-sm-flex gap-lg-0 gap-sm-5 align-items-center justify-content-lg-between justify-content-md-between justify-content-sm-center"
       >
-        <div class="d-flex mt-3">
+        <div class="mt-3">
           <Header
             title="Create New Vendor"
             subTitle="Enter all details required for this equipment vendor"
           />
         </div>
-        <div class="d-flex">
-          <span class="d-sm-block">
-            <Btn2
-              BtnName="Return"
-              :icon="'arrow-left'"
-              backgroundColor="none"
-              @click="goBack"
-              class="text-secondary"
-            />
-          </span>
-          <span class="ms-4 d-sm-block">
-            <Btn2
-              BtnName="Dashboard"
-              backgroundColor="#2A94B6"
-              @click="goNext"
-              class="text-light"
-            />
-          </span>
+        <div class="d-flex gap-2 d-md-block">
+          <Btn2
+            BtnName="Return"
+            :icon="'arrow-left'"
+            backgroundColor="none"
+            @click="goBack"
+            class="text-secondary btn-sm"
+          />
+
+          <Btn2
+            BtnName="Dashboard"
+            backgroundColor="#2A94B6"
+            @click="goBack"
+            class="text-light btn-sm"
+          />
         </div>
       </div>
 
       <main>
         <VendorInformation />
         <CustomerService />
-        <ManufacturerInformation>
-          <Btn2
-            BtnName="Add Manufacturer"
-            backgroundColor="#1266F1"
-            :icon="'plus'"
-            @click="changePage('manufacturerInfo')"
-            class="rounded-pill"
-          />
-        </ManufacturerInformation>
-        <ModelInformation>
-          <Btn2
-            BtnName="Add Model"
-            backgroundColor="#1266F1"
-            :icon="'plus'"
-            @click="changePage('modelInfo')"
-            class="rounded-pill"
-          />
-        </ModelInformation>
+        <ManufacturerInformation />
         <div class="d-flex justify-content-center py-3">
-          <!-- btn-green and a-link are custom css for MEMS check base.css -->
           <div class="">
             <Btn
               BtnName="Create Vendor"
@@ -82,15 +61,17 @@ Description: < Describe the application >
 
 <script>
 import { useStore } from "vuex"; // Access Vuew Store Variables and Methods
-import { ref, toRefs, provide, computed } from "vue";
+import { ref, provide, computed } from "vue";
 
-import VendorInformation from "../BIOMD-VENDOR/VENDOR-VendorInformation.vue";
-import CustomerService from "../BIOMD-VENDOR/VENDOR-CustomerService.vue";
-import ManufacturerInformation from "../BIOMD-VENDOR/VENDOR-ManufacturerInfo.vue";
-import ModelInformation from "../BIOMD-VENDOR/VENDOR-ModelInfo.vue";
+import VendorInformation from "./VENDOR-VendorInformation.vue";
+import CustomerService from "./VENDOR-CustomerService.vue";
+import ManufacturerInformation from "./VENDOR-ManufacturerInfo.vue";
+import ModelInformation from "./VENDOR-ModelInfo.vue";
 import Btn from "../BIOMD-UI/UI-Btn.vue";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 import Header from "../BIOMD-UI/UI-FormHeader.vue";
+import UIToast from "../BIOMD-UI/UI-Toast.vue";
+import { VendorRecord } from "../../../../store/modules/recordSchema";
 
 export default {
   components: {
@@ -101,6 +82,7 @@ export default {
     Btn2,
     Btn,
     Header,
+    UIToast,
   },
   name: "vendor",
   // Define Props here
@@ -112,7 +94,6 @@ export default {
   // Emit value can pass within this array
   emits: ["updatePage"],
   setup(props, { emit }) {
-    const { props_variable } = toRefs(props); // include variables from the props with help of toRefs
     const store = useStore();
     const Institute_Code = computed(
       () => store.state.globalStore.UserInfo.Institute_Info.Code
@@ -128,6 +109,7 @@ export default {
         status: "<Navigate_To_This_Page>",
       });
     }
+
     const vendorInfo = ref({
       vendorName: null,
       selectedCountry: { Loci_Name_Country: null, Loci_Code_Country: null },
@@ -141,26 +123,39 @@ export default {
       zipCode: null,
     });
 
-    const Global_Vendor_Definition = ref({
+    const manufacturerInfo = ref({
+      selectedManufacturer: { manufacturerName: null, _id: null },
+      listedModels: { modelName: null, _id: null },
+    });
+
+    const contactInfo = ref([
+      {
+        number: null,
+        name: null,
+        email: null,
+        type: "Biomedical Service",
+      },
+    ]);
+
+    const GlobalVendorDefinition = ref({
       vendorAddress: {
         Country: null,
         State: null,
         District: null,
       },
+      manufacturerID: null,
+      modelID: null,
     });
 
-    // send Socket Request use to send rrequest packet for an API
+    const changePage = async (page) => {
+      emit("updatePage", page);
+    };
+
     const sendSocketReq = (request) => {
       store.dispatch("sendSocketReq", request);
     };
-    // Object to Store API Response Values
-    const getValues = ref({});
-    function function_name(parameters) {
-      // Write Function Code here .
-    }
-    // Function to Send Request and Get Response by this template code .
+
     function createRecord() {
-      // send Request as below .
       sendSocketReq({
         data: {
           Expiry: 20000,
@@ -170,33 +165,36 @@ export default {
             ServiceCode: "BIOMD",
             API: "CREATE_RECORD",
             collection: "Vendor",
-            record: {
-              vendor_name: vendorInfo.value.vendorName,
-              country: Global_Vendor_Definition.value.vendorAddress.Country,
-              area: Global_Vendor_Definition.value.vendorAddress.State,
-              city: Global_Vendor_Definition.value.vendorAddress.District,
+            record: new VendorRecord({
+              vendorName: vendorInfo.value.vendorName,
+              country: GlobalVendorDefinition.value.vendorAddress.Country,
+              area: GlobalVendorDefinition.value.vendorAddress.State,
+              city: GlobalVendorDefinition.value.vendorAddress.District,
               address_1: vendorInfo.value.streetAddress1,
               address_2: vendorInfo.value.streetAddress2,
               areaCode: vendorInfo.value.zipCode,
-              contactID: [],
-              manufacturer_id: [],
-            },
-            Institute_Code: Institute_Code.value, //Dynamically changes when another institute logged in
+              contactInfo: [
+                {
+                  number: contactInfo.value.number,
+                  name: contactInfo.value.name,
+                  email: contactInfo.value.email,
+                  type: contactInfo.value.type,
+                },
+              ],
+              manufacturerList: [
+                {
+                  manufacturer: GlobalVendorDefinition.value.manufacturerID,
+                },
+              ],
+            }).serialize(),
+            Institute_Code: Institute_Code.value,
           },
         },
         callback: (res) => {
           if (res.Type === "RESPONSE") {
-            // Console the Response Packet
-            Type: "RESPONSE";
-            Response: {
-              // ID:
-              Success: TRUE;
-              Collection: "vendors";
-              Message: "Created Record";
-            }
+            changePage("success");
 
             console.log("Response Packet -->", res.Response);
-            getValues.value = res.Response.Site_Info[0]; //Assigning response values to getValues Object
           } else if (res.Type === "ERROR") {
             // Error response received during fetching
             Type: "ERROR";
@@ -210,23 +208,17 @@ export default {
     }
 
     const goBack = () => {
-      emit("updatePage", "landing");
-    };
-
-    const changePage = async (page) => {
-      emit("updatePage", page);
+      emit("updatePage", "dashboard");
     };
 
     provide("vendorInfo", vendorInfo);
-    provide("Global_Vendor_Definition", Global_Vendor_Definition);
+    provide("manufacturerInfo", manufacturerInfo);
+    provide("contactInfo", contactInfo);
+    provide("GlobalVendorDefinition", GlobalVendorDefinition);
 
     return {
-      // Return variables/Display Variables in HTML DOM
-      getValues,
-      // Send Functionality to HTML
       goBack,
       changePage,
-      function_name,
       redirectToPage,
       createRecord,
     };
