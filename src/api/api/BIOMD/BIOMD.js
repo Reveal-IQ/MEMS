@@ -474,6 +474,15 @@ module.exports.GET_REPORTS = async function (req, dbClient) {
                 inactive: {$sum: "$inactiveCount"},
                 totalCost: {$sum: "$purchaseCost"}
               }
+            },
+            {
+              $project: {
+                description: {$arrayElemAt: ["$description", 0]},
+                UMDNSCode: {$arrayElemAt: ["$UMDNSCode", 0]},
+                active: 1,
+                inactive: 1,
+                totalCost: 1
+              }
             }
           ]).toArray();
           break;
@@ -502,6 +511,14 @@ module.exports.GET_REPORTS = async function (req, dbClient) {
                 active: {$sum: "$activeCount"},
                 inactive: {$sum: "$inactiveCount"},
                 totalCost: {$sum: "$purchaseCost"}
+              }
+            },
+            {
+              $project: {
+                department: {$arrayElemAt: ["$department", 0]},
+                active: 1,
+                inactive: 1,
+                totalCost: 1
               }
             }
           ]).toArray();
@@ -569,6 +586,15 @@ module.exports.GET_REPORTS = async function (req, dbClient) {
                 active: {$sum: "$activeCount"},
                 inactive: {$sum: "$inactiveCount"},
                 totalCost: {$sum: "$purchaseCost"}
+              },
+            },
+            {
+              $project: {
+                description: {$arrayElemAt: ["$description", 0]},
+                UMDNSCode: {$arrayElemAt: ["$UMDNSCode", 0]},
+                active: 1,
+                inactive: 1,
+                totalCost: 1
               }
             }
           ]).toArray();
