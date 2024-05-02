@@ -83,11 +83,11 @@
               <small>{{ asset.UMDNSCode }}</small>
             </td>
             <td>
-              <small></small>
+              <small>{{ asset.description }}</small>
             </td>
-            <td><small>15</small></td>
-            <td><small>$15,000</small></td>
-            <td><small>12</small></td>
+            <td><small>{{ asset.active }}</small></td>
+            <td><small>{{ asset.totalCost }}</small></td>
+            <td><small>{{ asset.inactive }}</small></td>
           </tr>
         </tbody>
       </table>
@@ -118,7 +118,6 @@ const fetchReport = async () => {
           ServiceCode: "BIOMD",
           API: "GET_REPORTS",
           reportType: "description",
-          reportSpecs: { year: 2024 },
         },
       },
       callback: (res) => {

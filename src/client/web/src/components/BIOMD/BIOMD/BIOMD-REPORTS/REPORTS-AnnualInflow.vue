@@ -38,6 +38,7 @@
             id="yearId"
             v-model="selectedYear"
             class="form-select"
+            :onChange="() => fetchReport()"
           >
             <option v-for="(year, y) in yearsList" :key="y" :value="year">
               {{ year }}
@@ -70,14 +71,14 @@
         class="fs-4 fw-normal"
       />
     </div>
-    <div class="mt-4 table-responsive">
+    <div class="mt-2 table-responsive" v-for="asset in reportList">
       <table class="table table-responsive table-borderless mb-2">
         <thead>
           <tr style="background-color: #f5f6f6">
-            <th scope="col">
+            <th scope="col" width="20%">
               <small class="text-secondary fw-normal">Device Code</small>
             </th>
-            <th scope="col">
+            <th scope="col" width="50%">
               <small class="text-secondary fw-normal">Device Description</small>
             </th>
             <th scope="col">
@@ -90,12 +91,14 @@
         </thead>
         <tbody>
           <tr style="background-color: #f5f6f6">
-            <td><small>10846</small></td>
             <td>
-              <small>Circulatory Assist Units, Intra-Aortic Balloon</small>
+              <small>{{ asset.UMDNSCode }}</small>
             </td>
-            <td><small>12</small></td>
-            <td><small>$15,000</small></td>
+            <td>
+              <small>{{ asset.description }}</small>
+            </td>
+            <td><small>{{ asset.acceptedDevices }}</small></td>
+            <td><small>{{ asset.totalCost }}</small></td>
           </tr>
         </tbody>
       </table>
@@ -104,7 +107,14 @@
 </template>
 
 <script setup>
+import UIStatCard from "../BIOMD-UI/UI-StatCard";
 import { ref, onMounted } from "vue";
+import { useStore } from "vuex";
+const store = useStore();
+const sendSocketReq = (request) => {
+  store.dispatch("sendSocketReq", request);
+};
+
 const yearsList = ref([]);
 const selectedYear = ref(null);
 const currentYear = ref(new Date().toLocaleDateString());
@@ -115,7 +125,44 @@ const getYearsList = () => {
     yearsList.value = [...yearsList.value, i];
   }
 };
-import UIStatCard from "../BIOMD-UI/UI-StatCard";
+
+const reportList = ref([]);
+
+const fetchReport = async () => {
+  console.log("calling function");
+  try {
+    sendSocketReq({
+      data: {
+        Expiry: 20000,
+        Type: "REQUEST",
+        Request: {
+          Module: "MEMS",
+          ServiceCode: "BIOMD",
+          API: "GET_REPORTS",
+          reportType: "inflow",
+          reportSpecs: {
+            year: selectedYear.value
+          }
+        },
+      },
+      callback: (res) => {
+        if (res.Type === "RESPONSE") {
+          console.log("Response Packet -->", res.Response);
+          reportList.value = res.Response.records;
+        } else if (res.Type === "ERROR") {
+          Type: "ERROR";
+          Response: {
+            Error_Code: "API-CREATE_RECORD-E001";
+            Error_Msg: "CREATE_RECORD_API: Failed to execute query";
+          }
+        }
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const emit = defineEmits(["updatePage"]);
 const changePage = async (page, props) => {
   emit("updatePage", page, props);

@@ -556,20 +556,14 @@ module.exports.GET_REPORTS = async function (req, dbClient) {
               $match: {
                 acceptanceDate: {
                   $gte: new Date(`${Number(year)}-01-01T00:00:00.000Z`),
-                  $lt: new Date(`${Number(year)+1}-01-01T00:00:00.000Z`)
+                  $lte: new Date()
                 }
               }
             },
             {
               $project: {
                 modelID: 1,
-                purchaseCost: 1,
-                activeCount: {
-                  $cond: [{$eq: ["$status", ACTIVE_STRING]}, 1, 0]
-                },
-                inactiveCount: {
-                  $cond: [{$ne: ["$status", ACTIVE_STRING]}, 1, 0]
-                }
+                purchaseCost: 1
               }
             },
             {
@@ -583,8 +577,7 @@ module.exports.GET_REPORTS = async function (req, dbClient) {
                 _id: "$modelID",
                 description: {$first: "$umdns.description"},
                 UMDNSCode: {$first: "$model.UMDNSCode"},
-                active: {$sum: "$activeCount"},
-                inactive: {$sum: "$inactiveCount"},
+                acceptedDevices: {$sum: 1},
                 totalCost: {$sum: "$purchaseCost"}
               },
             },
@@ -592,8 +585,7 @@ module.exports.GET_REPORTS = async function (req, dbClient) {
               $project: {
                 description: {$arrayElemAt: ["$description", 0]},
                 UMDNSCode: {$arrayElemAt: ["$UMDNSCode", 0]},
-                active: 1,
-                inactive: 1,
+                acceptedDevices: 1,
                 totalCost: 1
               }
             }

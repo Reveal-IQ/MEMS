@@ -81,7 +81,7 @@
         <tbody>
           <tr style="background-color: #f5f6f6">
             <td>
-              <small>{{ record.department[0] }}</small>
+              <small>{{ record.department }}</small>
             </td>
             <td>
               <small>{{ record.active }}</small>
@@ -124,7 +124,6 @@ const fetchReport = async () => {
           ServiceCode: "BIOMD",
           API: "GET_REPORTS",
           reportType: "department",
-          reportSpecs: { year: 2024 },
         },
       },
       callback: (res) => {
