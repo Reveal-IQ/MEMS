@@ -577,7 +577,8 @@ module.exports.GET_REPORTS = async function (req, dbClient) {
                 _id: "$modelID",
                 description: {$first: "$umdns.description"},
                 UMDNSCode: {$first: "$model.UMDNSCode"},
-                acceptedDevices: {$sum: 1},
+                active: {$sum: "$activeCount"},
+                inactive: {$sum: "$inactiveCount"},
                 totalCost: {$sum: "$purchaseCost"}
               }
             },
