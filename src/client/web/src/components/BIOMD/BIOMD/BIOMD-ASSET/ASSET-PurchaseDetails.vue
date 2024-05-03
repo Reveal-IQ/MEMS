@@ -25,7 +25,7 @@
     </div> -->
 
     <!-- Acceptance Date -->
-    <!-- <div class="col-lg-6">
+    <div class="col-lg-6">
       <Input
         label="Acceptance Date"
         type="date"
@@ -33,7 +33,7 @@
         placeholder="Select Acceptance Date"
         v-model="PurchaseDetails.acceptanceDate"
       />
-    </div> -->
+    </div>
 
     <!-- <div class="col-lg-12">
       <div class="py-3 px-2">
