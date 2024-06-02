@@ -66,7 +66,7 @@ import Btn from "../BIOMD-UI/UI-Btn.vue";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 import Header from "../BIOMD-UI/UI-FormHeader.vue";
 import ModelDescription from "../BIOMD-MODEL/MODEL-ModelDescription.vue";
-// import { DepartmentRecord } from "../../../../store/modules/recordSchema";
+import { DepartmentRecord } from "../../../../store/modules/recordSchema";
 
 export default {
   components: { ModelDescription, Btn2, Btn, Header },
