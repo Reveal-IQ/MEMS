@@ -16,6 +16,7 @@ class Record {
     this._record = {};
     const schema = this.getSchema();
     Record._validateSchema(schema);
+    Record._validateUniqueAndRequired(data, schema);
     this._record = Record._fieldToBsonType(this.getName(), data, schema);
   }
 
@@ -43,6 +44,24 @@ class Record {
     throw new Error(
       "Cannot instantiate Record instance. Child classes should implement getSchema()"
     );
+  }
+
+  static _validateUniqueAndRequired(data, schema) {
+    if (schema.type === BSONType.object) {
+      const fields = schema.fields;
+      Object.keys(fields).forEach((key) => {
+        const field = fields[key];
+
+        if (field.required && (data[key] === undefined || data[key] === null)) {
+          throw new Error(`Field '${key}' is required.`);
+        }
+
+        if (field.unique) {
+          // Check if the value is unique from database.
+          throw new Error(`Field '${key}' is required.`);
+        }
+      });
+    }
   }
 
   static _validateSchema(schema) {
@@ -150,20 +169,20 @@ class AssetRecord extends Record {
     return {
       type: BSONType.object,
       fields: {
-        //Schema Version: 0.3.1
-        assetCode: { type: BSONType.string },
+        //Schema Version: 0.4.1
+        assetCode: { type: BSONType.string, required: true },
         description: { type: BSONType.string },
         serialNumber: { type: BSONType.string },
         parentAssetID: { type: BSONType.objectId },
         modelID: { type: BSONType.objectId },
         manufacturerID: { type: BSONType.objectId },
         manufactureDate: { type: BSONType.date },
-        facilityID: { type: BSONType.objectId },
+        facilityID: { type: BSONType.objectId, required: true },
         departmentID: { type: BSONType.objectId },
         locationName: { type: BSONType.string },
         supportTeam: { type: BSONType.string },
         vendorID: { type: BSONType.objectId },
-        status: { type: BSONType.string },
+        status: { type: BSONType.string, required: true },
         purchaseOrderID: { type: BSONType.objectId },
         acceptanceDate: { type: BSONType.date },
         purchaseCost: { type: BSONType.double },
@@ -182,7 +201,7 @@ class FacilityRecord extends Record {
       type: BSONType.object,
       fields: {
         //Schema Version: 0.1.1
-        facilityName: { type: BSONType.string },
+        facilityName: { type: BSONType.string, required: true },
         address_1: { type: BSONType.string },
         address_2: { type: BSONType.string },
         city: { type: BSONType.string },
@@ -279,9 +298,9 @@ class DepartmentRecord extends Record {
       type: BSONType.object,
       fields: {
         // Schema Version: v0.1
-        facilityID: { type: BSONType.objectId },
-        departmentName: { type: BSONType.string },
-        shortName: { type: BSONType.string },
+        facilityID: { type: BSONType.objectId, required: true },
+        departmentName: { type: BSONType.string, required: true },
+        shortName: { type: BSONType.string, required: true },
       },
     };
   }
