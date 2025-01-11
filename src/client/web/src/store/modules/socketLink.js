@@ -21,7 +21,7 @@ var options = {
 }
 
 // WebSocket connection request
-const socket = io ("ws://mems.revealfoundation.com", options);
+const socket = io ("ws://mems.revealiq.co", options);
 
 // Request Buffer
 var requestBuffer = [];
