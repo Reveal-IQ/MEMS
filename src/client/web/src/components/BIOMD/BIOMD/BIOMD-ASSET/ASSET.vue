@@ -188,54 +188,143 @@ export default {
     };
 
     // Function to Send Request and Get Response by this template code .
-    function createRecord() {
-      // send Request as below .
-      sendSocketReq({
-        data: {
-          Expiry: 20000,
-          Type: "REQUEST",
-          Request: {
-            Module: "MEMS",
-            ServiceCode: "BIOMD",
-            API: "CREATE_RECORD",
-            collection: "Asset",
-            record: new AssetRecord({
-              assetCode: AssetDetails.value.assetCode,
-              parentAssetID: GlobalAssetInformation.value.parentAssetID,
-              serialNumber: AssetDetails.value.serialNumber,
-              manufacturerID: GlobalAssetInformation.value.manufacturerID,
-              modelID: GlobalAssetInformation.value.modelID,
-              manufactureDate: AssetDetails.value.manufactureDate,
-              status: AssetDetails.value.status,
-              facilityID: GlobalAssetInformation.value.facilityID,
-              departmentID: GlobalAssetInformation.value.departmentID,
-              locationName: AssetLocation.value.locationName,
-              supportTeam: MaintenanceAndSupport.value.supportTeam,
-              purchaseOrderID: GlobalAssetInformation.value.purchaseOrderID,
-              acceptanceDate: PurchaseDetails.value.acceptanceDate,
-              purchaseCost: PurchaseDetails.value.purchaseCost,
-              vendorID: GlobalAssetInformation.value.vendorID,
-              comment: AdditionalInformation.value.comment,
-            }).serialize(),
-            Institute_Code: Institute_Code.value, //Dynamically changes when another institute logged in
-          },
-        },
-        callback: (res) => {
-          if (res.Type === "RESPONSE") {
-            changePage("success");
+    // function createRecord() {
+    //   // send Request as below .
+    //   sendSocketReq({
+    //     data: {
+    //       Expiry: 20000,
+    //       Type: "REQUEST",
+    //       Request: {
+    //         Module: "MEMS",
+    //         ServiceCode: "BIOMD",
+    //         API: "CREATE_RECORD",
+    //         collection: "Asset",
+    //         record: new AssetRecord({
+    //           assetCode: AssetDetails.value.assetCode,
+    //           parentAssetID: GlobalAssetInformation.value.parentAssetID,
+    //           serialNumber: AssetDetails.value.serialNumber,
+    //           manufacturerID: GlobalAssetInformation.value.manufacturerID,
+    //           modelID: GlobalAssetInformation.value.modelID,
+    //           manufactureDate: AssetDetails.value.manufactureDate,
+    //           status: AssetDetails.value.status,
+    //           facilityID: GlobalAssetInformation.value.facilityID,
+    //           departmentID: GlobalAssetInformation.value.departmentID,
+    //           locationName: AssetLocation.value.locationName,
+    //           supportTeam: MaintenanceAndSupport.value.supportTeam,
+    //           purchaseOrderID: GlobalAssetInformation.value.purchaseOrderID,
+    //           acceptanceDate: PurchaseDetails.value.acceptanceDate,
+    //           purchaseCost: PurchaseDetails.value.purchaseCost,
+    //           vendorID: GlobalAssetInformation.value.vendorID,
+    //           comment: AdditionalInformation.value.comment,
+    //         }).serialize(),
+    //         Institute_Code: Institute_Code.value, //Dynamically changes when another institute logged in
+    //       },
+    //     },
+    //     callback: (res) => {
+    //       if (res.Type === "RESPONSE") {
+    //         changePage("success");
 
-            console.log("Response Packet -->", res.Response);
-            getValues.value = res.Response.Site_Info[0]; //Assigning response values to getValues Object
-          } else if (res.Type === "ERROR") {
-            // Error response received during fetching
-            Type: "ERROR";
-            Response: {
-              Error_Code: "API-CREATE_RECORD-E001";
-              Error_Msg: "CREATE_RECORD_API: Failed to execute query";
+    //         console.log("Response Packet -->", res.Response);
+    //         getValues.value = res.Response.Site_Info[0]; //Assigning response values to getValues Object
+    //       } else if (res.Type === "ERROR") {
+    //         // Error response received during fetching
+    //         Type: "ERROR";
+    //         Response: {
+    //           Error_Code: "API-CREATE_RECORD-E001";
+    //           Error_Msg: "CREATE_RECORD_API: Failed to execute query";
+    //         }
+    //       }
+    //     },
+    //   });
+    // }
+
+    const validateUnique = async (recordName) => {
+      try {
+        sendSocketReq({
+          data: {
+            Expiry: 20000,
+            Type: "REQUEST",
+            Request: {
+              Module: "MEMS",
+              ServiceCode: "BIOMD",
+              API: "FIND_RECORD",
+              return_array: true,
+              max_list: 1,
+              find: {
+                collection: recordName,
+                projection: {
+                  _id: 1,
+                },
+              },
+            },
+          },
+          callback: (res) => {
+            if (res.Type === "RESPONSE") {
+              // console.log(res.Response.records.length === 0);
+              console.log(res.Response);
+            } else if (res.Type === "ERROR") {
+              Type: "ERROR";
+              Response: {
+                Error_Code: "API-CREATE_RECORD-E001";
+                Error_Msg: "CREATE_RECORD_API: Failed to execute query";
+              }
             }
-          }
-        },
-      });
+          },
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    function createRecord() {
+      try {
+        const assetRecord = new AssetRecord(
+          {
+            assetCode: AssetDetails.value.assetCode,
+            parentAssetID: GlobalAssetInformation.value.parentAssetID,
+            serialNumber: AssetDetails.value.serialNumber,
+            manufacturerID: GlobalAssetInformation.value.manufacturerID,
+            modelID: GlobalAssetInformation.value.modelID,
+            manufactureDate: AssetDetails.value.manufactureDate,
+            status: AssetDetails.value.status,
+            facilityID: GlobalAssetInformation.value.facilityID,
+            departmentID: GlobalAssetInformation.value.departmentID,
+            locationName: AssetLocation.value.locationName,
+            supportTeam: MaintenanceAndSupport.value.supportTeam,
+            purchaseOrderID: GlobalAssetInformation.value.purchaseOrderID,
+            acceptanceDate: PurchaseDetails.value.acceptanceDate,
+            purchaseCost: PurchaseDetails.value.purchaseCost,
+            vendorID: GlobalAssetInformation.value.vendorID,
+            comment: AdditionalInformation.value.comment,
+          },
+          validateUnique
+        );
+        sendSocketReq({
+          data: {
+            Expiry: 20000,
+            Type: "REQUEST",
+            Request: {
+              Module: "MEMS",
+              ServiceCode: "BIOMD",
+              API: "CREATE_RECORD",
+              collection: "Asset",
+              record: assetRecord.serialize(),
+              Institute_Code: Institute_Code.value,
+            },
+          },
+          callback: (res) => {
+            if (res.Type === "RESPONSE") {
+              changePage("success");
+              console.log("Response Packet -->", res.Response);
+            } else if (res.Type === "ERROR") {
+              console.error("Error creating record:", res.Response.Error_Msg);
+              // Handle error (e.g., show error message to user)
+            }
+          },
+        });
+      } catch (error) {
+        console.error("Error creating AssetRecord:", error);
+      }
     }
 
     const goBack = () => {

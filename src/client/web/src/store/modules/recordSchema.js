@@ -4,6 +4,7 @@
  */
 
 import { BSON, BSONType, ObjectId, Double, Timestamp, Long, Int32 } from "bson";
+import { useStore } from "vuex";
 
 class Record {
   /**
@@ -11,12 +12,14 @@ class Record {
    * @param {string} name record name.
    * @param {*} data record data to transform.
    */
-  constructor(name, data) {
+  constructor(name, data, validateUniqueFn) {
     this._name = name;
     this._record = {};
+    this._validateUniqueFn = validateUniqueFn;
     const schema = this.getSchema();
     Record._validateSchema(schema);
-    Record._validateUniqueAndRequired(data, schema);
+    Record._validateRequired(data, schema);
+    Record._validateUnique(data, schema, this._validateUniqueFn);
     this._record = Record._fieldToBsonType(this.getName(), data, schema);
   }
 
@@ -46,21 +49,60 @@ class Record {
     );
   }
 
-  static _validateUniqueAndRequired(data, schema) {
+  static _validateRequired(data, schema) {
     if (schema.type === BSONType.object) {
       const fields = schema.fields;
+      // const uniqueChecks = [];
+
       Object.keys(fields).forEach((key) => {
         const field = fields[key];
 
         if (field.required && (data[key] === undefined || data[key] === null)) {
           throw new Error(`Field '${key}' is required.`);
         }
+      });
+    }
+  }
 
-        if (field.unique) {
+  static async _validateUnique(data, schema, validateUniqueFn) {
+    if (schema.type === BSONType.object) {
+      const fields = schema.fields;
+      const uniqueChecks = [];
+
+      Object.keys(fields).forEach((key) => {
+        const field = fields[key];
+        if (field.unique && data[key] !== undefined && data[key] !== null) {
           // Check if the value is unique from database.
-          throw new Error(`Field '${key}' is required.`);
+          uniqueChecks.push(
+            this._checkUnique(this._name, key, data[key], validateUniqueFn)
+          );
         }
       });
+      await Promise.all(uniqueChecks);
+    }
+  }
+
+  static async _checkUnique(recordName, fieldName, value, validateUniqueFn) {
+    try {
+      const isUnique = await validateUniqueFn(recordName, fieldName, value);
+      if (isUnique === null) {
+        // Server error occurred
+        throw new Error(
+          `Unable to verify uniqueness for field '${fieldName}' due to a server error.`
+        );
+      }
+
+      if (!isUnique) {
+        throw new Error(
+          `Field '${fieldName}' with value '${value}' is not unique for record '${recordName}'.`
+        );
+      }
+    } catch (error) {
+      console.error(
+        `Error checking uniqueness for field '${fieldName}':`,
+        error
+      );
+      throw error;
     }
   }
 
@@ -162,27 +204,27 @@ class Record {
 }
 
 class AssetRecord extends Record {
-  constructor(data) {
-    super("Asset", data);
+  constructor(data, validateUniqueFn) {
+    super("Asset", data, validateUniqueFn);
   }
   getSchema() {
     return {
       type: BSONType.object,
       fields: {
         //Schema Version: 0.4.1
-        assetCode: { type: BSONType.string, required: true },
+        assetCode: { type: BSONType.string, required: true, unique: true },
         description: { type: BSONType.string },
         serialNumber: { type: BSONType.string },
         parentAssetID: { type: BSONType.objectId },
         modelID: { type: BSONType.objectId },
         manufacturerID: { type: BSONType.objectId },
         manufactureDate: { type: BSONType.date },
-        facilityID: { type: BSONType.objectId, required: true },
+        facilityID: { type: BSONType.objectId },
         departmentID: { type: BSONType.objectId },
         locationName: { type: BSONType.string },
         supportTeam: { type: BSONType.string },
         vendorID: { type: BSONType.objectId },
-        status: { type: BSONType.string, required: true },
+        status: { type: BSONType.string },
         purchaseOrderID: { type: BSONType.objectId },
         acceptanceDate: { type: BSONType.date },
         purchaseCost: { type: BSONType.double },
