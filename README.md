@@ -102,12 +102,14 @@ Pull Request
 
 
 ## 📚 Documents
-  - [User Requirements](https://1drv.ms/w/s!Aoyt_5MLLrQsi6hhpnkagfaawf1pcA?e=iVbRyr)
-  - [System Architecture and Specification](https://1drv.ms/w/s!Aoyt_5MLLrQsi657RYs-5oKwFtDmcg?e=cIGSvS)
-  - [Visual Designs](https://www.figma.com/file/3RZaloPTGo1Qe8rCp5Vv55/UI-Designs?node-id=0%3A1)
-  - [Sprint Plan](https://1drv.ms/w/s!Aoyt_5MLLrQsi68zxO4M0fXzqS1hWg?e=FVPErk)
-  - [Test Cases](https://1drv.ms/x/s!Aoyt_5MLLrQsi68Atdismmgw1tSr7g?e=knGDfZ)
-  - [Doc Repo](https://1drv.ms/u/s!Aoyt_5MLLrQsi6hgaHG_8-McARe2UQ?e=BQGzPa)
+  - [Document Repository](https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdrive.google.com%2Fdrive%2Ffolders%2F1bxDPWUJmophsSSfsd8Ejn7oJ7tE_MmTb%3Fusp%3Dsharing_eil%26invite%3DCJmT0fsI%26ts%3D679547d5%26sh%3DL8fBJpvyepdDBZZb%26ca%3D1&data=05%7C02%7C%7Cd52ffd9f191343e566a708dd3d7de1f1%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638734333062015098%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=7xRh76NqeuZYLdbtt7HBsSElh8QbRfpEuCXUpTiWij0%3D&reserved=0)
+  - Archive
+    - [User Requirements](https://1drv.ms/w/s!Aoyt_5MLLrQsi6hhpnkagfaawf1pcA?e=iVbRyr)
+    - [System Architecture and Specification](https://1drv.ms/w/s!Aoyt_5MLLrQsi657RYs-5oKwFtDmcg?e=cIGSvS)
+    - [Visual Designs](https://www.figma.com/file/3RZaloPTGo1Qe8rCp5Vv55/UI-Designs?node-id=0%3A1)
+    - [Sprint Plan](https://1drv.ms/w/s!Aoyt_5MLLrQsi68zxO4M0fXzqS1hWg?e=FVPErk)
+    - [Test Cases](https://1drv.ms/x/s!Aoyt_5MLLrQsi68Atdismmgw1tSr7g?e=knGDfZ)
+    - [Doc Repo](https://1drv.ms/u/s!Aoyt_5MLLrQsi6hgaHG_8-McARe2UQ?e=BQGzPa)
 
 ## License
 
