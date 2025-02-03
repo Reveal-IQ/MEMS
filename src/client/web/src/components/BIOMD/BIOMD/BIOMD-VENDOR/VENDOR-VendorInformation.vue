@@ -24,7 +24,7 @@
           list="countryOptions"
           id="countryList"
           placeholder="Type to search..."
-          v-model="vendorInfo.selectedCountry.Loci_Name_Country"
+          :value="vendorInfo.selectedCountry?.Loci_Name_Country || ''"
           @input="fetchCountry"
           autocomplete="off"
         />
@@ -45,7 +45,7 @@
           list="stateOptions"
           id="stateList"
           placeholder="Type to search..."
-          v-model="vendorInfo.selectedState.Loci_Name_State"
+          :value="vendorInfo.selectedState?.Loci_Name_State || ''"
           @input="fetchState"
           autocomplete="off"
         />
@@ -65,7 +65,7 @@
           list="districtOptions"
           id="districtList"
           placeholder="Type to search..."
-          v-model="vendorInfo.selectedDistrict.Loci_Name_Area_L1"
+          :value="vendorInfo.selectedDistrict?.Loci_Name_Area_L1 || ''"
           @input="fetchDistrict"
           autocomplete="off"
         />

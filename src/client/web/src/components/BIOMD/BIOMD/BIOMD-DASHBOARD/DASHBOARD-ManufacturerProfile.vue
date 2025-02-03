@@ -165,7 +165,14 @@
                     <Btn2
                       BtnName="EDIT"
                       backgroundColor="gray"
-                      @click="editPage"
+                      @click="editPage('vendorInfo', {
+                        mode: 'edit',
+                        vendorData: {
+                          _id: vendor._id,
+                          vendorName: vendor.vendorName,
+                          manufacturerName: vendor.manufacturerName,
+                        },
+                      })"
                       class="text-light btn-sm rounded-pill"
                     />
                   </div>
@@ -351,11 +358,16 @@ const props = defineProps([
   "vendorName",
   "manufacturer",
   "vendorID",
+  "vendorData"
 ]);
 
 const emit = defineEmits(["updatePage"]);
 
 const changePage = async (page, props) => {
+  emit("updatePage", page, props);
+};
+
+const editPage = async (page, props) => {
   emit("updatePage", page, props);
 };
 

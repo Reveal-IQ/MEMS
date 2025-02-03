@@ -16,7 +16,7 @@ Description: < Describe the application >
       >
         <div class="mt-3">
           <Header
-            title="Create New Vendor"
+            :title="mode === 'edit' ? 'Edit Vendor' : 'Create New Vendor'"
             subTitle="Enter all details required for this equipment vendor"
           />
         </div>
@@ -45,10 +45,10 @@ Description: < Describe the application >
         <div class="d-flex justify-content-center py-3">
           <div class="">
             <Btn
-              BtnName="Create Vendor"
+              :BtnName="mode === 'edit' ? 'Edit Vendor' : 'Create Vendor'"
               backgroundColor="#27AE60"
               class="mb-3"
-              @click="createRecord"
+              @click="handleSubmit"
             />
 
             <Btn BtnName="Clear Content" />
@@ -61,7 +61,7 @@ Description: < Describe the application >
 
 <script>
 import { useStore } from "vuex"; // Access Vuew Store Variables and Methods
-import { ref, provide, computed } from "vue";
+import { ref, provide, computed, watch } from "vue";
 
 import VendorInformation from "./VENDOR-VendorInformation.vue";
 import CustomerService from "./VENDOR-CustomerService.vue";
@@ -90,6 +90,18 @@ export default {
     tabid: {
       type: String,
     },
+    mode: {
+      type: String,
+      default: "create",
+    },
+    vendorData: {
+      type: Object,
+      default: () => ({}),
+    },
+    manufacturerData: {
+      type: Object,
+      default: () => ({}),
+    },
   },
   // Emit value can pass within this array
   emits: ["updatePage"],
@@ -110,10 +122,29 @@ export default {
       });
     }
 
-    const vendorInfo = ref({
-      vendorName: null,
-      selectedCountry: { Loci_Name_Country: null, Loci_Code_Country: null },
-      selectedState: { Loci_Name_State: null, Loci_Code_State: null },
+    const vendorInfo = ref(
+      props.mode === 'edit' && props.vendorData ? {
+        vendorName: props.vendorData.vendorName,
+        country: props.vendorData.country,
+        area: props.vendorData.area,
+        city: props.vendorData.city,
+        address1: props.vendorData.address_1,
+        address2: props.vendorData.address_2,
+        areaCode: props.vendorData.zipCode,
+        contactInfo: props.vendorData.contactInfo?.map(contact => ({
+          number: contact.number,
+          name: contact.name,
+          email: contact.email,
+          type: contact.type
+        })) || [],
+        selectedCountry: { 
+        Loci_Name_Country: null, 
+        Loci_Code_Country: null 
+      },
+      selectedState: { 
+        Loci_Name_State: null, 
+        Loci_Code_State: null 
+      },
       selectedDistrict: {
         Loci_Name_Area_L1: null,
         Loci_Code_Area_L1: null,
@@ -121,9 +152,37 @@ export default {
       streetAddress1: null,
       streetAddress2: null,
       zipCode: null,
-    });
+    } : {
+        vendorName: null,
+        country: null,
+        area: null,
+        city: null, 
+        address1: null,
+        address2: null,
+        areaCode: null,
+        // selectedCountry: { Loci_Name_Country: null, Loci_Code_Country: null },
+        // selectedState: { Loci_Name_State: null, Loci_Code_State: null },
+        // selectedDistrict: {
+        //   Loci_Name_Area_L1: null,
+        //   Loci_Code_Area_L1: null,
+        // },
+        // streetAddress1: null,
+        // streetAddress2: null,
+        // zipCode: null,
+    }
+  );
 
-    const manufacturerInfo = ref({
+    const manufacturerInfo = ref(
+      props.mode === 'edit' ? {
+        selectedManufacturer: {
+          manufacturerName: props.manufacturerData.manufacturerName,
+          _id: props.manufacturerData._id,
+        },
+        listedModels: {
+          modelName: props.manufacturerData.listedModels.modelName,
+          _id: props.manufacturerData.listedModels._id,
+        },
+      } : {
       selectedManufacturer: { manufacturerName: null, _id: null },
       listedModels: { modelName: null, _id: null },
     });
@@ -154,6 +213,150 @@ export default {
     const sendSocketReq = (request) => {
       store.dispatch("sendSocketReq", request);
     };
+
+    if (props.mode === 'edit' && props.vendorData._id) {
+      fetchVendor();
+    }
+
+    const fetchVendor = async () => {
+      try {
+        sendSocketReq({
+          data: {
+            Expiry: 2000,
+            Type: "REQUEST",
+            Request: {
+              Module: "MEMS",
+              ServiceCode: "BIOMD",
+              return_array: true,
+              max_list: 100,
+              find: {
+                collection: "Vendor",
+                queries: [
+                  {
+                    field: "_id",
+                    op: "eq",
+                    value: props.vendorData._id,
+                  },
+                ],
+                lookups: [
+                  {
+                    localField: "manufacturerList.manufacturer",
+                    collection: "Manufacturer",
+                    foreignField: "_id",
+                    as: "Manufacturer"
+                  }
+                ],
+                projection: {
+                  _id: 1,
+                  vendorName: 1,
+                  country: 1,
+                  area: 1,
+                  city: 1,
+                  address_1: 1,
+                  address_2: 1,
+                  areaCode: 1,
+                  // contactInfo: 1,
+                  // manufacturerList: 1,
+                  // "Manufacturer.manufacturerName": 1
+                }
+              }
+            }
+          },
+          callback: (res) => {
+            if (res.Type === "RESPONSE") {
+              console.log("Vendor Details --->", res.Response);
+              vendorInfo.value = res.Response.records[0];
+            }
+          }
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    function handleSubmit() {
+      const vendorRecord = new VendorRecord({
+        vendorName: vendorInfo.value.vendorName,
+        country: GlobalVendorDefinition.value.vendorAddress.Country,
+        area: GlobalVendorDefinition.value.vendorAddress.State,
+        city: GlobalVendorDefinition.value.vendorAddress.District,
+        address_1: vendorInfo.value.streetAddress1,
+        address_2: vendorInfo.value.streetAddress2,
+        areaCode: vendorInfo.value.zipCode,
+        contactInfo: [
+          {
+            number: contactInfo.value.number,
+            name: contactInfo.value.name,
+            email: contactInfo.value.email,
+            type: contactInfo.value.type,
+          },
+        ],
+        manufacturerList: [
+          {
+            manufacturer: GlobalVendorDefinition.value.manufacturerID,
+          },
+        ],
+      }).serialize();
+
+      sendSocketReq({
+        data: {
+          Expiry: 20000,
+          Type: "REQUEST",
+          Request: {
+            Module: "MEMS",
+            ServiceCode: "BIOMD",
+            API: props.mode === 'edit' ? "UPDATE_RECORD" : "CREATE_RECORD",
+            collection: "Vendor",
+            ...(props.mode === 'edit'
+              ? {
+                filter: {
+                  _id: props.vendorData._id,
+                },
+                update: {
+                  $set: vendorRecord,
+                },
+              }
+              : {
+                record: vendorRecord,
+              }
+            ),
+            Institute_Code: Institute_Code.value,
+          },
+        },
+        callback: (res) => {
+          if (res.Type === "RESPONSE") {
+            changePage("success")
+          }
+        }
+      })
+    }
+
+    watch(() => props.vendorData, (newData) => {
+      vendorInfo.value = {
+        vendorName: newData.vendorName,
+        country: GlobalVendorDefinition.value.vendorAddress.Country,
+        area: GlobalVendorDefinition.value.vendorAddress.State,
+        city: GlobalVendorDefinition.value.vendorAddress.District,
+        address_1: vendorInfo.value.streetAddress1,
+        address_2: vendorInfo.value.streetAddress2,
+        areaCode: vendorInfo.value.zipCode,
+        // selectedCountry: {
+        //   Loci_Name_Country: newData.selectedCountry.Loci_Name_Country,
+        //   Loci_Code_Country: newData.selectedCountry.Loci_Code_Country,
+        // },
+        // selectedState: {
+        //   Loci_Name_State: newData.selectedState.Loci_Name_State,
+        //   Loci_Code_State: newData.selectedState.Loci_Code_State,
+        // },
+        // selectedDistrict: {
+        //   Loci_Name_Area_L1: newData.selectedDistrict.Loci_Name_Area_L1,
+        //   Loci_Code_Area_L1: newData.selectedDistrict.Loci_Code_Area_L1,
+        // },
+        // streetAddress1: newData.streetAddress1,
+        // streetAddress2: newData.streetAddress2,
+        // zipCode: newData.zipCode,
+      }
+  }, {immediate: true})
 
     function createRecord() {
       sendSocketReq({
@@ -220,7 +423,9 @@ export default {
       goBack,
       changePage,
       redirectToPage,
-      createRecord,
+      // createRecord,
+      handleSubmit,
+      fetchVendor
     };
   },
 };
