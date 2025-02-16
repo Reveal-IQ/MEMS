@@ -1,23 +1,13 @@
-<!-- 
-************************************
-Created By : Reveal Foundation  
-Author     : Edward Opoku-Agyemang           
-Date       : < 03-Sep-2022 >    
-Version    : < 0.0.1 >   
-Description: < Describe the application >          
-************************************
--->
-
 <template>
-  <div class="RevealContainer">
+    <div class="RevealContainer">
     <div class="container p-4 m-4">
       <div
         class="d-lg-flex d-md-flex d-sm-flex gap-lg-0 gap-sm-5 align-items-center justify-content-lg-between justify-content-md-between justify-content-sm-center"
       >
         <div class="mt-3">
           <Header
-            title="Facility Department"
-            subTitle="Create a new department with this form"
+            title="Model"
+            subTitle="Create a new model with this form"
           />
         </div>
         <div class="d-flex gap-2 d-md-block">
@@ -25,7 +15,7 @@ Description: < Describe the application >
             BtnName="Return"
             :icon="'arrow-left'"
             backgroundColor="none"
-            @click="changePage('siteDescription')"
+            @click="changePage('dashboard')"
             class="text-secondary btn-sm"
           />
 
@@ -39,7 +29,8 @@ Description: < Describe the application >
       </div>
 
       <main>
-        <ModelDescription />
+        <ModelDescription :manufacturerName="props.manufacturerName" />
+        
 
         <div class="d-flex justify-content-center py-3">
           <div class="">
@@ -58,61 +49,46 @@ Description: < Describe the application >
   </div>
 </template>
 
-<script>
+<script setup>
 import { useStore } from "vuex";
-import { ref, computed, provide } from "vue";
+import { ref, computed, provide, onMounted } from "vue";
 
 import Btn from "../BIOMD-UI/UI-Btn.vue";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 import Header from "../BIOMD-UI/UI-FormHeader.vue";
-import ModelDescription from "../BIOMD-MODEL/MODEL-ModelDescription.vue";
-import { DepartmentRecord } from "../../../../store/modules/recordSchema";
+import ModelDescription from "./MODEL-ModelDescription.vue"
+import { ModelRecord} from "../../../../store/modules/recordSchema";
 
-export default {
-  components: { ModelDescription, Btn2, Btn, Header },
-  name: "model",
-  props: {
-    tabid: {
-      type: String,
+const store = useStore();
+const sendSocketReq = (request) => {
+  store.dispatch("sendSocketReq", request);
+};
+const Institute_Code = computed(
+    () => store.state.globalStore.UserInfo.Institute_Info.Code
+);
+
+const props = defineProps({
+    manufacturerName: {
+        type: String,
     },
-  },
-  emits: ["updatePage"],
-  setup(props, { emit }) {
-    const store = useStore();
-    const Institute_Code = computed(
-      () => store.state.globalStore.UserInfo.Institute_Info.Code
-    );
+})
+console.log("Manufacturer Name in MODEL.vue:");
 
-    const changeServiceState = (serviceState) =>
-      store.dispatch("changeServiceState", serviceState);
-    //Redirect to another page
-    function redirectToPage() {
-      changeServiceState({
-        service: "<App_Name>",
-        tabcode: tabid.value,
-        status: "<Navigate_To_This_Page>",
-      });
-    }
+const ModelDesc = ref({
+    modelName: null,
+    deviceDescription: null,
+    commonName: null,
+    selectedManufacturer: {
+        manufacturerName: null,
+        _id: null,
+    },
+})
 
-    const DepartmentDescription = ref({
-      departmentName: null,
-      shortName: null,
-      selectedFacility: { facilityName: null, _id: null },
-    });
+const GlobalModelInformation = ref({
+    manufacturerID: null,
+})
 
-    const GlobalDepartmentInformation = ref({
-      facilityID: null,
-    });
-
-    const sendSocketReq = (request) => {
-      store.dispatch("sendSocketReq", request);
-    };
-
-    const changePage = async (page) => {
-      emit("updatePage", page);
-    };
-
-    function createRecord() {
+function createRecord() {
       // send Request as below .
       sendSocketReq({
         data: {
@@ -122,11 +98,12 @@ export default {
             Module: "MEMS",
             ServiceCode: "BIOMD",
             API: "CREATE_RECORD",
-            collection: "Department",
-            record: new DepartmentRecord({
-              facilityID: GlobalDepartmentInformation.value.facilityID,
-              departmentName: DepartmentDescription.value.departmentName,
-              shortName: DepartmentDescription.value.shortName,
+            collection: "Model",
+            record: new ModelRecord({
+              manufacturerID: GlobalModelInformation.value.manufacturerID,
+              modelName: ModelDesc.value.modelName,
+              deviceDescription: ModelDesc.value.deviceDescription,
+              commonName: ModelDesc.value.commonName
             }).serialize(),
             Institute_Code: Institute_Code.value,
           },
@@ -149,21 +126,18 @@ export default {
       });
     }
 
-    const goBack = () => {
-      emit("updatePage", "dashboard");
-    };
+const emit = defineEmits(["updatePage"]);
 
-    provide("DepartmentDescription", DepartmentDescription);
-    provide("GlobalDepartmentInformation", GlobalDepartmentInformation);
-
-    return {
-      goBack,
-      redirectToPage,
-      createRecord,
-      changePage,
-    };
-  },
+const changePage = async (page, props) => {
+  emit("updatePage", page, props);
 };
+
+console.log("Manufacturer Name in MODEL.vue1:", props.manufacturerName);
+onMounted(() => {
+    console.log("Manufacturer Name in MODEL.vue1:", props.manufacturerName);
+});
+provide("ModelDesc", ModelDesc);
+provide("GlobalModelInformation", GlobalModelInformation);
 </script>
 
 <style lang="scss" scoped>

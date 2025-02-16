@@ -63,6 +63,14 @@ Description: < Describe the application >
           :vendorName="pageProps.vendorName"
           :vendorID="pageProps.vendorID"
         />
+        <!-- <DASHBOARDManufacturerProfile
+          @update-page="updatePage"
+          :manufacturerName="pageProps.manufacturerName"
+          :manufacturer="pageProps.manufacturer"
+          :manufacturerID="pageProps.manufacturerID"
+          :vendorName="pageProps.vendorName"
+          :vendorID="pageProps.vendorID"
+        /> -->
       </div>
     </div>
   </div>
@@ -154,7 +162,7 @@ Description: < Describe the application >
               v-else-if="compState === 'facilityInfo'"
               @update-page="updatePage"
             />
-            <MODEL
+            <DEPARTMENT
               v-else-if="compState === 'departmentInfo'"
               @update-page="updatePage"
             />
@@ -164,6 +172,10 @@ Description: < Describe the application >
             />
             <MANUFACTURER
               v-else-if="compState === 'manufacturerInfo'"
+              @update-page="updatePage"
+            />
+            <MODEL
+              v-else-if="compState === 'modelInfo'"
               @update-page="updatePage"
             />
             <SuccessPage
@@ -199,6 +211,7 @@ import SuccessPage from "../BIOMD/BIOMD-UI/UI-SuccessPage.vue";
 import DASHBOARDModel from "./BIOMD-DASHBOARD/DASHBOARD-Model.vue";
 import DASHBOARDAssetDetail from "./BIOMD-DASHBOARD/DASHBOARD-AssetDetail.vue";
 import DASHBOARDManufacturerProfile from "./BIOMD-DASHBOARD/DASHBOARD-ManufacturerProfile.vue";
+import DEPARTMENT from "./BIOMD-DEPARTMENT/DEPARTMENT.vue";
 
 export default {
   components: {
@@ -207,6 +220,7 @@ export default {
     FACILITYSiteDescription,
     VENDOR,
     MODEL,
+    DEPARTMENT,
     MANUFACTURER,
     DASHBOARD,
     REPORTS,

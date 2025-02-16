@@ -217,12 +217,12 @@ class ModelRecord extends Record {
     return {
       type: BSONType.object,
       fields: {
-        //Schema Version: v0.1
+        //Schema Version: v0.2
         manufacturerID: { type: BSONType.objectId },
-        contactID: { type: BSONType.objectId },
+        // contactID: { type: BSONType.objectId },
         modelName: { type: BSONType.string },
         commonName: { type: BSONType.string },
-        UMDNSCode: { type: BSONType.string },
+        deviceDescription: { type: BSONType.string },
       },
     };
   }

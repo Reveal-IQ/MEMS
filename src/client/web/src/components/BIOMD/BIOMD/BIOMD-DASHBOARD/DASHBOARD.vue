@@ -28,6 +28,12 @@
       <small
         class="text-secondary"
         style="cursor: pointer"
+        @click="changePage('manufacturerInfo')"
+        >Manufacturer</small
+      >
+      <small
+        class="text-secondary"
+        style="cursor: pointer"
         @click="changePage('siteDescription')"
         >Facility</small
       >
@@ -150,6 +156,80 @@
         <div class="">
           <span class="card-title fw-normal fs-4">Manufacturer</span>
           <p class="card-text">
+            <small class="text-muted">Profile of Manufacturers and Models</small>
+          </p>
+        </div>
+
+        <div class="mb-5 mt-2" v-if="manufacturerList == 0">
+          <UIToastGlobal
+            message="Manufacturer has not been added"
+            message2="Create a new Manufacturer."
+            :icon="'exclamation-triangle'"
+            backgroundColor="#FFF0DA"
+          >
+            <UIBtn2
+              BtnName="New Model"
+              backgroundColor="#FFFFFF"
+              class="text-success btn-sm"
+              @click="changePage('manufacturerInfo')"
+            />
+          </UIToastGlobal>
+        </div>
+        <div v-else>
+          <div
+            v-for="manufacturer in manufacturerList"
+            :key="manufacturer.index"
+            class="g-3 mb-2 mt-2 rounded container py-2 align-middle"
+            style="background-color: #f5f6f6"
+            @click="
+              changePage('dashboardManufacturerProfile', {
+                manufacturerName: manufacturer.manufacturerName,
+                manufacturerID: manufacturer._id,
+              })
+            "
+          >
+            <div class="" style="cursor: pointer">
+              <div class="row">
+                <td class="col-4">
+                  <small class="text-secondary fsXs">Manufacturer Name</small>
+                  <div class="">
+                    <small class="fw-normal"
+                      >{{ manufacturer.manufacturerName }}
+                    </small>
+                  </div>
+                </td>
+                <td class="col-4">
+                  <small class="text-secondary fsXs">Model</small>
+                  <div class="">
+                    <span
+                      v-for="model in modelList"
+                      :key="model.index"
+                      class=""
+                    >
+                      <small
+                        class=""
+                        v-if="
+                          model.manufacturerName ===
+                          manufacturer.manufacturerName
+                        "
+                      >
+                        | {{ model.modelName }}
+                      </small>
+                    </span>
+                  </div>
+                </td>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="row p-2 mb-5">
+      <div class="col-sm-12 col-lg-9 col-12">
+        <div class="">
+          <span class="card-title fw-normal fs-4">Vendors</span>
+          <p class="card-text">
             <small class="text-muted">Profile of Manufacturer and Models</small>
           </p>
         </div>
@@ -222,9 +302,6 @@
                         "
                         >{{ vendor.vendorName }} |
                       </small>
-                      <!-- <small v-else class="text-muted"
-                        >No Vendor Assigned</small
-                      > -->
                     </span>
                   </div>
                 </td>
@@ -233,7 +310,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
