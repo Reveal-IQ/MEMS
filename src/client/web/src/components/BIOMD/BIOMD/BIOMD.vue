@@ -22,14 +22,9 @@ Description: < Describe the application >
     <div class="container">
       <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
       <div class="row">
-        <DASHBOARDModel
-          @update-page="updatePage"
-          :modelName="pageProps.modelName"
-          :manufacturerID="pageProps.manufacturerID"
-          :commonName="pageProps.commonName"
-          :modelID="pageProps.modelID"
-          :manufacturerName="pageProps.manufacturerName"
-        />
+        <DASHBOARDModel @update-page="updatePage" :modelName="pageProps.modelName"
+          :manufacturerID="pageProps.manufacturerID" :commonName="pageProps.commonName" :modelID="pageProps.modelID"
+          :manufacturerName="pageProps.manufacturerName" />
       </div>
     </div>
   </div>
@@ -38,39 +33,18 @@ Description: < Describe the application >
     <div class="container">
       <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
       <div class="row">
-        <DASHBOARDAssetDetail
-          @update-page="updatePage"
-          :assetCode="pageProps.assetCode"
-          :status="pageProps.status"
-          :modelName="pageProps.modelName"
-          :parentAssetID="pageProps.parentAssetID"
-        />
+        <DASHBOARDAssetDetail @update-page="updatePage" :assetCode="pageProps.assetCode" :status="pageProps.status"
+          :modelName="pageProps.modelName" :parentAssetID="pageProps.parentAssetID" />
       </div>
     </div>
   </div>
-  <div
-    v-if="compState === 'dashboardManufacturerProfile'"
-    class="RevealContainer_dash"
-  >
+  <div v-if="compState === 'dashboardManufacturerProfile'" class="RevealContainer_dash">
     <div class="container">
       <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
       <div class="row">
-        <DASHBOARDManufacturerProfile
-          @update-page="updatePage"
-          :manufacturerName="pageProps.manufacturerName"
-          :manufacturer="pageProps.manufacturer"
-          :manufacturerID="pageProps.manufacturerID"
-          :vendorName="pageProps.vendorName"
-          :vendorID="pageProps.vendorID"
-        />
-        <!-- <DASHBOARDManufacturerProfile
-          @update-page="updatePage"
-          :manufacturerName="pageProps.manufacturerName"
-          :manufacturer="pageProps.manufacturer"
-          :manufacturerID="pageProps.manufacturerID"
-          :vendorName="pageProps.vendorName"
-          :vendorID="pageProps.vendorID"
-        /> -->
+        <DASHBOARDManufacturerProfile @update-page="updatePage" :manufacturerName="pageProps.manufacturerName"
+          :manufacturer="pageProps.manufacturer" :manufacturerID="pageProps.manufacturerID"
+          :vendorName="pageProps.vendorName" :vendorID="pageProps.vendorID" />
       </div>
     </div>
   </div>
@@ -86,11 +60,8 @@ Description: < Describe the application >
     <div class="container">
       <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
       <div class="row">
-        <REPORTSList
-          @update-page="updatePage"
-          :facilityName="pageProps.facilityName"
-          :facilityID="pageProps.facilityID"
-        />
+        <REPORTSList @update-page="updatePage" :facilityName="pageProps.facilityName"
+          :facilityID="pageProps.facilityID" />
       </div>
     </div>
   </div>
@@ -98,11 +69,8 @@ Description: < Describe the application >
     <div class="container">
       <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
       <div class="row">
-        <REPORTSSummary1
-          @update-page="updatePage"
-          :facilityName="pageProps.facilityName"
-          :facilityID="pageProps.facilityID"
-        />
+        <REPORTSSummary1 @update-page="updatePage" :facilityName="pageProps.facilityName"
+          :facilityID="pageProps.facilityID" />
       </div>
     </div>
   </div>
@@ -110,11 +78,8 @@ Description: < Describe the application >
     <div class="container">
       <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
       <div class="row">
-        <REPORTSSummary2
-          @update-page="updatePage"
-          :facilityName="pageProps.facilityName"
-          :facilityID="pageProps.facilityID"
-        />
+        <REPORTSSummary2 @update-page="updatePage" :facilityName="pageProps.facilityName"
+          :facilityID="pageProps.facilityID" />
       </div>
     </div>
   </div>
@@ -122,11 +87,8 @@ Description: < Describe the application >
     <div class="container">
       <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
       <div class="row">
-        <REPORTSFunctionality
-          @update-page="updatePage"
-          :facilityName="pageProps.facilityName"
-          :facilityID="pageProps.facilityID"
-        />
+        <REPORTSFunctionality @update-page="updatePage" :facilityName="pageProps.facilityName"
+          :facilityID="pageProps.facilityID" />
       </div>
     </div>
   </div>
@@ -134,11 +96,8 @@ Description: < Describe the application >
     <div class="container">
       <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
       <div class="row">
-        <REPORTSAnnualInflow
-          @update-page="updatePage"
-          :facilityName="pageProps.facilityName"
-          :facilityID="pageProps.facilityID"
-        />
+        <REPORTSAnnualInflow @update-page="updatePage" :facilityName="pageProps.facilityName"
+          :facilityID="pageProps.facilityID" />
       </div>
     </div>
   </div>
@@ -158,30 +117,13 @@ Description: < Describe the application >
         <div class="row">
           <div>
             <ASSET v-if="compState === 'assetInfo'" @update-page="updatePage" />
-            <FACILITY
-              v-else-if="compState === 'facilityInfo'"
-              @update-page="updatePage"
-            />
-            <DEPARTMENT
-              v-else-if="compState === 'departmentInfo'"
-              @update-page="updatePage"
-            />
-            <VENDOR
-              v-else-if="compState === 'vendorInfo'"
-              @update-page="updatePage"
-            />
-            <MANUFACTURER
-              v-else-if="compState === 'manufacturerInfo'"
-              @update-page="updatePage"
-            />
-            <MODEL
-              v-else-if="compState === 'modelInfo'"
-              @update-page="updatePage"
-            />
-            <SuccessPage
-              v-else="compState === 'success'"
-              @update-page="updatePage"
-            />
+            <FACILITY v-else-if="compState === 'facilityInfo'" @update-page="updatePage" />
+            <DEPARTMENT v-else-if="compState === 'departmentInfo'" @update-page="updatePage" />
+            <VENDOR v-else-if="compState === 'vendorInfo'" @update-page="updatePage" />
+            <MANUFACTURER v-else-if="compState === 'manufacturerInfo'" @update-page="updatePage" />
+            <MODEL v-else-if="compState === 'modelInfo'" @update-page="updatePage"
+              :manufacturerID="pageProps.manufacturerID" :manufacturerName="pageProps.manufacturerName" />
+            <SuccessPage v-else="compState === 'success'" @update-page="updatePage" />
           </div>
         </div>
       </div>
@@ -262,21 +204,25 @@ export default {
 <style lang="scss" scoped>
 @import "../../GLOBAL/Styles/colors.scss";
 @import "./Style/BIOMD.scss";
+
 .RevealContainer {
   min-height: 100vh;
   max-height: 100vh;
   background-color: $InvisibleSilver;
   overflow: scroll;
 }
+
 .RevealContainer_dash {
   min-height: 100vh;
   max-height: 100vh;
   background-color: $White;
   overflow: scroll;
 }
+
 .RevealContainer::-webkit-scrollbar {
   display: none;
 }
+
 .RevealContainer_dash::-webkit-scrollbar {
   display: none;
 }

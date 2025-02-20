@@ -219,7 +219,6 @@ class ModelRecord extends Record {
       fields: {
         //Schema Version: v0.2
         manufacturerID: { type: BSONType.objectId },
-        // contactID: { type: BSONType.objectId },
         modelName: { type: BSONType.string },
         commonName: { type: BSONType.string },
         deviceDescription: { type: BSONType.string },

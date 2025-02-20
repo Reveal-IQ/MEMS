@@ -8,7 +8,7 @@
       <div>
         <span class="title text-dark fw-normal fs-1">{{
           props.manufacturerName
-        }}</span>
+          }}</span>
       </div>
       <div>
         <span class="fsXs">
@@ -57,13 +57,9 @@
         <div class="mb-5">
           <div class="d-flex d-md-block">
             <span class="card-title fw-normal fs-5">Models</span>
-            <!-- <p class="card-text">
-              <small class="text-muted fsXs"
-                >Detailed equipment description</small
-              >
-            </p> -->
             <Btn2 BtnName="New Model" backgroundColor="green" @click="changePage('modelInfo', {
-              manufacturerName: props.manufacturerName
+              manufacturerName: props.manufacturerName,
+              manufacturerID: props.manufacturerID
             })" class="text-light btn-sm rounded-pill" />
           </div>
           <div v-for="model in modelList" :key="model.index">
@@ -140,7 +136,7 @@
                       <span>
                         <small v-if="vendor.manufacturerName">{{
                           vendor.manufacturerName
-                        }}</small>
+                          }}</small>
                         <small v-else class="text-muted">No Manufacturer Assigned</small>
                       </span>
                     </div>
