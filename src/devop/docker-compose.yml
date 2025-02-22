@@ -25,7 +25,7 @@ services:
   #Backend API
   API:
     build: ../api
-    image: "reveal/api:dev"
+    image: "reveal/api:0.2.0"
     deploy:
       restart_policy:
         delay: 5s
@@ -70,7 +70,7 @@ services:
   #DMODB01 Mongo DB Database
   DMODB01:
     build: ./database/DMODB01
-    image: "reveal/dmodb01:dev"
+    image: "reveal/dmodb01:0.2.0"
     deploy:
       restart_policy:
         delay: 5s
