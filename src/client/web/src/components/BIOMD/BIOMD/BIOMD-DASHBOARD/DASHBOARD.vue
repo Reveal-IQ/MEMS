@@ -1,49 +1,18 @@
 <template>
   <div class="container-fluid">
     <nav class="d-flex gap-3 p-2">
-      <small
-        class="text-secondary"
-        style="cursor: pointer"
-        @click="changePage('dashboard')"
-        >Dashboard</small
-      >
-      <small
-        class="text-secondary"
-        style="cursor: pointer"
-        @click="changePage('assetInfo')"
-        >New Asset</small
-      >
-      <small
-        class="text-secondary"
-        style="cursor: pointer"
-        @click="changePage('vendorInfo')"
-        >New Vendor</small
-      >
-      <small
-        class="text-secondary"
-        style="cursor: pointer"
-        @click="changePage('departmentInfo')"
-        >Department</small
-      >
-      <small
-        class="text-secondary"
-        style="cursor: pointer"
-        @click="changePage('siteDescription')"
-        >Facility</small
-      >
-      <small
-        class="text-secondary"
-        style="cursor: pointer"
-        @click="changePage('reportsPage')"
-        >Reports</small
-      >
+      <small class="text-secondary" style="cursor: pointer" @click="changePage('dashboard')">Dashboard</small>
+      <small class="text-secondary" style="cursor: pointer" @click="changePage('assetInfo')">New Asset</small>
+      <small class="text-secondary" style="cursor: pointer" @click="changePage('vendorInfo')">New Vendor</small>
+      <small class="text-secondary" style="cursor: pointer" @click="changePage('departmentInfo')">Department</small>
+      <small class="text-secondary" style="cursor: pointer" @click="changePage('manufacturerInfo')">Manufacturer</small>
+      <small class="text-secondary" style="cursor: pointer" @click="changePage('siteDescription')">Facility</small>
+      <small class="text-secondary" style="cursor: pointer" @click="changePage('reportsPage')">Reports</small>
     </nav>
 
     <div class="d-flex flex-column p-2 mt-4">
       <span class="title text-dark fw-normal fs-1">Dashboard</span>
-      <span class="sub-title fs-6 fw-normal"
-        >Snapshot for medical equipment inventory</span
-      >
+      <span class="sub-title fs-6 fw-normal">Snapshot for medical equipment inventory</span>
     </div>
 
     <div class="rounded mt-4 p-2" style="background-color: #e3f6f5">
@@ -52,14 +21,13 @@
           Welcome {{ userName.User_First_Name }}!
         </h5>
         <p class="card-text">
-          <small class="text-muted"
-            >This is your dashboard of medical equipment assigned to you and
-            your team</small
-          >
+          <small class="text-muted">This is your dashboard of medical equipment assigned to you and
+            your team</small>
         </p>
       </div>
     </div>
 
+    <!-- Site Inventory Dashboard -->
     <div class="row p-2 mt-4">
       <div class="col-sm-12 col-lg-9 col-12">
         <div class="mb-5">
@@ -71,27 +39,15 @@
           </div>
 
           <div class="mb-2 mt-2" v-if="modelList == 0">
-            <UIToastGlobal
-              message="Assets have not been assigned"
-              message2="Use New Vendor to create new Models and Manufacturers."
-              :icon="'exclamation-triangle'"
-              backgroundColor="#FFF0DA"
-            >
-              <UIBtn2
-                BtnName="New Model"
-                backgroundColor="#FFFFFF"
-                class="text-success btn-sm"
-                @click="changePage('vendorInfo')"
-              />
+            <UIToastGlobal message="Assets have not been assigned"
+              message2="Use New Vendor to create new Models and Manufacturers." :icon="'exclamation-triangle'"
+              backgroundColor="#FFF0DA">
+              <UIBtn2 BtnName="New Model" backgroundColor="#FFFFFF" class="text-success btn-sm"
+                @click="changePage('vendorInfo')" />
             </UIToastGlobal>
           </div>
-          <div
-            v-else
-            v-for="model in modelList"
-            :key="model.index"
-            class="g-3 mb-2 mt-2 rounded container py-2 align-middle"
-            style="background-color: #f5f6f6"
-            @click="
+          <div v-else v-for="model in modelList" :key="model.index"
+            class="g-3 mb-2 mt-2 rounded container py-2 align-middle" style="background-color: #f5f6f6" @click="
               changePage('dashboardModel', {
                 modelName: model.modelName,
                 manufacturerID: model.manufacturerID,
@@ -99,8 +55,7 @@
                 manufacturerName: model.manufacturerName,
                 modelID: model._id,
               })
-            "
-          >
+              ">
             <div class="" style="cursor: pointer">
               <div class="row">
                 <td class="col-3">
@@ -116,25 +71,19 @@
                   </div>
                 </td>
                 <td class="col-2">
-                  <div
-                    class="d-flex flex-column justify-content-center text-center"
-                  >
+                  <div class="d-flex flex-column justify-content-center text-center">
                     <small class="text-secondary fsXs">Quantity</small>
                     <!-- <small>---</small> -->
                   </div>
                 </td>
                 <td class="col-2">
-                  <div
-                    class="d-flex flex-column justify-content-center text-center"
-                  >
+                  <div class="d-flex flex-column justify-content-center text-center">
                     <small class="text-secondary fsXs">Active</small>
                     <!-- <small>6</small> -->
                   </div>
                 </td>
                 <td class="col-2">
-                  <div
-                    class="d-flex flex-column justify-content-end text-center"
-                  >
+                  <div class="d-flex flex-column justify-content-end text-center">
                     <small class="text-secondary fsXs">In-Service</small>
                     <!-- <small>4</small> -->
                   </div>
@@ -145,74 +94,111 @@
         </div>
       </div>
     </div>
+
+    <!-- Manufacturer Dashboard -->
     <div class="row p-2 mb-5">
       <div class="col-sm-12 col-lg-9 col-12">
         <div class="">
           <span class="card-title fw-normal fs-4">Manufacturer</span>
           <p class="card-text">
-            <small class="text-muted">Profile of Manufacturer and Models</small>
+            <small class="text-muted">Profile of Manufacturers and Models</small>
           </p>
         </div>
 
         <div class="mb-5 mt-2" v-if="manufacturerList == 0">
-          <UIToastGlobal
-            message="Manufacturer has not been added"
-            message2="Use New Vendor to create new Models and Manufacturers."
-            :icon="'exclamation-triangle'"
-            backgroundColor="#FFF0DA"
-          >
-            <UIBtn2
-              BtnName="New Model"
-              backgroundColor="#FFFFFF"
-              class="text-success btn-sm"
-              @click="changePage('vendorInfo')"
-            />
+          <UIToastGlobal message="Manufacturer has not been added" message2="Create a new Manufacturer."
+            :icon="'exclamation-triangle'" backgroundColor="#FFF0DA">
+            <UIBtn2 BtnName="New Model" backgroundColor="#FFFFFF" class="text-success btn-sm"
+              @click="changePage('manufacturerInfo')" />
           </UIToastGlobal>
         </div>
         <div v-else>
-          <div
-            v-for="manufacturer in manufacturerList"
-            :key="manufacturer.index"
-            class="g-3 mb-2 mt-2 rounded container py-2 align-middle"
-            style="background-color: #f5f6f6"
-            @click="
+          <div v-for="manufacturer in manufacturerList" :key="manufacturer.index"
+            class="g-3 mb-2 mt-2 rounded container py-2 align-middle" style="background-color: #f5f6f6" @click="
               changePage('dashboardManufacturerProfile', {
                 manufacturerName: manufacturer.manufacturerName,
                 manufacturerID: manufacturer._id,
               })
-            "
-          >
+              ">
             <div class="" style="cursor: pointer">
               <div class="row">
                 <td class="col-4">
                   <small class="text-secondary fsXs">Manufacturer Name</small>
                   <div class="">
-                    <small class="fw-normal"
-                      >{{ manufacturer.manufacturerName }}
+                    <small class="fw-normal">{{ manufacturer.manufacturerName }}
                     </small>
                   </div>
                 </td>
                 <td class="col-4">
                   <small class="text-secondary fsXs">Model</small>
                   <div class="">
-                    <span
-                      v-for="model in modelList"
-                      :key="model.index"
-                      class=""
-                    >
-                      <small
-                        class=""
-                        v-if="
-                          model.manufacturerName ===
-                          manufacturer.manufacturerName
-                        "
-                      >
+                    <span v-for="model in modelList" :key="model.index" class="">
+                      <small class="" v-if="
+                        model.manufacturerName ===
+                        manufacturer.manufacturerName
+                      ">
                         | {{ model.modelName }}
                       </small>
                     </span>
                   </div>
                 </td>
-                <td class="col">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vendor Dashboard -->
+    <div class="row p-2 mb-5">
+      <div class="col-sm-12 col-lg-9 col-12">
+        <div class="">
+          <span class="card-title fw-normal fs-4">Vendors</span>
+          <p class="card-text">
+            <small class="text-muted">Profile of Manufacturer and Models</small>
+          </p>
+        </div>
+
+        <div class="mb-5 mt-2" v-if="vendorList == 0">
+          <UIToastGlobal message="Vendor has not been added"
+            message2="Use New Vendor to create new Models and Manufacturers." :icon="'exclamation-triangle'"
+            backgroundColor="#FFF0DA">
+            <UIBtn2 BtnName="New Vendor" backgroundColor="#FFFFFF" class="text-success btn-sm"
+              @click="changePage('vendorInfo')" />
+          </UIToastGlobal>
+        </div>
+        <div v-else>
+          <div v-for="vendor in vendorList" :key="vendor.index"
+            class="g-3 mb-2 mt-2 rounded container py-2 align-middle" style="background-color: #f5f6f6" @click="
+              changePage('dashboardManufacturerProfile', {
+                manufacturerName: manufacturer.manufacturerName,
+                manufacturerID: manufacturer._id,
+              })
+              ">
+            <div class="" style="cursor: pointer">
+              <div class="row">
+                <td class="col-4">
+                  <small class="text-secondary fsXs">Manufacturer Name</small>
+                  <div class="">
+                    <small class="fw-normal">{{ vendor.vendorName }}
+                    </small>
+                  </div>
+                </td>
+                <td class="col-4">
+                  <small class="text-secondary fsXs">Manufacturer</small>
+                  <div class="">
+                    <span v-for="manufacturer in manufacturerList" :key="manufacturer.index" class="">
+                      <small class="" v-if="
+                        manufacturer.manufacturerName ===
+                        vendor.manufacturerName
+                      ">
+                        | {{ manufacturer.manufacturerName }}
+                      </small>
+                    </span>
+                  </div>
+                </td>
+                <!-- <td class="col">
                   <small class="text-secondary fsXs">Vendor</small>
                   <div class="">
                     <span v-for="vendor in vendorList" :key="vendor.index">
@@ -222,12 +208,9 @@
                         "
                         >{{ vendor.vendorName }} |
                       </small>
-                      <!-- <small v-else class="text-muted"
-                        >No Vendor Assigned</small
-                      > -->
                     </span>
                   </div>
-                </td>
+                </td> -->
               </div>
             </div>
           </div>
