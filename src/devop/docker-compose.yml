@@ -9,7 +9,7 @@ services:
 
   # Web Client
   WEB:
-    build: ../Client/Web
+    build: ../client/Web
     image: "reveal/web:0.2.1"
     restart: unless-stopped
     ports:
