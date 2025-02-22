@@ -1,55 +1,40 @@
 <template>
-  <Section sectionTitle="Department Description">
+  <Section sectionTitle="Model Description">
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 g-3">
-      <!-- Department Name -->
+      <!-- Model Name -->
       <div class="col-lg-6">
-        <Input
-          label="Department Name"
-          type="text"
-          id="departmentName"
-          placeholder="Department Name"
-          v-model="DepartmentDescription.departmentName"
-        />
+        <Input label="Model Name" type="text" id="modelName" placeholder="Model Name" v-model="ModelDesc.modelName" />
       </div>
 
-      <!-- Department Number -->
+      <!-- Common Name -->
       <div class="col-lg-6">
-        <Input
-          label="Short Name"
-          type="text"
-          id="shortName"
-          placeholder="Short Name"
-          v-model="DepartmentDescription.shortName"
-        />
+        <Input label="Common Name" type="text" id="CommonName" placeholder="Common Name"
+          v-model="ModelDesc.commonName" />
       </div>
 
-      <!-- Facility -->
-      <div class="col-lg-6 mb-3">
-        <label for="manufacturerList" class="form-label">Facility</label>
-        <input
-          class="form-control"
-          list="manufacturerListOptions"
-          id="manufacturerList"
-          placeholder="Select Manufacturer"
-          aria-label="Default select example"
-          v-model="DepartmentDescription.selectedFacility.facilityName"
-          @input="fetchFacility"
-          autocomplete="off"
-        />
+      <!-- Device Description -->
+      <div class="col-lg-6">
+        <Input label="Device Description" type="text" id="deviceDescription" placeholder="Device Description"
+          v-model="ModelDesc.deviceDescription" />
+      </div>
+
+      <!-- Manufacturer -->
+      <!-- <div class="col-lg-6 mb-3">
+        <label for="manufacturerList" class="form-label">Manufacturer</label>
+        <input class="form-control" list="manufacturerListOptions" id="manufacturerList"
+          placeholder="Select Manufacturer" aria-label="Default select example"
+          v-model="ModelDesc.selectedManufacturer.manufacturerName" @input="fetchManufacturer" autocomplete="off" />
         <datalist id="manufacturerListOptions">
-          <option
-            v-for="facility in facilityList"
-            :key="facility.index"
-            :value="facility.facilityName"
-          ></option>
+          <option v-for="manufacturer in manufacturerList" :key="manufacturer.index"
+            :value="manufacturer.manufacturerName"></option>
         </datalist>
-      </div>
+      </div> -->
     </div>
   </Section>
 </template>
 
 <script setup>
-import { ref, inject, onMounted } from "vue";
+import { ref, inject, onMounted, watch, computed } from "vue";
 import { useStore } from "vuex";
 import Input from "../BIOMD-UI/UI-Input.vue";
 import Section from "../BIOMD-UI/UI-Section.vue";
@@ -59,81 +44,50 @@ const sendSocketReq = (request) => {
   store.dispatch("sendSocketReq", request);
 };
 
-const DepartmentDescription = inject("DepartmentDescription");
-const GlobalDepartmentInformation = inject("GlobalDepartmentInformation");
+const { manufacturerName, manufacturerID } = defineProps({
+  manufacturerName: {
+    type: String,
+  },
+  manufacturerID: {
+    type: String,
+  },
+})
 
-const facilityList = ref(null);
+const ModelDesc = inject("ModelDesc")
+const GlobalModelInformation = inject("GlobalModelInformation")
 
-const fetchFacility = async (event) => {
-  try {
-    const selectedFacility = event ? event.target.value : "";
-    if (
-      event &&
-      (!(event instanceof InputEvent) ||
-        event.inputType === "insertReplacementText")
-    ) {
-      DepartmentDescription.value.selectedFacility = facilityList.value.find(
-        (facility) => {
-          return selectedFacility === facility.facilityName;
-        }
-      );
-      GlobalDepartmentInformation.value.facilityID =
-        DepartmentDescription.value.selectedFacility._id;
-      await fetchDepartment();
-    } else {
-      GlobalDepartmentInformation.value.facilityID = null;
+// const manufacturerList = ref(null)
 
-      sendSocketReq({
-        data: {
-          Expiry: 20000,
-          Type: "REQUEST",
-          Request: {
-            Module: "MEMS",
-            ServiceCode: "BIOMD",
-            API: "FIND_RECORD",
-            return_array: true,
-            max_list: 100,
-            find: {
-              collection: "Facility",
-              queries: [
-                {
-                  field: "facilityName",
-                  op: "sb",
-                  value: "^",
-                },
-              ],
-              projection: {
-                _id: 1,
-                facilityName: 1,
-              },
-            },
-          },
-        },
-        callback: (res) => {
-          if (res.Type === "RESPONSE") {
-            // Console the Response Packet
-            console.log("Response Packet -->", res.Response);
-            facilityList.value = res.Response.records;
-          } else if (res.Type === "ERROR") {
-            // Error response received during fetching
-            Type: "ERROR";
-            Response: {
-              Error_Code: "API-CREATE_RECORD-E001";
-              Error_Msg: "CREATE_RECORD_API: Failed to execute query";
-            }
-          }
-        },
-      });
-    }
-  } catch (error) {
-    console.log(error);
-  }
-};
+// const fetchManufacturer = async (event) => {
+//   try {
+//     // If there is no event, do not reset the manufacturerID.
+//     if (!event) {
+//       return;
+//     }
+//     const selectedManufacturer = event.target.value;
+//     if (!(event instanceof InputEvent) || event.inputType === "insertReplacementText") {
+//       ModelDesc.value.selectedManufacturer = manufacturerList.value.find(
+//         (manufacturer) => selectedManufacturer === manufacturer.manufacturerName
+//       );
+//       GlobalModelInformation.value.manufacturerID = ModelDesc.value.selectedManufacturer._id;
+//     }
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+
 onMounted(() => {
-  fetchFacility();
+  if (!ModelDesc.value.selectedManufacturer) {
+    ModelDesc.value.selectedManufacturer = { manufacturerName: '', _id: null };
+  }
+  ModelDesc.value.selectedManufacturer.manufacturerName = manufacturerName;
+  ModelDesc.value.selectedManufacturer._id = manufacturerID;
+  if (GlobalModelInformation) {
+    GlobalModelInformation.value.manufacturerID = manufacturerID;
+  }
+  // fetchManufacturer();
 });
+
 </script>
 
-<style lang="scss" scoped>
-@import "../Style/BIOMD.scss";
-</style>
+<style lang="scss" scoped></style>

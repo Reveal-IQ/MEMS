@@ -1,29 +1,42 @@
 <template>
   <div class="container-fluid">
     <nav class="d-flex gap-3 p-2">
-      <small class="text-secondary" style="cursor: pointer" @click="changePage('dashboard')">Back</small>
+      <small
+        class="text-secondary"
+        style="cursor: pointer"
+        @click="changePage('dashboard')"
+        >Back</small
+      >
     </nav>
 
     <div class="d-flex flex-column p-2 mt-4">
       <div>
         <span class="title text-dark fw-normal fs-1">{{
           props.manufacturerName
-          }}</span>
+        }}</span>
       </div>
       <div>
         <span class="fsXs">
-          Profile of Manufacturers and Models
+          Manufacturer Profile or Model Details can be edited by selecting the
+          Vendor
         </span>
       </div>
     </div>
     <div class="row p-2 mt-4 mb-5">
       <div class="col-md-6">
         <div class="mb-5">
-          <div class="d-flex justify-content-between d-md-block">
+          <div class="">
             <span class="card-title fw-normal fs-5">Manufacturer Profile</span>
-
+            <!-- <p class="card-text">
+              <small class="text-muted fsXs"
+                >Detailed equipment description</small
+              >
+            </p> -->
           </div>
-          <div class="g-3 mb-2 mt-2 rounded-3 container py-2 align-middle" style="background-color: #f5f6f6">
+          <div
+            class="g-3 mb-2 mt-2 rounded-3 container py-2 align-middle"
+            style="background-color: #f5f6f6"
+          >
             <div class="d-flex flex-column gap-3">
               <td>
                 <div class="d-flex flex-column">
@@ -43,28 +56,32 @@
                   <small class="text-secondary fsXs">Vendor List</small>
 
                   <span v-for="vendor in vendorList" :key="vendor.index">
-                    <small v-if="vendor.manufacturerName === props.manufacturerName">{{ vendor.vendorName }}</small>
+                    <small
+                      v-if="vendor.manufacturerName === props.manufacturerName"
+                      >{{ vendor.vendorName }}</small
+                    >
                     <!-- <small v-else class="text-muted">No Vendor Assigned</small> -->
                   </span>
                 </div>
               </td>
             </div>
-            <div class="d-flex gap-2 d-md-block">
-              <Btn2 BtnName="EDIT" backgroundColor="gray" @click="editPage" class="text-light btn-sm rounded-pill" />
-            </div>
           </div>
         </div>
         <div class="mb-5">
-          <div class="d-flex d-md-block">
+          <div class="">
             <span class="card-title fw-normal fs-5">Models</span>
-            <Btn2 BtnName="New Model" backgroundColor="green" @click="changePage('modelInfo', {
-              manufacturerName: props.manufacturerName,
-              manufacturerID: props.manufacturerID
-            })" class="text-light btn-sm rounded-pill" />
+            <!-- <p class="card-text">
+              <small class="text-muted fsXs"
+                >Detailed equipment description</small
+              >
+            </p> -->
           </div>
           <div v-for="model in modelList" :key="model.index">
-            <div v-if="model.manufacturerName === props.manufacturerName"
-              class="g-3 mb-2 mt-2 rounded-3 container py-2 align-middle" style="background-color: #f5f6f6">
+            <div
+              v-if="model.manufacturerName === props.manufacturerName"
+              class="g-3 mb-2 mt-2 rounded-3 container py-2 align-middle"
+              style="background-color: #f5f6f6"
+            >
               <div class="d-flex flex-column gap-3">
                 <td>
                   <div class="d-flex flex-column">
@@ -75,8 +92,8 @@
 
                 <td>
                   <div class="d-flex flex-column">
-                    <small class="text-secondary fsXs">Device Description</small>
-                    <small>device description </small>
+                    <small class="text-secondary fsXs">Code</small>
+                    <small>{{ model.UMDNSCode }} </small>
                   </div>
                 </td>
                 <!-- <td>
@@ -94,12 +111,8 @@
                   </div>
                 </td>
               </div>
-              <div class="d-flex gap-2 d-md-block">
-                <Btn2 BtnName="EDIT" backgroundColor="gray" @click="editPage" class="text-light btn-sm rounded-pill" />
-              </div>
             </div>
           </div>
-
         </div>
       </div>
       <div class="col-md-6">
@@ -114,8 +127,11 @@
           </div>
           <div>
             <div v-for="vendor in vendorList" :key="vendor.index">
-              <div v-if="vendor.manufacturerName === props.manufacturerName"
-                class="g-3 mb-2 mt-2 rounded-3 container py-2 align-middle" style="background-color: #f5f6f6">
+              <div
+                v-if="vendor.manufacturerName === props.manufacturerName"
+                class="g-3 mb-2 mt-2 rounded-3 container py-2 align-middle"
+                style="background-color: #f5f6f6"
+              >
                 <div class="d-flex flex-column gap-3">
                   <!-- <td>
                     <div class="d-flex flex-column">
@@ -132,18 +148,26 @@
                   </td>
                   <td>
                     <div class="d-flex flex-column">
-                      <small class="text-secondary fsXs">Manufacturer List</small>
+                      <small class="text-secondary fsXs"
+                        >Manufacturer List</small
+                      >
                       <span>
                         <small v-if="vendor.manufacturerName">{{
                           vendor.manufacturerName
-                          }}</small>
-                        <small v-else class="text-muted">No Manufacturer Assigned</small>
+                        }}</small>
+                        <small v-else class="text-muted"
+                          >No Manufacturer Assigned</small
+                        >
                       </span>
                     </div>
                   </td>
                   <div class="d-flex gap-2 d-md-block">
-                    <Btn2 BtnName="EDIT" backgroundColor="gray" @click="editPage"
-                      class="text-light btn-sm rounded-pill" />
+                    <Btn2
+                      BtnName="EDIT"
+                      backgroundColor="gray"
+                      @click="editPage"
+                      class="text-light btn-sm rounded-pill"
+                    />
                   </div>
                 </div>
               </div>
@@ -334,13 +358,11 @@ const emit = defineEmits(["updatePage"]);
 const changePage = async (page, props) => {
   emit("updatePage", page, props);
 };
-console.log("Dashboard Prop manufacturerName:", props.manufacturerName);
 
 onMounted(() => {
   fetchModel();
   fetchManufacturer();
   fetchVendor();
-  console.log("Dashboard Prop manufacturerName:", props.manufacturerName);
 });
 </script>
 

@@ -2,23 +2,22 @@
 ************************************
 Created By : Reveal Foundation  
 Author     : Edward Opoku-Agyemang           
-Date       : 03-Sep-2022
-Version    : 0.0.2   
-Description: Describe the application
+Date       : < 03-Sep-2022 >    
+Version    : < 0.0.1 >   
+Description: < Describe the application >          
 ************************************
 -->
 
 <template>
   <div class="RevealContainer">
     <div class="container p-4 m-4">
-      <!-- Welcome Variable Rendering with Mustatsh syntax. Variable is databinded -->
       <div
         class="d-lg-flex d-md-flex d-sm-flex gap-lg-0 gap-sm-5 align-items-center justify-content-lg-between justify-content-md-between justify-content-sm-center"
       >
         <div class="mt-3">
           <Header
-            title="New Manufacturer"
-            subTitle="Create new manufacturer with this form"
+            title="Facility Department"
+            subTitle="Create a new department with this form"
           />
         </div>
         <div class="d-flex gap-2 d-md-block">
@@ -26,7 +25,7 @@ Description: Describe the application
             BtnName="Return"
             :icon="'arrow-left'"
             backgroundColor="none"
-            @click="goBack"
+            @click="changePage('siteDescription')"
             class="text-secondary btn-sm"
           />
 
@@ -40,16 +39,15 @@ Description: Describe the application
       </div>
 
       <main>
-        <ManufacturerInformation />
+        <DepartmentDescription />
 
         <div class="d-flex justify-content-center py-3">
-          <!-- btn-green and a-link are custom css for MEMS check base.css -->
           <div class="">
             <Btn
-              BtnName="Create Manufacturer"
+              BtnName="Create Department"
               backgroundColor="#27AE60"
               class="mb-3"
-              @click="createRecord()"
+              @click="createRecord"
             />
 
             <Btn BtnName="Clear Content" />
@@ -62,42 +60,28 @@ Description: Describe the application
 
 <script>
 import { useStore } from "vuex";
-import { ref, toRefs, provide, computed } from "vue";
+import { ref, computed, provide } from "vue";
 
-import ManufacturerInformation from "./MANUFACTURER-ManufacturerInformation.vue";
 import Btn from "../BIOMD-UI/UI-Btn.vue";
 import Btn2 from "../BIOMD-UI/UI-Btn2.vue";
 import Header from "../BIOMD-UI/UI-FormHeader.vue";
-import { ManufacturerRecord } from "../../../../store/modules/recordSchema";
+import DepartmentDescription from "../BIOMD-DEPARTMENT/DEPARTMENT-DepartmentDescription.vue";
+import { DepartmentRecord } from "../../../../store/modules/recordSchema";
 
 export default {
-  name: "manufacturer",
-  // Define Props here
+  components: { DepartmentDescription, Btn2, Btn, Header },
+  name: "department",
   props: {
     tabid: {
       type: String,
     },
   },
-  // Emit value can pass within this array
   emits: ["updatePage"],
   setup(props, { emit }) {
-    const { props_variable } = toRefs(props); // include variables from the props with help of toRefs
     const store = useStore();
     const Institute_Code = computed(
       () => store.state.globalStore.UserInfo.Institute_Info.Code
     );
-
-    const manufacturerInfo = ref({
-      manufacturerName: null
-    });
-
-    const Global_Manufacturer_Definition = ref({
-      manufacturerAddress: {
-        Country: null,
-        State: null,
-        District: null,
-      },
-    });
 
     const changeServiceState = (serviceState) =>
       store.dispatch("changeServiceState", serviceState);
@@ -110,15 +94,24 @@ export default {
       });
     }
 
-    const changePage = (page) => {
-      emit("updatePage", page);
-    };
-    // send Socket Request use to send rrequest packet for an API
+    const DepartmentDescription = ref({
+      departmentName: null,
+      shortName: null,
+      selectedFacility: { facilityName: null, _id: null },
+    });
+
+    const GlobalDepartmentInformation = ref({
+      facilityID: null,
+    });
+
     const sendSocketReq = (request) => {
       store.dispatch("sendSocketReq", request);
     };
 
-    // Function to Send Request and Get Response by this template code .
+    const changePage = async (page) => {
+      emit("updatePage", page);
+    };
+
     function createRecord() {
       // send Request as below .
       sendSocketReq({
@@ -129,11 +122,13 @@ export default {
             Module: "MEMS",
             ServiceCode: "BIOMD",
             API: "CREATE_RECORD",
-            collection: "Manufacturer",
-            record: new ManufacturerRecord({
-              manufacturerName: manufacturerInfo.value.manufacturerName
+            collection: "Department",
+            record: new DepartmentRecord({
+              facilityID: GlobalDepartmentInformation.value.facilityID,
+              departmentName: DepartmentDescription.value.departmentName,
+              shortName: DepartmentDescription.value.shortName,
             }).serialize(),
-            Institute_Code: Institute_Code.value, //Dynamically changes when another institute logged in
+            Institute_Code: Institute_Code.value,
           },
         },
         callback: (res) => {
@@ -141,7 +136,7 @@ export default {
             changePage("success");
 
             console.log("Response Packet -->", res.Response);
-            getValues.value = res.Response.Site_Info[0]; //Assigning response values to getValues Object
+            // getValues.value = res.Response.Site_Info[0]; //Assigning response values to getValues Object
           } else if (res.Type === "ERROR") {
             // Error response received during fetching
             Type: "ERROR";
@@ -158,8 +153,8 @@ export default {
       emit("updatePage", "dashboard");
     };
 
-    provide("manufacturerInfo", manufacturerInfo);
-    provide("Global_Manufacturer_Definition", Global_Manufacturer_Definition);
+    provide("DepartmentDescription", DepartmentDescription);
+    provide("GlobalDepartmentInformation", GlobalDepartmentInformation);
 
     return {
       goBack,
@@ -168,7 +163,6 @@ export default {
       changePage,
     };
   },
-  components: { ManufacturerInformation, Btn2, Btn, Header },
 };
 </script>
 
