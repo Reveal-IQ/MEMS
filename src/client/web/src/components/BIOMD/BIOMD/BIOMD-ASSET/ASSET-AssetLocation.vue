@@ -157,7 +157,7 @@ const fetchDepartment = async (event) => {
         }
       );
       GlobalAssetInformation.value.departmentID =
-        AssetLocation.value.selectedDepartment.shortName;
+        AssetLocation.value.selectedDepartment._id;
     } else {
       GlobalAssetInformation.value.departmentID = null;
 
@@ -176,7 +176,7 @@ const fetchDepartment = async (event) => {
               queries: [
                 {
                   field: "facilityID",
-                  op: "sb",
+                  op: "eq_id",
                   value: GlobalAssetInformation.value.facilityID,
                 },
               ],
