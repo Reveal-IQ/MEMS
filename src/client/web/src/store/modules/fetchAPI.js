@@ -70,7 +70,7 @@ const fetchAPI = {
                 const expiryTimeoutID = setTimeout(() => controller.abort(), req.Expiry);
 
                 // Send POST request
-                const response = await fetch(`http://mems.revealfoundation.com/api/${req.Request.Module}/${req.Request.ServiceCode}`, {
+                const response = await fetch(`http://mems.revealiq.co/api/${req.Request.Module}/${req.Request.ServiceCode}`, {
                     method: 'POST',
                     headers:{
                         'Content-Type': 'text/plain',

@@ -1,6 +1,6 @@
 # Version: 0.2
 # Created: 5/1/2022
-# Last Edit: 3/4/2023
+# Last Edit: 2/22/2025
 # R E V E A L FOUNDATION
 
 version: "3.9"  # optional since v1.27.0
@@ -9,15 +9,14 @@ services:
 
   # Web Client
   WEB:
-    image: caddy:2-alpine
+    build: ../Client/Web
+    image: "reveal/web:dev"
     restart: unless-stopped
     ports:
       - "80:80"
       - "443:443"
       - "443:443/udp"
     volumes:
-      - ../client/web/Caddyfile:/etc/caddy/Caddyfile
-      - ../client/web/dist:/srv
       - WEB-DATA:/data
       - WEB-CONFIG:/config
     networks:
